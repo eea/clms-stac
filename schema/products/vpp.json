@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/vpp.json",
+  "title": "Vegetation Phenology and Productivity STAC Items",
+  "description": "This schema only checks the existence but the schema of the properties",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for Vegetation Phenology and Productivity Items",
+      "allOf": [
+        {
+          "$ref": "http://example.com/core.json"
+        },
+        {
+          "type": "object",
+          "required": ["stac_extensions", "collection", "properties"],
+          "properties": {
+            "stac_extensions": {
+              "type": "array",
+              "required": [
+                "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+                "https://stac-extensions.github.io/raster/v1.1.0/schema.json"
+              ]
+            },
+            "collection": {
+              "const": "vegetation-phenology-and-productivity"
+            },
+            "properties": {
+              "type": "object",
+              "required": [
+                "proj:epsg",
+                "proj:bbox",
+                "proj:shape",
+                "raster:bands"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for Vegetation Phenology and Productivity Collection",
+      "allOf": [
+        {
+          "$ref": "http://example.com/core.json"
+        },
+        {
+          "type": "object",
+          "required": ["summaries"],
+          "properties": {
+            "summaries": {
+              "type": "object",
+              "required": ["proj:epsg", "raster:bands"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
