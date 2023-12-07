@@ -8,7 +8,8 @@
     {
       "rel": "root",
       "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
-      "type": "application/json"
+      "type": "application/json",
+      "title": "CLMS Catalog"
     },
     {
       "rel": "child",
@@ -25,7 +26,8 @@
     {
       "rel": "self",
       "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
-      "type": "application/json"
+      "type": "application/json",
+      "title": "CLMS Catalog"
     }
   ]
 }

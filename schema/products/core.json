@@ -3,7 +3,7 @@
   "$id": "http://example.com/core.json",
   "title": "CLMS Core Metadata",
   "description": "This object represents core metadata of CLMS products",
-  "$comment": "This shcema only checks the existence but the schema of the properties",
+  "$comment": "This schema only checks the existence but the schema of the properties",
   "oneOf": [
     {
       "$comment": "This is the schema for STAC Items",
