@@ -1,0 +1,33 @@
+{
+  "id": "clms_catalog",
+  "type": "Catalog",
+  "title": "CLMS Catalog",
+  "stac_version": "1.0.0",
+  "description": "This catalog is a simple demonstration of an example catalog that is used to organize a hierarchy of collections and their items.",
+  "links": [
+    {
+      "rel": "root",
+      "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "child",
+      "href": "https://github.com/eea/clms-stac/stacs/corine-land-cover/corine-land-cover-raster.json",
+      "type": "application/json",
+      "title": "Corine Land Cover Raster Collection"
+    },
+    {
+      "rel": "child",
+      "href": "https://github.com/eea/clms-stac/stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "type": "application/json",
+      "title": "Vegetation Phenology and Productivity Collection"
+    },
+    {
+      "rel": "self",
+      "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    }
+  ]
+}

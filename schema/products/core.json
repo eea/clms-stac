@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/core.json",
+  "title": "CLMS Core Metadata",
+  "description": "This object represents core metadata of CLMS products",
+  "$comment": "This schema only checks the existence but the schema of the properties",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items",
+      "type": "object",
+      "required": ["stac_extensions", "type", "properties", "assets"],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "required": ["http://example.com/eea/v1.0.0/schema.json"]
+        },
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "type": "object",
+          "allOf": [
+            { "$ref": "#/definitions/core_metadata" },
+            { "required": ["description"] }
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "additionalProperties": {
+            "required": ["title", "type", "roles"]
+          }
+        }
+      }
+    },
+    {
+      "$comment": "This is the schema for STAC Collections",
+      "type": "object",
+      "required": [
+        "stac_extensions",
+        "type",
+        "title",
+        "keywords",
+        "providers",
+        "summaries"
+      ],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "required": ["http://example.com/eea/v1.0.0/schema.json"]
+        },
+        "type": {
+          "const": "Collection"
+        },
+        "summaries": {
+          "type": "object",
+          "$ref": "#/definitions/core_metadata"
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "core_metadata": {
+      "type": "object",
+      "required": [
+        "start_datetime",
+        "end_datetime",
+        "created",
+        "providers",
+        "eea:contact",
+        "eea:date_creation",
+        "eea:date_publication",
+        "eea:edition",
+        "eea:point_of_contact",
+        "eea:point_of_contact_custodian",
+        "eea:point_of_contact_distributor",
+        "eea:resource_maintenance",
+        "eea:descriptive_keywords_eea_topics",
+        "eea:descriptive_keywords_gemet_inspire_themes",
+        "eea:descriptive_keywords_eea_keywords_list",
+        "eea:descriptive_keywords_eea_data_categories",
+        "eea:descriptive_keywords_gemet",
+        "eea:descriptive_keywords_spatial_scope",
+        "eea:descriptive_keywords_continents_countries_sea_regions_of_the_world",
+        "eea:descriptive_keywords_temporal_resolution",
+        "eea:use_constraints",
+        "eea:access_constraints",
+        "eea:spatial_representation_type",
+        "eea:spatial_resolution",
+        "eea:topic_category",
+        "eea:distribution_format",
+        "eea:transfer_options",
+        "eea:data_quality_scope",
+        "eea:lineage"
+      ]
+    }
+  }
+}

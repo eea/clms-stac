@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/clc.json",
+  "title": "Corine Land Cover STAC Items",
+  "description": "This schema only checks the existence but the schema of the properties",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for Corine Land Cover Items",
+      "allOf": [
+        {
+          "$ref": "http://example.com/core.json"
+        },
+        {
+          "type": "object",
+          "required": ["stac_extensions", "collection", "properties", "assets"],
+          "properties": {
+            "stac_extensions": {
+              "type": "array",
+              "required": [
+                "https://stac-extensions.github.io/classification/v1.1.0/schema.json",
+                "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+              ]
+            },
+            "collection": {
+              "const": "corine-land-cover-raster"
+            },
+            "properties": {
+              "type": "object",
+              "required": ["eea:date_revision"]
+            },
+            "assets": {
+              "type": "object",
+              "additionalProperties": {
+                "if": {
+                  "properties": {
+                    "roles": {
+                      "const": ["data", "visual"]
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "proj:epsg",
+                    "proj:bbox",
+                    "proj:shape",
+                    "classification:classes"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for Corine Land Cover Collection",
+      "allOf": [
+        {
+          "$ref": "http://example.com/core.json"
+        },
+        {
+          "type": "object",
+          "required": ["stac_extensions", "item_assets", "summaries"],
+          "properties": {
+            "stac_extensions": {
+              "type": "array",
+              "required": [
+                "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+                "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+              ]
+            },
+            "item_assets": {
+              "type": "object",
+              "additionalProperties": {
+                "if": {
+                  "properties": {
+                    "roles": {
+                      "const": ["data"]
+                    }
+                  }
+                },
+                "then": {
+                  "required": ["proj:epsg", "proj:bbox"]
+                }
+              }
+            },
+            "summaries": {
+              "required": ["eea:date_revision"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

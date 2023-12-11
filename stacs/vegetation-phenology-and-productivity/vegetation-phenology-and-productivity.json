@@ -1,0 +1,454 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "http://example.com/eea/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "vegetation-phenology-and-productivity",
+  "title": "Vegetation Phenology and Productivity Parameters",
+  "description": "Vegetation Phenology and Productivity Parameters (VPP) product is part of the Copernicus Land Monitoring Service (CLMS), pan-European High Resolution Vegetation Phenology and Productivity (HR-VPP) product suite. The VPP product is comprised of 13 parameters that describe specific stages of the seasonal vegetation growth cycle. These parameters are extracted from Seasonal Trajectories of the Plant Phenology Index (PPI) derived from Sentinel-2 satellite observations at 10m resolution. Since growing seasons can traverse years, VPP parameters are provided for a maximum of two growing seasons per year. The parameters include (1) start of season (date, PPI value and slope), (2) end of season (date, PPI value and slope), (3)length of season, (4) minimum of season, (4) peak of the season (date and PPI value), (5) amplitude, (6) small integrated value and (7) large integrated value.",
+  "license": "proprietary",
+  "keywords": [
+    "agriculture",
+    "clms",
+    "derived data",
+    "open data",
+    "phenology",
+    "plant phenology index",
+    "vegetation"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "producer", "processor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-61.906047, -21.482245, 55.935919, 71.409109]]
+    },
+    "temporal": {
+      "interval": [["2017-01-01T00:00:00.000Z", null]]
+    }
+  },
+  "summaries": {
+    "start_datetime": [
+      {
+        "year": 2017,
+        "value": "2017-01-01"
+      },
+      {
+        "year": 2018,
+        "value": "2018-01-01"
+      },
+      {
+        "year": 2019,
+        "value": "2019-01-01"
+      },
+      {
+        "year": 2020,
+        "value": "2020-01-01"
+      },
+      {
+        "year": 2021,
+        "value": "2021-01-01"
+      },
+      {
+        "year": 2011,
+        "value": "2022-01-01"
+      }
+    ],
+    "end_datetime": [
+      {
+        "year": 2017,
+        "value": "2017-12-31"
+      },
+      {
+        "year": 2018,
+        "value": "2018-12-31"
+      },
+      {
+        "year": 2019,
+        "value": "2019-12-31"
+      },
+      {
+        "year": 2020,
+        "value": "2020-12-31"
+      },
+      {
+        "year": 2021,
+        "value": "2021-12-31"
+      },
+      {
+        "year": 2011,
+        "value": "2022-12-31"
+      }
+    ],
+    "created": [
+      {
+        "year": [2017, 2018, 2019, 2020],
+        "value": "2021:11:17T14:09:35.000Z"
+      },
+      {
+        "year": [2021, 2022],
+        "value": "2023-04-08T01:47:59.000Z"
+      }
+    ],
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": ["licensor", "producer", "processor", "host"],
+        "url": "https://land.copernicus.eu"
+      }
+    ],
+    "proj:epsg": [
+      32620, 32621, 32622, 32625, 32626, 32627, 32628, 32629, 32630, 32631,
+      32632, 32633, 32634, 32635, 32636, 32637, 32638, 32738, 32740
+    ],
+    "raster:bands": [
+      {
+        "name": "AMPL",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": -32768
+          }
+        ]
+      },
+      {
+        "name": "EOSD",
+        "value": [
+          {
+            "data_type": "int16",
+            "spatial_resolution": 10,
+            "nodata": 0
+          }
+        ]
+      },
+      {
+        "name": "EOSV",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": -32768
+          }
+        ]
+      },
+      {
+        "name": "LENGTH",
+        "value": [
+          {
+            "data_type": "int16",
+            "spatial_resolution": 10,
+            "nodata": 0
+          }
+        ]
+      },
+      {
+        "name": "LSLPOE",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": -32768
+          }
+        ]
+      },
+      {
+        "name": "MAXD",
+        "value": [
+          {
+            "data_type": "int16",
+            "spatial_resolution": 10,
+            "nodata": 0
+          }
+        ]
+      },
+      {
+        "name": "MAXV",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": -32768
+          }
+        ]
+      },
+      {
+        "name": "MINV",
+        "value": [
+          {
+            "data_type": "flaot32",
+            "spatial_resolution": 10,
+            "nodata": -32768
+          }
+        ]
+      },
+      {
+        "name": "QFLAG",
+        "value": [
+          {
+            "data_type": "uint8",
+            "spatial_resolution": 10,
+            "nodata": 0
+          }
+        ]
+      },
+      {
+        "name": "RSLOPE",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": -32768
+          }
+        ]
+      },
+      {
+        "name": "SOSD",
+        "value": [
+          {
+            "data_type": "int16",
+            "spatial_resolution": 10,
+            "nodata": 0
+          }
+        ]
+      },
+      {
+        "name": "SOSV",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": -32768
+          }
+        ]
+      },
+      {
+        "name": "SPROD",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": 65535
+          }
+        ]
+      },
+      {
+        "name": "TPROD",
+        "value": [
+          {
+            "data_type": "float32",
+            "spatial_resolution": 10,
+            "nodata": 65535
+          }
+        ]
+      }
+    ],
+    "eea:contact": [
+      {
+        "organisation_name": "European Environment Agency",
+        "address": {
+          "delivery_point": "Kongens Nytorv 6",
+          "city": "Copenhagen",
+          "administrative_area": "K",
+          "postal_code": 1050,
+          "country": "Denmark",
+          "electronic_mail_address": "sdi@eea.europa.eu"
+        }
+      }
+    ],
+    "eea:date_creation": [
+      {
+        "comments": "outdated metadata",
+        "value": "2021-09-02T00:00:00.000Z"
+      }
+    ],
+    "eea:date_publication": [
+      {
+        "comment": "outdated metadata",
+        "value": "2021-09-02T00:00:00.000Z"
+      }
+    ],
+    "eea:edition": ["01.01"],
+    "eea:point_of_contact": [
+      {
+        "organisation_name": "European Environment Agency",
+        "contant_info": {
+          "address": {
+            "delivery_point": "Kongens Nytorv 6",
+            "city": "Copenhagen",
+            "administrative_area": "K",
+            "postal_code": 1050,
+            "country": "Denmark",
+            "electronic_mail_address": "copernicus@eea.europa.eu"
+          },
+          "online_resource": {
+            "name": "Copernicus Land Portal",
+            "linkage": "https://land.copernicus.eu",
+            "protocol": "WWW:LINK-1.0-http--link"
+          }
+        }
+      }
+    ],
+    "eea:point_of_contact_custodian": [
+      {
+        "organisation_name": "European Environment Agency",
+        "contant_info": {
+          "address": {
+            "delivery_point": "Kongens Nytorv 6",
+            "city": "Copenhagen",
+            "administrative_area": "K",
+            "postal_code": 1050,
+            "country": "Denmark",
+            "electronic_mail_address": "copernicus@eea.europa.eu"
+          },
+          "online_resource": {
+            "name": "Copernicus Land Portal",
+            "linkage": "https://land.copernicus.eu",
+            "protocol": "WWW:LINK-1.0-http--link"
+          }
+        }
+      }
+    ],
+    "eea:point_of_contact_distributor": [
+      {
+        "organisation_name": "European Environment Agency",
+        "contant_info": {
+          "address": {
+            "delivery_point": "Kongens Nytorv 6",
+            "city": "Copenhagen",
+            "administrative_area": "K",
+            "postal_code": 1050,
+            "country": "Denmark",
+            "electronic_mail_address": "copernicus@eea.europa.eu"
+          },
+          "online_resource": {
+            "name": "Copernicus Land Portal",
+            "linkage": "https://land.copernicus.eu",
+            "protocol": "WWW:LINK-1.0-http--link"
+          }
+        }
+      }
+    ],
+    "eea:resource_maintenance": ["annually"],
+    "eea:descriptive_keywords_eea_topics": [null],
+    "eea:descriptive_keywords_gemet_inspire_themes": [
+      "Environmental monitoring facilities",
+      "Habitats and biotopes",
+      "Orthoimagery"
+    ],
+    "eea:descriptive_keywords_eea_keywords_list": [null],
+    "eea:descriptive_keywords_eea_data_categories": [null],
+    "eea:descriptive_keywords_gemet": [
+      "land",
+      "remote sensing",
+      "index",
+      "vegetation",
+      "productivity",
+      "plant production",
+      "plant ecology"
+    ],
+    "eea:descriptive_keywords_spatial_scope": ["European"],
+    "eea:descriptive_keywords_continents_countries_sea_regions_of_the_world": [
+      {
+        "year": [2017, 2018, 2019],
+        "value": "EEA39"
+      },
+      {
+        "year": [2020, 2021, 2022],
+        "value": ["EEA38", "United Kingdom"]
+      }
+    ],
+    "eea:descriptive_keywords_temporal_resolution": ["Annually"],
+    "eea:use_constraints": [
+      "Access to data is based on a principle of full, open and free access as established by the Copernicus data and information policy Regulation (EU) No 1159/2013 of 12 July 2013. This regulation establishes registration and licensing conditions for GMES/Copernicus users. Free, full and open access to this data set is made on the conditions that: 1. When distributing or communicating Copernicus dedicated data and Copernicus service information to the public, users shall inform the public of the source of that data and information. 2. Users shall make sure not to convey the impression to the public that the user's activities are officially endorsed by the Union. 3. Where that data or information has been adapted or modified, the user shall clearly state this. 4. The data remain the sole property of the European Union. Any information and data produced in the framework of the action shall be the sole property of the European Union. Any communication and publication by the beneficiary shall acknowledge that the data were produced “with funding by the European Union”."
+    ],
+    "eea:access_constraints": ["no limitations to public access"],
+    "eea:spatial_representation_type": ["grid"],
+    "eea:spatial_resolution": ["10 m"],
+    "eea:topic_category": [
+      "environment",
+      "imageryBaseMapsEarthCover",
+      "climatologyMeteorologyAtmosphere"
+    ],
+    "eea:distribution_format": [
+      {
+        "name": "GeoTIFF",
+        "version": 1.0
+      }
+    ],
+    "eea:transfer_options": [
+      {
+        "linkage": "https://www.wekeo.eu/data?view=viewer&t=1577905116279&z=0&center=13.08408%2C48.33915&zoom=12.34&layers=W3siaWQiOiJjMCIsImxheWVySWQiOiJFTzpIUlZQUDpEQVQ6VkVHRVRBVElPTi1QSEVOT0xPR1ktQU5ELVBST0RVQ1RJVklUWS1QQVJBTUVURVJTL19fREVGQVVMVF9fL0NMTVNfSFJWUFBfVlBQX1RQUk9EX1NFQVNPTjJfMTBNIiwiekluZGV4Ijo4MH1d&initial=1",
+        "protocol": "WWW:LINK-1.0-http--link",
+        "description": "WEkEO portal - season 2"
+      },
+      {
+        "linkage": "https://phenology.vgt.vito.be/wmts?request=GetCapabilities",
+        "protocol": "OGC:WMTS",
+        "description": "CLMS_HRVPP_VPP_TPROD_SEASON2_10M"
+      },
+      {
+        "linkage": "https://wekeo-broker.apps.mercator.dpi.wekeo.eu/databroker/ui/",
+        "protocol": "WWW:LINK-1.0-http--link",
+        "description": "Harmonized Data Access (WEkEO)"
+      },
+      {
+        "linkage": "https://phenology.vgt.vito.be/description?collection=copernicus_r_utm-wgs84_10_m_hrvpp-vpp_p_2017-now_v01",
+        "protocol": "OGC:OpenSearch",
+        "description": "OpenSearch API"
+      },
+      {
+        "linkage": "https://phenology.vgt.vito.be/wms?request=GetCapabilities",
+        "protocol": "OGC:WMS",
+        "description": "CLMS_HRVPP_VPP_TPROD_SEASON2_10M"
+      },
+      {
+        "linkage": "https://land.copernicus.eu/en/products/vegetation/high-resolution-total-productivity#download",
+        "protocol": "WWW:LINK-1.0-http--link",
+        "description": "Download (requires authentication)"
+      },
+      {
+        "linkage": "https://doi.org/10.2909/977e4bb8-407f-48ec-b4c4-403bca5a6a3b",
+        "protocol": "DOI",
+        "description": "EEA geospatial data catalouge"
+      }
+    ],
+    "eea:data_quality_scope": ["dataset"],
+    "eea:lineage": [
+      "Vegetation Phenology and Productivity parameters (VPP) are based on Plant Phenology Index (PPI) seasonal trajectories and are yearly produced for two seasons using the Timesat software. One of the parameters is the Total Productivity (TPROD): the growing season integral computed as the sum of all daily PPI values between the dates of the season start (SOSD) and end (EOSD). The latest validation results are described in the validation report at https://land.copernicus.eu/user-corner/technical-library/validation-report-of-seasonal-trajectories-vpp-parameters."
+    ]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://github.com/eea/clms-stac/stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "type": "application/json",
+      "title": "Vegetation Phenology and Productivity Parameters"
+    },
+    {
+      "rel": "parent",
+      "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    }
+  ]
+}
