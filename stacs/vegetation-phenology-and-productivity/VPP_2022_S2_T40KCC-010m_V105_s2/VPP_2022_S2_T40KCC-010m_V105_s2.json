@@ -1,0 +1,156 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "type": "Feature",
+  "id": "VPP_2022_S2_T40KCC-010m_V105_s2",
+  "bbox": [55.077444, -20.877262, 56.13278, -19.8938],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [55.077444, -20.877262],
+        [56.13278, -20.877262],
+        [56.13278, -19.8938],
+        [55.077444, -19.8938],
+        [55.077444, -20.877262]
+      ]
+    ]
+  },
+  "properties": {
+    "description": "2022 Season 2 Vegetation Phenology and Productivity Parameters (VPP) product of Sentinel-2 tile T40KCC.",
+    "datetime": null,
+    "start_datetime": "2022-01-01T00:00:00.000Z",
+    "end_datetime": "2022-12-31T00:00:00.000Z",
+    "created": "2023-04-08T01:47:59.000Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": ["licensor", "producer", "processor", "host"],
+        "url": "https://land.copernicus.eu"
+      }
+    ],
+    "proj:epsg": 32740,
+    "proj:bbox": [300000, 7690240, 409800, 7800040],
+    "proj:shape": [10980, 10980]
+  },
+  "collection": "vegetation-phenology-and-productivity",
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "self",
+      "href": "./VPP_2022_S2_T40KCC-010m_V105_s2_TPROD/VPP_2022_S2_T40KCC-010m_V105_s2.json",
+      "type": "application/json",
+      "title": "Vegetation Phenology and Productivity Parameters 2022 Season 2 Tile T40KCC"
+    },
+    {
+      "rel": "root",
+      "href": "../../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "../vegetation-phenology-and-productivity.json",
+      "type": "application/json",
+      "title": "Vegetation Phenology and Productivity Parameters Collection"
+    },
+    {
+      "rel": "collection",
+      "href": "../vegetation-phenology-and-productivity.json",
+      "type": "application/json",
+      "title": "Vegetation Phenology and Productivity Parameters Collection"
+    }
+  ],
+  "assets": {
+    "vpp_2022_s2_t40kcc-010m_v105_s2_ampl": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_AMPL.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Season Amplitude",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_eosd": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_EOSD.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Day of End-of-Season",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_eosv": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_EOSV.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Vegetation Index Value at EOSD",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_length": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_LENGTH.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Length of Season",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_lslope": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_LSLOPE.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Slope of The Greening Up Period",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_maxd": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_MAXD.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Day of Maximum-of-Season",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_maxv": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_MAXV.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Vegetation Index Value at MAXD",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_minv": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_MINV.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Average Vegetation Index Value of Minima on Left and Right Sides of Each Season",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_qflag": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_QFLAG.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Quality Flag",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_rslope": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_RSLOPE.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Slope of The Senescent Period",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_sosd": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_SOSD.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Day of Start-of-Season",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_sosv": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_SOSV.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Vegetation Index Value at SOSD",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_sprod": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_SPROD.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Seasonal Productivity",
+      "roles": ["data"]
+    },
+    "vpp_2022_s2_t40kcc-010m_v105_s2_tprod": {
+      "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_TPROD.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Total Productivity",
+      "roles": ["data"]
+    }
+  }
+}

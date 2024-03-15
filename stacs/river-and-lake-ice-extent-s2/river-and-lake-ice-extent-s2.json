@@ -1,0 +1,96 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "river-and-lake-ice-extent-s2",
+  "title": "Rive and Lake Ice Extent - Sentinel-2",
+  "description": "The Copernicus River and Lake Ice Extent (RLIE) products provide pixel-based information about ice presence on rivers and lakes. RLIE S2 is generated in near real-time based on observations from the Sentinel-2 constellations. The RLIE products are distributed in raster files covering an area of 110 km by 110 km with a pixel size of 20 m by 20 m in UTM/WGS84 projection, which corresponds to the Sentinel-2 L1C product tile, as part of the products of the pan-European High-Resolution Snow & Ice service (HR-S&I). They inform of the presence of snow-covered or snow-free ice on the various water bodies described by the EU-HYDRO river and lake network database.",
+  "license": "proprietary",
+  "keywords": [
+    "monitoring",
+    "ice",
+    "climate change impact",
+    "land cover",
+    "landscape alteration",
+    "river",
+    "lake"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "producer", "processor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-26, 34, 44, 66]]
+    },
+    "temporal": {
+      "interval": [["2016-09-01T00:00:00.000Z", null]]
+    }
+  },
+  "item_assets": {
+    "RLIE": {
+      "title": "River and lake ice extent",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": ["data"]
+    },
+    "QC": {
+      "title": "Quality layer providing basic assessment of RLIE quality",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": ["data"]
+    },
+    "QCFLAGS": {
+      "title": "Quality flags",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": ["data"]
+    },
+    "MTD": {
+      "title": "Product metadata",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    }
+  },
+  "summaries": {
+    "proj:epsg": [
+      32625, 32626, 32627, 32628, 32629, 32630, 32631, 32632, 32633, 32634,
+      32635, 32636, 32637, 32638
+    ]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "./river-and-lake-ice-extent-s2.json",
+      "type": "application/json",
+      "title": "River and Lake Ice Extent - Sentinel-2"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    },
+    {
+      "rel": "item",
+      "href": "./RLIE_20240301T134320_S2A_T26WPU_V102_1/RLIE_20240301T134320_S2A_T26WPU_V102_1.json",
+      "type": "application/json",
+      "title": "RLIE 20240301 S2 Tile T26WPU"
+    }
+  ]
+}

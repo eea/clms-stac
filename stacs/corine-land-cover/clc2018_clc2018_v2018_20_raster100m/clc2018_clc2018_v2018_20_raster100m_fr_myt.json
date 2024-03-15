@@ -4,17 +4,17 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
   "type": "Feature",
-  "id": "clc2018_clc2018_v2018_20_raster100m",
-  "bbox": [-23.825994, 24.284177, 40.662706, 58.952751],
+  "id": "clc2018_clc2018_v2018_20_raster100m_fr_myt",
+  "bbox": [44.9271541, -13.090183, 45.3894057, -12.5464361],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [-23.825994, 24.284177],
-        [40.662706, 24.284177],
-        [40.662706, 58.952751],
-        [-23.825994, 58.952751],
-        [-23.825994, 24.284177]
+        [44.9271541, -13.090183],
+        [45.3894057, -13.090183],
+        [45.3894057, -12.5464361],
+        [44.9271541, -12.5464361],
+        [44.9271541, -13.090183]
       ]
     ]
   },
@@ -41,9 +41,9 @@
     },
     {
       "rel": "self",
-      "href": "./clc2018_clc2018_v2018_20_raster100m.json",
+      "href": "./clc2018_clc2018_v2018_20_raster100m_fr_myt.json",
       "type": "application/json",
-      "title": "Corine Land Cover 2018 Raster 100m"
+      "title": "Corine Land Cover 2018 Raster 100m Mayotte"
     },
     {
       "rel": "root",
@@ -65,67 +65,66 @@
     }
   ],
   "assets": {
-    "clc2018_clc2018_v2018_20": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif",
+    "clc2018_clc2018_v2018_20_fr_myt": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/French_DOMs/CLC2018_CLC2018_V2018_20_FR_MYT.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Europe Single Band Land Classification",
+      "title": "Single Band Land Classification Mayotte",
       "roles": ["data", "visual"],
-      "proj:epsg": 3035,
-      "proj:bbox": [900000, 900000, 7400000, 5500000],
-      "proj:shape": [46000, 65000]
+      "proj:epsg": 4471,
+      "proj:bbox": [
+        492103.3494717329740524, 8552890.110988138243556,
+        542303.3494717329740524, 8612990.110988138243556
+      ],
+      "proj:shape": [601, 502]
     },
-    "clc2018_clc2018_v2018_20_tif_aux_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.aux.xml",
-      "title": "Statistics",
+    "clc2018_clc2018_v2018_20_fr_myt_tif_aux_xml": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_MYT.tif.aux.xml",
+      "title": "TIFF Statistics Mayotte",
       "type": "application/xml",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_ovr": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.ovr",
-      "title": "Pyramid",
+    "clc2018_clc2018_v2018_20_fr_myt_tif_clr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_MYT.tif.clr",
+      "title": "Color map Mayotte",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+
+    "clc2018_clc2018_v2018_20_fr_myt_tif_ovr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_MYT.tif.ovr",
+      "title": "Pyramid Mayotte",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_cpg": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.cpg",
-      "title": "Encoding",
+    "clc2018_clc2018_v2018_20_fr_myt_tif_vat_cpg": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_MYT.tif.vat.cpg",
+      "title": "Encoding Mayotte",
       "type": "text/plain",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_dbf": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf",
-      "title": "Database",
+    "clc2018_clc2018_v2018_20_fr_myt_tif_vat_dbf": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_MYT.tif.vat.dbf",
+      "title": "Database Mayotte",
       "type": "application/vnd.dbf",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_dbf_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf.xml",
-      "title": "Database Metadata",
+    "clc2018_clc2018_v2018_20_fr_myt_tif_xml": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_MYT.tif.xml",
+      "title": "TIFF Metadata Mayotte",
       "type": "application/xml",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.xml",
-      "title": "TIFF Metadata",
-      "type": "application/xml",
-      "roles": ["metadata"]
-    },
-    "clc2018_clc2018_v2018_20_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Metadata/CLC2018_CLC2018_V2018_20.xml",
-      "title": "Europe Single Band Land Classification Metadata",
-      "type": "application/xml",
-      "roles": ["metadata"]
-    },
-    "clc2018_clc2018_v2018_20_qgis_txt": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20_QGIS.txt",
-      "title": "Legends",
+    "clc2018_clc2018_v2018_20_fr_myt_tfw": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_MYT.tfw",
+      "title": "World File Mayotte",
       "type": "text/plain",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_lyr": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20.tif.lyr",
-      "title": "Legend Layer",
-      "type": "image/tiff; application=geotiff; profile=layer"
+    "clc2018_clc2018_v2018_20_fr_myt_tif_lyr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/French_DOMs/Legend/CLC2018_CLC2018_V2018_20_FR_MYT.tif.lyr",
+      "title": "Legend Layer Mayotte",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
     }
   }
 }

@@ -7,27 +7,31 @@
   "links": [
     {
       "rel": "root",
-      "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
-      "type": "application/json",
-      "title": "CLMS Catalog"
+      "href": "./clms_catalog.json",
+      "type": "application/json"
     },
     {
       "rel": "child",
-      "href": "https://github.com/eea/clms-stac/stacs/corine-land-cover/corine-land-cover-raster.json",
+      "href": "./corine-land-cover/corine-land-cover-raster.json",
       "type": "application/json",
       "title": "Corine Land Cover Raster Collection"
     },
     {
       "rel": "child",
-      "href": "https://github.com/eea/clms-stac/stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "href": "./vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
       "type": "application/json",
       "title": "Vegetation Phenology and Productivity Collection"
     },
     {
-      "rel": "self",
-      "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
+      "rel": "child",
+      "href": "./river-and-lake-ice-extent-s2/river-and-lake-ice-extent-s2.json",
       "type": "application/json",
-      "title": "CLMS Catalog"
+      "title": "River and Lake Ice Extent Sentinel-2 Collection"
+    },
+    {
+      "rel": "self",
+      "href": "https://git.sinergise.com/sh-vas/etc-di-stac/stac/clms_catalog.json",
+      "type": "application/json"
     }
   ]
 }

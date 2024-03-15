@@ -1,0 +1,97 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "type": "Feature",
+  "id": "RLIE_20240301T134320_S2A_T26WPU_V102_1",
+  "bbox": [
+    -24.733795166016, 65.665420532227, -22.433992385864, 66.702560424805
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-24.733795166016, 65.665420532227],
+        [-22.433992385864, 65.665420532227],
+        [-22.433992385864, 66.702560424805],
+        [-24.733795166016, 66.702560424805],
+        [-24.733795166016, 65.665420532227]
+      ]
+    ]
+  },
+  "properties": {
+    "description": "River and Lake Ice Extent Sentinel-2 20240301 Tile T26WPU",
+    "datetime": "2024-03-01T13:43:20.527Z",
+    "created": "2024-03-01T16:52:00.592Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": ["licensor", "producer", "processor", "host"],
+        "url": "https://land.copernicus.eu"
+      }
+    ],
+    "proj:epsg": 32626,
+    "proj:bbox": [600000, 7290240, 709800, 7400040],
+    "proj:shape": [5490, 5490]
+  },
+  "collection": "river-and-lake-ice-extent-s2",
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "self",
+      "href": "./RLIE_20240301T134320_S2A_T26WPU_V102_1/RLIE_20240301T134320_S2A_T26WUP_V102_1.json",
+      "type": "application/json",
+      "title": "River and Lake Ice Extent Sentinel-2 20240301 Tile T26WUP"
+    },
+    {
+      "rel": "root",
+      "href": "../../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "../river-and-lake-ice-extent-s2.json",
+      "type": "application/json",
+      "title": "River and Lake Ice Extent Sentine-2 Collection"
+    },
+    {
+      "rel": "collection",
+      "href": "../river-and-lake-ice-extent-s2.json",
+      "type": "application/json",
+      "title": "River and Lake Ice Extent Sentine-2 Collection"
+    }
+  ],
+  "assets": {
+    "rlie_20240301t134320_s2a_t26wpu_v102_1_rlie": {
+      "href": "../../../data/river-and-lake-ice-extent-s2/RLIE_20240301T134320_S2A_T26WPU_V102_1/RLIE_20240301T134320_S2A_T26WPU_V102_1_RLIE.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "River and lake ice extent",
+      "roles": ["data"]
+    },
+    "rlie_20240301t134320_s2a_t26wpu_v102_1_qc": {
+      "href": "../../../data/river-and-lake-ice-extent-s2/RLIE_20240301T134320_S2A_T26WPU_V102_1/RLIE_20240301T134320_S2A_T26WPU_V102_1_QC.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Quality layer providing basic assessment of RLIE quality",
+      "roles": ["data"]
+    },
+    "rlie_20240301t134320_s2a_t26wpu_v102_1_qcflags": {
+      "href": "../../../data/river-and-lake-ice-extent-s2/RLIE_20240301T134320_S2A_T26WPU_V102_1/RLIE_20240301T134320_S2A_T26WPU_V102_1_QCFLAGS.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Quality flags",
+      "roles": ["data"]
+    },
+    "rlie_20240301t134320_s2a_t26wpu_v102_1_mtd": {
+      "href": "../../../data/river-and-lake-ice-extent-s2/RLIE_20240301T134320_S2A_T26WPU_V102_1/RLIE_20240301T134320_S2A_T26WPU_V102_1_MTD.xml",
+      "type": "application/xml",
+      "title": "Product metadata",
+      "roles": ["metadata"]
+    }
+  }
+}
