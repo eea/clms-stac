@@ -30,7 +30,7 @@
     },
     {
       "rel": "self",
-      "href": "https://git.sinergise.com/sh-vas/etc-di-stac/stac/clms_catalog.json",
+      "href": "https://github.com/eea/clms-stac/stacs/clms_catalog.json",
       "type": "application/json"
     }
   ]
