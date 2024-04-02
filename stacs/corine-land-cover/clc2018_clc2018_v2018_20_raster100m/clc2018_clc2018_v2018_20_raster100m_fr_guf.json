@@ -4,17 +4,17 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
   "type": "Feature",
-  "id": "clc2018_clc2018_v2018_20_raster100m",
-  "bbox": [-23.825994, 24.284177, 40.662706, 58.952751],
+  "id": "clc2018_clc2018_v2018_20_raster100m_fr_guf",
+  "bbox": [-54.2587401, 3.7722527, -51.6226743, 5.85244],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [-23.825994, 24.284177],
-        [40.662706, 24.284177],
-        [40.662706, 58.952751],
-        [-23.825994, 58.952751],
-        [-23.825994, 24.284177]
+        [-54.2587401, 3.7722527],
+        [-51.6226743, 3.7722527],
+        [-51.6226743, 5.85244],
+        [-54.2587401, 5.85244],
+        [-54.2587401, 3.7722527]
       ]
     ]
   },
@@ -41,9 +41,9 @@
     },
     {
       "rel": "self",
-      "href": "./clc2018_clc2018_v2018_20_raster100m.json",
+      "href": "./clc2018_clc2018_v2018_20_raster100m_fr_guf.json",
       "type": "application/json",
-      "title": "Corine Land Cover 2018 Raster 100m"
+      "title": "Corine Land Cover 2018 Raster 100m French Guiana"
     },
     {
       "rel": "root",
@@ -65,67 +65,66 @@
     }
   ],
   "assets": {
-    "clc2018_clc2018_v2018_20": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif",
+    "clc2018_clc2018_v2018_20_fr_guf": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/French_DOMs/CLC2018_CLC2018_V2018_20_FR_GUF.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Europe Single Band Land Classification",
+      "title": "Single Band Land Classification French Guiana",
       "roles": ["data", "visual"],
-      "proj:epsg": 3035,
-      "proj:bbox": [900000, 900000, 7400000, 5500000],
-      "proj:shape": [46000, 65000]
+      "proj:epsg": 2972,
+      "proj:bbox": [
+        137969.3480969904339872, 417631.2034012884832919,
+        431069.3480969904339872, 646931.2034012884832919
+      ],
+      "proj:shape": [2293, 2931]
     },
-    "clc2018_clc2018_v2018_20_tif_aux_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.aux.xml",
-      "title": "Statistics",
+    "clc2018_clc2018_v2018_20_fr_guf_tif_aux_xml": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_GUF.tif.aux.xml",
+      "title": "TIFF Statistics French Guiana",
       "type": "application/xml",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_ovr": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.ovr",
-      "title": "Pyramid",
+    "clc2018_clc2018_v2018_20_fr_guf_tif_clr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_GUF.tif.clr",
+      "title": "Color map French Guiana",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+
+    "clc2018_clc2018_v2018_20_fr_guf_tif_ovr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_GUF.tif.ovr",
+      "title": "Pyramid French Guiana",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_cpg": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.cpg",
-      "title": "Encoding",
+    "clc2018_clc2018_v2018_20_fr_guf_tif_vat_cpg": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_GUF.tif.vat.cpg",
+      "title": "Encoding French Guiana",
       "type": "text/plain",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_dbf": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf",
-      "title": "Database",
+    "clc2018_clc2018_v2018_20_fr_guf_tif_vat_dbf": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_GUF.tif.vat.dbf",
+      "title": "Database French Guiana",
       "type": "application/vnd.dbf",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_dbf_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf.xml",
-      "title": "Database Metadata",
+    "clc2018_clc2018_v2018_20_fr_guf_tif_xml": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_GUF.tif.xml",
+      "title": "TIFF Metadata French Guiana",
       "type": "application/xml",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.xml",
-      "title": "TIFF Metadata",
-      "type": "application/xml",
-      "roles": ["metadata"]
-    },
-    "clc2018_clc2018_v2018_20_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Metadata/CLC2018_CLC2018_V2018_20.xml",
-      "title": "Europe Single Band Land Classification Metadata",
-      "type": "application/xml",
-      "roles": ["metadata"]
-    },
-    "clc2018_clc2018_v2018_20_qgis_txt": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20_QGIS.txt",
-      "title": "Legends",
+    "clc2018_clc2018_v2018_20_fr_guf_tfw": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_GUF.tfw",
+      "title": "World File French Guiana",
       "type": "text/plain",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_lyr": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20.tif.lyr",
-      "title": "Legend Layer",
-      "type": "image/tiff; application=geotiff; profile=layer"
+    "clc2018_clc2018_v2018_20_fr_guf_tif_lyr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/French_DOMs/Legend/CLC2018_CLC2018_V2018_20_FR_GUF.tif.lyr",
+      "title": "Legend Layer French Guiana",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
     }
   }
 }

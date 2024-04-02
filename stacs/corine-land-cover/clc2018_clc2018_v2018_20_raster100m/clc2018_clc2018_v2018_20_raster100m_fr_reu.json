@@ -4,17 +4,17 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
   "type": "Feature",
-  "id": "clc2018_clc2018_v2018_20_raster100m",
-  "bbox": [-23.825994, 24.284177, 40.662706, 58.952751],
+  "id": "clc2018_clc2018_v2018_20_raster100m_fr_reu",
+  "bbox": [55.1144553, -21.4758482, 55.9367899, -20.7847474],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [-23.825994, 24.284177],
-        [40.662706, 24.284177],
-        [40.662706, 58.952751],
-        [-23.825994, 58.952751],
-        [-23.825994, 24.284177]
+        [55.1144553, -21.4758482],
+        [55.9367899, -21.4758482],
+        [55.9367899, -20.7847474],
+        [55.1144553, -20.7847474],
+        [55.1144553, -21.4758482]
       ]
     ]
   },
@@ -41,9 +41,9 @@
     },
     {
       "rel": "self",
-      "href": "./clc2018_clc2018_v2018_20_raster100m.json",
+      "href": "./clc2018_clc2018_v2018_20_raster100m_fr_reu.json",
       "type": "application/json",
-      "title": "Corine Land Cover 2018 Raster 100m"
+      "title": "Corine Land Cover 2018 Raster 100m Reunion"
     },
     {
       "rel": "root",
@@ -65,67 +65,66 @@
     }
   ],
   "assets": {
-    "clc2018_clc2018_v2018_20": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif",
+    "clc2018_clc2018_v2018_20_fr_reu": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/French_DOMs/CLC2018_CLC2018_V2018_20_FR_REU.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Europe Single Band Land Classification",
+      "title": "Single Band Land Classification Reunion",
       "roles": ["data", "visual"],
-      "proj:epsg": 3035,
-      "proj:bbox": [900000, 900000, 7400000, 5500000],
-      "proj:shape": [46000, 65000]
+      "proj:epsg": 2975,
+      "proj:bbox": [
+        304639.4057148024439812, 7624010.2806383538991213,
+        389339.4057148024439812, 7701310.2806383538991213
+      ],
+      "proj:shape": [773, 847]
     },
-    "clc2018_clc2018_v2018_20_tif_aux_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.aux.xml",
-      "title": "Statistics",
+    "clc2018_clc2018_v2018_20_fr_reu_tif_aux_xml": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.aux.xml",
+      "title": "TIFF Statistics Reunion",
       "type": "application/xml",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_ovr": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.ovr",
-      "title": "Pyramid",
+    "clc2018_clc2018_v2018_20_fr_reu_tif_clr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.clr",
+      "title": "Color map Reunion",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+
+    "clc2018_clc2018_v2018_20_fr_reu_tif_ovr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.ovr",
+      "title": "Pyramid Reunion",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_cpg": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.cpg",
-      "title": "Encoding",
+    "clc2018_clc2018_v2018_20_fr_reu_tif_vat_cpg": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.vat.cpg",
+      "title": "Encoding Reunion",
       "type": "text/plain",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_dbf": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf",
-      "title": "Database",
+    "clc2018_clc2018_v2018_20_fr_reu_tif_vat_dbf": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.vat.dbf",
+      "title": "Database Reunion",
       "type": "application/vnd.dbf",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_vat_dbf_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf.xml",
-      "title": "Database Metadata",
+    "clc2018_clc2018_v2018_20_fr_reu_tif_xml": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.xml",
+      "title": "TIFF Metadata Reunion",
       "type": "application/xml",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.xml",
-      "title": "TIFF Metadata",
-      "type": "application/xml",
-      "roles": ["metadata"]
-    },
-    "clc2018_clc2018_v2018_20_xml": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Metadata/CLC2018_CLC2018_V2018_20.xml",
-      "title": "Europe Single Band Land Classification Metadata",
-      "type": "application/xml",
-      "roles": ["metadata"]
-    },
-    "clc2018_clc2018_v2018_20_qgis_txt": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20_QGIS.txt",
-      "title": "Legends",
+    "clc2018_clc2018_v2018_20_fr_reu_tfw": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tfw",
+      "title": "World File Reunion",
       "type": "text/plain",
       "roles": ["metadata"]
     },
-    "clc2018_clc2018_v2018_20_tif_lyr": {
-      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20.tif.lyr",
-      "title": "Legend Layer",
-      "type": "image/tiff; application=geotiff; profile=layer"
+    "clc2018_clc2018_v2018_20_fr_reu_tif_lyr": {
+      "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/French_DOMs/Legend/CLC2018_CLC2018_V2018_20_FR_REU.tif.lyr",
+      "title": "Legend Layer Reunion",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
     }
   }
 }
