@@ -16,23 +16,8 @@ def test_core(stac_fixture, validator_fixture, stac_version="1.0.0"):
         assert validator_fixture.validate_core(stac_dict, stac_dict["type"], stac_version), f"{stac_dict.id} is invalid"
 
 
-def test_proj_extensions(
-    stac_fixture,
-    validator_fixture,
-    stac_version=STAC_VERSION,
-    extension_id=PROJECT_ID,
-):
-    for stac_dict in stac_fixture:
-        if "stac_extensions" in stac_dict and extension_id in stac_dict["stac_extensions"]:
-            validator_fixture.validate_extension(stac_dict, stac_dict["type"], stac_version, extension_id)
-
-
-def test_item_assets_extension(
-    stac_fixture,
-    validator_fixture,
-    stac_version=STAC_VERSION,
-    extension_id=ITEM_ASSETS_ID,
-):
+@pytest.mark.parametrize("extension_id", [PROJECT_ID, ITEM_ASSETS_ID])
+def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=STAC_VERSION):
     for stac_dict in stac_fixture:
         if "stac_extensions" in stac_dict and extension_id in stac_dict["stac_extensions"]:
             validator_fixture.validate_extension(stac_dict, stac_dict["type"], stac_version, extension_id)
