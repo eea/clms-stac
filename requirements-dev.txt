@@ -1,0 +1,4 @@
+jsonschema
+pre-commit
+pytest
+referencing
