@@ -1,0 +1,115 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extension": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "urban-atlas-building-height",
+  "title": "Urban Atlas Building Height 10m",
+  "description": "Urban Atlas building height over capital cities.",
+  "license": "proprietary",
+  "keywords": ["Buildings", "Building height", "Elevation"],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-22.13, 35.07, 33.48, 64.38]]
+    },
+    "temporal": {
+      "interval": [["2012-01-01T00:00:00.000Z", null]]
+    }
+  },
+  "item_assets": {
+    "dataset": {
+      "title": "Building height raster",
+      "type": "image/tiff; application=geotiff",
+      "roles": ["data"]
+    },
+    "quality_check_report": {
+      "title": "Quality check report",
+      "type": "application/pdf",
+      "roles": ["metadata"]
+    },
+    "metadata": {
+      "title": "Metadata",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    },
+    "quality_control_report": {
+      "title": "Quality control report",
+      "type": "application/pdf",
+      "roles": ["metadata"]
+    },
+    "pixel_based_info_shp": {
+      "title": "Pixel based info shape format",
+      "type": "application/octet-stream",
+      "roles": ["metadata"]
+    },
+    "pixel_based_info_shx": {
+      "title": "Pixel based info shape index",
+      "type": "application/octet-stream",
+      "roles": ["metadata"]
+    },
+    "pixel_based_info_dbf": {
+      "title": "Pixel based info attribute",
+      "type": "application/x-dbf",
+      "roles": ["metadata"]
+    },
+    "pixel_based_info_prj": {
+      "title": "Pixel based info projection description",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+    "pixel_based_info_cpg": {
+      "title": "Pixel based info character encoding",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+    "compressed_dataset": {
+      "title": "Compressed building height raster",
+      "type": "application/zip",
+      "roles": ["data"]
+    }
+  },
+  "summaries": {
+    "proj:epsg": [3035]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "./urban-atlas-building-height.json",
+      "type": "application/json",
+      "title": "Urban Atlas Building Height 10m Collection"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    },
+    {
+      "rel": "item",
+      "href": "./AL001_TIRANA_UA2012_DHM_V020/AL001_TIRANA_UA2012_DHM_V020.json",
+      "type": "application/json",
+      "title": "Urban Atlas Building Height Albania Tirana 2012"
+    }
+  ]
+}

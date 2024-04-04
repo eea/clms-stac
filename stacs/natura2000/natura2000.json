@@ -1,0 +1,115 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extension": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "natura2000",
+  "title": "Natura 2000 Land Cover/Land Use Status",
+  "description": "The Copernicus Land Cover/Land Use (LC/LU) status map as part of the Copernicus Land Monitoring Service (CLMS) Local Component, tailored to the needs of biodiversity monitoring in selected Natura2000 sites (4790 sites of natural and semi-natural grassland formations listed in Annex I of the Habitats Directive) including a 2km buffer zone surrounding the sites and covering an area of 631.820 km² across Europe. LC/LU is extracted from VHR satellite data and other available data.",
+  "license": "proprietary",
+  "keywords": [
+    "Copernicus",
+    "Satellite image interpretation",
+    "Land monitoring",
+    "Land",
+    "Landscape alteration",
+    "Land use",
+    "Land cover",
+    "Landscape"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-16.82, 27.87, 33.17, 66.79]]
+    },
+    "temporal": {
+      "interval": [["2006-01-01T00:00:00.000Z", null]]
+    }
+  },
+  "assets": {
+    "N2K_2018_3035_v010_gdb": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Data\\N2K_2018_3035_v010.gdb",
+      "title": "Natura 2000 Land Cover/Land Use Status 2018 FGDB",
+      "type": "application/x-filegdb",
+      "roles": ["data"]
+    },
+    "N2K_2018_3035_v010_gpkg": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_geoPackage\\Data\\N2K_2018_3035_v010.gpkg",
+      "title": "Natura 2000 Land Cover/Land Use Status 2018 GPKG",
+      "type": "application/geopackage+sqlite3",
+      "roles": ["data"]
+    },
+    "N2K_2018_3035_v010_fgdb_zip": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb.zip",
+      "title": "Compressed Natura 2000 Land Cover/Land Use Status 2018 FGDB",
+      "type": "application/zip",
+      "roles": ["data"]
+    },
+    "N2K_2018_3035_v010_geoPackage_zip": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_geoPackage.zip",
+      "title": "Compressed Natura 2000 Land Cover/Land Use Status 2018 GPKG",
+      "type": "application/zip",
+      "roles": ["data"]
+    },
+    "N2K_2018_3035_v010_metadata": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Metadata\\N2K_2018_3035_v010.xml",
+      "title": "Natura 2000 Land Cover/Land Use Status 2018 Metadata",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    },
+    "N2K_2018_3035_v010_arcgis_layer": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Symbology\\N2K_LCLU_2018_v1-4-2.lyr",
+      "title": "Natura 2000 Land Cover/Land Use Status 2018 ArcGIS Layer File",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
+    },
+    "N2K_2018_3035_v010_qgis_layer": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Symbology\\N2K_LCLU_2018_v1-4-2.qml",
+      "title": "Natura 2000 Land Cover/Land Use Status 2018 QGIS Layer File",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
+    },
+    "N2K_2018_3035_v010_ogc_layer": {
+      "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Symbology\\N2K_LCLU_2018_v1-4-2.sld",
+      "title": "Natura 2000 Land Cover/Land Use Status 2018 OGC Layer File",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
+    }
+  },
+  "summaries": {
+    "proj:epsg": [3035]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "./natura2000.json",
+      "type": "application/json",
+      "title": "Natura 2000 Land Cover/Land Use Status Collection"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    }
+  ]
+}

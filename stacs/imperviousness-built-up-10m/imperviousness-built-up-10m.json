@@ -1,0 +1,102 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extension": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "imperviousness-built-up-10m",
+  "title": "High Resolution Layer Imperviousness Built-up 10m",
+  "description": "The Impervious Built-up layer is a thematic product showing the binary information of building (class 1) and no building (class 0) within the sealing outline derived from the IMD 2018 for the period 2018 for the EEA-39 area.",
+  "license": "proprietary",
+  "keywords": [
+    "Copernicus",
+    "Imperviousness",
+    "Built-up",
+    "IBU",
+    "High Resolution Layer",
+    "Land cover",
+    "Buildings"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-31.285, 27.642, 44.807, 71.165]]
+    },
+    "temporal": {
+      "interval": [["2018-01-01T00:00:00.000Z", null]]
+    }
+  },
+  "assets": {
+    "imperviousness_builtup_metadata": {
+      "href": "ImperviousnessBuiltUp\\IBU2018\\IBU_2018_10m\\IBU_2018_010m_al_03035_v010\\Metadata\\IBU_2018_010m_eu_03035_v010.xml",
+      "title": "Imperviousness Built-up 2018 metadata",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    },
+    "imperviousness_builtup_color_palette": {
+      "href": "ImperviousnessBuiltUp\\IBU2018\\IBU_2018_10m\\IBU_2018_010m_al_03035_v010\\Symbology\\IBU_2018_010m_QGISColour.txt",
+      "title": "Imperviousness Built-up 2018 Color Palette",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    }
+  },
+  "item_assets": {
+    "builtup_map": {
+      "title": "Map",
+      "type": "image/tiff; application=geotiff",
+      "roles": ["data"]
+    },
+    "builtup_map_database": {
+      "title": "Map Database",
+      "type": "application/dbf",
+      "roles": ["metadata"]
+    },
+    "builtup_map_worldfile": {
+      "title": "Map World File",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    }
+  },
+  "summaries": {
+    "proj:epsg": [3035]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "./imperciousness-built-up-10m.json",
+      "type": "application/json",
+      "title": "Imperviousness Built-up 10m Collection"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    },
+    {
+      "rel": "item",
+      "href": "./IBU_2018_010m_E50N21_03035_v010/IBU_2018_010m_E50N21_03035_v010.json",
+      "type": "application/json",
+      "title": "2018 Imperviousness Built-up E50N21"
+    }
+  ]
+}
