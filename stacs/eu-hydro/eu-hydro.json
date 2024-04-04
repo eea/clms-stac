@@ -1,0 +1,117 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extension": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "eu-hydro",
+  "title": "EU-Hydro River Network Database",
+  "description": "EU-Hydro is a dataset for all EEA38 countries and the United Kingdom providing photo-interpreted river network, consistent of surface interpretation of water bodies (lakes and wide rivers), and a drainage model (also called Drainage Network), derived from EU-DEM, with catchments and drainage lines and nodes.",
+  "license": "proprietary",
+  "keywords": [
+    "Hydrography",
+    "Land cover",
+    "River",
+    "Environment",
+    "Ocean",
+    "Catchment area",
+    "Land",
+    "Hydrographic network",
+    "Drainage system",
+    "Hydrology",
+    "Landscape alteration",
+    "Inland water",
+    "Canal",
+    "Drainage",
+    "Catchment",
+    "Water body"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-61.906047, -21.482245, 55.935919, 71.409109]]
+    },
+    "temporal": {
+      "interval": [["2006-01-01T00:00:00.000Z", "2012-12-31T00:00:00.000Z"]]
+    }
+  },
+  "assets": {
+    "eu-hydro_v1p3_user_guide": {
+      "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\Documentation\\EU-HYDRO_V1p3_User_Guide.pdf",
+      "title": "EU Hydro v1.3 user guide",
+      "type": "application/pdf",
+      "roles": ["metadata"]
+    },
+    "how_use_esri_fgdb_in_qgis": {
+      "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\Documentation\\How_use_ESRI_FGDB_in_QGIS.pdf",
+      "title": "How use ESRI FGDB in QGIS",
+      "type": "application/pdf",
+      "roles": ["metadata"]
+    },
+    "angerman_v013_FGDB": {
+      "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\euhydro_angerman_v013.gdb",
+      "title": "Angerman FGDB",
+      "type": "application/x-filegdb",
+      "roles": ["data"]
+    },
+    "angerman_v013_GPKG": {
+      "href": "EU_HYDRO_v13\\geopackage\\euhydro_angerman_v013.gpkg",
+      "title": "Angerman GPKG",
+      "type": "application/geopackage+sqlite3",
+      "roles": ["data"]
+    },
+    "angerman_drainage_network_angerman_public_beta_v009_fgdb": {
+      "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\drainage_network_angerman_public_beta_v009.gdb",
+      "title": "Angerman Drainage Network FGDB",
+      "type": "application/x-filegdb",
+      "roles": ["data"]
+    },
+    "angerman_drainage_network_angerman_public_beta_v009_gpkg": {
+      "href": "EU_HYDRO_v13\\geopackage\\drainage_network_angerman_public_beta_v009.gpkg",
+      "title": "Angerman Drainage Network GPKG",
+      "type": "application/geopackage+sqlite3",
+      "roles": ["data"]
+    },
+    "angerman_v013_metadata": {
+      "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\Metadata\\angerman_metadata.xml",
+      "title": "Angerman metadata",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    }
+  },
+  "summaries": {
+    "proj:epsg": [3035]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "./eu-hydro.json",
+      "type": "application/json",
+      "title": "EU-Hydro River Network Collection"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    }
+  ]
+}

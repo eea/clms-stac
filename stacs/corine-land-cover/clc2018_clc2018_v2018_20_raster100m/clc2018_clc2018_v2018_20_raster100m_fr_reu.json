@@ -28,7 +28,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": ["licensor", "producer", "processor", "host"],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ]
@@ -85,7 +85,7 @@
     },
     "clc2018_clc2018_v2018_20_fr_reu_tif_clr": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.clr",
-      "title": "Color map Reunion",
+      "title": "Color Map Reunion",
       "type": "text/plain",
       "roles": ["metadata"]
     },
@@ -105,7 +105,7 @@
     "clc2018_clc2018_v2018_20_fr_reu_tif_vat_dbf": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20_FR_REU.tif.vat.dbf",
       "title": "Database Reunion",
-      "type": "application/vnd.dbf",
+      "type": "application/dbf",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_fr_reu_tif_xml": {

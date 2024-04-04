@@ -1,95 +1,328 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/clc.json",
-  "title": "Corine Land Cover STAC Items",
-  "description": "This schema only checks the existence but the schema of the properties",
+  "title": "Corine Land Cover STAC Schema",
+  "description": "This schema checks the validaty of Corine Land Cover STAC items and collections",
   "oneOf": [
     {
       "$comment": "This is the schema for Corine Land Cover Items",
-      "allOf": [
-        {
-          "$ref": "http://example.com/core.json"
+      "type": "object",
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "bbox",
+        "properties",
+        "collection",
+        "links",
+        "assets"
+      ],
+      "properties": {
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
         },
-        {
-          "type": "object",
-          "required": ["stac_extensions", "collection", "properties", "assets"],
-          "properties": {
-            "stac_extensions": {
-              "type": "array",
-              "required": [
-                "https://stac-extensions.github.io/classification/v1.1.0/schema.json",
-                "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+        "type": { "const": "Feature" },
+        "id": { "type": "string" },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "oneOf": [
+            {
+              "items": [
+                { "type": "number", "minimum": -23.85, "maximum": -23.8 },
+                { "type": "number", "minimum": 24.26, "maximum": 24.31 },
+                { "type": "number", "minimum": 40.62, "maximum": 40.7 },
+                { "type": "number", "minimum": 58.89, "maximum": 59.01 }
               ]
             },
-            "collection": {
-              "const": "corine-land-cover-raster"
+            {
+              "items": [
+                { "type": "number", "minimum": -61.97, "maximum": -61.84 },
+                { "type": "number", "minimum": 15.73, "maximum": 15.76 },
+                { "type": "number", "minimum": -60.97, "maximum": -60.85 },
+                { "type": "number", "minimum": 16.58, "maximum": 16.62 }
+              ]
             },
-            "properties": {
-              "type": "object",
-              "required": ["eea:date_revision"]
+            {
+              "items": [
+                { "type": "number", "minimum": -54.31, "maximum": -54.2 },
+                { "type": "number", "minimum": 3.77, "maximum": 3.78 },
+                { "type": "number", "minimum": -51.67, "maximum": -51.57 },
+                { "type": "number", "minimum": 5.85, "maximum": 5.86 }
+              ]
             },
-            "assets": {
-              "type": "object",
-              "additionalProperties": {
-                "if": {
-                  "properties": {
-                    "roles": {
-                      "const": ["data", "visual"]
-                    }
-                  }
-                },
-                "then": {
-                  "required": [
-                    "proj:epsg",
-                    "proj:bbox",
-                    "proj:shape",
-                    "classification:classes"
-                  ]
+            {
+              "items": [
+                { "type": "number", "minimum": -61.39, "maximum": -61.27 },
+                { "type": "number", "minimum": 14.29, "maximum": 14.32 },
+                { "type": "number", "minimum": -60.77, "maximum": -60.65 },
+                { "type": "number", "minimum": 14.95, "maximum": 14.98 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": 44.88, "maximum": 44.97 },
+                { "type": "number", "minimum": -13.1, "maximum": -13.08 },
+                { "type": "number", "minimum": 45.34, "maximum": 45.43 },
+                { "type": "number", "minimum": -12.56, "maximum": -12.53 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": 55.06, "maximum": 55.17 },
+                { "type": "number", "minimum": -21.5, "maximum": -21.45 },
+                { "type": "number", "minimum": 55.88, "maximum": 55.99 },
+                { "type": "number", "minimum": -20.81, "maximum": -20.76 }
+              ]
+            }
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "required": [
+            "description",
+            "datetime",
+            "start_datetime",
+            "end_datetime",
+            "created",
+            "providers"
+          ],
+          "properties": {
+            "providers": {
+              "const": [
+                {
+                  "name": "Copernicus Land Monitoring Service",
+                  "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+                  "roles": ["licensor", "host"],
+                  "url": "https://land.copernicus.eu"
                 }
+              ]
+            }
+          }
+        },
+        "collection": { "const": "corine-land-cover-raster" },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "const": {
+                  "rel": "license",
+                  "href": "https://land.copernicus.eu/en/data-policy"
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "collection" }
+                }
+              }
+            }
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "minProperties": 9,
+          "maxProperties": 10,
+          "propertyNames": {
+            "pattern": "^clc"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string",
+                "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.tfw$|.lyr$|.txt$"
               }
             }
           }
         }
-      ]
+      }
     },
     {
       "$comment": "This is the schema for Corine Land Cover Collection",
-      "allOf": [
-        {
-          "$ref": "http://example.com/core.json"
+      "type": "object",
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "title",
+        "description",
+        "keywords",
+        "license",
+        "providers",
+        "extent",
+        "summaries",
+        "links",
+        "assets",
+        "item_assets"
+      ],
+      "properties": {
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
         },
-        {
-          "type": "object",
-          "required": ["stac_extensions", "item_assets", "summaries"],
-          "properties": {
-            "stac_extensions": {
-              "type": "array",
-              "required": [
-                "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-                "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
-              ]
+        "type": { "const": "Collection" },
+        "id": { "const": "corine-land-cover-raster" },
+        "title": { "const": "CORINE Land Cover Raster" },
+        "description": {
+          "const": "The European Commission launched the CORINE (Coordination of Information on the Environment) program in an effort to develop a standardized methodology for producing continent-scale land cover, biotope, and air quality maps. The CORINE Land Cover (CLC) product offers a pan-European land cover and land use inventory with 44 thematic classes, ranging from broad forested areas to individual vineyards."
+        },
+        "keywords": {
+          "const": [
+            "clms",
+            "corine",
+            "derived data",
+            "land cover",
+            "machine learning",
+            "open data"
+          ]
+        },
+        "license": { "const": "proprietary" },
+        "providers": {
+          "const": [
+            {
+              "name": "Copernicus Land Monitoring Service",
+              "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+              "roles": ["licensor", "host"],
+              "url": "https://land.copernicus.eu/en"
+            }
+          ]
+        },
+        "extent": {
+          "const": {
+            "spatial": {
+              "bbox": [[-61.906047, -21.482245, 55.935919, 71.409109]]
             },
-            "item_assets": {
-              "type": "object",
-              "additionalProperties": {
-                "if": {
-                  "properties": {
-                    "roles": {
-                      "const": ["data"]
-                    }
+            "temporal": {
+              "interval": [["1990-01-01T00:00:00.000Z", null]]
+            }
+          }
+        },
+        "assets": {
+          "type": "object",
+          "minProperties": 7,
+          "maxProperties": 7
+        },
+        "item_assets": {
+          "type": "object",
+          "required": [
+            "clc_map",
+            "clc_map_statistics",
+            "clc_map_pyramid",
+            "clc_map_encoding",
+            "clc_map_database",
+            "clc_map_database_metadata",
+            "clc_map_tif_metadata",
+            "clc_map_metadata"
+          ]
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["proj:epsg"],
+          "minProperties": 1,
+          "maxProperties": 1
+        },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "license" },
+                  "href": {
+                    "const": "https://land.copernicus.eu/en/data-policy"
                   }
-                },
-                "then": {
-                  "required": ["proj:epsg", "proj:bbox"]
                 }
               }
             },
-            "summaries": {
-              "required": ["eea:date_revision"]
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "item" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
             }
-          }
+          ]
         }
-      ]
+      }
     }
   ]
 }

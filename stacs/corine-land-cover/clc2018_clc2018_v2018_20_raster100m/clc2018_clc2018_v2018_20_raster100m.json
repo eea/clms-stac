@@ -28,7 +28,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": ["licensor", "producer", "processor", "host"],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ]
@@ -68,7 +68,7 @@
     "clc2018_clc2018_v2018_20": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Europe Single Band Land Classification",
+      "title": "Single Band Land Classification Europe",
       "roles": ["data", "visual"],
       "proj:epsg": 3035,
       "proj:bbox": [900000, 900000, 7400000, 5500000],
@@ -76,56 +76,57 @@
     },
     "clc2018_clc2018_v2018_20_tif_aux_xml": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.aux.xml",
-      "title": "Statistics",
+      "title": "TIFF Statistics Europe",
       "type": "application/xml",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_tif_ovr": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.ovr",
-      "title": "Pyramid",
+      "title": "Pyramid Europe",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_tif_vat_cpg": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.cpg",
-      "title": "Encoding",
+      "title": "Encoding Europe",
       "type": "text/plain",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_tif_vat_dbf": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf",
-      "title": "Database",
-      "type": "application/vnd.dbf",
+      "title": "Database Europe",
+      "type": "application/dbf",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_tif_vat_dbf_xml": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.vat.dbf.xml",
-      "title": "Database Metadata",
+      "title": "Database Metadata Europe",
       "type": "application/xml",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_tif_xml": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/CLC2018_CLC2018_V2018_20.tif.xml",
-      "title": "TIFF Metadata",
+      "title": "TIFF Metadata Europe",
       "type": "application/xml",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_xml": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Metadata/CLC2018_CLC2018_V2018_20.xml",
-      "title": "Europe Single Band Land Classification Metadata",
+      "title": "Single Band Land Classification Metadata Europe",
       "type": "application/xml",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_qgis_txt": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20_QGIS.txt",
-      "title": "Legends",
+      "title": "Legends Europe",
       "type": "text/plain",
       "roles": ["metadata"]
     },
     "clc2018_clc2018_v2018_20_tif_lyr": {
       "href": "../../../data/corine-land-cover/clc_2018/clc2018_clc2018_v2018_20_raster100m/Legend/CLC2018_CLC2018_V2018_20.tif.lyr",
-      "title": "Legend Layer",
-      "type": "image/tiff; application=geotiff; profile=layer"
+      "title": "Legend Layer Europe",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
     }
   }
 }

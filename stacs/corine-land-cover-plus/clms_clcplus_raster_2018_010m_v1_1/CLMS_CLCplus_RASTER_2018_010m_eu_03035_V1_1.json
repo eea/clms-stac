@@ -1,0 +1,139 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "type": "Feature",
+  "id": "CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1",
+  "bbox": [-31.89, 26.54, 45.86, 72.06],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-31.89, 26.54],
+        [45.86, 26.54],
+        [45.86, 72.06],
+        [-31.89, 72.06],
+        [-31.89, 26.54]
+      ]
+    ]
+  },
+  "properties": {
+    "description": "The CLC+ Backbone product of EEA38 + UK except French DOMs",
+    "datetime": null,
+    "start_datetime": "2017-07-01T00:00:00.000Z",
+    "end_datetime": "2019-06-30T00:00:00.000Z",
+    "created": "2022-03-07T00:00:00.000Z",
+    "updated": "2023-10-03T00:00:00.000Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": ["licensor", "host"],
+        "url": "https://land.copernicus.eu"
+      }
+    ]
+  },
+  "collection": "corine-land-cover-plus-raster",
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "self",
+      "href": "./CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.json",
+      "type": "application/json",
+      "title": "CLC+ 2018 Europe"
+    },
+    {
+      "rel": "root",
+      "href": "../../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "../corine-land-cover-plus-raster.json",
+      "type": "application/json",
+      "title": "Corine Land Cover Plus Collection"
+    },
+    {
+      "rel": "collection",
+      "href": "../corine-land-cover-plus-raster.json",
+      "type": "application/json",
+      "title": "Corine Land Cover Plus Collection"
+    }
+  ],
+  "assets": {
+    "clcplus_map": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Classification Map Europe",
+      "roles": ["data", "visual"],
+      "proj:epsg": 3035,
+      "proj:bbox": [900000, 900000, 7400000, 5500000],
+      "proj:shape": [460000, 650000]
+    },
+    "clcplus_map_auxiliary": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.aux.xml",
+      "type": "application/xml",
+      "title": "Classification Map Auxiliary Europe",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_color_palette_clr": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.clr",
+      "title": "Classification Map Color Palette CLR Europe",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_color_palette_txt": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.clr.txt",
+      "title": "Classification Map Color Palette TXT Europe",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_pyramid": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.ovr",
+      "title": "Classification Map Pyramid Europe",
+      "type": "image/tiff; application=geotiff; profile=pyramid",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_encoding": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.vat.cpg",
+      "title": "Classification Map Encoding Europe",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_database_dbf": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.vat.dbf",
+      "title": "Classification Map Database DBF Europe",
+      "type": "application/dbf",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_database_xml": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.vat.dbf.xml",
+      "title": "Classification Map database XML Europe",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_arcgis_legend_layer": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Legend\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.lyrx",
+      "title": "Classification Map ArcGIS Legend Layer Europe",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_qgis_legend_layer": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Legend\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.qml",
+      "title": "Classification Map QGIS Legend Layer Europe",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_ogc_legened_layer": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Legend\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.sld",
+      "title": "Classification Map OGC Legend Layer Europe",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    }
+  }
+}

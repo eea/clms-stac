@@ -1,0 +1,96 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "type": "Feature",
+  "id": "AL001_TIRANA_UA2012_DHM_V020",
+  "bbox": [19.35363, 41.164487, 20.192434, 41.507843],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [19.35363, 41.164487],
+        [20.192434, 41.164487],
+        [20.192434, 41.507843],
+        [19.35363, 41.507843],
+        [19.35363, 41.164487]
+      ]
+    ]
+  },
+  "properties": {
+    "description": "2012 Tirana building height",
+    "datetime": null,
+    "start_datetime": "2010-01-24T00:00:00.000Z",
+    "end_datetime": "2014-11-05T00:00:00.000Z",
+    "created": "2019-05-07T00:00:00.000Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": ["licensor", "host"],
+        "url": "https://land.copernicus.eu"
+      }
+    ],
+    "proj:epsg": 3035,
+    "proj:bbox": [5107100, 2055830, 5178270, 2103470],
+    "proj:shape": [4764, 7117]
+  },
+  "collection": "urban-atlas-building-height",
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "self",
+      "href": "./AL001_TIRANA_UA2012_DHM_V020/AL001_TIRANA_UA2012_DHM_V020.json",
+      "type": "application/json",
+      "title": "2012 Tirana Building Height"
+    },
+    {
+      "rel": "root",
+      "href": "../../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "../urban-atlas-building-height.json",
+      "type": "application/json",
+      "title": "Urban Atlas Building Height 10m Collection"
+    },
+    {
+      "rel": "collection",
+      "href": "../urban-atlas-building-height.json",
+      "type": "application/json",
+      "title": "Urban Atlas Building Height 10m Collection"
+    }
+  ],
+  "assets": {
+    "dataset": {
+      "href": "BuildingHeight\\USBBH2012\\Dataset\\AL001_TIRANA_UA2012_DHM_V020.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Building Height Dataset",
+      "roles": ["data"]
+    },
+    "quality_check_report": {
+      "href": "BuildingHeight\\USBBH2012\\Doc\\AL001_TIRANA_UA2012_DHM_QC_20191031_v020.pdf",
+      "type": "application/pdf",
+      "title": "Quality Check Report",
+      "roles": ["metadata"]
+    },
+    "metadata": {
+      "href": "BuildingHeight\\USBBH2012\\Metadata\\AL001_TIRANA_UA2012_DHM_metadata_v020.xml",
+      "type": "application/xml",
+      "title": "Building Height Dataset Metadata",
+      "roles": ["metadata"]
+    },
+    "compressed_dataset": {
+      "href": "BuildingHeight\\USBBH2012\\AL001_TIRANA_UA2012_DHM_v020.zip",
+      "type": "application/zip",
+      "title": "Compressed Building Height Metadata",
+      "roles": ["data"]
+    }
+  }
+}

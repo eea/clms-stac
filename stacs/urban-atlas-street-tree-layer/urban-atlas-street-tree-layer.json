@@ -1,0 +1,118 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extension": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "urban-atlas-street-tree-layer",
+  "title": "Urban Atlas Street Tree Layer",
+  "description": "The Street Tree Layer  are produced from Urban Atlas LU/LC layers within the level 1 urban mask for each FUA. They include contiguous rows or patches of trees covering 500m² or more and with a minimum width (MinMW) of 10 m over “Artificial surfaces” (nomenclature class 1) inside FUA (i.e. rows of trees along the road network outside urban areas or forest adjacent to urban areas should not be included).",
+  "license": "proprietary",
+  "keywords": ["Land use", "Land cover"],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-61.2564, -21.2979, 55.769, 70.248796]]
+    },
+    "temporal": {
+      "interval": [["2012-01-01T00:00:00.000Z", null]]
+    }
+  },
+  "assets": {
+    "AL001L1_TIRANA_UA2018_STL_v012_gpkg": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2018\\AL001L1_TIRANA_UA2018_STL_v012\\Data\\AL001L1_TIRANA_UA2018_STL_v012.gpkg",
+      "title": "Street Tree Layer TIRANA 2018 GPKG",
+      "type": "application/geopackage+sqlite3",
+      "roles": ["data"]
+    },
+    "AL001L1_TIRANA_UA2018_STL_v012_xml": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2018\\AL001L1_TIRANA_UA2018_STL_v012\\Metadata\\AL001L1_TIRANA_UA2018_STL_v012.xml",
+      "title": "Street Tree Layer TIRANA 2018 XML",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    },
+    "AT001L2_WIEN_UA2012_STL_SHP": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.shp",
+      "title": "Street Tree Layer WIEN 2012 SHP",
+      "type": "application/octet-stream",
+      "roles": ["data"]
+    },
+    "AT001L2_WIEN_UA2012_STL_SHX": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.shx",
+      "title": "Street Tree Layer WIEN 2012 SHX",
+      "type": "application/octet-stream",
+      "roles": ["metadata"]
+    },
+    "AT001L2_WIEN_UA2012_STL_DBF": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.dbf",
+      "title": "Street Tree Layer WIEN 2012 DBF",
+      "type": "application/x-dbf",
+      "roles": ["metadata"]
+    },
+    "AT001L2_WIEN_UA2012_STL_CPG": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.cpg",
+      "title": "Street Tree Layer WIEN 2012 Character Encoding",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+    "AT001L2_WIEN_UA2012_STL_PRJ": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.prj",
+      "title": "Street Tree Layer WIEN 2012 Projection Description",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    },
+    "AT001L2_WIEN_UA2012_STL_SBN": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.sbn",
+      "title": "Street Tree Layer WIEN 2012 Spatial Index SBN",
+      "type": "application/octet-stream",
+      "roles": ["metadata"]
+    },
+    "AT001L2_WIEN_UA2012_STL_SBX": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.sbx",
+      "title": "Street Tree Layer WIEN 2012 Spatial Index SBX",
+      "type": "application/octet-stream",
+      "roles": ["metadata"]
+    },
+    "AT001L2_WIEN_UA2012_STL_XML": {
+      "href": "StreetTreeLayer\\StreetTreeLayer2012\\AT001L2_WIEN\\Shapefiles\\AT001L2_WIEN_UA2012_STL.shp.xml",
+      "title": "Street Tree Layer WIEN 2012 Geospatial Metadata",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    }
+  },
+  "summaries": {
+    "proj:epsg": [3035, 32620, 32740]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "./urban-atlas-street-tree-layer.json",
+      "type": "application/json",
+      "title": "Urban Atlas Street Tree Layer Collection"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    }
+  ]
+}

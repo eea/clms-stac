@@ -1,0 +1,103 @@
+{
+  "type": "Collection",
+  "stac_version": "1.0.0",
+  "stac_extension": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "id": "imperviousness-change-20m",
+  "title": "High Resolution Layer Degree of Imperviousness Change 20m",
+  "description": "Imperviousness Change (IMC) is a 20m raster dataset showing change in imperviousness between the target reference years. The dataset was produced in the frame of the EU Copernicus programme and constitutes the continuation of the HRL Imperviousness time series starting with the reference year 2006. This product is extracted from High Resolution satellite data and other available data sources for the area of the EEA39 (39 member states and affiliated countries to the European Environment Agency). The product maps the degree of Imperviousness change (increase and decrease in %), or soil sealing and is based primarily on the analysis of NDVI (Normalized Difference Vegetation Index).",
+  "license": "proprietary",
+  "keywords": [
+    "Copernicus",
+    "Imperviousness",
+    "Imperviousness Change",
+    "IMC",
+    "High Resolution Layer",
+    "Land cover",
+    "Landscape alteration",
+    "sealed area"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": ["licensor", "host"],
+      "url": "https://land.copernicus.eu/en"
+    }
+  ],
+  "extent": {
+    "spatial": {
+      "bbox": [[-27.24609375, 34.54304313, 46.58203125, 72.05371652]]
+    },
+    "temporal": {
+      "interval": [["2006-01-01T00:00:00.000Z", null]]
+    }
+  },
+  "assets": {
+    "imperviousness_change_2015_2018_metadata": {
+      "href": "ImperviousnessChange\\IMC1518\\IMC_1518_20m\\IMC_1518_020m_al_03035_v010\\Metadata\\IMC_1518_020m_eu_03035_v010.xml",
+      "title": "Imperviousness Change 2015-2018 metadata",
+      "type": "application/xml",
+      "roles": ["metadata"]
+    },
+    "imperviousness_change_2015_2018_color_palette": {
+      "href": "ImperviousnessChange\\IMC1518\\IMC_1518_20m\\IMC_1518_020m_al_03035_v010\\Symbology\\IMC_1518_020m_QGISColour.txt",
+      "title": "Imperviousness Change 2015-2018 Color Palette",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    }
+  },
+  "item_assets": {
+    "change_map": {
+      "title": "Map",
+      "type": "image/tiff; application=geotiff",
+      "roles": ["data"]
+    },
+    "chagne_database": {
+      "title": "Map Database",
+      "type": "application/dbf",
+      "roles": ["metadata"]
+    },
+    "change_map_worldfile": {
+      "title": "Map World File",
+      "type": "text/plain",
+      "roles": ["metadata"]
+    }
+  },
+  "summaries": {
+    "proj:epsg": [3035]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "./imperciousness-change-20m.json",
+      "type": "application/json",
+      "title": "Imperviousness Change 20m Collection"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    },
+    {
+      "rel": "item",
+      "href": "./IMC_1518_020m_E50N21_03035_v010/IMC_1518_020m_E50N21_03035_v010.json",
+      "type": "application/json",
+      "title": "Imperviousness Change 2015-2018 E50N21"
+    }
+  ]
+}
