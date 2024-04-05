@@ -1,0 +1,3 @@
+#Libraries that your project use
+pystac
+pystac[validation]
