@@ -1,12 +1,12 @@
 {
   "type": "Collection",
   "stac_version": "1.0.0",
-  "stac_extension": [
+  "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
   "id": "corine-land-cover-plus-raster",
-  "title": "CORINE Land Cover plus Backbone",
+  "title": "CORINE Land Cover Plus Backbone",
   "description": "The CLC+ Backbone constitutes the first component of the CLMS’s new ‘CLC+ Product Suite’, which represents a true paradigm change in European land cover/land use (LC/LU) monitoring, building on the rich legacy of the European CORINE Land Cover (CLC) flagship product. The CLC+ Backbone is an object-oriented, large scale, wall-to-wall (EEA-38 + UK), high-resolution (HR) inventory of European LC in a vector format accompanied by a raster product layer, providing a consistent pan-European geometric backbone of Landscape Objects with limited, but robust thematic detail, on which many other applications can be built.",
   "license": "proprietary",
   "keywords": ["Copernicus", "Land Monitoring", "Land Cover", "CLC+"],
@@ -20,7 +20,7 @@
   ],
   "extent": {
     "spatial": {
-      "bbox": [[-61.815, -21.3894, 72.9061, 72.6338]]
+      "bbox": [[-56.5052, 24.2841, 72.9061, 72.6338]]
     },
     "temporal": {
       "interval": [["2018-01-01T00:00:00.000Z", null]]
@@ -32,18 +32,17 @@
       "title": "CLC+ 2018 documents",
       "type": "application/zip",
       "roles": ["metadata"]
-    },
-    "clms_clcplus_raster_2018_metadata": {
-      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_0\\Metadata\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.xml",
-      "title": "CLC+ 2018 Metadata",
-      "type": "application/xml",
-      "roles": ["metadata"]
     }
   },
   "item_assets": {
     "clcplus_map": {
       "title": "Map",
       "type": "image/tiff; application=geotiff",
+      "roles": ["data"]
+    },
+    "clcplus_map_metadata": {
+      "title": "Map Metadata",
+      "type": "application/xml",
       "roles": ["data"]
     },
     "clcplus_map_auxiliary": {
@@ -82,8 +81,18 @@
       "roles": ["metadata"]
     },
     "clcplus_map_arcgis_legend_layer": {
-      "title": "Map Legend",
+      "title": "Map ArcGIS Legend",
       "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_qgis_legend_layer": {
+      "title": "Map QGIS Legend",
+      "type": "image/tiff; application=geotiff; profile=layer",
+      "roles": ["metadata"]
+    },
+    "clcplus_map_ogc_legened_layer": {
+      "title": "Map OGC Legend",
+      "type": "application/xml",
       "roles": ["metadata"]
     }
   },

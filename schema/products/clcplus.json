@@ -1,0 +1,349 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/clcplus.json",
+  "title": "Corine Land Cover STAC Schema",
+  "description": "This schema checks the validaty of Corine Land Cover Plus STAC items and collections",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for Corine Land Cover Plus items",
+      "type": "object",
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "bbox",
+        "properties",
+        "collection",
+        "links",
+        "assets"
+      ],
+      "properties": {
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
+        },
+        "type": { "const": "Feature" },
+        "id": { "type": "string" },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "oneOf": [
+            {
+              "items": [
+                { "type": "number", "minimum": -56.53, "maximum": -56.48 },
+                { "type": "number", "minimum": 24.26, "maximum": 24.31 },
+                { "type": "number", "minimum": 72.88, "maximum": 72.93 },
+                { "type": "number", "minimum": 72.61, "maximum": 72.66 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": -54.63, "maximum": -54.58 },
+                { "type": "number", "minimum": 2.08, "maximum": 2.13 },
+                { "type": "number", "minimum": -51.64, "maximum": -51.59 },
+                { "type": "number", "minimum": 5.74, "maximum": 5.79 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": -61.84, "maximum": -61.79 },
+                { "type": "number", "minimum": 15.81, "maximum": 15.86 },
+                { "type": "number", "minimum": -61.03, "maximum": -60.98 },
+                { "type": "number", "minimum": 16.49, "maximum": 16.54 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": -61.26, "maximum": -61.21 },
+                { "type": "number", "minimum": 14.36, "maximum": 14.41 },
+                { "type": "number", "minimum": -60.82, "maximum": -60.77 },
+                { "type": "number", "minimum": 14.85, "maximum": 14.9 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": 55.18, "maximum": 55.23 },
+                { "type": "number", "minimum": -21.41, "maximum": -21.36 },
+                { "type": "number", "minimum": 55.81, "maximum": 55.86 },
+                { "type": "number", "minimum": -20.9, "maximum": -20.85 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": 44.91, "maximum": 44.96 },
+                { "type": "number", "minimum": -13.1, "maximum": -13.05 },
+                { "type": "number", "minimum": 45.28, "maximum": 45.33 },
+                { "type": "number", "minimum": -12.6, "maximum": -12.55 }
+              ]
+            }
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "required": [
+            "description",
+            "datetime",
+            "start_datetime",
+            "end_datetime",
+            "created",
+            "updated",
+            "providers"
+          ],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "datetime": { "const": null },
+            "start_datetime": {
+              "type": "string",
+              "pattern": "20(17|20|22|24)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T00:00:00.000Z"
+            },
+            "end_datetime": {
+              "type": "string",
+              "pattern": "20(19|22|24|26)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T00:00:00.000Z"
+            },
+            "created": {
+              "type": "string",
+              "pattern": "20(22|24|26)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T00:00:00.000Z"
+            },
+            "updated": {
+              "type": "string",
+              "pattern": "(202[3-9]|20[3-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T00:00:00.000Z"
+            },
+            "providers": {
+              "const": [
+                {
+                  "name": "Copernicus Land Monitoring Service",
+                  "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+                  "roles": ["licensor", "host"],
+                  "url": "https://land.copernicus.eu"
+                }
+              ]
+            }
+          }
+        },
+        "collection": { "const": "corine-land-cover-plus-raster" },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "const": {
+                  "rel": "license",
+                  "href": "https://land.copernicus.eu/en/data-policy"
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "collection" }
+                }
+              }
+            }
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "minProperties": 8,
+          "maxProperties": 12,
+          "propertyNames": {
+            "pattern": "^clcplus"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string",
+                "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.lyrx$|.qml$|.sld$|.txt$|.pdf$"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "This is the schema for Corine Land Cover Plus Collection",
+      "type": "object",
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "title",
+        "description",
+        "keywords",
+        "license",
+        "providers",
+        "extent",
+        "summaries",
+        "links",
+        "assets",
+        "item_assets"
+      ],
+      "properties": {
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
+        },
+        "type": { "const": "Collection" },
+        "id": { "const": "corine-land-cover-plus-raster" },
+        "title": { "const": "CORINE Land Cover Plus Backbone" },
+        "description": {
+          "const": "The CLC+ Backbone constitutes the first component of the CLMS’s new ‘CLC+ Product Suite’, which represents a true paradigm change in European land cover/land use (LC/LU) monitoring, building on the rich legacy of the European CORINE Land Cover (CLC) flagship product. The CLC+ Backbone is an object-oriented, large scale, wall-to-wall (EEA-38 + UK), high-resolution (HR) inventory of European LC in a vector format accompanied by a raster product layer, providing a consistent pan-European geometric backbone of Landscape Objects with limited, but robust thematic detail, on which many other applications can be built."
+        },
+        "keywords": {
+          "const": ["Copernicus", "Land Monitoring", "Land Cover", "CLC+"]
+        },
+        "license": { "const": "proprietary" },
+        "providers": {
+          "const": [
+            {
+              "name": "Copernicus Land Monitoring Service",
+              "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+              "roles": ["licensor", "host"],
+              "url": "https://land.copernicus.eu/en"
+            }
+          ]
+        },
+        "extent": {
+          "const": {
+            "spatial": {
+              "bbox": [[-56.5052, 24.2841, 72.9061, 72.6338]]
+            },
+            "temporal": {
+              "interval": [["2018-01-01T00:00:00.000Z", null]]
+            }
+          }
+        },
+        "assets": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 1
+        },
+        "item_assets": {
+          "type": "object",
+          "required": [
+            "clcplus_map",
+            "clcplus_map_metadata",
+            "clcplus_map_auxiliary",
+            "clcplus_map_color_palette_clr",
+            "clcplus_map_color_palette_txt",
+            "clcplus_map_pyramid",
+            "clcplus_map_encoding",
+            "clcplus_map_database_dbf",
+            "clcplus_map_database_xml",
+            "clcplus_map_arcgis_legend_layer",
+            "clcplus_map_qgis_legend_layer",
+            "clcplus_map_ogc_legened_layer"
+          ]
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["proj:epsg"],
+          "minProperties": 1,
+          "maxProperties": 1,
+          "properties": {
+            "proj:epsg": { "const": [3035, 32620, 32622, 32738, 32740] }
+          }
+        },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "license" },
+                  "href": {
+                    "const": "https://land.copernicus.eu/en/data-policy"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "item" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

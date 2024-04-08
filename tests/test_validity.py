@@ -37,11 +37,7 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
             "schema/products/rlie-s2.json",
             marks=pytest.mark.skip(reason="Schema not available"),
         ),
-        pytest.param(
-            "corine-land-cover-plus-raster",
-            "schema/products/clcplus.json",
-            marks=pytest.mark.skip(reason="Schema not available"),
-        ),
+        ("corine-land-cover-plus-raster", "schema/products/clcplus.json"),
         pytest.param(
             "imperviousness-built-up-10m",
             "schema/products/ibu.json",

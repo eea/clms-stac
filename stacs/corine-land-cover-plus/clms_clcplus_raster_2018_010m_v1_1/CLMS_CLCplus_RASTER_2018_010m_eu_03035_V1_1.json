@@ -5,16 +5,16 @@
   ],
   "type": "Feature",
   "id": "CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1",
-  "bbox": [-31.89, 26.54, 45.86, 72.06],
+  "bbox": [-56.5052, 24.2841, 72.9061, 72.6338],
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [-31.89, 26.54],
-        [45.86, 26.54],
-        [45.86, 72.06],
-        [-31.89, 72.06],
-        [-31.89, 26.54]
+        [-56.5052, 24.2841],
+        [72.9061, 24.2841],
+        [72.9061, 72.6338],
+        [-56.5052, 72.6338],
+        [-56.5052, 24.2841]
       ]
     ]
   },
@@ -74,6 +74,12 @@
       "proj:epsg": 3035,
       "proj:bbox": [900000, 900000, 7400000, 5500000],
       "proj:shape": [460000, 650000]
+    },
+    "clcplus_map_metadata": {
+      "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Metadata\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.xml",
+      "type": "application/xml",
+      "title": "Classification Map Metadata Europe",
+      "roles": ["metadata"]
     },
     "clcplus_map_auxiliary": {
       "href": "CorineLandCoverPlus\\CLCBackBone\\Raster\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1\\Data\\CLMS_CLCplus_RASTER_2018_010m_eu_03035_V1_1.tif.aux.xml",
