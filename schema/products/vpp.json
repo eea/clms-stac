@@ -202,9 +202,169 @@
     {
       "$comment": "This is the schema for Vegetation Phenology and Productivity Collection",
       "type": "object",
-      "required": ["type"],
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "title",
+        "description",
+        "keywords",
+        "license",
+        "providers",
+        "extent",
+        "summaries",
+        "links",
+        "item_assets"
+      ],
       "properties": {
-        "type": { "const": "Collection" }
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
+        },
+        "type": { "const": "Collection" },
+        "id": { "const": "vegetation-phenology-and-productivity" },
+        "title": {
+          "const": "Vegetation Phenology and Productivity Parameters"
+        },
+        "description": {
+          "const": "Vegetation Phenology and Productivity Parameters (VPP) product is part of the Copernicus Land Monitoring Service (CLMS), pan-European High Resolution Vegetation Phenology and Productivity (HR-VPP) product suite. The VPP product is comprised of 13 parameters that describe specific stages of the seasonal vegetation growth cycle. These parameters are extracted from Seasonal Trajectories of the Plant Phenology Index (PPI) derived from Sentinel-2 satellite observations at 10m resolution. Since growing seasons can traverse years, VPP parameters are provided for a maximum of two growing seasons per year. The parameters include (1) start of season (date, PPI value and slope), (2) end of season (date, PPI value and slope), (3)length of season, (4) minimum of season, (4) peak of the season (date and PPI value), (5) amplitude, (6) small integrated value and (7) large integrated value."
+        },
+        "keywords": {
+          "const": [
+            "agriculture",
+            "clms",
+            "derived data",
+            "open data",
+            "phenology",
+            "plant phenology index",
+            "vegetation"
+          ]
+        },
+        "license": { "const": "proprietary" },
+        "providers": {
+          "const": [
+            {
+              "name": "Copernicus Land Monitoring Service",
+              "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+              "roles": ["licensor", "host"],
+              "url": "https://land.copernicus.eu/en"
+            }
+          ]
+        },
+        "extent": {
+          "const": {
+            "spatial": {
+              "bbox": [[-25, 26, 45, 72]]
+            },
+            "temporal": {
+              "interval": [["2017-01-01T00:00:00.000Z", null]]
+            }
+          }
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["proj:epsg"],
+          "minProperties": 1,
+          "maxProperties": 1,
+          "properties": {
+            "proj:epsg": {
+              "const": [
+                32620, 32621, 32622, 32625, 32626, 32627, 32628, 32629, 32630,
+                32631, 32632, 32633, 32634, 32635, 32636, 32637, 32638, 32738,
+                32740
+              ]
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "license" },
+                  "href": {
+                    "const": "https://land.copernicus.eu/en/data-policy"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "item" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_assets": {
+          "type": "object",
+          "required": [
+            "AMPL",
+            "EOSD",
+            "EOSV",
+            "LENGTH",
+            "LSLOPE",
+            "MAXD",
+            "MAXV",
+            "MINV",
+            "QFLAG",
+            "RSLOPE",
+            "SOSD",
+            "SOSV",
+            "SPROD",
+            "TPROD"
+          ],
+          "maxProperties": 14,
+          "minProperties": 14
+        }
       }
     }
   ]
