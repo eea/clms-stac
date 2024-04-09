@@ -27,11 +27,7 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
     ("product_id", "product_schema"),
     [
         ("corine-land-cover-raster", "schema/products/clc.json"),
-        pytest.param(
-            "vegetation-phenology-and-productivity",
-            "schema/products/vpp.json",
-            marks=pytest.mark.skip(reason="Schema not available"),
-        ),
+        ("vegetation-phenology-and-productivity", "schema/products/vpp.json"),
         pytest.param(
             "river-and-lake-ice-extent-s2",
             "schema/products/rlie-s2.json",
