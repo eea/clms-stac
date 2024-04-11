@@ -44,7 +44,7 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
         ),
         pytest.param(
             "imperviousness-built-up-10m",
-            "schema/products/ibu.json",
+            "schema/products/ibu10m.json",
         ),
         pytest.param(
             "imperviousness-change-20m",
