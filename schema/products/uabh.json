@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/vpp.json",
+  "title": "Urban Atlas Building Height STAC Schema",
+  "description": "This schema only checks the existence but the schema of the properties",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for Urban Atlas Building Height Items",
+      "type": "object",
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "bbox",
+        "properties",
+        "collection",
+        "links",
+        "assets"
+      ],
+      "properties": {
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
+        },
+        "type": { "const": "Feature" },
+        "id": {
+          "type": "string",
+          "pattern": "^(A[LT]|B[AEG]|C[HYZ]|D[EK]|E[ELS]|F[IR]|H[RU]|I[EST]|L[TUV]|M[EKT]|N[LO]|P[LT]|R[OS]|S[EIK]|TR|UK|XK)[0-9]{3}"
+        },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": [
+            { "type": "number", "minimum": -22.13, "maximum": 33.48 },
+            { "type": "number", "minimum": 35.07, "maximum": 64.38 },
+            { "type": "number", "minimum": -22.13, "maximum": 33.48 },
+            { "type": "number", "minimum": 35.07, "maximum": 64.38 }
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "required": [
+            "description",
+            "datetime",
+            "start_datetime",
+            "end_datetime",
+            "created",
+            "providers",
+            "proj:epsg",
+            "proj:bbox",
+            "proj:shape"
+          ],
+          "properties": {
+            "description": { "type": "string" },
+            "datetime": { "const": null },
+            "start_datetime": {
+              "type": "string",
+              "pattern": "20(1[0-4])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]{3})?Z"
+            },
+            "end_datetime": {
+              "type": "string",
+              "pattern": "20(1[0-4])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]{3})?Z"
+            },
+            "created": {
+              "type": "string",
+              "pattern": "20(1[7-9]|20)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]{3})?Z"
+            },
+            "providers": {
+              "const": [
+                {
+                  "name": "Copernicus Land Monitoring Service",
+                  "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+                  "roles": ["licensor", "host"],
+                  "url": "https://land.copernicus.eu"
+                }
+              ]
+            },
+            "proj:epsg": { "const": 3035 },
+            "proj:bbox": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "proj:shape": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "collection": { "const": "urban-atlas-building-height" },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "const": {
+                  "rel": "license",
+                  "href": "https://land.copernicus.eu/en/data-policy"
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "collection" }
+                }
+              }
+            }
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "minProperties": 4,
+          "maxProperties": 6,
+          "propertyNames": {
+            "anyOf": [
+              { "const": "dataset" },
+              { "const": "quality_check_report" },
+              { "const": "metadata" },
+              { "const": "quality_control_report" },
+              { "type": "string", "pattern": "^pixel_based_info" },
+              { "const": "compressed_dataset" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "$comment": "This is the schema for Urban Atlas Building Height Collection",
+      "type": "object",
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "title",
+        "description",
+        "keywords",
+        "license",
+        "providers",
+        "extent",
+        "summaries",
+        "links",
+        "item_assets"
+      ],
+      "properties": {
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
+        },
+        "type": { "const": "Collection" },
+        "id": { "const": "urban-atlas-building-height" },
+        "title": {
+          "const": "Urban Atlas Building Height 10m"
+        },
+        "description": {
+          "const": "Urban Atlas building height over capital cities."
+        },
+        "keywords": {
+          "const": ["Buildings", "Building height", "Elevation"]
+        },
+        "license": { "const": "proprietary" },
+        "providers": {
+          "const": [
+            {
+              "name": "Copernicus Land Monitoring Service",
+              "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+              "roles": ["licensor", "host"],
+              "url": "https://land.copernicus.eu/en"
+            }
+          ]
+        },
+        "extent": {
+          "const": {
+            "spatial": {
+              "bbox": [[-22.13, 35.07, 33.48, 64.38]]
+            },
+            "temporal": {
+              "interval": [["2012-01-01T00:00:00.000Z", null]]
+            }
+          }
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["proj:epsg"],
+          "minProperties": 1,
+          "maxProperties": 1,
+          "properties": {
+            "proj:epsg": {
+              "const": [3035]
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "license" },
+                  "href": {
+                    "const": "https://land.copernicus.eu/en/data-policy"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "item" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_assets": {
+          "type": "object",
+          "required": [
+            "dataset",
+            "quality_check_report",
+            "metadata",
+            "quality_control_report",
+            "pixel_based_info_shp",
+            "pixel_based_info_shx",
+            "pixel_based_info_dbf",
+            "pixel_based_info_prj",
+            "pixel_based_info_cpg",
+            "compressed_dataset"
+          ],
+          "maxProperties": 10,
+          "minProperties": 10
+        }
+      }
+    }
+  ]
+}
