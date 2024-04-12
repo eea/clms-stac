@@ -160,9 +160,153 @@
     {
       "$comment": "This is the schema for Vegetation Phenology and Productivity Collection",
       "type": "object",
-      "required": ["type"],
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "title",
+        "description",
+        "keywords",
+        "license",
+        "providers",
+        "extent",
+        "summaries",
+        "links",
+        "item_assets"
+      ],
       "properties": {
-        "type": { "const": "Collection" }
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
+        },
+        "type": { "const": "Collection" },
+        "id": { "const": "urban-atlas-building-height" },
+        "title": {
+          "const": "Urban Atlas Building Height 10m"
+        },
+        "description": {
+          "const": "Urban Atlas building height over capital cities."
+        },
+        "keywords": {
+          "const": ["Buildings", "Building height", "Elevation"]
+        },
+        "license": { "const": "proprietary" },
+        "providers": {
+          "const": [
+            {
+              "name": "Copernicus Land Monitoring Service",
+              "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+              "roles": ["licensor", "host"],
+              "url": "https://land.copernicus.eu/en"
+            }
+          ]
+        },
+        "extent": {
+          "const": {
+            "spatial": {
+              "bbox": [[-22.13, 35.07, 33.48, 64.38]]
+            },
+            "temporal": {
+              "interval": [["2012-01-01T00:00:00.000Z", null]]
+            }
+          }
+        },
+        "summaries": {
+          "type": "object",
+          "required": ["proj:epsg"],
+          "minProperties": 1,
+          "maxProperties": 1,
+          "properties": {
+            "proj:epsg": {
+              "const": [3035]
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "license" },
+                  "href": {
+                    "const": "https://land.copernicus.eu/en/data-policy"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "item" },
+                  "href": {
+                    "type": "string",
+                    "pattern": ".json$"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "item_assets": {
+          "type": "object",
+          "required": [
+            "dataset",
+            "quality_check_report",
+            "metadata",
+            "quality_control_report",
+            "pixel_based_info_shp",
+            "pixel_based_info_shx",
+            "pixel_based_info_dbf",
+            "pixel_based_info_prj",
+            "pixel_based_info_cpg",
+            "compressed_dataset"
+          ],
+          "maxProperties": 10,
+          "minProperties": 10
+        }
       }
     }
   ]
