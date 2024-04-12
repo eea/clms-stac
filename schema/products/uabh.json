@@ -158,7 +158,7 @@
       }
     },
     {
-      "$comment": "This is the schema for Vegetation Phenology and Productivity Collection",
+      "$comment": "This is the schema for Urban Atlas Building Height Collection",
       "type": "object",
       "required": [
         "stac_version",
