@@ -36,7 +36,17 @@
         "bbox": {
           "type": "array",
           "minItems": 4,
-          "maxItems": 4
+          "maxItems": 4,
+          "oneOf": [
+            {
+              "items": [
+                { "type": "number", "minimum": 18.140136, "maximum": 19.329582 },
+                { "type": "number", "minimum": 41.672629, "maximum": 42.463926 },
+                { "type": "number", "minimum": 18.140136, "maximum": 19.329582 },
+                { "type": "number", "minimum": 41.672629, "maximum": 42.463926 }
+              ]
+            }
+          ]
         },
         "properties": {
           "type": "object",
@@ -132,10 +142,15 @@
             "properties": {
               "href": {
                 "type": "string",
-                "pattern": ".tif$|.xml$|.clr$|.ovr$|.cpg$|.dbf$|.tfw$|.lyr$|.txt$"
+                "pattern": ".tif$|.dbf$|.tfw$"
               }
             }
-          }
+          },
+          "required": [
+            "builtup_map",
+            "builtup_map_database",
+            "builtup_map_worldfile"
+          ]
         }
       }
     },
@@ -144,7 +159,7 @@
       "type": "object",
       "required": [
         "stac_version",
-        "stac_extension",
+        "stac_extensions",
         "type",
         "id",
         "title",
@@ -162,7 +177,7 @@
         "stac_version": {
           "const": "1.0.0"
         },
-        "stac_extension": {
+        "stac_extensions": {
           "const": [
             "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
             "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
@@ -217,7 +232,11 @@
         "assets": {
           "type": "object",
           "minProperties": 2,
-          "maxProperties": 2
+          "maxProperties": 2,
+          "required": [
+            "imperviousness_builtup_metadata",
+            "imperviousness_builtup_color_palette"
+          ]
         },
         "item_assets": {
           "type": "object",
@@ -244,7 +263,7 @@
                     "const": "license"
                   },
                   "href": {
-                    "const": ".json$"
+                    "const": "https://land.copernicus.eu/en/data-policy"
                   }
                 }
               }
@@ -257,6 +276,7 @@
                     "const": "self"
                   },
                   "href": {
+                    "type": "string",
                     "const": ".json$"
                   }
                 }
@@ -270,6 +290,7 @@
                     "const": "root"
                   },
                   "href": {
+                    "type": "string",
                     "const": ".json$"
                   }
                 }
@@ -283,6 +304,7 @@
                     "const": "parent"
                   },
                   "href": {
+                    "type": "string",
                     "const": ".json$"
                   }
                 }
@@ -296,6 +318,7 @@
                     "const": "item"
                   },
                   "href": {
+                    "type": "string",
                     "const": ".json$"
                   }
                 }
