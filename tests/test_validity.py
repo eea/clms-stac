@@ -49,7 +49,7 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
             "schema/products/uastl.json",
             marks=pytest.mark.skip(reason="Schema not available"),
         ),
-        pytest.param("eu-hydro", "schema/products/euhydro.json", marks=pytest.mark.skip(reason="Schema not available")),
+        ("eu-hydro", "schema/products/eu-hydro.json"),
     ],
 )
 def test_products(stac_fixture, product_id, product_schema):
