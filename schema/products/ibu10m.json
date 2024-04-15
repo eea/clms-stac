@@ -5,7 +5,7 @@
   "description": "This schema only checks the validity of Imperviousness Built Up 10m STAC items and collections",
   "oneOf": [
     {
-      "$comment": "This is the schema for Imperviousness Built-Up 10m Items",
+      "$comment": "This is the schema for Imperviousness Built-Up 10m Items.",
       "type": "object",
       "required": [
         "stac_version",
@@ -40,9 +40,21 @@
           "oneOf": [
             {
               "items": [
-                { "type": "number", "minimum": 18.140136, "maximum": 19.329582 },
-                { "type": "number", "minimum": 41.672629, "maximum": 42.463926 },
-                { "type": "number", "minimum": 18.140136, "maximum": 19.329582 },
+                {
+                  "type": "number",
+                  "minimum": 18.140136,
+                  "maximum": 19.329582
+                },
+                {
+                  "type": "number",
+                  "minimum": 41.672629,
+                  "maximum": 42.463926
+                },
+                {
+                  "type": "number",
+                  "minimum": 18.140136,
+                  "maximum": 19.329582
+                },
                 { "type": "number", "minimum": 41.672629, "maximum": 42.463926 }
               ]
             }
@@ -155,7 +167,7 @@
       }
     },
     {
-      "$comment": "This is the schema for Imperviousness Built-Up 10m Collection",
+      "$comment": "This is the schema for Imperviousness Built-Up 10m Collection.",
       "type": "object",
       "required": [
         "stac_version",
