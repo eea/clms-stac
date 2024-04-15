@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/vpp.json",
+  "$id": "http://example.com/n2k.json",
   "title": "Natura2000 STAC Schema",
   "description": "This schema only checks the existence but the schema of the properties",
   "oneOf": [
