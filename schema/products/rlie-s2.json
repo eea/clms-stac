@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/rlie-s2.json",
+  "title": "Rive and Lake Ice Extent - Sentinel-2 STAC Schema",
+  "description": "This schema only checks the existence but the schema of the properties",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for Rive and Lake Ice Extent - Sentinel-2 Items",
+      "type": "object",
+      "required": [
+        "stac_version",
+        "stac_extensions",
+        "type",
+        "id",
+        "bbox",
+        "properties",
+        "collection",
+        "links",
+        "assets"
+      ],
+      "properties": {
+        "stac_version": { "const": "1.0.0" },
+        "stac_extensions": {
+          "const": [
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+          ]
+        },
+        "type": { "const": "Feature" },
+        "id": {
+          "type": "string",
+          "pattern": "^RLIE_(201[6-9]|20[2-9][0-9])(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])T([0-1][0-9]|2[0-3])([0-5][0-9]){2}_S2[A|B]_T(0[1-9]|[1-5][0-9]|60)([A-X]{3})_V"
+        },
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": [
+            { "type": "number", "minimum": -25, "maximum": 45 },
+            { "type": "number", "minimum": 26, "maximum": 72 },
+            { "type": "number", "minimum": -25, "maximum": 45 },
+            { "type": "number", "minimum": 26, "maximum": 72 }
+          ]
+        },
+        "properties": {
+          "type": "object",
+          "required": [
+            "description",
+            "datetime",
+            "created",
+            "providers",
+            "proj:epsg",
+            "proj:bbox",
+            "proj:shape"
+          ],
+          "properties": {
+            "description": { "type": "string" },
+            "datetime": {
+              "type": "string",
+              "pattern": "(201[6-9]|20[2-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]{3})?Z"
+            },
+            "created": {
+              "type": "string",
+              "pattern": "(201[6-9]|20[2-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]{3})?Z"
+            },
+            "providers": {
+              "const": [
+                {
+                  "name": "Copernicus Land Monitoring Service",
+                  "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+                  "roles": ["licensor", "host"],
+                  "url": "https://land.copernicus.eu"
+                }
+              ]
+            },
+            "proj:epsg": {
+              "type": "integer",
+              "minimum": 32625,
+              "maximum": 32638
+            },
+            "proj:bbox": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "proj:shape": {
+              "const": [5490, 5490]
+            }
+          }
+        },
+        "collection": { "const": "river-and-lake-ice-extent-s2" },
+        "links": {
+          "type": "array",
+          "allOf": [
+            {
+              "contains": {
+                "const": {
+                  "rel": "license",
+                  "href": "https://land.copernicus.eu/en/data-policy"
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "self" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "root" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "parent" }
+                }
+              }
+            },
+            {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "rel": { "const": "collection" }
+                }
+              }
+            }
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "minProperties": 4,
+          "maxProperties": 4,
+          "propertyNames": {
+            "pattern": "rlie$|qc$|qcflags$|mtd$"
+          }
+        }
+      }
+    },
+    {
+      "$comment": "This is the schema for Rive and Lake Ice Extent - Sentinel-2 Collection",
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "Collection" }
+      }
+    }
+  ]
+}
