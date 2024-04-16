@@ -32,11 +32,7 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
         ("vegetation-phenology-and-productivity", "schema/products/vpp.json"),
         ("river-and-lake-ice-extent-s2", "schema/products/rlie-s2.json"),
         ("corine-land-cover-plus-raster", "schema/products/clcplus.json"),
-        pytest.param(
-            "imperviousness-built-up-10m",
-            "schema/products/ibu.json",
-            marks=pytest.mark.skip(reason="Schema not available"),
-        ),
+        ("imperviousness-built-up-10m", "schema/products/ibu10m.json"),
         pytest.param(
             "imperviousness-change-20m",
             "schema/products/imc.json",
