@@ -289,7 +289,7 @@
                   },
                   "href": {
                     "type": "string",
-                    "const": ".json$"
+                    "pattern": ".json$"
                   }
                 }
               }
@@ -303,7 +303,7 @@
                   },
                   "href": {
                     "type": "string",
-                    "const": ".json$"
+                    "pattern": ".json$"
                   }
                 }
               }
@@ -317,7 +317,7 @@
                   },
                   "href": {
                     "type": "string",
-                    "const": ".json$"
+                    "pattern": ".json$"
                   }
                 }
               }
@@ -331,7 +331,7 @@
                   },
                   "href": {
                     "type": "string",
-                    "const": ".json$"
+                    "pattern": ".json$"
                   }
                 }
               }
