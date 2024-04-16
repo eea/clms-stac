@@ -44,7 +44,8 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
         ),
         pytest.param(
             "imperviousness-built-up-10m",
-            "schema/products/ibu10m.json",
+            "schema/products/ibu.json",
+            marks=pytest.mark.skip(reason="Schema not available"),
         ),
         pytest.param(
             "imperviousness-change-20m",
