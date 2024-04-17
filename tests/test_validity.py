@@ -50,7 +50,7 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
 )
 def test_products(stac_fixture, product_id, product_schema):
     """Validate stac items and collections against corresponding prodcut schemas."""
-    with open(product_schema) as f:
+    with open(product_schema, encoding="utf-8") as f:
         schema = json.load(f)
     registry = Registry().with_resources(
         [("http://example.com/schema.json", Resource.from_contents(schema))],
