@@ -91,5 +91,5 @@ if __name__ == "__main__":
     )
 
     item.common_metadata.providers = [VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR]
-    item.set_self_href("scripts/test.json")
+    item.set_self_href("scripts/vpp/test_item.json")
     item.save_object()
