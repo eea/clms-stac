@@ -1,41 +1,64 @@
 from __future__ import annotations
 
 import io
+import json
 import os
 from datetime import datetime
-from typing import Final
 
 import boto3
 import pystac
 import rasterio as rio
+from constants import (
+    CLMS_CATALOG,
+    CLMS_LICENSE,
+    COLLECTION,
+    PARENT,
+    VPP_HOST_AND_LICENSOR,
+    VPP_PRODUCER_AND_PROCESSOR,
+    WORKING_DIR,
+)
+from jsonschema import Draft7Validator
+from jsonschema.exceptions import best_match
 from pyproj import Transformer
-from pystac.provider import ProviderRole
+from pystac.extensions.projection import ProjectionExtension
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
+from referencing import Registry, Resource
 from shapely.geometry import Polygon, box, mapping
 
 AWS_SESSION = boto3.Session(profile_name="hrvpp")
 BUCKET = "HRVPP"
-KEY = "CLMS/Pan-European/Biophysical/VPP/v01/2023/s2/VPP_2023_S2_T40KCC-010m_V105_s2_TPROD.tif"
+# KEY = "CLMS/Pan-European/Biophysical/VPP/v01/2023/s2/VPP_2023_S2_T40KCC-010m_V105_s2_TPROD.tif"
+TITLE_MAP = {
+    "AMPL": "Season Amplitude",
+    "EOSD": "Day of End-of-Season",
+    "EOSV": "Vegetation Index Value at EOSD",
+    "LENGTH": "Length of Season",
+    "LSLOPE": "Slope of The Greening Up Period",
+    "MAXD": "Day of Maximum-of-Season",
+    "MAXV": "Vegetation Index Value at MAXD",
+    "MINV": "Average Vegetation Index Value of Minima on Left and Right Sides of Each Season",
+    "QFLAG": "Quality Flag",
+    "RSLOPE": "Slope of The Senescent Period",
+    "SOSD": "Day of Start-of-Season",
+    "SOSV": "Vegetation Index Value at SOSD",
+    "SPROD": "Seasonal Productivity",
+    "TPROD": "Total Productivity",
+}
 
-VPP_HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
-    name="Copernicus Land Monitoring Service",
-    description=(
-        "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land"
-        " use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of"
-        " users in Europe and across the World in the field of environmental terrestrial applications."
-    ),
-    roles=[ProviderRole.HOST, ProviderRole.LICENSOR],
-    url="https://land.copernicus.eu",
-)
-VPP_PRODUCER_AND_PROCESSOR: Final[pystac.Provider] = pystac.Provider(
-    name="VITO NV",
-    description=(
-        "VITO is an independent Flemish research organisation in the area of cleantech and sustainable development."
-    ),
-    roles=[ProviderRole.PROCESSOR, ProviderRole.PRODUCER],
-    url="https://vito.be",
-)
+
+def create_product_list(start_year, end_year):
+    product_list = []
+    for year in range(start_year, end_year + 1):
+        for season in ("s1", "s2"):
+            product_list.append(f"CLMS/Pan-European/Biophysical/VPP/v01/{year}/{season}/")
+    return product_list
+
+
+def create_page_iterator(aws_session, bucket, prefix):
+    client = aws_session.client("s3")
+    paginator = client.get_paginator("list_objects_v2")
+    return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-")
 
 
 def read_metadata_from_s3(bucket: str, key: str, aws_session: boto3.Session) -> tuple[BoundingBox, CRS, int, int]:
@@ -59,11 +82,8 @@ def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
 
 
 def get_description(product_id: str) -> str:
-    product, year, _, tile_res, version, season = product_id.split("_")
-    return (
-        f"The {year} season {season[-1]} version {version[1:]} {product} product of tile {tile_res[:6]} at"
-        f" {tile_res[8:10]} m resolution."
-    )
+    product, year, _, tile_res, season = product_id.split("_")
+    return f"The {year} season {season[-1]} {product} product of tile {tile_res[:6]} at {tile_res[8:10]} m resolution."
 
 
 def get_datetime(product_id: str) -> tuple[datetime, datetime]:
@@ -71,14 +91,29 @@ def get_datetime(product_id: str) -> tuple[datetime, datetime]:
     return (datetime(year=year, month=1, day=1), datetime(year=year, month=12, day=31))
 
 
-if __name__ == "__main__":
-    head, tail = os.path.split(KEY)
-    product_id, asset = tail.split(".")[0].rsplit("_", 1)
-    bounds, crs, height, width, created = read_metadata_from_s3(BUCKET, KEY, AWS_SESSION)
+def create_asset(asset_key: str) -> pystac.Asset:
+    parameter = asset_key.split("_")[-1].split(".")[0]
+    version = asset_key.split("_")[-3]
+    return pystac.Asset(
+        href="s3://HRVPP/" + asset_key,
+        media_type=pystac.MediaType.GEOTIFF,
+        title=TITLE_MAP[parameter] + f" {version}",
+        roles=["data"],
+    )
+
+
+def create_item(aws_session, bucket, tile):
+    client = aws_session.client("s3")
+    parameters = client.list_objects(Bucket=bucket, Prefix=tile, Delimiter=".")["CommonPrefixes"]
+    asset_keys = [parameter["Prefix"] + "tif" for parameter in parameters]
+    _, tail = os.path.split(asset_keys[0])
+    product_id = "_".join((tail[:23], tail[29:31]))
+    bounds, crs, height, width, created = read_metadata_from_s3(bucket, asset_keys[0], aws_session)
     geom_wgs84 = get_geom_wgs84(bounds, crs)
     description = get_description(product_id)
     start_datetime, end_datetime = get_datetime(product_id)
 
+    # common metadata
     item = pystac.Item(
         id=product_id,
         geometry=mapping(geom_wgs84),
@@ -89,7 +124,54 @@ if __name__ == "__main__":
         properties={"created": created.strftime("%Y-%m-%dT%H:%M:%SZ"), "description": description},
         collection="vegetation-phenology-and-productivity",
     )
-
     item.common_metadata.providers = [VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR]
-    item.set_self_href("scripts/vpp/test_item.json")
-    item.save_object()
+
+    # extensions
+    projection = ProjectionExtension.ext(item, add_if_missing=True)
+    projection.epsg = crs.to_epsg()
+    projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
+    projection.shape = [height, width]
+
+    # links
+    links = [CLMS_LICENSE, CLMS_CATALOG, PARENT, COLLECTION]
+    for link in links:
+        item.links.append(link)
+
+    # assets
+    assets = {os.path.split(key)[-1][:-4].lower(): create_asset(key) for key in asset_keys}
+    for key, asset in assets.items():
+        item.add_asset(key, asset)
+    return item
+
+
+def get_stac_validator(product_schema):
+    with open(product_schema, encoding="utf-8") as f:
+        schema = json.load(f)
+    registry = Registry().with_resources(
+        [("http://example.com/schema.json", Resource.from_contents(schema))],
+    )
+    return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
+
+
+def main():
+    product_list = create_product_list(2017, 2023)
+
+    # Need a for loop for full implementation
+    page_iterator = create_page_iterator(AWS_SESSION, BUCKET, product_list[0])
+    for page in page_iterator:
+        tiles = [prefix["Prefix"] for prefix in page["CommonPrefixes"]]
+
+        # Need threading for full implementation
+        item = create_item(AWS_SESSION, BUCKET, tiles[0])
+        item.set_self_href(
+            os.path.join(WORKING_DIR, f"stacs/vegetation-phenology-and-productivity/{item.id}/{item.id}.json")
+        )
+        validator = get_stac_validator("schemas/products/vpp.json")
+        error = best_match(validator.iter_errors(item.to_dict()))
+        assert error is None, error
+        item.save_object()
+        break
+
+
+if __name__ == "__main__":
+    main()
