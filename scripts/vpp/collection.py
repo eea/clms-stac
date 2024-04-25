@@ -1,12 +1,27 @@
-import os
-import pystac
 import json
-from pystac.extensions.item_assets import ItemAssetsExtension, AssetDefinition
+import os
 from glob import glob
-from constants import COLLECTION_DESCRIPTION, COLLECTION_ID, COLLECTION_EXTENT, COLLECTION_TITLE, WORKING_DIR, COLLECTION_KEYWORDS, VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR, COLLECTION_SUMMARIES, TITLE_MAP, CLMS_LICENSE, STAC_DIR
+
+import pystac
+from constants import (
+    CLMS_LICENSE,
+    COLLECTION_DESCRIPTION,
+    COLLECTION_EXTENT,
+    COLLECTION_ID,
+    COLLECTION_KEYWORDS,
+    COLLECTION_SUMMARIES,
+    COLLECTION_TITLE,
+    STAC_DIR,
+    TITLE_MAP,
+    VPP_HOST_AND_LICENSOR,
+    VPP_PRODUCER_AND_PROCESSOR,
+    WORKING_DIR,
+)
 from jsonschema import Draft7Validator
 from jsonschema.exceptions import best_match
+from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
 from referencing import Registry, Resource
+
 
 def get_stac_validator(product_schema: str) -> Draft7Validator:
     with open(product_schema, encoding="utf-8") as f:
@@ -52,6 +67,7 @@ def create_collection():
     error_msg = best_match(validator.iter_errors(collection.to_dict()))
     assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
     collection.save_object()
+
 
 if __name__ == "__main__":
     create_collection()
