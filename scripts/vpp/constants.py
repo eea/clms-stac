@@ -1,8 +1,9 @@
-from pystac.provider import ProviderRole
+import os
 from typing import Final
+
 import pystac
 from pystac.link import Link
-import os
+from pystac.provider import ProviderRole
 
 WORKING_DIR = os.getcwd()
 VPP_HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
@@ -23,13 +24,23 @@ VPP_PRODUCER_AND_PROCESSOR: Final[pystac.Provider] = pystac.Provider(
     roles=[ProviderRole.PROCESSOR, ProviderRole.PRODUCER],
     url="https://vito.be",
 )
-CLMS_LICENSE: Final[Link] = Link(
-    rel="license",
-    target="https://land.copernicus.eu/en/data-policy"
-)
+CLMS_LICENSE: Final[Link] = Link(rel="license", target="https://land.copernicus.eu/en/data-policy")
 CLMS_CATALOG: Final[Link] = Link(
-    rel=pystac.RelType.ROOT,
-    target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/clms_catalog.json"))
+    rel=pystac.RelType.ROOT, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/clms_catalog.json"))
 )
-PARENT: Final[Link] = Link(rel=pystac.RelType.PARENT, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json")))
-COLLECTION: Final[Link] = Link(rel=pystac.RelType.COLLECTION, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json")))
+PARENT: Final[Link] = Link(
+    rel=pystac.RelType.PARENT,
+    target=pystac.STACObject.from_file(
+        os.path.join(
+            WORKING_DIR, "stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json"
+        )
+    ),
+)
+COLLECTION: Final[Link] = Link(
+    rel=pystac.RelType.COLLECTION,
+    target=pystac.STACObject.from_file(
+        os.path.join(
+            WORKING_DIR, "stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json"
+        )
+    ),
+)

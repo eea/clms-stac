@@ -45,42 +45,42 @@
             },
             {
               "items": [
-                { "type": "number", "minimum": -55.23, "maximum": -50.89 },
-                { "type": "number", "minimum": 1.69, "maximum": 6.34 },
-                { "type": "number", "minimum": -55.23, "maximum": -50.89 },
-                { "type": "number", "minimum": 1.69, "maximum": 6.34 }
+                { "type": "number", "minimum": -62.09, "maximum": -60.11 },
+                { "type": "number", "minimum": 13.46, "maximum": 15.37 },
+                { "type": "number", "minimum": -62.09, "maximum": -60.11 },
+                { "type": "number", "minimum": 13.46, "maximum": 15.37 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": -62.09, "maximum": -60.08 },
-                { "type": "number", "minimum": 15.26, "maximum": 17.19 },
-                { "type": "number", "minimum": -62.09, "maximum": -60.08 },
-                { "type": "number", "minimum": 15.26, "maximum": 17.19 }
+                { "type": "number", "minimum": 44.06, "maximum": 46.03 },
+                { "type": "number", "minimum": -13.67, "maximum": -11.74 },
+                { "type": "number", "minimum": 44.06, "maximum": 46.03 },
+                { "type": "number", "minimum": -13.67, "maximum": -11.74 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": -62.1, "maximum": -60.1 },
-                { "type": "number", "minimum": 13.45, "maximum": 15.38 },
-                { "type": "number", "minimum": -62.1, "maximum": -60.1 },
-                { "type": "number", "minimum": 13.45, "maximum": 15.38 }
+                { "type": "number", "minimum": 55.05, "maximum": 56.15 },
+                { "type": "number", "minimum": -21.79, "maximum": -19.88 },
+                { "type": "number", "minimum": 55.05, "maximum": 56.15 },
+                { "type": "number", "minimum": -21.79, "maximum": -19.88 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": 44.05, "maximum": 46.04 },
-                { "type": "number", "minimum": -13.68, "maximum": -11.73 },
-                { "type": "number", "minimum": 44.05, "maximum": 46.04 },
-                { "type": "number", "minimum": -13.68, "maximum": -11.73 }
+                { "type": "number", "minimum": -62.08, "maximum": -60.07 },
+                { "type": "number", "minimum": 15.27, "maximum": 17.18 },
+                { "type": "number", "minimum": -62.08, "maximum": -60.07 },
+                { "type": "number", "minimum": 15.27, "maximum": 17.18 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": 55.04, "maximum": 56.16 },
-                { "type": "number", "minimum": -21.81, "maximum": -19.87 },
-                { "type": "number", "minimum": 55.04, "maximum": 56.16 },
-                { "type": "number", "minimum": -21.81, "maximum": -19.87 }
+                { "type": "number", "minimum": -55.22, "maximum": -50.9 },
+                { "type": "number", "minimum": 1.7, "maximum": 6.33 },
+                { "type": "number", "minimum": -55.22, "maximum": -50.9 },
+                { "type": "number", "minimum": 1.7, "maximum": 6.33 }
               ]
             }
           ]

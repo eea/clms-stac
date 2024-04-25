@@ -30,6 +30,12 @@
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
         "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
+      },
+      {
+        "name": "VITO NV",
+        "description": "VITO is an independent Flemish research organisation in the area of cleantech and sustainable development.",
+        "roles": ["processor", "producer"],
+        "url": "https://vito.be"
       }
     ],
     "proj:epsg": 32740,

@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import io
+import itertools as it
 import json
+import logging
 import os
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 import boto3
@@ -25,10 +28,11 @@ from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
 from referencing import Registry, Resource
 from shapely.geometry import Polygon, box, mapping
+from tqdm import tqdm
 
+LOGGER = logging.getLogger(__name__)
 AWS_SESSION = boto3.Session(profile_name="hrvpp")
 BUCKET = "HRVPP"
-# KEY = "CLMS/Pan-European/Biophysical/VPP/v01/2023/s2/VPP_2023_S2_T40KCC-010m_V105_s2_TPROD.tif"
 TITLE_MAP = {
     "AMPL": "Season Amplitude",
     "EOSD": "Day of End-of-Season",
@@ -117,7 +121,7 @@ def create_item(aws_session, bucket, tile):
     item = pystac.Item(
         id=product_id,
         geometry=mapping(geom_wgs84),
-        bbox=geom_wgs84.bounds,
+        bbox=list(geom_wgs84.bounds),
         datetime=None,
         start_datetime=start_datetime,
         end_datetime=end_datetime,
@@ -153,24 +157,42 @@ def get_stac_validator(product_schema):
     return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
 
 
+def create_vpp_item(aws_session, bucket, validator, tile):
+    item = create_item(aws_session, bucket, tile)
+    item.set_self_href(
+        os.path.join(WORKING_DIR, f"stacs/vegetation-phenology-and-productivity/{item.id}/{item.id}.json")
+    )
+    error_msg = best_match(validator.iter_errors(item.to_dict()))
+    try:
+        assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."
+        item.save_object()
+    except AssertionError as error:
+        LOGGER.error(error)
+
+
 def main():
+    logging.basicConfig(filename="create_vpp_stac.log")
+    validator = get_stac_validator("schema/products/vpp.json")
+
     product_list = create_product_list(2017, 2023)
 
-    # Need a for loop for full implementation
-    page_iterator = create_page_iterator(AWS_SESSION, BUCKET, product_list[0])
-    for page in page_iterator:
-        tiles = [prefix["Prefix"] for prefix in page["CommonPrefixes"]]
+    # remove [:1] for full implementation
+    for product in product_list[:1]:
+        page_iterator = create_page_iterator(AWS_SESSION, BUCKET, product)
+        for page in page_iterator:
+            tiles = [prefix["Prefix"] for prefix in page["CommonPrefixes"]]
+            with ThreadPoolExecutor(max_workers=100) as executor:
+                list(
+                    tqdm(
+                        executor.map(
+                            create_vpp_item, it.repeat(AWS_SESSION), it.repeat(BUCKET), it.repeat(validator), tiles
+                        ),
+                        total=len(tiles),
+                    )
+                )
 
-        # Need threading for full implementation
-        item = create_item(AWS_SESSION, BUCKET, tiles[0])
-        item.set_self_href(
-            os.path.join(WORKING_DIR, f"stacs/vegetation-phenology-and-productivity/{item.id}/{item.id}.json")
-        )
-        validator = get_stac_validator("schemas/products/vpp.json")
-        error = best_match(validator.iter_errors(item.to_dict()))
-        assert error is None, error
-        item.save_object()
-        break
+            # remove break for full implementation
+            break
 
 
 if __name__ == "__main__":
