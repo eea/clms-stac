@@ -12,10 +12,15 @@ import boto3
 import pystac
 import rasterio as rio
 from constants import (
-    CLMS_CATALOG,
+    AWS_SESSION,
+    BUCKET,
+    CLMS_CATALOG_LINK,
     CLMS_LICENSE,
-    COLLECTION,
-    PARENT,
+    COLLECTION_ID,
+    COLLECTION_LINK,
+    ITEM_PARENT_LINK,
+    STAC_DIR,
+    TITLE_MAP,
     VPP_HOST_AND_LICENSOR,
     VPP_PRODUCER_AND_PROCESSOR,
     WORKING_DIR,
@@ -31,27 +36,9 @@ from shapely.geometry import Polygon, box, mapping
 from tqdm import tqdm
 
 LOGGER = logging.getLogger(__name__)
-AWS_SESSION = boto3.Session(profile_name="hrvpp")
-BUCKET = "HRVPP"
-TITLE_MAP = {
-    "AMPL": "Season Amplitude",
-    "EOSD": "Day of End-of-Season",
-    "EOSV": "Vegetation Index Value at EOSD",
-    "LENGTH": "Length of Season",
-    "LSLOPE": "Slope of The Greening Up Period",
-    "MAXD": "Day of Maximum-of-Season",
-    "MAXV": "Vegetation Index Value at MAXD",
-    "MINV": "Average Vegetation Index Value of Minima on Left and Right Sides of Each Season",
-    "QFLAG": "Quality Flag",
-    "RSLOPE": "Slope of The Senescent Period",
-    "SOSD": "Day of Start-of-Season",
-    "SOSV": "Vegetation Index Value at SOSD",
-    "SPROD": "Seasonal Productivity",
-    "TPROD": "Total Productivity",
-}
 
 
-def create_product_list(start_year, end_year):
+def create_product_list(start_year: int, end_year: int) -> list[str]:
     product_list = []
     for year in range(start_year, end_year + 1):
         for season in ("s1", "s2"):
@@ -59,10 +46,10 @@ def create_product_list(start_year, end_year):
     return product_list
 
 
-def create_page_iterator(aws_session, bucket, prefix):
+def create_page_iterator(aws_session: boto3.Session, bucket: str, prefix: str):
     client = aws_session.client("s3")
     paginator = client.get_paginator("list_objects_v2")
-    return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-")
+    return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-", MaxKeys=10)
 
 
 def read_metadata_from_s3(bucket: str, key: str, aws_session: boto3.Session) -> tuple[BoundingBox, CRS, int, int]:
@@ -99,14 +86,14 @@ def create_asset(asset_key: str) -> pystac.Asset:
     parameter = asset_key.split("_")[-1].split(".")[0]
     version = asset_key.split("_")[-3]
     return pystac.Asset(
-        href="s3://HRVPP/" + asset_key,
+        href=f"s3://{BUCKET}/" + asset_key,
         media_type=pystac.MediaType.GEOTIFF,
         title=TITLE_MAP[parameter] + f" {version}",
         roles=["data"],
     )
 
 
-def create_item(aws_session, bucket, tile):
+def create_item(aws_session: boto3.Session, bucket: str, tile: str) -> pystac.Item:
     client = aws_session.client("s3")
     parameters = client.list_objects(Bucket=bucket, Prefix=tile, Delimiter=".")["CommonPrefixes"]
     asset_keys = [parameter["Prefix"] + "tif" for parameter in parameters]
@@ -126,7 +113,7 @@ def create_item(aws_session, bucket, tile):
         start_datetime=start_datetime,
         end_datetime=end_datetime,
         properties={"created": created.strftime("%Y-%m-%dT%H:%M:%SZ"), "description": description},
-        collection="vegetation-phenology-and-productivity",
+        collection=COLLECTION_ID,
     )
     item.common_metadata.providers = [VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR]
 
@@ -137,7 +124,7 @@ def create_item(aws_session, bucket, tile):
     projection.shape = [height, width]
 
     # links
-    links = [CLMS_LICENSE, CLMS_CATALOG, PARENT, COLLECTION]
+    links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
     for link in links:
         item.links.append(link)
 
@@ -148,7 +135,7 @@ def create_item(aws_session, bucket, tile):
     return item
 
 
-def get_stac_validator(product_schema):
+def get_stac_validator(product_schema: str) -> Draft7Validator:
     with open(product_schema, encoding="utf-8") as f:
         schema = json.load(f)
     registry = Registry().with_resources(
@@ -157,11 +144,9 @@ def get_stac_validator(product_schema):
     return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
 
 
-def create_vpp_item(aws_session, bucket, validator, tile):
+def create_vpp_item(aws_session: boto3.Session, bucket: str, validator: Draft7Validator, tile: str) -> None:
     item = create_item(aws_session, bucket, tile)
-    item.set_self_href(
-        os.path.join(WORKING_DIR, f"stacs/vegetation-phenology-and-productivity/{item.id}/{item.id}.json")
-    )
+    item.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id}/{item.id}.json"))
     error_msg = best_match(validator.iter_errors(item.to_dict()))
     try:
         assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."
@@ -181,7 +166,7 @@ def main():
         page_iterator = create_page_iterator(AWS_SESSION, BUCKET, product)
         for page in page_iterator:
             tiles = [prefix["Prefix"] for prefix in page["CommonPrefixes"]]
-            with ThreadPoolExecutor(max_workers=100) as executor:
+            with ThreadPoolExecutor(max_workers=10) as executor:
                 list(
                     tqdm(
                         executor.map(

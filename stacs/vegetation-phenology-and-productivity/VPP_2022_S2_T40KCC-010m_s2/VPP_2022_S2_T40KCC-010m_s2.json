@@ -4,7 +4,7 @@
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
   "type": "Feature",
-  "id": "VPP_2022_S2_T40KCC-010m_V105_s2",
+  "id": "VPP_2022_S2_T40KCC-010m_s2",
   "bbox": [55.077444, -20.877262, 56.13278, -19.8938],
   "geometry": {
     "type": "Polygon",
@@ -19,7 +19,7 @@
     ]
   },
   "properties": {
-    "description": "2022 Season 2 Vegetation Phenology and Productivity Parameters (VPP) product of Sentinel-2 tile T40KCC.",
+    "description": "The 2022 season 2 VPP product of tile T40KCC at 10 m resolution.",
     "datetime": null,
     "start_datetime": "2022-01-01T00:00:00.000Z",
     "end_datetime": "2022-12-31T00:00:00.000Z",
@@ -50,9 +50,8 @@
     },
     {
       "rel": "self",
-      "href": "./VPP_2022_S2_T40KCC-010m_V105_s2_TPROD/VPP_2022_S2_T40KCC-010m_V105_s2.json",
-      "type": "application/json",
-      "title": "Vegetation Phenology and Productivity Parameters 2022 Season 2 Tile T40KCC"
+      "href": "./VPP_2022_S2_T40KCC-010m_s2_TPROD/VPP_2022_S2_T40KCC-010m_s2.json",
+      "type": "application/json"
     },
     {
       "rel": "root",
@@ -77,85 +76,85 @@
     "vpp_2022_s2_t40kcc-010m_v105_s2_ampl": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_AMPL.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Season Amplitude",
+      "title": "Season Amplitude V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_eosd": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_EOSD.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Day of End-of-Season",
+      "title": "Day of End-of-Season V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_eosv": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_EOSV.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Vegetation Index Value at EOSD",
+      "title": "Vegetation Index Value at EOSD V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_length": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_LENGTH.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Length of Season",
+      "title": "Length of Season V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_lslope": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_LSLOPE.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Slope of The Greening Up Period",
+      "title": "Slope of The Greening Up Period V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_maxd": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_MAXD.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Day of Maximum-of-Season",
+      "title": "Day of Maximum-of-Season V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_maxv": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_MAXV.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Vegetation Index Value at MAXD",
+      "title": "Vegetation Index Value at MAXD V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_minv": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_MINV.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Average Vegetation Index Value of Minima on Left and Right Sides of Each Season",
+      "title": "Average Vegetation Index Value of Minima on Left and Right Sides of Each Season V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_qflag": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_QFLAG.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Quality Flag",
+      "title": "Quality Flag V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_rslope": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_RSLOPE.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Slope of The Senescent Period",
+      "title": "Slope of The Senescent Period V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_sosd": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_SOSD.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Day of Start-of-Season",
+      "title": "Day of Start-of-Season V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_sosv": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_SOSV.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Vegetation Index Value at SOSD",
+      "title": "Vegetation Index Value at SOSD V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_sprod": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_SPROD.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Seasonal Productivity",
+      "title": "Seasonal Productivity V105",
       "roles": ["data"]
     },
     "vpp_2022_s2_t40kcc-010m_v105_s2_tprod": {
       "href": "../../../data/vegetation-phenology-and-productivity/vpp_2022/VPP_2022_S2_T40KCC-010m_V105_s2_TPROD.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Total Productivity",
+      "title": "Total Productivity V105",
       "roles": ["data"]
     }
   }
