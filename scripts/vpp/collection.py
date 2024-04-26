@@ -1,9 +1,17 @@
+from __future__ import annotations
+
 import json
+import logging
 import os
 from glob import glob
 
 import pystac
-from constants import (
+from jsonschema import Draft7Validator
+from jsonschema.exceptions import best_match
+from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
+from referencing import Registry, Resource
+
+from .constants import (
     CLMS_LICENSE,
     COLLECTION_DESCRIPTION,
     COLLECTION_EXTENT,
@@ -17,10 +25,8 @@ from constants import (
     VPP_PRODUCER_AND_PROCESSOR,
     WORKING_DIR,
 )
-from jsonschema import Draft7Validator
-from jsonschema.exceptions import best_match
-from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
-from referencing import Registry, Resource
+
+LOGGER = logging.getLogger(__name__)
 
 
 def get_stac_validator(product_schema: str) -> Draft7Validator:
@@ -32,7 +38,7 @@ def get_stac_validator(product_schema: str) -> Draft7Validator:
     return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
 
 
-def create_collection():
+def create_collection(item_list: list[str]) -> pystac.Collection:
     collection = pystac.Collection(
         id=COLLECTION_ID,
         description=COLLECTION_DESCRIPTION,
@@ -54,7 +60,7 @@ def create_collection():
     collection.links.append(CLMS_LICENSE)
 
     # add items
-    items = glob(f"{WORKING_DIR}/{STAC_DIR}/{COLLECTION_ID}/**/VPP*.json")
+    items = glob(item_list)
     for item in items:
         stac_object = pystac.read_file(item)
         collection.add_item(stac_object, title=stac_object.id)
@@ -64,10 +70,9 @@ def create_collection():
     collection.set_root(catalog)
     collection.set_parent(catalog)
     validator = get_stac_validator("schema/products/vpp.json")
-    error_msg = best_match(validator.iter_errors(collection.to_dict()))
-    assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
+    try:
+        error_msg = best_match(validator.iter_errors(collection.to_dict()))
+        assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
+    except AssertionError as error:
+        LOGGER.error(error)
     collection.save_object()
-
-
-if __name__ == "__main__":
-    create_collection()

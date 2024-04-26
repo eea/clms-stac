@@ -1,18 +1,25 @@
 from __future__ import annotations
 
 import io
-import itertools as it
 import json
 import logging
 import os
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 import boto3
 import pystac
 import rasterio as rio
-from constants import (
-    AWS_SESSION,
+from botocore.paginate import PageIterator
+from jsonschema import Draft7Validator
+from jsonschema.exceptions import best_match
+from pyproj import Transformer
+from pystac.extensions.projection import ProjectionExtension
+from rasterio.coords import BoundingBox
+from rasterio.crs import CRS
+from referencing import Registry, Resource
+from shapely.geometry import Polygon, box, mapping
+
+from .constants import (
     BUCKET,
     CLMS_CATALOG_LINK,
     CLMS_LICENSE,
@@ -25,15 +32,6 @@ from constants import (
     VPP_PRODUCER_AND_PROCESSOR,
     WORKING_DIR,
 )
-from jsonschema import Draft7Validator
-from jsonschema.exceptions import best_match
-from pyproj import Transformer
-from pystac.extensions.projection import ProjectionExtension
-from rasterio.coords import BoundingBox
-from rasterio.crs import CRS
-from referencing import Registry, Resource
-from shapely.geometry import Polygon, box, mapping
-from tqdm import tqdm
 
 LOGGER = logging.getLogger(__name__)
 
@@ -46,7 +44,7 @@ def create_product_list(start_year: int, end_year: int) -> list[str]:
     return product_list
 
 
-def create_page_iterator(aws_session: boto3.Session, bucket: str, prefix: str):
+def create_page_iterator(aws_session: boto3.Session, bucket: str, prefix: str) -> PageIterator:
     client = aws_session.client("s3")
     paginator = client.get_paginator("list_objects_v2")
     return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-", MaxKeys=10)
@@ -153,32 +151,3 @@ def create_vpp_item(aws_session: boto3.Session, bucket: str, validator: Draft7Va
         item.save_object()
     except AssertionError as error:
         LOGGER.error(error)
-
-
-def main():
-    logging.basicConfig(filename="create_vpp_stac.log")
-    validator = get_stac_validator("schema/products/vpp.json")
-
-    product_list = create_product_list(2017, 2023)
-
-    # remove [:1] for full implementation
-    for product in product_list[:1]:
-        page_iterator = create_page_iterator(AWS_SESSION, BUCKET, product)
-        for page in page_iterator:
-            tiles = [prefix["Prefix"] for prefix in page["CommonPrefixes"]]
-            with ThreadPoolExecutor(max_workers=10) as executor:
-                list(
-                    tqdm(
-                        executor.map(
-                            create_vpp_item, it.repeat(AWS_SESSION), it.repeat(BUCKET), it.repeat(validator), tiles
-                        ),
-                        total=len(tiles),
-                    )
-                )
-
-            # remove break for full implementation
-            break
-
-
-if __name__ == "__main__":
-    main()
