@@ -100,3 +100,4 @@ target/
 
 # Pycopy
 __pycache__/
+clms-stac.code-workspace
