@@ -1,0 +1,62 @@
+{
+  "type": "Collection",
+  "id": "urban-atlas-building-height",
+  "stac_version": "1.0.0",
+  "description": "Urban Atlas building height over capital cities.",
+  "links": [
+    {
+      "rel": "root",
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/clms-stac-1/scripts/vabh/test_item.json",
+      "type": "application/json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "self",
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/clms-stac-1/scripts/vabh/test_item.json",
+      "type": "application/json"
+    }
+  ],
+  "title": "Urban Atlas Building Height 10m",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -21.210399013454868,
+          62.99044383484405,
+          -20.96981298030872,
+          63.339366607232876
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2012-01-01T00:00:00Z",
+          null
+        ]
+      ]
+    }
+  },
+  "license": "proprietary",
+  "keywords": [
+    "Buildings",
+    "Building height",
+    "Elevation"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": [
+        "host",
+        "licensor"
+      ],
+      "url": "https://land.copernicus.eu"
+    }
+  ],
+  "summaries": {
+    "proj:epsg": [
+      3035
+    ]
+  }
+}
