@@ -39,7 +39,6 @@ N2K_HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     roles=[ProviderRole.LICENSOR, ProviderRole.HOST],
     url="https://land.copernicus.eu",
 )
-COLLECTION_SUMMARIES = pystac.Summaries({"proj:epsg": [3035]})
 CLMS_LICENSE: Final[Link] = Link(rel="license", target="https://land.copernicus.eu/en/data-policy")
 WORKING_DIR = os.getcwd()
 STAC_DIR = "stac_tests"

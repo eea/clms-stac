@@ -8,6 +8,7 @@ import pystac
 from jsonschema import Draft7Validator
 from jsonschema.exceptions import best_match
 from pystac import MediaType
+from pystac.extensions.projection import ProjectionExtension
 from referencing import Registry, Resource
 
 from .constants import (
@@ -16,7 +17,6 @@ from .constants import (
     COLLECTION_EXTENT,
     COLLECTION_ID,
     COLLECTION_KEYWORDS,
-    COLLECTION_SUMMARIES,
     COLLECTION_TITLE,
     N2K_HOST_AND_LICENSOR,
     STAC_DIR,
@@ -112,11 +112,13 @@ def create_collection(n2k_root: str) -> pystac.Collection:
         description=COLLECTION_DESCRIPTION,
         extent=COLLECTION_EXTENT,
         title=COLLECTION_TITLE,
-        stac_extensions=["https://stac-extensions.github.io/projection/v1.1.0/schema.json"],
         keywords=COLLECTION_KEYWORDS,
         providers=[N2K_HOST_AND_LICENSOR],
-        summaries=COLLECTION_SUMMARIES,
     )
+
+    # summaries
+    summaries = ProjectionExtension.summaries(collection, add_if_missing=True)
+    summaries.epsg = [3035]
 
     # links
     collection.links.append(CLMS_LICENSE)
@@ -125,7 +127,6 @@ def create_collection(n2k_root: str) -> pystac.Collection:
     assets = collect_assets(n2k_root)
     for key, asset in assets.items():
         collection.add_asset(key, asset)
-
     collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection.id}.json"))
     catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
     collection.set_root(catalog)
@@ -134,7 +135,7 @@ def create_collection(n2k_root: str) -> pystac.Collection:
     try:
         error_msg = best_match(validator.iter_errors(collection.to_dict()))
         assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
+        collection.save_object()
     except AssertionError as error:
         LOGGER.error(error)
-    collection.save_object()
     return collection
