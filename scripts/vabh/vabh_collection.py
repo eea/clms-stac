@@ -11,12 +11,13 @@ from pystac import Extent, SpatialExtent, TemporalExtent
 from pystac.provider import ProviderRole
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
-from shapely.geometry import Polygon, box, mapping
+from shapely.geometry import Polygon, box
 
 # KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/data/AT001_WIEN_UA2012_DHM_V020.tif"
 KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020"
 head, tail = os.path.split(KEY)
-(product_id,product_version) = tail.rsplit("_", 1)
+(product_id, product_version) = tail.rsplit("_", 1)
+PATH_Dataset = os.path.join(KEY, "Dataset/" + tail + ".tif")
 
 HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
@@ -28,6 +29,10 @@ HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     roles=[ProviderRole.HOST, ProviderRole.LICENSOR],
     url="https://land.copernicus.eu",
 )
+COLLECTION_id = "urban-atlas-building-height"
+COLLECTION_title = "Urban Atlas Building Height 10m"
+COLLECTION_description = "Urban Atlas building height over capital cities."
+COLLECTION_keywords = ["Buildings", "Building height", "Elevation"]
 
 
 def get_metadata_from_tif(key: str) -> tuple[BoundingBox, CRS, int, int]:
@@ -48,11 +53,6 @@ def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
     return box(*bbox)
 
 
-def get_description(product_id: str) -> str:
-    country, city, year, product, version = product_id.split("_")
-    return f"{year[2:]} {city.title()} building height"
-
-
 def get_datetime(product_id: str) -> tuple[datetime, datetime]:
     year = int(product_id.split("_")[2][2:])
     return (datetime(year=year, month=1, day=1), datetime(year=year, month=12, day=31))
@@ -64,41 +64,31 @@ def get_collection_extent(bbox, start_datetime) -> Extent:
     return Extent(spatial=spatial_extent, temporal=temporal_extent)
 
 
-def create_asset(asset_key: str) -> pystac.Asset:
-    parameter = asset_key.split("_")[-1].split(".")[0]
-    version = asset_key.split("_")[-3]
-    return pystac.Asset(
-        href=f"s3://{BUCKET}/" + asset_key,
-        media_type=pystac.MediaType.GEOTIFF,
-        title=TITLE_MAP[parameter] + f" {version}",
-        roles=["data"],
-    )
+# def get_item_assets()
 
-def get_item_assets()
-
-def get_links()
-
+# def get_links()
 
 
 if __name__ == "__main__":
     head, tail = os.path.split(KEY)
     (product_id,) = tail.split(".")[0].rsplit("_", 0)
-    bounds, crs, height, width = get_metadata_from_tif(KEY)
+    bounds, crs, height, width = get_metadata_from_tif(PATH_Dataset)
     geom_wgs84 = get_geom_wgs84(bounds, crs)
-    description = get_description(product_id)
     start_datetime, end_datetime = get_datetime(product_id)
-    collection_extent = get_collection_extent(list(geom_wgs84.bounds), start_datetime)
-    summaries = pystac.Summaries({"proj:epsg": [crs.to_epsg()]})
+    COLLECTION_extent = get_collection_extent(list(geom_wgs84.bounds), start_datetime)
+    COLLECTION_summaries = pystac.Summaries({"proj:epsg": [crs.to_epsg()]})
 
     collection = pystac.Collection(
-        stac_extensions=["https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"],
-        id="urban-atlas-building-height",
-        title="Urban Atlas Building Height 10m",
-        description="Urban Atlas building height over capital cities.",
-        keywords=["Buildings", "Building height", "Elevation"],
-        extent=collection_extent,
-        summaries=summaries,
+        stac_extensions=[
+            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+        ],
+        id=COLLECTION_id,
+        title=COLLECTION_title,
+        description=COLLECTION_description,
+        keywords=COLLECTION_keywords,
+        extent=COLLECTION_extent,
+        summaries=COLLECTION_summaries,
         providers=[HOST_AND_LICENSOR],
     )
 

@@ -1,13 +1,15 @@
 from __future__ import annotations
 
 import os
+import xml.etree.ElementTree as ET
 from datetime import datetime
 from typing import Final
 
 import pystac
 import rasterio as rio
 from pyproj import Transformer
-from pystac import Extent, SpatialExtent, TemporalExtent
+from pystac.extensions.projection import ProjectionExtension
+from pystac.link import Link
 from pystac.provider import ProviderRole
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
@@ -16,12 +18,12 @@ from shapely.geometry import Polygon, box, mapping
 # KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/data/AT001_WIEN_UA2012_DHM_V020.tif"
 KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020"
 head, tail = os.path.split(KEY)
-(product_id,product_version) = tail.rsplit("_", 1)
+(product_id, product_version) = tail.rsplit("_", 1)
 
-PATH_Dataset = os.path.join(KEY, "Dataset/"+tail+".tif")
-PATH_QC = os.path.join(KEY, "Dataset/"+tail+".tif")
-PATH_Metadata =
-PATH_Doc =
+PATH_Dataset = os.path.join(KEY, "Dataset/" + tail + ".tif")
+PATH_Doc = os.path.join(KEY, "Doc/" + product_id + "_QC_Report" + product_version + ".pdf")
+PATH_Metadata = os.path.join(KEY, "Metadata/" + product_id + "_metadata_" + product_version + ".xml")
+PATH_Zip = os.path.join(head, tail + ".zip")
 
 HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
@@ -34,6 +36,23 @@ HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     url="https://land.copernicus.eu",
 )
 
+COLLECTION_id = "urban-atlas-building-height"
+
+CLMS_LICENSE: Final[Link] = Link(rel="license", target="https://land.copernicus.eu/en/data-policy")
+
+WORKING_DIR = os.getcwd()
+CLMS_CATALOG_LINK: Final[Link] = Link(
+    rel=pystac.RelType.ROOT, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/clms_catalog.json"))
+)
+COLLECTION_LINK: Final[Link] = Link(
+    rel=pystac.RelType.COLLECTION,
+    target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"stacs/{COLLECTION_id}/{COLLECTION_id}.json")),
+)
+ITEM_PARENT_LINK: Final[Link] = Link(
+    rel=pystac.RelType.PARENT,
+    target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"stacs/{COLLECTION_id}/{COLLECTION_id}.json")),
+)
+
 
 def get_metadata_from_tif(key: str) -> tuple[BoundingBox, CRS, int, int]:
     with rio.open(key) as tif:
@@ -43,6 +62,23 @@ def get_metadata_from_tif(key: str) -> tuple[BoundingBox, CRS, int, int]:
         width = tif.width
     tif.close()
     return (bounds, crs, height, width)
+
+
+def str_to_datetime(datetime_str: str):
+    year, month, day = datetime_str.split("-")
+    return datetime(year=int(year), month=int(month), day=int(day))  # .strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def get_metadata_from_xml(xml: str) -> tuple[datetime, datetime, datetime]:
+    tree = ET.parse(xml)
+    for t in tree.iter("{http://www.opengis.net/gml}beginPosition"):
+        start_datetime = t.text
+    for t in tree.iter("{http://www.opengis.net/gml}endPosition"):
+        end_datetime = t.text
+    for t in tree.iter("{http://www.isotc211.org/2005/gmd}dateStamp"):
+        created = t.find("{http://www.isotc211.org/2005/gco}Date").text
+
+    return (str_to_datetime(start_datetime), str_to_datetime(end_datetime), str_to_datetime(created))
 
 
 def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
@@ -58,57 +94,50 @@ def get_description(product_id: str) -> str:
     return f"{year[2:]} {city.title()} building height"
 
 
-def get_datetime(product_id: str) -> tuple[datetime, datetime]:
-    year = int(product_id.split("_")[2][2:])
-    return (datetime(year=year, month=1, day=1), datetime(year=year, month=12, day=31))
+# def get_item_assets()
 
-
-def get_collection_extent(bbox, start_datetime) -> Extent:
-    spatial_extent = SpatialExtent(bboxes=bbox)
-    temporal_extent = TemporalExtent(intervals=[[start_datetime, None]])
-    return Extent(spatial=spatial_extent, temporal=temporal_extent)
-
-
-def create_asset(asset_key: str) -> pystac.Asset:
-    parameter = asset_key.split("_")[-1].split(".")[0]
-    version = asset_key.split("_")[-3]
-    return pystac.Asset(
-        href=f"s3://{BUCKET}/" + asset_key,
-        media_type=pystac.MediaType.GEOTIFF,
-        title=TITLE_MAP[parameter] + f" {version}",
-        roles=["data"],
-    )
-
-def get_item_assets()
-
-def get_links()
-
+# def get_links()
 
 
 if __name__ == "__main__":
     head, tail = os.path.split(KEY)
     (product_id,) = tail.split(".")[0].rsplit("_", 0)
-    bounds, crs, height, width = get_metadata_from_tif(KEY)
+    bounds, crs, height, width = get_metadata_from_tif(PATH_Dataset)
+    start_datetime, end_datetime, created = get_metadata_from_xml(PATH_Metadata)
     geom_wgs84 = get_geom_wgs84(bounds, crs)
     description = get_description(product_id)
-    start_datetime, end_datetime = get_datetime(product_id)
-    collection_extent = get_collection_extent(list(geom_wgs84.bounds), start_datetime)
-    summaries = pystac.Summaries({"proj:epsg": [crs.to_epsg()]})
 
-    collection = pystac.Collection(
-        stac_extensions=["https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"],
-        id="urban-atlas-building-height",
-        title="Urban Atlas Building Height 10m",
-        description="Urban Atlas building height over capital cities.",
-        keywords=["Buildings", "Building height", "Elevation"],
-        extent=collection_extent,
-        summaries=summaries,
-        providers=[HOST_AND_LICENSOR],
+    item = pystac.Item(
+        stac_extensions=["https://stac-extensions.github.io/projection/v1.1.0/schema.json"],
+        id=tail,
+        geometry=mapping(geom_wgs84),
+        bbox=list(geom_wgs84.bounds),
+        datetime=None,
+        start_datetime=start_datetime,
+        end_datetime=end_datetime,
+        properties={"created": created.strftime("%Y-%m-%dT%H:%M:%SZ"), "description": description},
+        collection=COLLECTION_id,
     )
 
-    collection.set_self_href("scripts/vabh/test_item.json")
-    collection.save_object()
+    # extensions
+    projection = ProjectionExtension.ext(item, add_if_missing=True)
+    projection.epsg = crs.to_epsg()
+    projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
+    projection.shape = [height, width]
+
+    # links
+    links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
+    for link in links:
+        item.links.append(link)
+
+    # # assets
+    # assets = {os.path.split(key)[-1][:-4].lower(): create_asset(key) for key in asset_keys}
+    # for key, asset in assets.items():
+    #     item.add_asset(key, asset)
+
+    # item.set_self_href(os.path.join(KEY, f"{tail}.json"))
+    item.set_self_href("scripts/vabh/test_item.json")
+    item.save_object()
 
 
 # def create_item(aws_session: boto3.Session, bucket: str, tile: str) -> pystac.Item:

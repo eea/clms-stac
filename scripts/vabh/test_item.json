@@ -1,13 +1,70 @@
 {
-  "type": "Collection",
-  "id": "urban-atlas-building-height",
+  "type": "Feature",
   "stac_version": "1.0.0",
-  "description": "Urban Atlas building height over capital cities.",
+  "id": "AT001_WIEN_UA2012_DHM_v020",
+  "properties": {
+    "created": "2017-12-29T00:00:00Z",
+    "description": "2012 Wien building height",
+    "start_datetime": "2011-04-25T00:00:00Z",
+    "end_datetime": "2014-03-05T00:00:00Z",
+    "proj:epsg": 3035,
+    "proj:bbox": [
+      4780170,
+      2793000,
+      4809960,
+      2821690
+    ],
+    "proj:shape": [
+      2869,
+      2979
+    ],
+    "datetime": null
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -20.96981298030872,
+          62.99044383484405
+        ],
+        [
+          -20.96981298030872,
+          63.339366607232876
+        ],
+        [
+          -21.210399013454868,
+          63.339366607232876
+        ],
+        [
+          -21.210399013454868,
+          62.99044383484405
+        ],
+        [
+          -20.96981298030872,
+          62.99044383484405
+        ]
+      ]
+    ]
+  },
   "links": [
     {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
       "rel": "root",
-      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/clms-stac-1/scripts/vabh/test_item.json",
-      "type": "application/json",
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/clms-stac-1/stacs/clms_catalog.json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/clms-stac-1/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "collection",
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/clms-stac-1/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
       "title": "Urban Atlas Building Height 10m"
     },
     {
@@ -16,47 +73,15 @@
       "type": "application/json"
     }
   ],
-  "title": "Urban Atlas Building Height 10m",
-  "extent": {
-    "spatial": {
-      "bbox": [
-        [
-          -21.210399013454868,
-          62.99044383484405,
-          -20.96981298030872,
-          63.339366607232876
-        ]
-      ]
-    },
-    "temporal": {
-      "interval": [
-        [
-          "2012-01-01T00:00:00Z",
-          null
-        ]
-      ]
-    }
-  },
-  "license": "proprietary",
-  "keywords": [
-    "Buildings",
-    "Building height",
-    "Elevation"
+  "assets": {},
+  "bbox": [
+    -21.210399013454868,
+    62.99044383484405,
+    -20.96981298030872,
+    63.339366607232876
   ],
-  "providers": [
-    {
-      "name": "Copernicus Land Monitoring Service",
-      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-      "roles": [
-        "host",
-        "licensor"
-      ],
-      "url": "https://land.copernicus.eu"
-    }
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
-  "summaries": {
-    "proj:epsg": [
-      3035
-    ]
-  }
+  "collection": "urban-atlas-building-height"
 }
