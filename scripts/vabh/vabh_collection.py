@@ -18,11 +18,6 @@ KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020
 head, tail = os.path.split(KEY)
 (product_id,product_version) = tail.rsplit("_", 1)
 
-PATH_Dataset = os.path.join(KEY, "Dataset/"+tail+".tif")
-PATH_QC = os.path.join(KEY, "Dataset/"+tail+".tif")
-PATH_Metadata =
-PATH_Doc =
-
 HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
     description=(
@@ -107,47 +102,5 @@ if __name__ == "__main__":
         providers=[HOST_AND_LICENSOR],
     )
 
-    collection.set_self_href("scripts/vabh/test_item.json")
+    collection.set_self_href("scripts/vabh/test_collection.json")
     collection.save_object()
-
-
-# def create_item(aws_session: boto3.Session, bucket: str, tile: str) -> pystac.Item:
-#     client = aws_session.client("s3")
-#     parameters = client.list_objects(Bucket=bucket, Prefix=tile, Delimiter=".")["CommonPrefixes"]
-#     asset_keys = [parameter["Prefix"] + "tif" for parameter in parameters]
-#     _, tail = os.path.split(asset_keys[0])
-#     product_id = "_".join((tail[:23], tail[29:31]))
-#     bounds, crs, height, width, created = read_metadata_from_s3(bucket, asset_keys[0], aws_session)
-#     geom_wgs84 = get_geom_wgs84(bounds, crs)
-#     description = get_description(product_id)
-#     start_datetime, end_datetime = get_datetime(product_id)
-
-#     # common metadata
-#     item = pystac.Item(
-#         id=product_id,
-#         geometry=mapping(geom_wgs84),
-#         bbox=list(geom_wgs84.bounds),
-#         datetime=None,
-#         start_datetime=start_datetime,
-#         end_datetime=end_datetime,
-#         properties={"created": created.strftime("%Y-%m-%dT%H:%M:%SZ"), "description": description},
-#         collection=COLLECTION_ID,
-#     )
-#     item.common_metadata.providers = [HOST_AND_LICENSOR]
-
-#     # extensions
-#     projection = ProjectionExtension.ext(item, add_if_missing=True)
-#     projection.epsg = crs.to_epsg()
-#     projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
-#     projection.shape = [height, width]
-
-#     # links
-#     links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
-#     for link in links:
-#         item.links.append(link)
-
-#     # assets
-#     assets = {os.path.split(key)[-1][:-4].lower(): create_asset(key) for key in asset_keys}
-#     for key, asset in assets.items():
-#         item.add_asset(key, asset)
-#     return item
