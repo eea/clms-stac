@@ -44,6 +44,7 @@ def create_collection(item_list: list[str]) -> pystac.Collection:
         description=COLLECTION_DESCRIPTION,
         extent=COLLECTION_EXTENT,
         title=COLLECTION_TITLE,
+        stac_extensions=["https://stac-extensions.github.io/projection/v1.1.0/schema.json"],
         keywords=COLLECTION_KEYWORDS,
         providers=[VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR],
         summaries=COLLECTION_SUMMARIES,
