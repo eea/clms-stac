@@ -6,9 +6,12 @@ import os
 from glob import glob
 
 import pystac
+import pystac.extensions
+import pystac.extensions.projection
 from jsonschema import Draft7Validator
 from jsonschema.exceptions import best_match
 from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
+from pystac.extensions.projection import ProjectionExtension
 from referencing import Registry, Resource
 
 from .constants import (
@@ -17,7 +20,6 @@ from .constants import (
     COLLECTION_EXTENT,
     COLLECTION_ID,
     COLLECTION_KEYWORDS,
-    COLLECTION_SUMMARIES,
     COLLECTION_TITLE,
     STAC_DIR,
     TITLE_MAP,
@@ -44,11 +46,33 @@ def create_collection(item_list: list[str]) -> pystac.Collection:
         description=COLLECTION_DESCRIPTION,
         extent=COLLECTION_EXTENT,
         title=COLLECTION_TITLE,
-        stac_extensions=["https://stac-extensions.github.io/projection/v1.1.0/schema.json"],
         keywords=COLLECTION_KEYWORDS,
         providers=[VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR],
-        summaries=COLLECTION_SUMMARIES,
     )
+
+    # summaries
+    summaries = ProjectionExtension.summaries(collection, add_if_missing=True)
+    summaries.epsg = [
+        32620,
+        32621,
+        32622,
+        32625,
+        32626,
+        32627,
+        32628,
+        32629,
+        32630,
+        32631,
+        32632,
+        32633,
+        32634,
+        32635,
+        32636,
+        32637,
+        32638,
+        32738,
+        32740,
+    ]
 
     # extensions
     item_assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
@@ -74,6 +98,6 @@ def create_collection(item_list: list[str]) -> pystac.Collection:
     try:
         error_msg = best_match(validator.iter_errors(collection.to_dict()))
         assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
+        collection.save_object()
     except AssertionError as error:
         LOGGER.error(error)
-    collection.save_object()

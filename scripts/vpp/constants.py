@@ -35,31 +35,6 @@ COLLECTION_KEYWORDS = [
     "plant phenology index",
     "vegetation",
 ]
-COLLECTION_SUMMARIES = pystac.Summaries(
-    {
-        "proj:epsg": [
-            32620,
-            32621,
-            32622,
-            32625,
-            32626,
-            32627,
-            32628,
-            32629,
-            32630,
-            32631,
-            32632,
-            32633,
-            32634,
-            32635,
-            32636,
-            32637,
-            32638,
-            32738,
-            32740,
-        ]
-    }
-)
 COLLECTION_TITLE = "Vegetation Phenology and Productivity Parameters"
 STAC_DIR = "stac_tests"
 TITLE_MAP = {
