@@ -37,50 +37,50 @@
           "oneOf": [
             {
               "items": [
-                { "type": "number", "minimum": -25, "maximum": 45 },
-                { "type": "number", "minimum": 26, "maximum": 72 },
-                { "type": "number", "minimum": -25, "maximum": 45 },
-                { "type": "number", "minimum": 26, "maximum": 72 }
+                { "type": "number", "minimum": -31.86, "maximum": 45.12 },
+                { "type": "number", "minimum": 26.99, "maximum": 72.09 },
+                { "type": "number", "minimum": -31.86, "maximum": 45.12 },
+                { "type": "number", "minimum": 26.99, "maximum": 72.09 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": -62.09, "maximum": -60.11 },
-                { "type": "number", "minimum": 13.46, "maximum": 15.37 },
-                { "type": "number", "minimum": -62.09, "maximum": -60.11 },
-                { "type": "number", "minimum": 13.46, "maximum": 15.37 }
+                { "type": "number", "minimum": -62.09, "maximum": -60.1 },
+                { "type": "number", "minimum": 13.45, "maximum": 15.38 },
+                { "type": "number", "minimum": -62.09, "maximum": -60.1 },
+                { "type": "number", "minimum": 13.45, "maximum": 15.38 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": 44.06, "maximum": 46.03 },
-                { "type": "number", "minimum": -13.67, "maximum": -11.74 },
-                { "type": "number", "minimum": 44.06, "maximum": 46.03 },
-                { "type": "number", "minimum": -13.67, "maximum": -11.74 }
+                { "type": "number", "minimum": 44.07, "maximum": 46.02 },
+                { "type": "number", "minimum": -13.67, "maximum": -11.75 },
+                { "type": "number", "minimum": 44.07, "maximum": 46.02 },
+                { "type": "number", "minimum": -13.67, "maximum": -11.75 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": 55.05, "maximum": 56.15 },
-                { "type": "number", "minimum": -21.79, "maximum": -19.88 },
-                { "type": "number", "minimum": 55.05, "maximum": 56.15 },
-                { "type": "number", "minimum": -21.79, "maximum": -19.88 }
+                { "type": "number", "minimum": 55.06, "maximum": 56.15 },
+                { "type": "number", "minimum": -21.8, "maximum": -19.88 },
+                { "type": "number", "minimum": 55.06, "maximum": 56.15 },
+                { "type": "number", "minimum": -21.8, "maximum": -19.88 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": -62.08, "maximum": -60.07 },
-                { "type": "number", "minimum": 15.27, "maximum": 17.18 },
-                { "type": "number", "minimum": -62.08, "maximum": -60.07 },
-                { "type": "number", "minimum": 15.27, "maximum": 17.18 }
+                { "type": "number", "minimum": -62.08, "maximum": -60.08 },
+                { "type": "number", "minimum": 15.26, "maximum": 17.19 },
+                { "type": "number", "minimum": -62.08, "maximum": -60.08 },
+                { "type": "number", "minimum": 15.26, "maximum": 17.19 }
               ]
             },
             {
               "items": [
-                { "type": "number", "minimum": -55.22, "maximum": -50.9 },
-                { "type": "number", "minimum": 1.7, "maximum": 6.33 },
-                { "type": "number", "minimum": -55.22, "maximum": -50.9 },
-                { "type": "number", "minimum": 1.7, "maximum": 6.33 }
+                { "type": "number", "minimum": -55.21, "maximum": -50.9 },
+                { "type": "number", "minimum": 1.71, "maximum": 6.34 },
+                { "type": "number", "minimum": -55.21, "maximum": -50.9 },
+                { "type": "number", "minimum": 1.71, "maximum": 6.34 }
               ]
             }
           ]

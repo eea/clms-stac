@@ -12,10 +12,10 @@ import rasterio as rio
 from botocore.paginate import PageIterator
 from jsonschema import Draft7Validator
 from jsonschema.exceptions import best_match
-from pyproj import Transformer
 from pystac.extensions.projection import ProjectionExtension
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
+from rasterio.warp import transform_bounds
 from referencing import Registry, Resource
 from shapely.geometry import Polygon, box, mapping
 
@@ -63,11 +63,10 @@ def read_metadata_from_s3(bucket: str, key: str, aws_session: boto3.Session) -> 
 
 
 def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
-    transformer = Transformer.from_crs(crs.to_epsg(), 4326)
-    miny, minx = transformer.transform(bounds.left, bounds.bottom)
-    maxy, maxx = transformer.transform(bounds.right, bounds.top)
-    bbox = (minx, miny, maxx, maxy)
-    return box(*bbox)
+    bbox = rio.coords.BoundingBox(
+        *transform_bounds(crs.to_epsg(), 4326, bounds.left, bounds.bottom, bounds.right, bounds.top)
+    )
+    return box(*(bbox.left, bbox.bottom, bbox.right, bbox.top))
 
 
 def get_description(product_id: str) -> str:
