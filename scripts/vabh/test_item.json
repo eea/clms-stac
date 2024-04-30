@@ -73,7 +73,40 @@
       "type": "application/json"
     }
   ],
-  "assets": {},
+  "assets": {
+    "dataset": {
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/Dataset/AT001_WIEN_UA2012_DHM_v020.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Building Height Dataset",
+      "roles": [
+        "data"
+      ]
+    },
+    "compressed_dataset": {
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020.zip",
+      "type": "application/zip",
+      "title": "Compressed Building Height Metadata",
+      "roles": [
+        "data"
+      ]
+    },
+    "quality_check_report": {
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/Doc/AT001_WIEN_UA2012_DHM_QC_Reportv020.pdf",
+      "type": "application/pdf",
+      "title": "Quality Check Report",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "metadata": {
+      "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/Metadata/AT001_WIEN_UA2012_DHM_metadata_v020.xml",
+      "type": "application/xml",
+      "title": "Building Height Dataset Metadata",
+      "roles": [
+        "metadata"
+      ]
+    }
+  },
   "bbox": [
     -21.210399013454868,
     62.99044383484405,

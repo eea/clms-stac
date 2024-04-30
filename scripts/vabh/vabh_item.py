@@ -25,6 +25,34 @@ PATH_Doc = os.path.join(KEY, "Doc/" + product_id + "_QC_Report" + product_versio
 PATH_Metadata = os.path.join(KEY, "Metadata/" + product_id + "_metadata_" + product_version + ".xml")
 PATH_Zip = os.path.join(head, tail + ".zip")
 
+ASSET_dataset = pystac.Asset(
+    href=PATH_Dataset,
+    media_type=pystac.MediaType.GEOTIFF,
+    title="Building Height Dataset",
+    roles=["data"],
+)
+
+ASSET_quality_check_report = pystac.Asset(
+    href=PATH_Doc,
+    media_type=pystac.MediaType.PDF,
+    title="Quality Check Report",
+    roles=["metadata"],
+)
+
+ASSET_metadata = pystac.Asset(
+    href=PATH_Metadata,
+    media_type=pystac.MediaType.XML,
+    title="Building Height Dataset Metadata",
+    roles=["metadata"],
+)
+
+ASSET_compressed_dataset = pystac.Asset(
+    href=PATH_Zip,
+    media_type="application/zip",
+    title="Compressed Building Height Metadata",
+    roles=["data"],
+)
+
 HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
     description=(
@@ -66,7 +94,7 @@ def get_metadata_from_tif(key: str) -> tuple[BoundingBox, CRS, int, int]:
 
 def str_to_datetime(datetime_str: str):
     year, month, day = datetime_str.split("-")
-    return datetime(year=int(year), month=int(month), day=int(day))  # .strftime("%Y-%m-%dT%H:%M:%SZ")
+    return datetime(year=int(year), month=int(month), day=int(day))
 
 
 def get_metadata_from_xml(xml: str) -> tuple[datetime, datetime, datetime]:
@@ -92,11 +120,6 @@ def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
 def get_description(product_id: str) -> str:
     country, city, year, product, version = product_id.split("_")
     return f"{year[2:]} {city.title()} building height"
-
-
-# def get_item_assets()
-
-# def get_links()
 
 
 if __name__ == "__main__":
@@ -130,53 +153,12 @@ if __name__ == "__main__":
     for link in links:
         item.links.append(link)
 
-    # # assets
-    # assets = {os.path.split(key)[-1][:-4].lower(): create_asset(key) for key in asset_keys}
-    # for key, asset in assets.items():
-    #     item.add_asset(key, asset)
+    # assets
+    item.add_asset("dataset", ASSET_dataset)
+    item.add_asset("quality_check_report", ASSET_quality_check_report)
+    item.add_asset("metadata", ASSET_metadata)
+    item.add_asset("compressed_dataset", ASSET_compressed_dataset)
 
     # item.set_self_href(os.path.join(KEY, f"{tail}.json"))
     item.set_self_href("scripts/vabh/test_item.json")
     item.save_object()
-
-
-# def create_item(aws_session: boto3.Session, bucket: str, tile: str) -> pystac.Item:
-#     client = aws_session.client("s3")
-#     parameters = client.list_objects(Bucket=bucket, Prefix=tile, Delimiter=".")["CommonPrefixes"]
-#     asset_keys = [parameter["Prefix"] + "tif" for parameter in parameters]
-#     _, tail = os.path.split(asset_keys[0])
-#     product_id = "_".join((tail[:23], tail[29:31]))
-#     bounds, crs, height, width, created = read_metadata_from_s3(bucket, asset_keys[0], aws_session)
-#     geom_wgs84 = get_geom_wgs84(bounds, crs)
-#     description = get_description(product_id)
-#     start_datetime, end_datetime = get_datetime(product_id)
-
-#     # common metadata
-#     item = pystac.Item(
-#         id=product_id,
-#         geometry=mapping(geom_wgs84),
-#         bbox=list(geom_wgs84.bounds),
-#         datetime=None,
-#         start_datetime=start_datetime,
-#         end_datetime=end_datetime,
-#         properties={"created": created.strftime("%Y-%m-%dT%H:%M:%SZ"), "description": description},
-#         collection=COLLECTION_ID,
-#     )
-#     item.common_metadata.providers = [HOST_AND_LICENSOR]
-
-#     # extensions
-#     projection = ProjectionExtension.ext(item, add_if_missing=True)
-#     projection.epsg = crs.to_epsg()
-#     projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
-#     projection.shape = [height, width]
-
-#     # links
-#     links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
-#     for link in links:
-#         item.links.append(link)
-
-#     # assets
-#     assets = {os.path.split(key)[-1][:-4].lower(): create_asset(key) for key in asset_keys}
-#     for key, asset in assets.items():
-#         item.add_asset(key, asset)
-#     return item

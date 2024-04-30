@@ -8,6 +8,8 @@ import pystac
 import rasterio as rio
 from pyproj import Transformer
 from pystac import Extent, SpatialExtent, TemporalExtent
+from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
+from pystac.link import Link
 from pystac.provider import ProviderRole
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
@@ -33,6 +35,26 @@ COLLECTION_id = "urban-atlas-building-height"
 COLLECTION_title = "Urban Atlas Building Height 10m"
 COLLECTION_description = "Urban Atlas building height over capital cities."
 COLLECTION_keywords = ["Buildings", "Building height", "Elevation"]
+
+# links
+CLMS_LICENSE: Final[Link] = Link(
+    rel="license",
+    target="https://land.copernicus.eu/en/data-policy",
+    title="Legal notice on the use of CLMS data",
+)
+
+WORKING_DIR = os.getcwd()
+CLMS_CATALOG_LINK: Final[Link] = Link(
+    rel=pystac.RelType.ROOT,
+    target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/clms_catalog.json")),
+    title="CLMS Catalog",
+)
+
+CLMS_PARENT_LINK: Final[Link] = Link(
+    rel=pystac.RelType.PARENT,
+    target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/clms_catalog.json")),
+    title="CLMS Catalog",
+)
 
 
 def get_metadata_from_tif(key: str) -> tuple[BoundingBox, CRS, int, int]:
@@ -91,6 +113,48 @@ if __name__ == "__main__":
         summaries=COLLECTION_summaries,
         providers=[HOST_AND_LICENSOR],
     )
+
+    # add item assets
+    add_item_assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
+    add_item_assets.item_assets = {
+        "dataset": AssetDefinition(
+            {"title": "Building height raster", "media_type": pystac.MediaType.GEOTIFF, "roles": ["data"]}
+        ),
+        "quality_check_report": AssetDefinition(
+            {"title": "Quality check report", "media_type": pystac.MediaType.PDF, "roles": ["metadata"]}
+        ),
+        "metadata": AssetDefinition({"title": "Metadata", "media_type": pystac.MediaType.XML, "roles": ["metadata"]}),
+        "quality_control_report": AssetDefinition(
+            {"title": "Quality control report", "media_type": pystac.MediaType.PDF, "roles": ["metadata"]}
+        ),
+        "pixel_based_info_shp": AssetDefinition(
+            {"title": "Pixel based info shape format", "media_type": "application/octet-stream", "roles": ["metadata"]}
+        ),
+        "pixel_based_info_shx": AssetDefinition(
+            {"title": "Pixel based info shape index", "media_type": "application/octet-stream", "roles": ["metadata"]}
+        ),
+        "pixel_based_info_dbf": AssetDefinition(
+            {"title": "Pixel based info attribute", "media_type": "application/x-dbf", "roles": ["metadata"]}
+        ),
+        "pixel_based_info_prj": AssetDefinition(
+            {
+                "title": "Pixel based info projection description",
+                "media_type": pystac.MediaType.TEXT,
+                "roles": ["metadata"],
+            }
+        ),
+        "pixel_based_info_cpg": AssetDefinition(
+            {"title": "Pixel based info character encoding", "media_type": pystac.MediaType.TEXT, "roles": ["metadata"]}
+        ),
+        "compressed_dataset": AssetDefinition(
+            {"title": "Compressed building height raster", "media_type": "application/zip", "roles": ["data"]}
+        ),
+    }
+
+    # add links
+    collection.links.append(CLMS_LICENSE)
+    collection.links.append(CLMS_CATALOG_LINK)
+    collection.links.append(CLMS_PARENT_LINK)
 
     collection.set_self_href("scripts/vabh/test_collection.json")
     collection.save_object()
