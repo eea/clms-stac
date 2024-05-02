@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 from datetime import datetime
 from typing import Final
@@ -15,6 +16,7 @@ from pystac.link import Link
 from pystac.provider import ProviderRole
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
+from referencing import Registry, Resource
 from shapely.geometry import Polygon, box
 
 # KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/data/AT001_WIEN_UA2012_DHM_V020.tif"
