@@ -26,7 +26,7 @@ from .constants import (
 LOGGER = logging.getLogger(__name__)
 
 
-class CollectionCreationError:
+class CollectionCreationError(Exception):
     pass
 
 
