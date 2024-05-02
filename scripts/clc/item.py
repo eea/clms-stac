@@ -13,6 +13,7 @@ from shapely.geometry import GeometryCollection, box, shape, mapping
 from datetime import datetime, UTC
 
 import rasterio as rio
+import rasterio.warp
 
 from constants import *
 
@@ -119,11 +120,15 @@ def create_item(img_path, root):
     item = pystac.Item(**params)
     
     for asset_file in asset_files:
-        key, asset = create_asset(asset_file, DOM_code=clc_name_elements.get('DOM_code'))
-        item.add_asset(
-            key=key,
-            asset=asset,
-        )
+        try:
+            key, asset = create_asset(asset_file, DOM_code=clc_name_elements.get('DOM_code'))
+            item.add_asset(
+                key=key,
+                asset=asset,
+            )
+        except KeyError as e:
+            print("An error occured:", e)
+
 
     proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace('.', '_')], add_if_missing=True)
     proj_ext.apply(epsg=rio.crs.CRS(img.crs).to_epsg(),
@@ -133,7 +138,8 @@ def create_item(img_path, root):
                    )
 
     
-    item.add_link(CLMS_LICENSE)
+    links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
+    item.add_links(links)
 
     return(item)
 
