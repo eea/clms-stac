@@ -174,5 +174,3 @@ if __name__ == "__main__":
     # validate
     validator = get_stac_validator("./schema/products/uabh.json")
     error_msg = best_match(validator.iter_errors(collection.to_dict()))
-    if error_msg is not None:
-        print(error_msg)

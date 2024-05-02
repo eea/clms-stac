@@ -11,50 +11,24 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
     "proj:epsg": 3035,
-    "proj:bbox": [
-      4780170,
-      2793000,
-      4809960,
-      2821690
-    ],
-    "proj:shape": [
-      2869,
-      2979
-    ],
+    "proj:bbox": [4780170, 2793000, 4809960, 2821690],
+    "proj:shape": [2869, 2979],
     "datetime": null
   },
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          -20.96981298030872,
-          62.99044383484405
-        ],
-        [
-          -20.96981298030872,
-          63.339366607232876
-        ],
-        [
-          -21.210399013454868,
-          63.339366607232876
-        ],
-        [
-          -21.210399013454868,
-          62.99044383484405
-        ],
-        [
-          -20.96981298030872,
-          62.99044383484405
-        ]
+        [-20.96981298030872, 62.99044383484405],
+        [-20.96981298030872, 63.339366607232876],
+        [-21.210399013454868, 63.339366607232876],
+        [-21.210399013454868, 62.99044383484405],
+        [-20.96981298030872, 62.99044383484405]
       ]
     ]
   },
@@ -89,39 +63,29 @@
       "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/Dataset/AT001_WIEN_UA2012_DHM_v020.tif",
       "type": "image/tiff; application=geotiff",
       "title": "Building Height Dataset",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "quality_check_report": {
       "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/Doc/AT001_WIEN_UA2012_DHM_QC_Reportv020.pdf",
       "type": "application/pdf",
       "title": "Quality Check Report",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "metadata": {
       "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/Metadata/AT001_WIEN_UA2012_DHM_metadata_v020.xml",
       "type": "application/xml",
       "title": "Building Height Dataset Metadata",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "compressed_dataset": {
       "href": "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020.zip",
       "type": "application/zip",
       "title": "Compressed Building Height Metadata",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     }
   },
   "bbox": [
-    -21.210399013454868,
-    62.99044383484405,
-    -20.96981298030872,
+    -21.210399013454868, 62.99044383484405, -20.96981298030872,
     63.339366607232876
   ],
   "stac_extensions": [

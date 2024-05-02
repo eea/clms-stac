@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import os
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ETree
 from datetime import datetime
 from typing import Final
 
@@ -105,7 +105,7 @@ def str_to_datetime(datetime_str: str):
 
 
 def get_metadata_from_xml(xml: str) -> tuple[datetime, datetime, datetime]:
-    tree = ET.parse(xml)
+    tree = ETree.parse(xml)
     for t in tree.iter("{http://www.opengis.net/gml}beginPosition"):
         start_datetime = t.text
     for t in tree.iter("{http://www.opengis.net/gml}endPosition"):
@@ -187,5 +187,3 @@ if __name__ == "__main__":
     # validate
     validator = get_stac_validator("./schema/products/uabh.json")
     error_msg = best_match(validator.iter_errors(item.to_dict()))
-    if error_msg is not None:
-        print(error_msg)
