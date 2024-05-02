@@ -47,7 +47,7 @@ def create_product_list(start_year: int, end_year: int) -> list[str]:
 def create_page_iterator(aws_session: boto3.Session, bucket: str, prefix: str) -> PageIterator:
     client = aws_session.client("s3")
     paginator = client.get_paginator("list_objects_v2")
-    return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-", MaxKeys=10)
+    return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-")
 
 
 def read_metadata_from_s3(bucket: str, key: str, aws_session: boto3.Session) -> tuple[BoundingBox, CRS, int, int]:

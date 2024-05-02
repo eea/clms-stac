@@ -15,12 +15,11 @@ def main():
     validator = get_stac_validator("schema/products/vpp.json")
     product_list = create_product_list(2017, 2023)
 
-    # remove [:1] for full implementation
-    for product in product_list[:1]:
+    for product in product_list:
         page_iterator = create_page_iterator(AWS_SESSION, BUCKET, product)
         for page in page_iterator:
             tiles = [prefix["Prefix"] for prefix in page["CommonPrefixes"]]
-            with ThreadPoolExecutor(max_workers=10) as executor:
+            with ThreadPoolExecutor(max_workers=100) as executor:
                 list(
                     tqdm(
                         executor.map(
@@ -29,9 +28,6 @@ def main():
                         total=len(tiles),
                     )
                 )
-
-            # remove break for full implementation
-            break
 
 
 if __name__ == "__main__":
