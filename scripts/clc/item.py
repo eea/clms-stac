@@ -14,6 +14,18 @@ from datetime import datetime, UTC
 
 import rasterio as rio
 
+from constants import *
+
+# from .constants import (
+#     DOM_DICT,
+#     TITLE_DICT,
+#     MEDIA_TYPE_DICT,
+#     ROLES_DICT,
+#     ITEM_DESCRIPTION,
+#     CLC_PROVIDER,
+#     ITEM_LICENSE
+# )
+
 def deconstruct_clc_name(filename: str):
     p = re.compile('^(?P<id>[A-Z0-9a-z_]*).(?P<suffix>.*)$')
     m = p.search(os.path.basename(filename))
@@ -120,7 +132,8 @@ def create_item(img_path, root):
                    transform=[_ for _ in img.transform] + [0.0, 0.0, 1.0],
                    )
 
-    license = pystac.link.Link(rel='LICENSE', target="https://land.copernicus.eu/en/data-policy")
-    item.add_link(license)
+    
+    item.add_link(CLMS_LICENSE)
 
     return(item)
+
