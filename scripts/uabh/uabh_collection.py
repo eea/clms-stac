@@ -19,7 +19,6 @@ from rasterio.crs import CRS
 from referencing import Registry, Resource
 from shapely.geometry import Polygon, box
 
-# KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/data/AT001_WIEN_UA2012_DHM_V020.tif"
 KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020"
 head, tail = os.path.split(KEY)
 (product_id, product_version) = tail.rsplit("_", 1)
