@@ -6,6 +6,8 @@ from typing import Final
 
 import pystac
 import rasterio as rio
+from jsonschema import Draft7Validator
+from jsonschema.exceptions import best_match
 from pyproj import Transformer
 from pystac import Extent, SpatialExtent, TemporalExtent
 from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
@@ -24,13 +26,18 @@ PATH_Dataset = os.path.join(KEY, "Dataset/" + tail + ".tif")
 HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
     description=(
-        "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land"
-        " use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of"
-        " users in Europe and across the World in the field of environmental terrestrial applications."
+        "The Copernicus Land Monitoring Service provides "
+        "geographical information on land cover and its "
+        "changes, land use, ground motions, vegetation state, "
+        "water cycle and Earth's surface energy variables to "
+        "a broad range of users in Europe and across the "
+        "World in the field of environmental terrestrial "
+        "applications."
     ),
-    roles=[ProviderRole.HOST, ProviderRole.LICENSOR],
+    roles=[ProviderRole.LICENSOR, ProviderRole.HOST],
     url="https://land.copernicus.eu",
 )
+
 COLLECTION_id = "urban-atlas-building-height"
 COLLECTION_title = "Urban Atlas Building Height 10m"
 COLLECTION_description = "Urban Atlas building height over capital cities."
@@ -86,9 +93,13 @@ def get_collection_extent(bbox, start_datetime) -> Extent:
     return Extent(spatial=spatial_extent, temporal=temporal_extent)
 
 
-# def get_item_assets()
-
-# def get_links()
+def get_stac_validator(product_schema: str) -> Draft7Validator:
+    with open(product_schema, encoding="utf-8") as f:
+        schema = json.load(f)
+    registry = Registry().with_resources(
+        [("http://example.com/schema.json", Resource.from_contents(schema))],
+    )
+    return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
 
 
 if __name__ == "__main__":
@@ -158,3 +169,9 @@ if __name__ == "__main__":
 
     collection.set_self_href("scripts/vabh/test_collection.json")
     collection.save_object()
+
+    # validate
+    validator = get_stac_validator("./schema/products/uabh.json")
+    error_msg = best_match(validator.iter_errors(collection.to_dict()))
+    if error_msg is not None:
+        print(error_msg)

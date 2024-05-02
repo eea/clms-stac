@@ -7,12 +7,15 @@ from typing import Final
 
 import pystac
 import rasterio as rio
+from jsonschema import Draft7Validator
+from jsonschema.exceptions import best_match
 from pyproj import Transformer
 from pystac.extensions.projection import ProjectionExtension
 from pystac.link import Link
 from pystac.provider import ProviderRole
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
+from referencing import Registry, Resource
 from shapely.geometry import Polygon, box, mapping
 
 # KEY = "/Users/xiaomanhuang/pl/ETCDI_STAC/uabh_samples/AT001_WIEN_UA2012_DHM_v020/data/AT001_WIEN_UA2012_DHM_V020.tif"
@@ -56,11 +59,15 @@ ASSET_compressed_dataset = pystac.Asset(
 HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
     description=(
-        "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land"
-        " use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of"
-        " users in Europe and across the World in the field of environmental terrestrial applications."
+        "The Copernicus Land Monitoring Service provides "
+        "geographical information on land cover and its "
+        "changes, land use, ground motions, vegetation state, "
+        "water cycle and Earth's surface energy variables to "
+        "a broad range of users in Europe and across the "
+        "World in the field of environmental terrestrial "
+        "applications."
     ),
-    roles=[ProviderRole.HOST, ProviderRole.LICENSOR],
+    roles=[ProviderRole.LICENSOR, ProviderRole.HOST],
     url="https://land.copernicus.eu",
 )
 
@@ -122,6 +129,15 @@ def get_description(product_id: str) -> str:
     return f"{year[2:]} {city.title()} building height"
 
 
+def get_stac_validator(product_schema: str) -> Draft7Validator:
+    with open(product_schema, encoding="utf-8") as f:
+        schema = json.load(f)
+    registry = Registry().with_resources(
+        [("http://example.com/schema.json", Resource.from_contents(schema))],
+    )
+    return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
+
+
 if __name__ == "__main__":
     head, tail = os.path.split(KEY)
     (product_id,) = tail.split(".")[0].rsplit("_", 0)
@@ -138,9 +154,14 @@ if __name__ == "__main__":
         datetime=None,
         start_datetime=start_datetime,
         end_datetime=end_datetime,
-        properties={"created": created.strftime("%Y-%m-%dT%H:%M:%SZ"), "description": description},
+        properties={
+            "created": created.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "description": description,
+        },
         collection=COLLECTION_id,
     )
+
+    item.common_metadata.providers = [HOST_AND_LICENSOR]
 
     # extensions
     projection = ProjectionExtension.ext(item, add_if_missing=True)
@@ -162,3 +183,9 @@ if __name__ == "__main__":
     # item.set_self_href(os.path.join(KEY, f"{tail}.json"))
     item.set_self_href("scripts/vabh/test_item.json")
     item.save_object()
+
+    # validate
+    validator = get_stac_validator("./schema/products/uabh.json")
+    error_msg = best_match(validator.iter_errors(item.to_dict()))
+    if error_msg is not None:
+        print(error_msg)
