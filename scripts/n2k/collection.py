@@ -26,6 +26,10 @@ from .constants import (
 LOGGER = logging.getLogger(__name__)
 
 
+class CollectionCreationError:
+    pass
+
+
 def get_stac_validator(product_schema: str) -> Draft7Validator:
     with open(product_schema, encoding="utf-8") as f:
         schema = json.load(f)
@@ -106,36 +110,60 @@ def collect_assets(n2k_root: str) -> list[str]:
     return assets
 
 
-def create_collection(n2k_root: str) -> pystac.Collection:
-    collection = pystac.Collection(
-        id=COLLECTION_ID,
-        description=COLLECTION_DESCRIPTION,
-        extent=COLLECTION_EXTENT,
-        title=COLLECTION_TITLE,
-        keywords=COLLECTION_KEYWORDS,
-        providers=[N2K_HOST_AND_LICENSOR],
-    )
-
-    # summaries
+def add_summaries_to_collection(collection: pystac.Collection, epsg_list: list[int]) -> None:
     summaries = ProjectionExtension.summaries(collection, add_if_missing=True)
-    summaries.epsg = [3035]
+    summaries.epsg = epsg_list
 
-    # links
-    collection.links.append(CLMS_LICENSE)
 
-    # assets
-    assets = collect_assets(n2k_root)
-    for key, asset in assets.items():
+def add_links_to_collection(collection: pystac.Collection, link_list: list[pystac.Link]) -> None:
+    for link in link_list:
+        collection.links.append(link)
+
+
+def add_assets_to_collection(collection: pystac.Collection, asset_dict: dict[str, pystac.Asset]) -> None:
+    for key, asset in asset_dict.items():
         collection.add_asset(key, asset)
-    collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection.id}.json"))
-    catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
-    collection.set_root(catalog)
-    collection.set_parent(catalog)
-    validator = get_stac_validator("schema/products/n2k.json")
+
+
+def create_collection(n2k_root: str) -> pystac.Collection:
     try:
+        collection = pystac.Collection(
+            id=COLLECTION_ID,
+            description=COLLECTION_DESCRIPTION,
+            extent=COLLECTION_EXTENT,
+            title=COLLECTION_TITLE,
+            keywords=COLLECTION_KEYWORDS,
+            providers=[N2K_HOST_AND_LICENSOR],
+        )
+
+        # summaries
+        epsg_list = [3035]
+        add_summaries_to_collection(collection, epsg_list)
+
+        # links
+        link_list = [CLMS_LICENSE]
+        add_links_to_collection(collection, link_list)
+
+        # assets
+        assets = collect_assets(n2k_root)
+        add_assets_to_collection(collection, assets)
+        
+        # update links
+        collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection.id}.json"))
+        catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
+        collection.set_root(catalog)
+        collection.set_parent(catalog)
+    except Exception as error:
+        raise CollectionCreationError(f"Reasom: {error}")
+    return collection
+
+
+def create_n2k_collection(n2k_root: str) -> None:
+    try:
+        collection = create_collection(n2k_root)
+        validator = get_stac_validator("schema/products/n2k.json")
         error_msg = best_match(validator.iter_errors(collection.to_dict()))
         assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
         collection.save_object()
-    except AssertionError as error:
+    except (AssertionError, CollectionCreationError) as error:
         LOGGER.error(error)
-    return collection
