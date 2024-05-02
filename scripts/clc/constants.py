@@ -5,7 +5,7 @@ import pystac
 from pystac.provider import ProviderRole
 
 
-
+WORKING_DIR = os.getcwd()
 STAC_DIR = 'stac_tests'
 
 # Collection
@@ -53,6 +53,9 @@ COLLITAS_ROLES_DICT = {
 }
 
 # Items
+
+CLMS_LICENSE = pystac.link.Link(rel='LICENSE', target="https://land.copernicus.eu/en/data-policy")
+
 DOM_DICT = {
     'GLP': 'Guadeloupe',
     'GUF': 'French Guyana',
@@ -141,3 +144,17 @@ ITEM_DESCRIPTION = ('Corine Land Cover {year} (CLC{year}) is one of the Corine L
                     'mapping guides can be found at https://land.copernicus.eu/user-corner/technical-library/. '
                     'CLC class descriptions can be found at '
                     'https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/.')
+
+
+
+# CLMS_CATALOG_LINK = pystac.link.Link(
+#     rel=pystac.RelType.ROOT, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/clms_catalog.json"))
+# )
+# COLLECTION_LINK = pystac.link.Link(
+#     rel=pystac.RelType.COLLECTION,
+#     target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"stacs/{COLLECTION_ID}/{COLLECTION_ID}.json")),
+# )
+# ITEM_PARENT_LINK = pystac.link.Link(
+#     rel=pystac.RelType.PARENT,
+#     target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"stacs/{COLLECTION_ID}/{COLLECTION_ID}.json")),
+# )
