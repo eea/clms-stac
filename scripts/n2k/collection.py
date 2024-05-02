@@ -147,7 +147,7 @@ def create_collection(n2k_root: str) -> pystac.Collection:
         # assets
         assets = collect_assets(n2k_root)
         add_assets_to_collection(collection, assets)
-        
+
         # update links
         collection.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection.id}.json"))
         catalog = pystac.read_file(f"{WORKING_DIR}/{STAC_DIR}/clms_catalog.json")
