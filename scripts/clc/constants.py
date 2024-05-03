@@ -5,7 +5,7 @@ import pystac
 from pystac.provider import ProviderRole
 
 
-os.chdir('x:\\projects\\ETC-DI\\Task_18\\clms-stac')
+# os.chdir('x:\\projects\\ETC-DI\\Task_18\\clms-stac')
 WORKING_DIR = os.getcwd()
 
 STAC_DIR = 'stac_tests'
@@ -149,14 +149,3 @@ ITEM_DESCRIPTION = ('Corine Land Cover {year} (CLC{year}) is one of the Corine L
 
 
 
-CLMS_CATALOG_LINK = pystac.link.Link(
-    rel=pystac.RelType.ROOT, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/clms_catalog.json"))
-)
-COLLECTION_LINK = pystac.link.Link(
-    rel=pystac.RelType.COLLECTION,
-    target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")),
-)
-ITEM_PARENT_LINK = pystac.link.Link(
-    rel=pystac.RelType.PARENT,
-    target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")),
-)

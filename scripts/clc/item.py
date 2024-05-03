@@ -17,17 +17,20 @@ import rasterio as rio
 import rasterio.warp
 from rasterio.warp import Resampling
 
-from constants import *
+# from .constants import *
 
-# from .constants import (
-#     DOM_DICT,
-#     TITLE_DICT,
-#     MEDIA_TYPE_DICT,
-#     ROLES_DICT,
-#     ITEM_DESCRIPTION,
-#     CLC_PROVIDER,
-#     ITEM_LICENSE
-# )
+from .constants import (
+    DOM_DICT,
+    TITLE_DICT,
+    MEDIA_TYPE_DICT,
+    ROLES_DICT,
+    ITEM_DESCRIPTION,
+    CLC_PROVIDER,
+    CLMS_LICENSE,
+    WORKING_DIR,
+    STAC_DIR,
+    COLLECTION_ID
+)
 
 def deconstruct_clc_name(filename: str):
     p = re.compile('^(?P<id>[A-Z0-9a-z_]*).(?P<suffix>.*)$')
@@ -89,11 +92,11 @@ def get_asset_files(path: str, clc_name: str) -> list[str]:
 
     return(asset_files)
  
-def project_bbox(img: rio.open, dst_crs: rio.CRS = rio.CRS.from_epsg(4326)) -> tuple[float]:
-    bbox = rio.warp.transform_bounds(img.crs, dst_crs, *img.bounds)
+def project_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS = rio.CRS.from_epsg(4326)) -> tuple[float]:
+    bbox = rio.warp.transform_bounds(src.crs, dst_crs, *src.bounds)
     return(bbox)
 
-def project_data_window_bbox(src: rio.open, dst_crs: rio.CRS = rio.CRS.from_epsg(4326), dst_resolution: tuple = (0.25, 0.25)) -> tuple[float]:
+def project_data_window_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS = rio.CRS.from_epsg(4326), dst_resolution: tuple = (0.25, 0.25)) -> tuple[float]:
      data, transform = rio.warp.reproject(source=src.read(),
                                           src_transform=src.transform,
                                           src_crs=src.crs,
@@ -153,7 +156,18 @@ def create_item(img_path: str, root: str) -> pystac.Item:
                    transform=[_ for _ in img.transform] + [0.0, 0.0, 1.0],
                    )
 
-    
+    CLMS_CATALOG_LINK = pystac.link.Link(
+        rel=pystac.RelType.ROOT, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/clms_catalog.json"))
+    )
+    COLLECTION_LINK = pystac.link.Link(
+        rel=pystac.RelType.COLLECTION,
+        target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")),
+    )
+    ITEM_PARENT_LINK = pystac.link.Link(
+        rel=pystac.RelType.PARENT,
+        target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")),
+    )
+        
     links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
     item.add_links(links)
 

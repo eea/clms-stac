@@ -13,8 +13,21 @@ from datetime import datetime, UTC
 
 import rasterio.warp
 
-from constants import *
-from item import create_item, get_img_paths
+from .constants import (
+    COLLECTION_DESCRIPTION,
+    COLLECTION_ID,
+    COLLECTION_KEYWORDS,
+    COLLECTION_TITLE,
+    COLLECTION_LICENSE,
+    COLLITAS_MEDIA_TYPE_DICT,
+    COLLITAS_ROLES_DICT,
+    COLLITAS_TITLE_DICT,
+    CLMS_LICENSE,
+    WORKING_DIR,
+    STAC_DIR
+)
+
+from .item import create_item, get_img_paths
 
 def proj_epsg_from_item_asset(item):
     for asset_key in item.assets:
@@ -23,7 +36,7 @@ def proj_epsg_from_item_asset(item):
             return(asset.get('proj:epsg'))
         
 
-def create_collection(data_root: str):
+def create_collection() -> pystac.Collection:
 
     sp_extent = pystac.SpatialExtent([None, None, None, None])
     tmp_extent = pystac.TemporalExtent([datetime(1990, 1, 1, microsecond=0, tzinfo=UTC), None])
@@ -55,7 +68,9 @@ def create_collection(data_root: str):
     collection.set_parent(catalog)
 
     collection.save_object()
+    return(collection)
 
+def populate_collection(collection: pystac.Collection, data_root: str) -> pystac.Collection:
     img_paths = get_img_paths(path=data_root)
 
     proj_epsg = []
