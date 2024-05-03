@@ -10,10 +10,12 @@ from pystac.extensions.item_assets import AssetDefinition
 
 from pyproj import Transformer
 from shapely.geometry import GeometryCollection, box, shape, mapping
+
 from datetime import datetime, UTC
 
 import rasterio as rio
 import rasterio.warp
+from rasterio.warp import Resampling
 
 from constants import *
 
@@ -46,7 +48,7 @@ def deconstruct_clc_name(filename: str):
         return(filename_split)
 
 
-def create_asset(filename: str, DOM_code: str):
+def create_asset(filename: str, DOM_code: str) -> pystac.Asset:
     filename_elements = deconstruct_clc_name(filename)
     suffix = filename_elements['suffix'].replace('.', '_')
     
@@ -55,7 +57,7 @@ def create_asset(filename: str, DOM_code: str):
     asset = pystac.Asset(href=filename, title=TITLE_DICT[suffix].format(label=label), media_type=MEDIA_TYPE_DICT[suffix], roles=ROLES_DICT[suffix])
     return(f"{filename_elements['id']}_{suffix}", asset)
 
-def get_img_paths(path: str):    
+def get_img_paths(path: str) -> list[str]:    
     img_paths=[]
     for root, dirs, files in os.walk(path):
         if root.endswith(('DATA', 'French_DOMs')):
@@ -66,7 +68,7 @@ def get_img_paths(path: str):
     return(img_paths)
 
 
-def get_asset_files(path, clc_name):
+def get_asset_files(path: str, clc_name: str) -> list[str]:
 
     clc_name_elements = deconstruct_clc_name(clc_name)
 
@@ -87,12 +89,24 @@ def get_asset_files(path, clc_name):
 
     return(asset_files)
  
-def project_bbox(img, target_epsg=4326):
-    target_crs = rio.crs.CRS.from_epsg(target_epsg)
-    bbox_warped = rio.warp.transform_bounds(img.crs, target_crs, *img.bounds)
-    return(bbox_warped)
+def project_bbox(img: rio.open, dst_crs: rio.CRS = rio.CRS.from_epsg(4326)) -> tuple[float]:
+    bbox = rio.warp.transform_bounds(img.crs, dst_crs, *img.bounds)
+    return(bbox)
 
-def create_item(img_path, root):
+def project_data_window_bbox(src: rio.open, dst_crs: rio.CRS = rio.CRS.from_epsg(4326), dst_resolution: tuple = (0.25, 0.25)) -> tuple[float]:
+     data, transform = rio.warp.reproject(source=src.read(),
+                                          src_transform=src.transform,
+                                          src_crs=src.crs,
+                                          dst_crs=dst_crs,
+                                          dst_nodata=src.nodata,
+                                          dst_resolution=dst_resolution,
+                                          resampling=rio.warp.Resampling.max)
+     
+     data_window = rio.windows.get_data_window(data, nodata=src.nodata)
+     bbox = rio.windows.bounds(data_window, transform=transform)    
+     return(bbox)
+
+def create_item(img_path: str, root: str) -> pystac.Item:
 
     clc_name_elements = deconstruct_clc_name(img_path)
 
@@ -100,13 +114,15 @@ def create_item(img_path, root):
     asset_files = [f for f in asset_files if not f.endswith('aux')]
     year = clc_name_elements.get('reference_year')
     props = {'description': ITEM_DESCRIPTION.format(year=year),
-            'created': None,
-            'providers': CLC_PROVIDER.to_dict(),
+             'created': None,
+             'providers': CLC_PROVIDER.to_dict(),
     }
 
     with rio.open(img_path) as img:
 
-        bbox = project_bbox(img)
+        #bbox = project_bbox(img)
+        bbox = project_data_window_bbox(img)
+
         params = {
             'id': clc_name_elements.get('id'),
             'bbox': bbox,
