@@ -3,7 +3,7 @@ import os
 # from tqdm import tqdm
 from scripts.ibu10m.item import create_ibu10m_item
 
-SAMPLE_DIR = "/Users/joshua.chung/clms-stac/scripts/samples/ibu10m/IBU_2018_010m_al_03035_v010/DATA"
+SAMPLE_DIR = "/Users/joshua.chung/clms-stac/scripts/ibu10m/IBU_2018_010m_al_03035_v010"
 
 
 def matching_files(directory: str):
@@ -36,6 +36,9 @@ def matching_files(directory: str):
 
 
 if __name__ == "__main__":
+    data_dir = SAMPLE_DIR + "/DATA"
+    metadata_fol_path = SAMPLE_DIR + "/Metadata/"
+    metadata_path = metadata_fol_path + os.listdir(metadata_fol_path)[0]
     matching_files_list = matching_files(SAMPLE_DIR)
     for tile_path, worldfile_path, _ in matching_files_list:
-        create_ibu10m_item(tile_path, worldfile_path)
+        create_ibu10m_item(tile_path, worldfile_path, metadata_path)

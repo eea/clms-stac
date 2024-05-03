@@ -1,13 +1,13 @@
-import json
 import os
 from datetime import datetime
 
 import pystac
 import rasterio as rio
-from pyproj import Transformer
+from lxml import etree
+from pyproj import CRS
 from pystac.extensions.projection import ProjectionExtension
 from rasterio.coords import BoundingBox
-from rasterio.crs import CRS
+from rasterio.warp import transform_bounds
 from shapely.geometry import Polygon, box, mapping
 
 from .constants import (
@@ -30,12 +30,20 @@ def read_metadata_from_tiff(tile: str):
     return (bounds, crs, height, width)
 
 
+def read_metadata_from_xml(metadata: str):
+    tree = etree.parse(metadata)
+    root = tree.getroot()
+    date = root.findall('.//{*}CI_DateTypeCode[@codeListValue="creation"]')[0]
+    ci_date = date.getparent().getparent()
+    creation_date = ci_date.find(".//{*}Date")
+    return creation_date.text
+
+
 def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
-    transformer = Transformer.from_crs(crs.to_proj4(), 4326)
-    miny, minx = transformer.transform(bounds.left, bounds.bottom)
-    maxy, maxx = transformer.transform(bounds.right, bounds.top)
-    bbox = (minx, miny, maxx, maxy)
-    return box(*bbox)
+    bbox = rio.coords.BoundingBox(
+        *transform_bounds(crs.to_epsg(), 4326, bounds.left, bounds.bottom, bounds.right, bounds.top)
+    )
+    return box(*(bbox.left, bbox.bottom, bbox.right, bbox.top))
 
 
 def get_description(product_id: str) -> str:
@@ -58,14 +66,15 @@ def create_assets(tile: str, worldfile: str) -> list[list[str, pystac.Asset]]:
     return [[tile_asset_id, tile_asset], [worldfile_asset_id, worldfile_asset], [database_asset_id, database_asset]]
 
 
-def create_item(tile: str, worldfile: str) -> pystac.Item:
+def create_item(tile: str, worldfile: str, metadata: str) -> pystac.Item:
     _, tail = os.path.split(tile)
     product_id, asset = tail.split(".")[0].rsplit("_", 1)
-    bounds, crs, height, width = read_metadata_from_tiff(tile)
+    bounds, _, height, width = read_metadata_from_tiff(tile)
+    crs = CRS("epsg:" + product_id.split("_")[4][1:5])
     geom_wgs84 = get_geom_wgs84(bounds, crs)
     description = get_description(product_id)
     start_datetime, end_datetime = get_datetime(product_id)
-    created = datetime.now().isoformat()
+    created = read_metadata_from_xml(metadata)
 
     # common metadata
     item = pystac.Item(
@@ -97,14 +106,13 @@ def create_item(tile: str, worldfile: str) -> pystac.Item:
     return item
 
 
-def create_ibu10m_item(tile: str, worldfile: str) -> None:
-    item = create_item(tile, worldfile)
-    item_json = item.to_dict()
+def create_ibu10m_item(tile: str, worldfile: str, metadata: str) -> None:
+    item = create_item(tile, worldfile, metadata)
+
     items_dir = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}")
     if not os.path.exists(items_dir):
         os.makedirs(items_dir)
 
     file_path = os.path.join(items_dir, f"{item.id}.json")
-
-    with open(file_path, "w") as f:
-        json.dump(item_json, f, indent=4)
+    item.set_self_href(file_path)
+    item.save_object()
