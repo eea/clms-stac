@@ -23,7 +23,7 @@
       "name": "Copernicus Land Monitoring Service",
       "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
       "roles": ["licensor", "host"],
-      "url": "https://land.copernicus.eu/en"
+      "url": "https://land.copernicus.eu"
     }
   ],
   "extent": {
@@ -31,7 +31,7 @@
       "bbox": [[-16.82, 27.87, 33.17, 66.79]]
     },
     "temporal": {
-      "interval": [["2006-01-01T00:00:00.000Z", null]]
+      "interval": [["2006-01-01T00:00:00Z", null]]
     }
   },
   "assets": {
@@ -59,25 +59,25 @@
       "type": "application/zip",
       "roles": ["data"]
     },
-    "N2K_2018_3035_v010_metadata": {
+    "N2K_2018_3035_v010_xml": {
       "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Metadata\\N2K_2018_3035_v010.xml",
       "title": "Natura 2000 Land Cover/Land Use Status 2018 Metadata",
       "type": "application/xml",
       "roles": ["metadata"]
     },
-    "N2K_2018_3035_v010_arcgis_layer": {
+    "N2K_2018_3035_v010_lyr": {
       "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Symbology\\N2K_LCLU_2018_v1-4-2.lyr",
       "title": "Natura 2000 Land Cover/Land Use Status 2018 ArcGIS Layer File",
       "type": "image/tiff; application=geotiff; profile=layer",
       "roles": ["metadata"]
     },
-    "N2K_2018_3035_v010_qgis_layer": {
+    "N2K_2018_3035_v010_qml": {
       "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Symbology\\N2K_LCLU_2018_v1-4-2.qml",
       "title": "Natura 2000 Land Cover/Land Use Status 2018 QGIS Layer File",
       "type": "image/tiff; application=geotiff; profile=layer",
       "roles": ["metadata"]
     },
-    "N2K_2018_3035_v010_ogc_layer": {
+    "N2K_2018_3035_v010_sld": {
       "href": "Natura2000\\N2K2018\\N2K_2018_3035_v010_fgdb\\Symbology\\N2K_LCLU_2018_v1-4-2.sld",
       "title": "Natura 2000 Land Cover/Land Use Status 2018 OGC Layer File",
       "type": "image/tiff; application=geotiff; profile=layer",
