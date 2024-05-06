@@ -31,7 +31,7 @@
       "name": "Copernicus Land Monitoring Service",
       "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
       "roles": ["licensor", "host"],
-      "url": "https://land.copernicus.eu/en"
+      "url": "https://land.copernicus.eu"
     }
   ],
   "extent": {
@@ -39,29 +39,29 @@
       "bbox": [[-61.906047, -21.482245, 55.935919, 71.409109]]
     },
     "temporal": {
-      "interval": [["2006-01-01T00:00:00.000Z", "2012-12-31T00:00:00.000Z"]]
+      "interval": [["2006-01-01T00:00:00Z", "2012-12-31T00:00:00Z"]]
     }
   },
   "assets": {
-    "eu-hydro_v1p3_user_guide": {
+    "EU-HYDRO_V1p3_User_Guide_pdf": {
       "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\Documentation\\EU-HYDRO_V1p3_User_Guide.pdf",
       "title": "EU Hydro v1.3 user guide",
       "type": "application/pdf",
       "roles": ["metadata"]
     },
-    "how_use_esri_fgdb_in_qgis": {
+    "How_use_ESRI_FGDB_in_QGIS_pdf": {
       "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\Documentation\\How_use_ESRI_FGDB_in_QGIS.pdf",
       "title": "How use ESRI FGDB in QGIS",
       "type": "application/pdf",
       "roles": ["metadata"]
     },
-    "angerman_v013_FGDB": {
+    "angerman_v013_fgdb": {
       "href": "EU_HYDRO_v13\\fgdb\\euhydro_angerman_v013_FGDB\\euhydro_angerman_v013.gdb",
       "title": "Angerman FGDB",
       "type": "application/x-filegdb",
       "roles": ["data"]
     },
-    "angerman_v013_GPKG": {
+    "angerman_v013_gpkg": {
       "href": "EU_HYDRO_v13\\geopackage\\euhydro_angerman_v013.gpkg",
       "title": "Angerman GPKG",
       "type": "application/geopackage+sqlite3",
