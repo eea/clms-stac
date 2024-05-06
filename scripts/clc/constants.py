@@ -21,7 +21,26 @@ COLLECTION_DESCRIPTION = ("The European Commission launched the CORINE (Coordina
 COLLECTION_KEYWORDS =  ["clms", "corine", "derived data", "land cover", "machine learning", "open data"]
 COLLECTION_LICENSE = 'proprietary'
 
-COLLITAS_TITLE_DICT = {
+
+COLLECTION_TITLE_MAP = {
+    'clc_country_coverage': 'Coverage',
+    'clc_file_naming': 'Naming Convention Description',
+    'readme': 'Description',
+}
+
+COLLECTION_MEDIA_TYPE_MAP = {
+    'clc_country_coverage': pystac.MediaType.PDF,
+    'clc_file_naming': pystac.MediaType.TEXT,
+    'readme': pystac.MediaType.TEXT,
+}
+
+COLLECTION_ROLES_MAP = {
+    'clc_country_coverage': ['metadata'],
+    'clc_file_naming': ['metadata'],
+    'readme': ['metadata'],
+}
+
+COLLITAS_TITLE_MAP = {
     'clc_map': 'Corine Land Cover Map',
     'clc_map_statistics': 'Corine Land Cover Map Statistics',
     'clc_map_pyramid': 'Pyramid',
@@ -32,7 +51,7 @@ COLLITAS_TITLE_DICT = {
     'clc_map_metadata': 'Corine Land Cover Map Metadata',
 }
 
-COLLITAS_MEDIA_TYPE_DICT = {
+COLLITAS_MEDIA_TYPE_MAP = {
     'clc_map': pystac.MediaType.COG,
     'clc_map_statistics': pystac.MediaType.XML,
     'clc_map_pyramid': 'image/tiff; application=geotiff; profile=pyramid',
@@ -43,7 +62,7 @@ COLLITAS_MEDIA_TYPE_DICT = {
     'clc_map_metadata': pystac.MediaType.XML,
 }
 
-COLLITAS_ROLES_DICT = {
+COLLITAS_ROLES_MAP = {
     'clc_map': ['data'],
     'clc_map_statistics': ['metadata'],
     'clc_map_pyramid': ['metadata'],
@@ -58,7 +77,7 @@ COLLITAS_ROLES_DICT = {
 
 CLMS_LICENSE = pystac.link.Link(rel='LICENSE', target="https://land.copernicus.eu/en/data-policy")
 
-DOM_DICT = {
+DOM_MAP = {
     'GLP': 'Guadeloupe',
     'GUF': 'French Guyana',
     'MTQ': 'Martinique',
@@ -67,7 +86,7 @@ DOM_DICT = {
     '': 'Europe',
 }
 
-MEDIA_TYPE_DICT = {
+ITEM_MEDIA_TYPE_MAP = {
     'tif': pystac.MediaType.COG,
     'tif_xml': pystac.MediaType.XML,
     'tif_aux_xml': pystac.MediaType.XML,
@@ -81,7 +100,7 @@ MEDIA_TYPE_DICT = {
     'readme_txt': pystac.MediaType.TEXT,
 }
 
-ROLES_DICT = {
+ITEM_ROLES_MAP = {
     'tif': ['data', 'visual'],
     'tif_xml': ['metadata'],
     'tif_aux_xml': ['metadata'],
@@ -95,7 +114,7 @@ ROLES_DICT = {
     'readme_txt': ['metadata'],
 }
 
-TITLE_DICT = {
+ITEM_TITLE_MAP = {
     'tif': 'Single Band Land Classification {label}',
     'tif_xml': 'TIFF Metadata {label}',
     'tif_aux_xml': 'TIFF Statistics {label}',
