@@ -20,10 +20,10 @@ from rasterio.warp import Resampling
 # from .constants import *
 
 from .constants import (
-    DOM_DICT,
-    TITLE_DICT,
-    MEDIA_TYPE_DICT,
-    ROLES_DICT,
+    DOM_MAP,
+    ITEM_TITLE_MAP,
+    ITEM_MEDIA_TYPE_MAP,
+    ITEM_ROLES_MAP,
     ITEM_DESCRIPTION,
     CLC_PROVIDER,
     CLMS_LICENSE,
@@ -32,8 +32,9 @@ from .constants import (
     COLLECTION_ID
 )
 
+
 def deconstruct_clc_name(filename: str) -> dict[str]:
-    p = re.compile('^(?P<id>[A-Z0-9a-z_]*).(?P<suffix>.*)$')
+    p = re.compile('^(?P<id>[A-Z0-9a-z_-]*)\\.(?P<suffix>.*)$')
     m = p.search(os.path.basename(filename))
 
     filename_split = m.groupdict()
@@ -51,8 +52,8 @@ def deconstruct_clc_name(filename: str) -> dict[str]:
         return filename_split
 
 
-def create_asset(filename: str, DOM_code: str) -> pystac.Asset:
-    filename_elements = deconstruct_clc_name(filename)
+def create_item_asset(asset_file: str, DOM_code: str) -> pystac.Asset:
+    filename_elements = deconstruct_clc_name(asset_file)
     id = filename_elements['id']
     suffix = filename_elements['suffix'].replace('.', '_')
     
@@ -63,9 +64,9 @@ def create_asset(filename: str, DOM_code: str) -> pystac.Asset:
     else:
         key = suffix
 
-    label = DOM_DICT[DOM_code]
+    label = DOM_MAP[DOM_code]
     
-    asset = pystac.Asset(href=filename, title=TITLE_DICT[key].format(label=label), media_type=MEDIA_TYPE_DICT[key], roles=ROLES_DICT[key])
+    asset = pystac.Asset(href=asset_file, title=ITEM_TITLE_MAP[key].format(label=label), media_type=ITEM_MEDIA_TYPE_MAP[key], roles=ITEM_ROLES_MAP[key])
     return f"{filename_elements['id']}_{suffix}", asset
 
 def get_img_paths(data_root: str) -> list[str]:    
@@ -79,7 +80,7 @@ def get_img_paths(data_root: str) -> list[str]:
     return img_paths
 
 
-def get_asset_files(data_root: str, img_path: str) -> list[str]:
+def get_item_asset_files(data_root: str, img_path: str) -> list[str]:
 
     clc_name_elements = deconstruct_clc_name(img_path)
     id = clc_name_elements['id']
@@ -129,7 +130,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     clc_name_elements = deconstruct_clc_name(img_path)
 
-    asset_files = get_asset_files(data_root, img_path)
+    asset_files = get_item_asset_files(data_root, img_path)
     asset_files = [f for f in asset_files if not f.endswith('aux')]
     year = clc_name_elements.get('reference_year')
     props = {'description': ITEM_DESCRIPTION.format(year=year),
@@ -139,8 +140,10 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     with rio.open(img_path) as img:
 
-        #bbox = project_bbox(img)
-        bbox = project_data_window_bbox(img)
+        if clc_name_elements['DOM_code']:
+            bbox = project_bbox(img)
+        else:
+            bbox = project_data_window_bbox(img)
 
         params = {
             'id': clc_name_elements.get('id'),
@@ -156,7 +159,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
     
     for asset_file in asset_files:
         try:
-            key, asset = create_asset(asset_file, DOM_code=clc_name_elements.get('DOM_code'))
+            key, asset = create_item_asset(asset_file, DOM_code=clc_name_elements.get('DOM_code'))
             item.add_asset(
                 key=key,
                 asset=asset,
