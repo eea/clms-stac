@@ -19,22 +19,56 @@ from .constants import (
     COLLECTION_KEYWORDS,
     COLLECTION_TITLE,
     COLLECTION_LICENSE,
-    COLLITAS_MEDIA_TYPE_DICT,
-    COLLITAS_ROLES_DICT,
-    COLLITAS_TITLE_DICT,
+    COLLECTION_TITLE_MAP,
+    COLLECTION_MEDIA_TYPE_MAP,
+    COLLECTION_ROLES_MAP,
+    COLLITAS_MEDIA_TYPE_MAP,
+    COLLITAS_ROLES_MAP,
+    COLLITAS_TITLE_MAP,
     CLMS_LICENSE,
     WORKING_DIR,
     STAC_DIR
 )
 
-from .item import create_item, get_img_paths
+from .item import create_item, get_img_paths, deconstruct_clc_name
 
-def proj_epsg_from_item_asset(item):
+def proj_epsg_from_item_asset(item: pystac.Item) -> int:
     for asset_key in item.assets:
         asset = item.assets[asset_key].to_dict()
         if 'proj:epsg' in asset.keys():
-            return(asset.get('proj:epsg'))
-        
+            return asset.get('proj:epsg')
+
+def get_collection_asset_files(data_root: str) -> list[str]:
+
+    asset_files = []
+    
+    for root, _, files in os.walk(data_root):
+
+        for file in files:
+
+            if ((file.startswith('clc-country-coverage') and file.endswith('pdf')) or
+                file.startswith('clc-file-naming-convention') or 
+                (file.startswith('readme') and file.endswith('raster.txt'))):
+
+                asset_files.append(os.path.join(root, file))
+
+    return asset_files
+
+def create_collection_asset(asset_file: str) -> pystac.Asset:
+
+    filename_elements = deconstruct_clc_name(asset_file)
+    id = filename_elements['id']
+    
+    if id.startswith('clc-file-naming'):
+        key = 'clc_file_naming'
+    elif id.startswith('clc-country-coverage'):
+        key = 'clc_country_coverage'
+    elif id.startswith('readme'):
+        key = 'readme'
+    
+    asset = pystac.Asset(href=asset_file, title=COLLECTION_TITLE_MAP[key], media_type=COLLECTION_MEDIA_TYPE_MAP[key], roles=COLLECTION_ROLES_MAP[key])
+    return id, asset
+
 
 def create_collection() -> pystac.Collection:
 
@@ -54,10 +88,10 @@ def create_collection() -> pystac.Collection:
 
     item_assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
     item_assets.item_assets = {
-        key: AssetDefinition({"title": COLLITAS_TITLE_DICT[key].format(label='').strip(),
-                            "media_type": COLLITAS_MEDIA_TYPE_DICT[key], 
-                            "roles": COLLITAS_ROLES_DICT[key]})
-        for key in COLLITAS_TITLE_DICT
+        key: AssetDefinition({"title": COLLITAS_TITLE_MAP[key].format(label='').strip(),
+                              "media_type": COLLITAS_MEDIA_TYPE_MAP[key], 
+                              "roles": COLLITAS_ROLES_MAP[key]})
+        for key in COLLITAS_TITLE_MAP
     }
 
     collection.add_link(CLMS_LICENSE)
@@ -66,12 +100,12 @@ def create_collection() -> pystac.Collection:
 
     collection.set_root(catalog)
     collection.set_parent(catalog)
-
     collection.save_object()
-    return(collection)
+
+    return collection
 
 def populate_collection(collection: pystac.Collection, data_root: str) -> pystac.Collection:
-    img_paths = get_img_paths(path=data_root)
+    img_paths = get_img_paths(data_root)
 
     proj_epsg = []
     for img_path in img_paths:
@@ -81,13 +115,23 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         item_epsg = proj_epsg_from_item_asset(item)
         proj_epsg.append(item_epsg)
 
-        item.set_self_href(os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id}/{item.id}.json"))
+        DOM_code = deconstruct_clc_name(img_path).get('DOM_code')
+        href = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id.removesuffix(f'_FR_{DOM_code}')}/{item.id}.json")
+        item.set_self_href(href)
         item.save_object()
+
+    asset_files = get_collection_asset_files(data_root)
+
+    for asset_file in asset_files:
+        key, asset = create_collection_asset(asset_file)
+        collection.assets |= {key: asset}
+        # if not key in collection.assets.keys():
+        #     collection.add_asset(key, asset)
 
     collection.make_all_asset_hrefs_relative()
     collection.update_extent_from_items()
     ProjectionExtension.add_to(collection)
     collection.summaries = pystac.Summaries({'proj:epsg': list(set(proj_epsg))})
-
     collection.save_object()
-    return(collection)
+
+    return collection
