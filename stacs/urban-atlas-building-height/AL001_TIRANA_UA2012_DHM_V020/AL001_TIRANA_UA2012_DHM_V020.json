@@ -68,25 +68,25 @@
     }
   ],
   "assets": {
-    "dataset": {
+    "AL001_TIRANA_UA2012_DHM_V020_tif": {
       "href": "BuildingHeight\\USBBH2012\\Dataset\\AL001_TIRANA_UA2012_DHM_V020.tif",
       "type": "image/tiff; application=geotiff",
       "title": "Building Height Dataset",
       "roles": ["data"]
     },
-    "quality_check_report": {
+    "AL001_TIRANA_UA2012_DHM_QC_20191031_v020_pdf": {
       "href": "BuildingHeight\\USBBH2012\\Doc\\AL001_TIRANA_UA2012_DHM_QC_20191031_v020.pdf",
       "type": "application/pdf",
       "title": "Quality Check Report",
       "roles": ["metadata"]
     },
-    "metadata": {
+    "AL001_TIRANA_UA2012_DHM_metadata_v020_xml": {
       "href": "BuildingHeight\\USBBH2012\\Metadata\\AL001_TIRANA_UA2012_DHM_metadata_v020.xml",
       "type": "application/xml",
       "title": "Building Height Dataset Metadata",
       "roles": ["metadata"]
     },
-    "compressed_dataset": {
+    "AL001_TIRANA_UA2012_DHM_v020_zip": {
       "href": "BuildingHeight\\USBBH2012\\AL001_TIRANA_UA2012_DHM_v020.zip",
       "type": "application/zip",
       "title": "Compressed Building Height Metadata",

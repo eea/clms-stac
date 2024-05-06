@@ -142,17 +142,8 @@
         },
         "assets": {
           "type": "object",
-          "minProperties": 4,
-          "maxProperties": 6,
           "propertyNames": {
-            "anyOf": [
-              { "const": "dataset" },
-              { "const": "quality_check_report" },
-              { "const": "metadata" },
-              { "const": "quality_control_report" },
-              { "type": "string", "pattern": "^pixel_based_info" },
-              { "const": "compressed_dataset" }
-            ]
+            "pattern": "^(A[LT]|B[AEG]|C[HYZ]|D[EK]|E[ELS]|F[IR]|H[RU]|I[EST]|L[TUV]|M[EKT]|N[LO]|P[LT]|R[OS]|S[EIK]|TR|UK|XK)[0-9]{3}"
           }
         }
       }
