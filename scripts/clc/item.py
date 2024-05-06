@@ -46,54 +46,67 @@ def deconstruct_clc_name(filename: str) -> dict[str]:
     m = p.search(filename_split['id'])
     
     if m:
-        return(m.groupdict() | filename_split)
+        return m.groupdict() | filename_split
     else:
-        return(filename_split)
+        return filename_split
 
 
 def create_asset(filename: str, DOM_code: str) -> pystac.Asset:
     filename_elements = deconstruct_clc_name(filename)
+    id = filename_elements['id']
     suffix = filename_elements['suffix'].replace('.', '_')
     
+    if id.startswith('readme'):
+        key = 'readme_' + suffix
+    elif id.endswith('QGIS'):
+        key = 'legend_' + suffix
+    else:
+        key = suffix
+
     label = DOM_DICT[DOM_code]
     
-    asset = pystac.Asset(href=filename, title=TITLE_DICT[suffix].format(label=label), media_type=MEDIA_TYPE_DICT[suffix], roles=ROLES_DICT[suffix])
-    return(f"{filename_elements['id']}_{suffix}", asset)
+    asset = pystac.Asset(href=filename, title=TITLE_DICT[key].format(label=label), media_type=MEDIA_TYPE_DICT[key], roles=ROLES_DICT[key])
+    return f"{filename_elements['id']}_{suffix}", asset
 
-def get_img_paths(path: str) -> list[str]:    
+def get_img_paths(data_root: str) -> list[str]:    
     img_paths=[]
-    for root, dirs, files in os.walk(path):
+    for root, _, files in os.walk(data_root):
         if root.endswith(('DATA', 'French_DOMs')):
             for file in files:
                 if file.endswith('.tif'):
                     img_paths.append(os.path.join(root, file))
 
-    return(img_paths)
+    return img_paths
 
 
-def get_asset_files(path: str, clc_name: str) -> list[str]:
+def get_asset_files(data_root: str, img_path: str) -> list[str]:
 
-    clc_name_elements = deconstruct_clc_name(clc_name)
+    clc_name_elements = deconstruct_clc_name(img_path)
     id = clc_name_elements['id']
     dom_code = clc_name_elements['DOM_code']
 
     asset_files = []
     
-    for root, _, files in os.walk(path):
+    for root, _, files in os.walk(data_root):
         if not dom_code and 'French_DOMs' in root:
+           continue
+
+        if dom_code and 'Legend' in root and not 'French_DOMs' in root:
             continue
         
-        if dom_code and ('Legend' in root and not 'French_DOMs' in root):
+        if not 'U{update_campaign}_{theme}{reference_year}_V{release_year}'.format(**clc_name_elements).lower() in root:
             continue
-        
+    
         for file in files:
+
             if (file.startswith(id + '.') or 
-                file.endswith((f'{dom_code}.tif.lyr', 'QGIS.txt',)) and id.lower() in root or
+                file.endswith(f'{dom_code}.tif.lyr') or 
+                file.endswith('QGIS.txt',) or 
                 file == f'readme_{id}.txt'):
 
                 asset_files.append(os.path.join(root, file))
 
-    return(asset_files)
+    return asset_files
  
 def project_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS = rio.CRS.from_epsg(4326)) -> tuple[float]:
     bbox = rio.warp.transform_bounds(src.crs, dst_crs, *src.bounds)
@@ -110,13 +123,13 @@ def project_data_window_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS = rio.C
      
      data_window = rio.windows.get_data_window(data, nodata=src.nodata)
      bbox = rio.windows.bounds(data_window, transform=transform)    
-     return(bbox)
+     return bbox
 
-def create_item(img_path: str, root: str) -> pystac.Item:
+def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     clc_name_elements = deconstruct_clc_name(img_path)
 
-    asset_files = get_asset_files(root, clc_name=clc_name_elements['id'])
+    asset_files = get_asset_files(data_root, img_path)
     asset_files = [f for f in asset_files if not f.endswith('aux')]
     year = clc_name_elements.get('reference_year')
     props = {'description': ITEM_DESCRIPTION.format(year=year),
@@ -174,5 +187,5 @@ def create_item(img_path: str, root: str) -> pystac.Item:
     links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
     item.add_links(links)
 
-    return(item)
+    return item
 
