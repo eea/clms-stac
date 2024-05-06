@@ -8,7 +8,7 @@ from pystac.provider import ProviderRole
 
 CLMS_LICENSE: Final[Link] = Link(rel="license", target="https://land.copernicus.eu/en/data-policy")
 COLLECTION_ID = "imperviousness-built-up-10m"
-COLLECTION_TITLE = "Vegetation Phenology and Productivity Parameters"
+COLLECTION_TITLE = "High Resolution Layer Imperviousness Built-up 10m"
 COLLECTION_DESCRIPTION = (
     "The Impervious Built-up layer is a thematic product showing the binary information of building (class 1)"
     " and no building (class 0) within the sealing outline derived from the IMD 2018 for the period 2018 for the"
@@ -27,6 +27,12 @@ COLLECTION_KEYWORDS = [
     "Land cover",
     "Buildings",
 ]
+COLLECTION_SUMMARIES = pystac.Summaries({"proj:epsg": [3035]})
+TITLE_MAP = {
+    "builtup_map": ["Map", pystac.MediaType.GEOTIFF, "data"],
+    "builtup_map_database": ["Map Database", "application/dbf", "metadata"],
+    "builtup_map_worldfile": ["Map World File", pystac.MediaType.TEXT, "metadata"],
+}
 IBU10M_HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
     description=(
