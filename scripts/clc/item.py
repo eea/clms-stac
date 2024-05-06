@@ -32,7 +32,7 @@ from .constants import (
     COLLECTION_ID
 )
 
-def deconstruct_clc_name(filename: str):
+def deconstruct_clc_name(filename: str) -> dict[str]:
     p = re.compile('^(?P<id>[A-Z0-9a-z_]*).(?P<suffix>.*)$')
     m = p.search(os.path.basename(filename))
 
@@ -74,20 +74,23 @@ def get_img_paths(path: str) -> list[str]:
 def get_asset_files(path: str, clc_name: str) -> list[str]:
 
     clc_name_elements = deconstruct_clc_name(clc_name)
+    id = clc_name_elements['id']
+    dom_code = clc_name_elements['DOM_code']
 
     asset_files = []
     
-    for root, dirs, files in os.walk(path):
-        if not clc_name_elements['DOM_code'] and 'French_DOMs' in root:
+    for root, _, files in os.walk(path):
+        if not dom_code and 'French_DOMs' in root:
             continue
         
-        if clc_name_elements['DOM_code'] and ('Legend' in root and not 'French_DOMs' in root):
+        if dom_code and ('Legend' in root and not 'French_DOMs' in root):
             continue
         
         for file in files:
-            if (file.startswith(clc_name + '.') or 
-                file.endswith((f'{clc_name_elements["DOM_code"]}.tif.lyr', 'QGIS.txt',)) and 
-                clc_name in file):
+            if (file.startswith(id + '.') or 
+                file.endswith((f'{dom_code}.tif.lyr', 'QGIS.txt',)) and id.lower() in root or
+                file == f'readme_{id}.txt'):
+
                 asset_files.append(os.path.join(root, file))
 
     return(asset_files)
