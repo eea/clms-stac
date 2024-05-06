@@ -74,10 +74,11 @@ MEDIA_TYPE_DICT = {
     'tif_ovr': 'image/tiff; application=geotiff; profile=pyramid',
     'tif_vat_cpg': pystac.MediaType.TEXT,
     'tif_vat_dbf': 'application/dbf',
-    'txt': pystac.MediaType.TEXT,
+    'legend_txt': pystac.MediaType.TEXT,
     'tif_lyr': 'image/tiff; application=geotiff; profile=layer',
     'tfw': pystac.MediaType.TEXT,
     'xml': pystac.MediaType.XML,
+    'readme_txt': pystac.MediaType.TEXT,
 }
 
 ROLES_DICT = {
@@ -87,10 +88,11 @@ ROLES_DICT = {
     'tif_ovr': ['metadata'],
     'tif_vat_cpg': ['metadata'],
     'tif_vat_dbf': ['metadata'],
-    'txt': ['metadata'],
+    'legend_txt': ['metadata'],
     'tif_lyr': ['metadata'],
     'tfw': ['metadata'],
     'xml': ['metadata'],
+    'readme_txt': ['metadata'],
 }
 
 TITLE_DICT = {
@@ -100,10 +102,11 @@ TITLE_DICT = {
     'tif_ovr': 'Pyramid {label}',
     'tif_vat_cpg': 'Encoding {label}',
     'tif_vat_dbf': 'Database {label}',
-    'txt': 'Legends {label}',
+    'legend_txt': 'Legends {label}',
     'tif_lyr': 'Legend Layer {label}',
     'tfw': 'World File {label}',
     'xml': 'Single Band Land Classification Metadata {label}',
+    'readme_txt': 'Description {label}',
 }
 
 CLC_PROVIDER = pystac.provider.Provider(
