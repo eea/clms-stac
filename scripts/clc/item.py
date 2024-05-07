@@ -17,7 +17,6 @@ import rasterio as rio
 import rasterio.warp
 from rasterio.warp import Resampling
 
-# from .constants import *
 
 from .constants import (
     DOM_MAP,
@@ -31,6 +30,7 @@ from .constants import (
     STAC_DIR,
     COLLECTION_ID
 )
+
 
 
 def deconstruct_clc_name(filename: str) -> dict[str]:

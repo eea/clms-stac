@@ -23,42 +23,61 @@
     "coordinates": [
       [
         [
-          72.90613675900903,
-          24.28417701147754
+          44.99485809829563,
+          27.163269668344356
         ],
         [
-          72.90613675900903,
-          72.63376966542347
+          44.99485809829563,
+          71.41326966834436
         ],
         [
-          -56.50514190170437,
-          72.63376966542347
+          -31.75514190170437,
+          71.41326966834436
         ],
         [
-          -56.50514190170437,
-          24.28417701147754
+          -31.75514190170437,
+          27.163269668344356
         ],
         [
-          72.90613675900903,
-          24.28417701147754
+          44.99485809829563,
+          27.163269668344356
         ]
       ]
     ]
   },
   "links": [
     {
-      "rel": "LICENSE",
-      "href": "https://land.copernicus.eu/en/data-policy"
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    },
+    {
+      "rel": "root",
+      "href": "../../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "../corine-land-cover-raster.json",
+      "type": "application/json",
+      "title": "CORINE Land Cover Raster"
+    },
+    {
+      "rel": "collection",
+      "href": "../corine-land-cover-raster.json",
+      "type": "application/json",
+      "title": "CORINE Land Cover Raster"
     },
     {
       "rel": "self",
-      "href": "x:/projects/ETC-DI/Task_18/clms-stac/stac_tests/corine-land-cover-raster/U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1.json",
+      "href": "X:/projects/ETC-DI/Task_18/clms-stac/stac_tests/corine-land-cover-raster/U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1.json",
       "type": "application/json"
     }
   ],
   "assets": {
     "U2018_CLC2012_V2020_20u1_tfw": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tfw",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tfw",
       "type": "text/plain",
       "title": "World File Europe",
       "roles": [
@@ -66,7 +85,7 @@
       ]
     },
     "U2018_CLC2012_V2020_20u1_tif": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Single Band Land Classification Europe",
       "proj:epsg": 3035,
@@ -100,7 +119,7 @@
       ]
     },
     "U2018_CLC2012_V2020_20u1_tif_aux_xml": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.aux.xml",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.aux.xml",
       "type": "application/xml",
       "title": "TIFF Statistics Europe",
       "roles": [
@@ -108,7 +127,7 @@
       ]
     },
     "U2018_CLC2012_V2020_20u1_tif_ovr": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.ovr",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.ovr",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "title": "Pyramid Europe",
       "roles": [
@@ -116,7 +135,7 @@
       ]
     },
     "U2018_CLC2012_V2020_20u1_tif_vat_cpg": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.vat.cpg",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.vat.cpg",
       "type": "text/plain",
       "title": "Encoding Europe",
       "roles": [
@@ -124,7 +143,7 @@
       ]
     },
     "U2018_CLC2012_V2020_20u1_tif_vat_dbf": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.vat.dbf",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.vat.dbf",
       "type": "application/dbf",
       "title": "Database Europe",
       "roles": [
@@ -132,15 +151,23 @@
       ]
     },
     "U2018_CLC2012_V2020_20u1_tif_xml": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.xml",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.xml",
       "type": "application/xml",
       "title": "TIFF Metadata Europe",
       "roles": [
         "metadata"
       ]
     },
+    "readme_U2018_CLC2012_V2020_20u1_txt": {
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Documents/readme_U2018_CLC2012_V2020_20u1.txt",
+      "type": "text/plain",
+      "title": "Description Europe",
+      "roles": [
+        "metadata"
+      ]
+    },
     "CLC2018_CLC2012_V2018_20_tif_lyr": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/Legend/CLC2018_CLC2012_V2018_20.tif.lyr",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Legend/CLC2018_CLC2012_V2018_20.tif.lyr",
       "type": "image/tiff; application=geotiff; profile=layer",
       "title": "Legend Layer Europe",
       "roles": [
@@ -148,7 +175,7 @@
       ]
     },
     "CLC2018_CLC2012_V2018_20_QGIS_txt": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/Legend/CLC2018_CLC2012_V2018_20_QGIS.txt",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Legend/CLC2018_CLC2012_V2018_20_QGIS.txt",
       "type": "text/plain",
       "title": "Legends Europe",
       "roles": [
@@ -156,21 +183,30 @@
       ]
     },
     "U2018_CLC2012_V2020_20u1_xml": {
-      "href": "X:/EO/u2018_clc2012_v2020_20u1_raster100m/Metadata/U2018_CLC2012_V2020_20u1.xml",
+      "href": "../CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Metadata/U2018_CLC2012_V2020_20u1.xml",
       "type": "application/xml",
       "title": "Single Band Land Classification Metadata Europe",
       "roles": [
         "metadata"
       ]
+    },
+    "preview": {
+      "href": "https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
+      "type": "image/png",
+      "title": "Single Band Land Classification Thumbnail ",
+      "roles": [
+        "thumbnail"
+      ]
     }
   },
   "bbox": [
-    -56.50514190170437,
-    24.28417701147754,
-    72.90613675900903,
-    72.63376966542347
+    -31.75514190170437,
+    27.163269668344356,
+    44.99485809829563,
+    71.41326966834436
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
-  ]
+  ],
+  "collection": "corine-land-cover-raster"
 }

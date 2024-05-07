@@ -1,17 +1,23 @@
 import os
 import re
 
+import json
+import logging
 import pystac
 import pystac.item
 import pystac.link
 from pystac.provider import ProviderRole
 from pystac.extensions.projection import ProjectionExtension
-
 from pystac.extensions.item_assets import ItemAssetsExtension, AssetDefinition
 
 from datetime import datetime, UTC
 
 import rasterio.warp
+
+#Taken 'as is' from other scripts
+from jsonschema import Draft7Validator
+from jsonschema.exceptions import best_match
+from referencing import Registry, Resource
 
 from .constants import (
     COLLECTION_DESCRIPTION,
@@ -31,6 +37,19 @@ from .constants import (
 )
 
 from .item import create_item, get_img_paths, deconstruct_clc_name
+
+
+LOGGER = logging.getLogger(__name__)
+
+
+#Taken 'as is' from other scripts
+def get_stac_validator(product_schema: str) -> Draft7Validator:
+    with open(product_schema, encoding="utf-8") as f:
+        schema = json.load(f)
+    registry = Registry().with_resources(
+        [("http://example.com/schema.json", Resource.from_contents(schema))],
+    )
+    return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)
 
 def proj_epsg_from_item_asset(item: pystac.Item) -> int:
     for asset_key in item.assets:
@@ -54,7 +73,7 @@ def get_collection_asset_files(data_root: str) -> list[str]:
 
     return asset_files
 
-def create_collection_asset(asset_file: str) -> pystac.Asset:
+def create_collection_asset(asset_file: str) -> tuple[str, pystac.Asset]:
 
     filename_elements = deconstruct_clc_name(asset_file)
     id = filename_elements['id']
@@ -67,6 +86,7 @@ def create_collection_asset(asset_file: str) -> pystac.Asset:
         key = 'readme'
     
     asset = pystac.Asset(href=asset_file, title=COLLECTION_TITLE_MAP[key], media_type=COLLECTION_MEDIA_TYPE_MAP[key], roles=COLLECTION_ROLES_MAP[key])
+    
     return id, asset
 
 
@@ -100,9 +120,12 @@ def create_collection() -> pystac.Collection:
 
     collection.set_root(catalog)
     collection.set_parent(catalog)
+
     collection.save_object()
 
     return collection
+
+
 
 def populate_collection(collection: pystac.Collection, data_root: str) -> pystac.Collection:
     img_paths = get_img_paths(data_root)
@@ -118,6 +141,14 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         DOM_code = deconstruct_clc_name(img_path).get('DOM_code')
         href = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id.removesuffix(f'_FR_{DOM_code}')}/{item.id}.json")
         item.set_self_href(href)
+        
+        validator = get_stac_validator("schema/products/clc.json")
+        error_msg = best_match(validator.iter_errors(item.to_dict()))
+        try:
+            assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."
+        except AssertionError as error:
+            LOGGER.error(error)
+
         item.save_object()
 
     asset_files = get_collection_asset_files(data_root)
@@ -125,13 +156,20 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
     for asset_file in asset_files:
         key, asset = create_collection_asset(asset_file)
         collection.assets |= {key: asset}
-        # if not key in collection.assets.keys():
-        #     collection.add_asset(key, asset)
+
+    
 
     collection.make_all_asset_hrefs_relative()
     collection.update_extent_from_items()
     ProjectionExtension.add_to(collection)
     collection.summaries = pystac.Summaries({'proj:epsg': list(set(proj_epsg))})
+    
+    try:
+        error_msg = best_match(validator.iter_errors(collection.to_dict()))
+        assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
+    except AssertionError as error:
+        LOGGER.error(error)
+    
     collection.save_object()
 
     return collection
