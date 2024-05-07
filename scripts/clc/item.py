@@ -1,6 +1,7 @@
 import os
 import re
 
+import logging
 import pystac
 import pystac.item
 import pystac.link
@@ -31,7 +32,7 @@ from .constants import (
     COLLECTION_ID
 )
 
-
+LOGGER = logging.getLogger(__name__)
 
 def deconstruct_clc_name(filename: str) -> dict[str]:
     filename_split = {
@@ -168,8 +169,8 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
                 key=key,
                 asset=asset,
             )
-        except KeyError as e:
-            print("An error occured:", e)
+        except KeyError as error:
+            LOGGER.error("An error occured:", error)
 
     # TODO: "Thumbnail" was originally put at collection level in the template, while it should perhaps be at item level? Individual previews should be added to each item
     key = 'preview'
