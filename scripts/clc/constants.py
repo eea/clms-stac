@@ -75,7 +75,9 @@ COLLITAS_ROLES_MAP = {
 
 # Items
 
-CLMS_LICENSE = pystac.link.Link(rel='LICENSE', target="https://land.copernicus.eu/en/data-policy")
+CLMS_LICENSE = pystac.link.Link(rel=pystac.RelType.LICENSE,
+                                target="https://land.copernicus.eu/en/data-policy",
+                                title='Legal notice on the use of CLMS data')
 
 DOM_MAP = {
     'GLP': 'Guadeloupe',
