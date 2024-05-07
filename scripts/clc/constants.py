@@ -100,6 +100,7 @@ ITEM_MEDIA_TYPE_MAP = {
     'tfw': pystac.MediaType.TEXT,
     'xml': pystac.MediaType.XML,
     'readme_txt': pystac.MediaType.TEXT,
+    'preview': pystac.MediaType.PNG,
 }
 
 ITEM_ROLES_MAP = {
@@ -114,6 +115,7 @@ ITEM_ROLES_MAP = {
     'tfw': ['metadata'],
     'xml': ['metadata'],
     'readme_txt': ['metadata'],
+    'preview': ['thumbnail'],
 }
 
 ITEM_TITLE_MAP = {
@@ -128,6 +130,7 @@ ITEM_TITLE_MAP = {
     'tfw': 'World File {label}',
     'xml': 'Single Band Land Classification Metadata {label}',
     'readme_txt': 'Description {label}',
+    'preview': 'Single Band Land Classification Thumbnail {label}'
 }
 
 CLC_PROVIDER = pystac.provider.Provider(
