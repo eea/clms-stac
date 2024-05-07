@@ -1,9 +1,18 @@
 import logging
+from glob import glob
 
-from scripts.vpp.collection import create_collection
+from scripts.vpp.collection import create_vpp_collection, get_stac_validator
 from scripts.vpp.constants import COLLECTION_ID, STAC_DIR, WORKING_DIR
 
 LOGGER = logging.getLogger(__name__)
-if __name__ == "__main__":
+
+
+def main():
     logging.basicConfig(filename="create_vpp_collection.log")
-    create_collection(f"{WORKING_DIR}/{STAC_DIR}/{COLLECTION_ID}/**/VPP*.json")
+    item_list = glob(f"{WORKING_DIR}/{STAC_DIR}/{COLLECTION_ID}/**/*.json")
+    validator = get_stac_validator("schema/products/vpp.json")
+    create_vpp_collection(item_list, validator)
+
+
+if __name__ == "__main__":
+    main()
