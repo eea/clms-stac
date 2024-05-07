@@ -40,39 +40,6 @@ COLLECTION_ROLES_MAP = {
     'readme': ['metadata'],
 }
 
-COLLITAS_TITLE_MAP = {
-    'clc_map': 'Corine Land Cover Map',
-    'clc_map_statistics': 'Corine Land Cover Map Statistics',
-    'clc_map_pyramid': 'Pyramid',
-    'clc_map_encoding': 'Encoding',
-    'clc_map_database': 'Database',
-    'clc_map_database_metadata': 'Database Metadata',
-    'clc_map_tif_metadata': 'TIFF Metadata',
-    'clc_map_metadata': 'Corine Land Cover Map Metadata',
-}
-
-COLLITAS_MEDIA_TYPE_MAP = {
-    'clc_map': pystac.MediaType.COG,
-    'clc_map_statistics': pystac.MediaType.XML,
-    'clc_map_pyramid': 'image/tiff; application=geotiff; profile=pyramid',
-    'clc_map_encoding': pystac.MediaType.TEXT,
-    'clc_map_database': 'application/dbf',
-    'clc_map_database_metadata': pystac.MediaType.TEXT,
-    'clc_map_tif_metadata': 'image/tiff; application=geotiff; profile=layer',
-    'clc_map_metadata': pystac.MediaType.XML,
-}
-
-COLLITAS_ROLES_MAP = {
-    'clc_map': ['data'],
-    'clc_map_statistics': ['metadata'],
-    'clc_map_pyramid': ['metadata'],
-    'clc_map_encoding': ['metadata'],
-    'clc_map_database': ['metadata'],
-    'clc_map_database_metadata': ['metadata'],
-    'clc_map_tif_metadata': ['metadata'],
-    'clc_map_metadata': ['metadata'],
-}
-
 # Items
 
 CLMS_LICENSE = pystac.link.Link(rel=pystac.RelType.LICENSE,

@@ -28,9 +28,9 @@ from .constants import (
     COLLECTION_TITLE_MAP,
     COLLECTION_MEDIA_TYPE_MAP,
     COLLECTION_ROLES_MAP,
-    COLLITAS_MEDIA_TYPE_MAP,
-    COLLITAS_ROLES_MAP,
-    COLLITAS_TITLE_MAP,
+    ITEM_TITLE_MAP,
+    ITEM_MEDIA_TYPE_MAP,
+    ITEM_ROLES_MAP,
     CLMS_LICENSE,
     WORKING_DIR,
     STAC_DIR
@@ -108,10 +108,10 @@ def create_collection() -> pystac.Collection:
 
     item_assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
     item_assets.item_assets = {
-        key: AssetDefinition({"title": COLLITAS_TITLE_MAP[key].format(label='').strip(),
-                              "media_type": COLLITAS_MEDIA_TYPE_MAP[key], 
-                              "roles": COLLITAS_ROLES_MAP[key]})
-        for key in COLLITAS_TITLE_MAP
+        f'clc_map_{key}': AssetDefinition({"title": ITEM_TITLE_MAP[key].format(label='').strip(),
+                              "media_type": ITEM_MEDIA_TYPE_MAP[key], 
+                              "roles": ITEM_ROLES_MAP[key]})
+        for key in ITEM_TITLE_MAP
     }
 
     collection.add_link(CLMS_LICENSE)
