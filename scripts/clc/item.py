@@ -34,10 +34,15 @@ from .constants import (
 
 
 def deconstruct_clc_name(filename: str) -> dict[str]:
+    filename_split = {
+        'dirname': os.path.dirname(filename),
+        'basename': os.path.basename(filename)
+    }
     p = re.compile('^(?P<id>[A-Z0-9a-z_-]*)\\.(?P<suffix>.*)$')
-    m = p.search(os.path.basename(filename))
-
-    filename_split = m.groupdict()
+    m = p.search(filename_split['basename'])
+    
+    if m:
+        filename_split |= m.groupdict()        
 
     p = re.compile(("U(?P<update_campaign>[0-9]{4})_"
                     "(?P<theme>CLC|CHA)(?P<reference_year>[0-9]{4})_"
@@ -47,9 +52,9 @@ def deconstruct_clc_name(filename: str) -> dict[str]:
     m = p.search(filename_split['id'])
     
     if m:
-        return m.groupdict() | filename_split
-    else:
-        return filename_split
+        filename_split |= m.groupdict()
+    
+    return filename_split
 
 
 def create_item_asset(asset_file: str, DOM_code: str) -> pystac.Asset:
@@ -127,7 +132,6 @@ def project_data_window_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS = rio.C
      return bbox
 
 def create_item(img_path: str, data_root: str) -> pystac.Item:
-
     clc_name_elements = deconstruct_clc_name(img_path)
 
     asset_files = get_item_asset_files(data_root, img_path)
@@ -167,6 +171,16 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         except KeyError as e:
             print("An error occured:", e)
 
+    # TODO: "Thumbnail" was originally put at collection level in the template, while it should perhaps be at item level? Individual previews should be added to each item
+    key = 'preview'
+    asset = pystac.Asset(
+        href='https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png',
+        title=ITEM_TITLE_MAP['preview'].format(label=clc_name_elements['DOM_code']),
+        media_type=ITEM_MEDIA_TYPE_MAP[key],
+        roles=ITEM_ROLES_MAP[key]
+    )
+
+    item.add_asset(key=key, asset=asset)
 
     proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace('.', '_')], add_if_missing=True)
     proj_ext.apply(epsg=rio.crs.CRS(img.crs).to_epsg(),
