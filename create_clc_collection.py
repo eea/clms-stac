@@ -4,6 +4,7 @@ from scripts.clc.collection import create_collection, populate_collection
 
 LOGGER = logging.getLogger(__name__)
 
+
 def main():
     logging.basicConfig(filename="create_clc_collection.log")
     collection = create_collection()
