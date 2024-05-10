@@ -1,9 +1,9 @@
 import os
+import xml.etree.ElementTree as eTree
 from datetime import datetime
 
 import pystac
 import rasterio as rio
-from lxml import etree
 from pyproj import CRS
 from pystac.extensions.projection import ProjectionExtension
 from rasterio.coords import BoundingBox
@@ -21,7 +21,7 @@ from .constants import (
 )
 
 
-def read_metadata_from_tiff(tile: str):
+def read_metadata_from_tiff(tile: str) -> tuple[BoundingBox, CRS, int, int]:
     with rio.open(tile) as tif:
         bounds = tif.bounds
         crs = tif.crs
@@ -30,12 +30,14 @@ def read_metadata_from_tiff(tile: str):
     return (bounds, crs, height, width)
 
 
-def read_metadata_from_xml(metadata: str):
-    tree = etree.parse(metadata)
+def read_metadata_from_xml(metadata: str) -> str:
+    tree = eTree.parse(metadata)
     root = tree.getroot()
-    date = root.findall('.//{*}CI_DateTypeCode[@codeListValue="creation"]')[0]
-    ci_date = date.getparent().getparent()
-    creation_date = ci_date.find(".//{*}Date")
+    ci_dates = root.findall(".//{*}CI_Date")
+    filtered_ci_date = next(
+        [date for date in ci_dates if date.find('.//{*}CI_DateTypeCode[@codeListValue="creation"]') is not None]
+    )
+    creation_date = filtered_ci_date.find(".//{*}Date").text
     return creation_date.text
 
 
@@ -66,6 +68,46 @@ def create_assets(tile: str, worldfile: str) -> list[list[str, pystac.Asset]]:
     return [[tile_asset_id, tile_asset], [worldfile_asset_id, worldfile_asset], [database_asset_id, database_asset]]
 
 
+def create_core_item(
+    product_id: str,
+    geometry: Polygon,
+    start_datetime: datetime,
+    end_datetime: datetime,
+    created_datetime: datetime,
+    description: str,
+    collection: str,
+) -> pystac.Item:
+    return pystac.Item(
+        id=product_id,
+        geometry=mapping(geometry),
+        bbox=list(geometry.bounds),
+        datetime=None,
+        start_datetime=start_datetime,
+        end_datetime=end_datetime,
+        properties={"created": created_datetime, "description": description},
+        collection=collection,
+    )
+
+
+def add_projection_extension_to_item(
+    item: pystac.Item, product_id: str, bounds: BoundingBox, height: int, width: int
+) -> None:
+    projection = ProjectionExtension.ext(item, add_if_missing=True)
+    projection.epsg = int(product_id.split("_")[4][1:5])
+    projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
+    projection.shape = [height, width]
+
+
+def add_links_to_item(item: pystac.Item, link_list: list[pystac.Link]) -> None:
+    for link in link_list:
+        item.links.append(link)
+
+
+def add_assets_to_item(item: pystac.Item, assets: list[str, pystac.Asset]) -> None:
+    for asset_id, asset in assets:
+        item.add_asset(asset_id, asset)
+
+
 def create_item(tile: str, worldfile: str, metadata: str) -> pystac.Item:
     _, tail = os.path.split(tile)
     product_id, asset = tail.split(".")[0].rsplit("_", 1)
@@ -74,34 +116,23 @@ def create_item(tile: str, worldfile: str, metadata: str) -> pystac.Item:
     geom_wgs84 = get_geom_wgs84(bounds, crs)
     description = get_description(product_id)
     start_datetime, end_datetime = get_datetime(product_id)
-    created = read_metadata_from_xml(metadata)
+    created_datetime = read_metadata_from_xml(metadata)
 
     # common metadata
-    item = pystac.Item(
-        id=product_id,
-        geometry=mapping(geom_wgs84),
-        bbox=list(geom_wgs84.bounds),
-        datetime=None,
-        start_datetime=start_datetime,
-        end_datetime=end_datetime,
-        properties={"created": created, "description": description},
-        collection="imperviousness-built-up-10m",
+    item = create_core_item(
+        product_id, geom_wgs84, start_datetime, end_datetime, created_datetime, description, COLLECTION_ID
     )
 
     # extensions
-    projection = ProjectionExtension.ext(item, add_if_missing=True)
-    projection.epsg = int(product_id.split("_")[4][1:5])
-    projection.bbox = [int(bounds.left), int(bounds.bottom), int(bounds.right), int(bounds.top)]
-    projection.shape = [height, width]
+    add_projection_extension_to_item(item, product_id, bounds, height, width)
 
     # links
-    links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
-    for link in links:
-        item.links.append(link)
+    link_list = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
+    add_links_to_item(item, link_list)
 
     # assets
-    for asset_id, asset in create_assets(tile, worldfile):
-        item.add_asset(asset_id, asset)
+    assets = create_assets(tile, worldfile)
+    add_assets_to_item(item, assets)
 
     return item
 
@@ -110,8 +141,7 @@ def create_ibu10m_item(tile: str, worldfile: str, metadata: str) -> None:
     item = create_item(tile, worldfile, metadata)
 
     items_dir = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}")
-    if not os.path.exists(items_dir):
-        os.makedirs(items_dir)
+    os.makedirs(items_dir, exist_ok=True)
 
     file_path = os.path.join(items_dir, f"{item.id}.json")
     item.set_self_href(file_path)

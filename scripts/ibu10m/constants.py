@@ -28,11 +28,6 @@ COLLECTION_KEYWORDS = [
     "Buildings",
 ]
 COLLECTION_SUMMARIES = pystac.Summaries({"proj:epsg": [3035]})
-TITLE_MAP = {
-    "builtup_map": ["Map", pystac.MediaType.GEOTIFF, "data"],
-    "builtup_map_database": ["Map Database", "application/dbf", "metadata"],
-    "builtup_map_worldfile": ["Map World File", pystac.MediaType.TEXT, "metadata"],
-}
 IBU10M_HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
     name="Copernicus Land Monitoring Service",
     description=(

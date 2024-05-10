@@ -1,44 +1,41 @@
 import os
 
-# from tqdm import tqdm
 from scripts.ibu10m.item import create_ibu10m_item
 
-SAMPLE_DIR = "/Users/joshua.chung/clms-stac/scripts/ibu10m/IBU_2018_010m_al_03035_v010"
+SAMPLE_DIR = "/Users/joshua.chung/clms-stac/sample_data"
 
 
-def matching_files(directory: str):
+def matching_files(directory: str) -> list[list[str]]:
     tif_files = {}
     tfw_files = {}
-    tif_vat_dbf_files = {}
 
     for root, _, files in os.walk(directory):
         for file in files:
             full_path = os.path.join(root, file)
 
-            if file.endswith(".tif.vat.dbf"):
-                base_name = file[:-12]
-                tif_vat_dbf_files[base_name] = full_path
-            else:
-                base_name, extension = os.path.splitext(file)
+            base_name, extension = os.path.splitext(file)
 
-                if extension.lower() == ".tif":
-                    tif_files[base_name] = full_path
-                elif extension.lower() == ".tfw":
-                    tfw_files[base_name] = full_path
+            if extension.lower() == ".tif" and base_name not in tif_files:
+                tif_files[base_name] = full_path
+            elif extension.lower() == ".tfw" and base_name not in tfw_files:
+                tfw_files[base_name] = full_path
 
-    result = []
+    return [(tif_files[base_name], tfw_files[base_name]) for base_name in tif_files if base_name in tfw_files]
 
-    for base_name in tif_files:
-        if base_name in tfw_files and base_name in tif_vat_dbf_files:
-            result.append([tif_files[base_name], tfw_files[base_name], tif_vat_dbf_files[base_name]])
 
-    return result
+def find_metadata(directory: str) -> str:
+    metadata_path = ""
+    for root, _, files in os.walk(directory):
+        for file in files:
+            base_name, extension = os.path.splitext(file)
+            if extension.lower() == ".xml":
+                metadata_path = os.path.join(root, file)
+    return metadata_path
 
 
 if __name__ == "__main__":
-    data_dir = SAMPLE_DIR + "/DATA"
-    metadata_fol_path = SAMPLE_DIR + "/Metadata/"
-    metadata_path = metadata_fol_path + os.listdir(metadata_fol_path)[0]
+    metadata_path = find_metadata(SAMPLE_DIR)
     matching_files_list = matching_files(SAMPLE_DIR)
-    for tile_path, worldfile_path, _ in matching_files_list:
-        create_ibu10m_item(tile_path, worldfile_path, metadata_path)
+    if len(matching_files_list) == len(set(matching_files_list)):
+        for tile_path, worldfile_path in matching_files_list:
+            create_ibu10m_item(tile_path, worldfile_path, metadata_path)
