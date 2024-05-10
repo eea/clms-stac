@@ -100,8 +100,3 @@ target/
 
 # Pycopy
 __pycache__/
-clms-stac.code-workspace
-
-stac_tests/*
-scripts/clc/dev.ipynb
-stac_tests/corine-land-cover-raster/U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1.json
