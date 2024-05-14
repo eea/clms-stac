@@ -9,16 +9,19 @@ WORKING_DIR = os.getcwd()
 STAC_DIR = "stac_tests"
 
 # Collection
-COLLECTION_ID = "corine-land-cover-raster"
-COLLECTION_TITLE = "CORINE Land Cover Raster"
+COLLECTION_ID = "corine-land-cover-plus-raster"
+COLLECTION_TITLE = "CORINE Land Cover Plus Backbone"
 COLLECTION_DESCRIPTION = (
-    "The European Commission launched the CORINE (Coordination of Information on the Environment) "
-    "program in an effort to develop a standardized methodology for producing continent-scale land "
-    "cover, biotope, and air quality maps. The CORINE Land Cover (CLC) product offers a pan-European "
-    "land cover and land use inventory with 44 thematic classes, ranging from broad forested areas "
-    "to individual vineyards."
+    "The CLC+ Backbone constitutes the first component of the CLMS's new 'CLC+ Product Suite', "
+    "which represents a true paradigm change in European land cover/land use (LC/LU) monitoring, "
+    "building on the rich legacy of the European CORINE Land Cover (CLC) flagship product. "
+    "The CLC+ Backbone is an object-oriented, large scale, wall-to-wall (EEA-38 + UK), "
+    "high-resolution (HR) inventory of European LC in a vector format accompanied by a "
+    "raster product layer, providing a consistent pan-European geometric backbone of "
+    "Landscape Objects with limited, but robust thematic detail, on which many other "
+    "applications can be built."
 )
-COLLECTION_KEYWORDS = ["clms", "corine", "derived data", "land cover", "machine learning", "open data"]
+COLLECTION_KEYWORDS = ["Copernicus", "Land Monitoring", "Land Cover", "CLC+"]
 COLLECTION_LICENSE = "proprietary"
 
 
