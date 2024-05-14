@@ -50,9 +50,9 @@ def deconstruct_clc_name(filename: str) -> dict[str]:
     return filename_split
 
 
-def create_item_asset(asset_file: str, DOM_code: str) -> pystac.Asset:
+def create_item_asset(asset_file: str, dom_code: str) -> pystac.Asset:
     filename_elements = deconstruct_clc_name(asset_file)
-    id = filename_elements["id"]
+
     suffix = filename_elements["suffix"].replace(".", "_")
 
     if id.startswith("readme"):
@@ -62,7 +62,7 @@ def create_item_asset(asset_file: str, DOM_code: str) -> pystac.Asset:
     else:
         key = suffix
 
-    label = DOM_MAP[DOM_code]
+    label = DOM_MAP[dom_code]
 
     asset = pystac.Asset(
         href=asset_file,
@@ -86,7 +86,7 @@ def get_img_paths(data_root: str) -> list[str]:
 
 def get_item_asset_files(data_root: str, img_path: str) -> list[str]:
     clc_name_elements = deconstruct_clc_name(img_path)
-    id = clc_name_elements["id"]
+    clc_id = clc_name_elements["id"]
     dom_code = clc_name_elements["DOM_code"]
 
     asset_files = []
@@ -95,33 +95,34 @@ def get_item_asset_files(data_root: str, img_path: str) -> list[str]:
         if not dom_code and "French_DOMs" in root:
             continue
 
-        if dom_code and "Legend" in root and not "French_DOMs" in root:
+        if dom_code and "Legend" in root and "French_DOMs" not in root:
             continue
 
-        if not "U{update_campaign}_{theme}{reference_year}_V{release_year}".format(**clc_name_elements).lower() in root:
+        if "U{update_campaign}_{theme}{reference_year}_V{release_year}".format(**clc_name_elements).lower() not in root:
             continue
 
         for file in files:
             if (
-                file.startswith(id + ".")
-                or file.endswith(f"{dom_code}.tif.lyr")
+                file.startswith(f"{clc_id}.")
                 or file.endswith(
-                    "QGIS.txt",
+                    (
+                        f"{dom_code}.tif.lyr",
+                        "QGIS.txt",
+                    )
                 )
-                or file == f"readme_{id}.txt"
+                or file == f"readme_{clc_id}.txt"
             ):
                 asset_files.append(os.path.join(root, file))
 
     return asset_files
 
 
-def project_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS = rio.CRS.from_epsg(4326)) -> tuple[float]:
-    bbox = rio.warp.transform_bounds(src.crs, dst_crs, *src.bounds)
-    return bbox
+def project_bbox(src: rio.io.DatasetReader, dst_crs: rio.CRS) -> tuple[float]:
+    return rio.warp.transform_bounds(src.crs, dst_crs, *src.bounds)
 
 
 def project_data_window_bbox(
-    src: rio.io.DatasetReader, dst_crs: rio.CRS = rio.CRS.from_epsg(4326), dst_resolution: tuple = (0.25, 0.25)
+    src: rio.io.DatasetReader, dst_crs: rio.CRS, dst_resolution: tuple = (0.25, 0.25)
 ) -> tuple[float]:
     data, transform = rio.warp.reproject(
         source=src.read(),
@@ -134,8 +135,7 @@ def project_data_window_bbox(
     )
 
     data_window = rio.windows.get_data_window(data, nodata=src.nodata)
-    bbox = rio.windows.bounds(data_window, transform=transform)
-    return bbox
+    return rio.windows.bounds(data_window, transform=transform)
 
 
 def create_item(img_path: str, data_root: str) -> pystac.Item:
@@ -152,9 +152,9 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     with rio.open(img_path) as img:
         if clc_name_elements["DOM_code"]:
-            bbox = project_bbox(img)
+            bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
         else:
-            bbox = project_data_window_bbox(img)
+            bbox = project_data_window_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
 
         params = {
             "id": clc_name_elements.get("id"),
@@ -178,7 +178,8 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         except KeyError as error:
             LOGGER.error("An error occured:", error)
 
-    # TODO: "Thumbnail" was originally put at collection level in the template, while it should perhaps be at item level? Individual previews should be added to each item
+    # TODO: "Thumbnail" was originally put at collection level in the template,
+    # while it should perhaps be at item level? Individual previews should be added to each item
     key = "preview"
     asset = pystac.Asset(
         href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
@@ -193,28 +194,28 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
     proj_ext.apply(
         epsg=rio.crs.CRS(img.crs).to_epsg(),
         bbox=img.bounds,
-        shape=[_ for _ in img.shape],
-        transform=[_ for _ in img.transform] + [0.0, 0.0, 1.0],
+        shape=list(img.shape),
+        transform=[*list(img.transform), 0.0, 0.0, 1.0],
     )
 
-    CLMS_CATALOG_LINK = pystac.link.Link(
+    clms_catalog_link = pystac.link.Link(
         rel=pystac.RelType.ROOT,
         target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/clms_catalog.json")),
     )
-    COLLECTION_LINK = pystac.link.Link(
+    collection_link = pystac.link.Link(
         rel=pystac.RelType.COLLECTION,
         target=pystac.STACObject.from_file(
             os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
         ),
     )
-    ITEM_PARENT_LINK = pystac.link.Link(
+    item_parent_link = pystac.link.Link(
         rel=pystac.RelType.PARENT,
         target=pystac.STACObject.from_file(
             os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
         ),
     )
 
-    links = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
+    links = [CLMS_LICENSE, clms_catalog_link, item_parent_link, collection_link]
     item.add_links(links)
 
     return item

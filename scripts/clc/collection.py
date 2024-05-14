@@ -48,8 +48,10 @@ def get_stac_validator(product_schema: str) -> Draft7Validator:
 def proj_epsg_from_item_asset(item: pystac.Item) -> int:
     for asset_key in item.assets:
         asset = item.assets[asset_key].to_dict()
-        if "proj:epsg" in asset.keys():
+        if "proj:epsg" in asset:
             return asset.get("proj:epsg")
+
+    return None
 
 
 def get_collection_asset_files(data_root: str) -> list[str]:
@@ -69,13 +71,13 @@ def get_collection_asset_files(data_root: str) -> list[str]:
 
 def create_collection_asset(asset_file: str) -> tuple[str, pystac.Asset]:
     filename_elements = deconstruct_clc_name(asset_file)
-    id = filename_elements["id"]
+    clc_id = filename_elements["id"]
 
-    if id.startswith("clc-file-naming"):
+    if clc_id.startswith("clc-file-naming"):
         key = "clc_file_naming"
-    elif id.startswith("clc-country-coverage"):
+    elif clc_id.startswith("clc-country-coverage"):
         key = "clc_country_coverage"
-    elif id.startswith("readme"):
+    elif clc_id.startswith("readme"):
         key = "readme"
 
     asset = pystac.Asset(
@@ -85,7 +87,7 @@ def create_collection_asset(asset_file: str) -> tuple[str, pystac.Asset]:
         roles=COLLECTION_ROLES_MAP[key],
     )
 
-    return id, asset
+    return clc_id, asset
 
 
 def create_collection() -> pystac.Collection:
@@ -138,9 +140,9 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         item_epsg = proj_epsg_from_item_asset(item)
         proj_epsg.append(item_epsg)
 
-        DOM_code = deconstruct_clc_name(img_path).get("DOM_code")
+        dom_code = deconstruct_clc_name(img_path).get("DOM_code")
         href = os.path.join(
-            WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id.removesuffix(f'_FR_{DOM_code}')}/{item.id}.json"
+            WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id.removesuffix(f'_FR_{dom_code}')}/{item.id}.json"
         )
         item.set_self_href(href)
 
