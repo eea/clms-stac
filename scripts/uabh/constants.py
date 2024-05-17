@@ -6,7 +6,7 @@ import pystac
 from pystac.link import Link
 from pystac.provider import ProviderRole
 
-STAC_DIR = "stac_tests"
+STAC_DIR = "stac_prod"
 WORKING_DIR = os.getcwd()
 CLMS_CATALOG_LINK: Final[Link] = Link(
     rel=pystac.RelType.ROOT, target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, "stacs/clms_catalog.json"))

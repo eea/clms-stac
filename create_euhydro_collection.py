@@ -6,4 +6,4 @@ LOGGER = logging.getLogger(__name__)
 
 if __name__ == "__main__":
     logging.basicConfig(filename="create_euhydro_collection.log")
-    create_euhydro_collection("<euhydro-root>")
+    create_euhydro_collection("A:\\Copernicus\\ReferenceData\\EU_HYDRO\\EU_HYDRO_v13")

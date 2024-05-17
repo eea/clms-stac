@@ -47,4 +47,4 @@ EUHYDRO_HOST_AND_LICENSOR: Final[pystac.Provider] = pystac.Provider(
 )
 CLMS_LICENSE: Final[Link] = Link(rel="license", target="https://land.copernicus.eu/en/data-policy")
 WORKING_DIR = os.getcwd()
-STAC_DIR = "stac_tests"
+STAC_DIR = "stac_prod"

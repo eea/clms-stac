@@ -6,4 +6,4 @@ LOGGER = logging.getLogger(__name__)
 
 if __name__ == "__main__":
     logging.basicConfig(filename="create_n2k_collection.log")
-    create_n2k_collection("<path-to-n2k-root-directory>")
+    create_n2k_collection("A:\\Copernicus\\Natura2000\\Natura2000")

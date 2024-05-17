@@ -88,7 +88,10 @@ def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
 
 
 def get_description(product_id: str) -> str:
-    _, city, year, _, version = product_id.split("_")
+    word_list = product_id.split("_")
+    version = word_list.pop()
+    year = word_list.pop(-2)
+    city = " ".join(word_list[1:-1])
     return f"{year[2:]} {city.title()} building height {version}"
 
 
@@ -133,7 +136,7 @@ def collect_assets(uabh_root: str, city_code: str) -> dict[str, pystac.Asset]:
 def create_asset(asset_path: str) -> tuple[str, pystac.Asset]:
     _, tail = os.path.split(asset_path)
     asset_id = tail.replace(".", "_")
-    asset_type = asset_path.split("/")[-2]
+    asset_type = asset_path.split(os.sep)[-2]
     extension = tail.split(".")[-1]
     media_type_map = {
         "tif": MediaType.GEOTIFF,
@@ -248,7 +251,7 @@ def create_item(zip_path: str) -> pystac.Item:
         asset_dict = collect_assets(head, product_id.split("_")[0])
         add_assets_to_item(item, asset_dict)
     except Exception as error:
-        raise ItemCreationError(error)
+        raise ItemCreationError(f"Failed to create {product_id} item. Reason: {error}.")
     return item
 
 
