@@ -9,14 +9,12 @@ from datetime import datetime
 import boto3
 import pystac
 import rasterio as rio
-from botocore.exceptions import BotoCoreError
 from botocore.paginate import PageIterator
 from jsonschema import Draft7Validator
 from jsonschema.exceptions import best_match
 from pystac.extensions.projection import ProjectionExtension
 from rasterio.coords import BoundingBox
 from rasterio.crs import CRS
-from rasterio.errors import RasterioIOError
 from rasterio.warp import transform_bounds
 from referencing import Registry, Resource
 from shapely.geometry import Polygon, box, mapping
@@ -38,6 +36,10 @@ from .constants import (
 LOGGER = logging.getLogger(__name__)
 
 
+class ItemCreationError(Exception):
+    pass
+
+
 def create_product_list(start_year: int, end_year: int) -> list[str]:
     product_list = []
     for year in range(start_year, end_year + 1):
@@ -49,7 +51,7 @@ def create_product_list(start_year: int, end_year: int) -> list[str]:
 def create_page_iterator(aws_session: boto3.Session, bucket: str, prefix: str) -> PageIterator:
     client = aws_session.client("s3")
     paginator = client.get_paginator("list_objects_v2")
-    return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-", MaxKeys=10)
+    return paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="-")
 
 
 def read_metadata_from_s3(bucket: str, key: str, aws_session: boto3.Session) -> tuple[BoundingBox, CRS, int, int]:
@@ -140,33 +142,38 @@ def add_assets_to_item(item: pystac.Item, asset_dict: dict[str, pystac.Asset]) -
 
 
 def create_item(aws_session: boto3.Session, bucket: str, tile: str) -> pystac.Item:
-    client = aws_session.client("s3")
-    parameters = client.list_objects(Bucket=bucket, Prefix=tile, Delimiter=".")["CommonPrefixes"]
-    asset_keys = [parameter["Prefix"] + "tif" for parameter in parameters]
-    _, tail = os.path.split(asset_keys[0])
-    product_id = "_".join((tail[:23], tail[29:31]))
-    bounds, crs, height, width, created = read_metadata_from_s3(bucket, asset_keys[0], aws_session)
-    geom_wgs84 = get_geom_wgs84(bounds, crs)
-    description = get_description(product_id)
-    start_datetime, end_datetime = get_datetime(product_id)
+    try:
+        client = aws_session.client("s3")
+        parameters = client.list_objects(Bucket=bucket, Prefix=tile, Delimiter=".")["CommonPrefixes"]
+        asset_keys = [parameter["Prefix"] + "tif" for parameter in parameters]
+        _, tail = os.path.split(asset_keys[0])
+        product_id = "_".join((tail[:23], tail[29:31]))
+        bounds, crs, height, width, created = read_metadata_from_s3(bucket, asset_keys[0], aws_session)
+        geom_wgs84 = get_geom_wgs84(bounds, crs)
+        description = get_description(product_id)
+        start_datetime, end_datetime = get_datetime(product_id)
 
-    # core metadata
-    item = create_core_item(product_id, geom_wgs84, start_datetime, end_datetime, created, description, COLLECTION_ID)
+        # core metadata
+        item = create_core_item(
+            product_id, geom_wgs84, start_datetime, end_datetime, created, description, COLLECTION_ID
+        )
 
-    # common metadata
-    provider_list = [VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR]
-    add_providers_to_item(item, provider_list)
+        # common metadata
+        provider_list = [VPP_HOST_AND_LICENSOR, VPP_PRODUCER_AND_PROCESSOR]
+        add_providers_to_item(item, provider_list)
 
-    # extensions
-    add_projection_extension_to_item(item, crs, bounds, height, width)
+        # extensions
+        add_projection_extension_to_item(item, crs, bounds, height, width)
 
-    # links
-    link_list = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
-    add_links_to_item(item, link_list)
+        # links
+        link_list = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
+        add_links_to_item(item, link_list)
 
-    # assets
-    assets = {os.path.split(key)[-1][:-4].lower(): create_asset(key) for key in asset_keys}
-    add_assets_to_item(item, assets)
+        # assets
+        assets = {os.path.split(key)[-1][:-4].lower(): create_asset(key) for key in asset_keys}
+        add_assets_to_item(item, assets)
+    except Exception as error:
+        raise ItemCreationError(error)
     return item
 
 
@@ -186,5 +193,5 @@ def create_vpp_item(aws_session: boto3.Session, bucket: str, validator: Draft7Va
         error_msg = best_match(validator.iter_errors(item.to_dict()))
         assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."
         item.save_object()
-    except (AssertionError, BotoCoreError, RasterioIOError) as error:
+    except (AssertionError, ItemCreationError) as error:
         LOGGER.error(error)
