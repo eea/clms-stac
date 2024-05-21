@@ -14,23 +14,27 @@ from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
 from referencing import Registry, Resource
 
-from .constants import (
-    CLMS_LICENSE,
-    COLLECTION_DESCRIPTION,
-    COLLECTION_ID,
-    COLLECTION_KEYWORDS,
-    COLLECTION_LICENSE,
-    COLLECTION_MEDIA_TYPE_MAP,
-    COLLECTION_ROLES_MAP,
-    COLLECTION_TITLE,
-    COLLECTION_TITLE_MAP,
-    ITEM_MEDIA_TYPE_MAP,
-    ITEM_ROLES_MAP,
-    ITEM_TITLE_MAP,
-    STAC_DIR,
-    WORKING_DIR,
-)
-from .item import create_item, deconstruct_clc_name, get_img_paths
+import sys
+sys.path.append(os.path.abspath('clms-stac/scripts/clc-plus/'))
+from constants import *
+
+# from .constants import (
+#     CLMS_LICENSE,
+#     COLLECTION_DESCRIPTION,
+#     COLLECTION_ID,
+#     COLLECTION_KEYWORDS,
+#     COLLECTION_LICENSE,
+#     COLLECTION_MEDIA_TYPE_MAP,
+#     COLLECTION_ROLES_MAP,
+#     COLLECTION_TITLE,
+#     COLLECTION_TITLE_MAP,
+#     ITEM_MEDIA_TYPE_MAP,
+#     ITEM_ROLES_MAP,
+#     ITEM_TITLE_MAP,
+#     STAC_DIR,
+#     WORKING_DIR,
+# )
+# from .item import create_item, deconstruct_clc_name, get_img_paths
 
 LOGGER = logging.getLogger(__name__)
 
@@ -140,9 +144,11 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         item_epsg = proj_epsg_from_item_asset(item)
         proj_epsg.append(item_epsg)
 
-        dom_code = deconstruct_clc_name(img_path).get("DOM_code")
+        clc_name_elements = deconstruct_clc_name(img_path)
+        collection_name = 'clms_clcplus_{product_acronym}_{reference_year}_{resolution}_{version}'.format(**clc_name_elements)
+
         href = os.path.join(
-            WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id.removesuffix(f'_FR_{dom_code}')}/{item.id}.json"
+            WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection_name}/{item.id}.json"
         )
         item.set_self_href(href)
 

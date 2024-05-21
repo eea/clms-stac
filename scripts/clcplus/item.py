@@ -158,10 +158,13 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
     }
 
     with rio.open(img_path) as img:
-        if clc_name_elements["extent"] != 'eu':
-            bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
-        else:
-            bbox = project_data_window_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
+        
+        bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
+        
+        # if clc_name_elements["extent"] != 'eu':
+        #     bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
+        # else:
+        #     bbox = project_data_window_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
 
         params = {
             "id": clc_name_elements.get("id"),
@@ -187,17 +190,17 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     # TODO: "Thumbnail" was originally put at collection level in the template,
     # while it should perhaps be at item level? Individual previews should be added to each item
-    key = "preview"
-    asset = pystac.Asset(
-        href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
-        title=ITEM_TITLE_MAP["preview"].format(label=clc_name_elements["DOM_code"]),
-        media_type=ITEM_MEDIA_TYPE_MAP[key],
-        roles=ITEM_ROLES_MAP[key],
-    )
+    # key = "preview"
+    # asset = pystac.Asset(
+    #     href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
+    #     title=ITEM_TITLE_MAP["preview"].format(label=clc_name_elements["DOM_code"]),
+    #     media_type=ITEM_MEDIA_TYPE_MAP[key],
+    #     roles=ITEM_ROLES_MAP[key],
+    # )
+    # item.add_asset(key=key, asset=asset)
 
-    item.add_asset(key=key, asset=asset)
-
-    proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace(".", "_")], add_if_missing=True)
+    # proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace(".", "_")], add_if_missing=True)
+    proj_ext = ProjectionExtension.ext(item.assets['clcplus_map'], add_if_missing=True)
     proj_ext.apply(
         epsg=rio.crs.CRS(img.crs).to_epsg(),
         bbox=img.bounds,
@@ -205,24 +208,24 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         transform=[*list(img.transform), 0.0, 0.0, 1.0],
     )
 
-    clms_catalog_link = pystac.link.Link(
-        rel=pystac.RelType.ROOT,
-        target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/clms_catalog.json")),
-    )
-    collection_link = pystac.link.Link(
-        rel=pystac.RelType.COLLECTION,
-        target=pystac.STACObject.from_file(
-            os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
-        ),
-    )
-    item_parent_link = pystac.link.Link(
-        rel=pystac.RelType.PARENT,
-        target=pystac.STACObject.from_file(
-            os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
-        ),
-    )
+    # clms_catalog_link = pystac.link.Link(
+    #     rel=pystac.RelType.ROOT,
+    #     target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/clms_catalog.json")),
+    # )
+    # collection_link = pystac.link.Link(
+    #     rel=pystac.RelType.COLLECTION,
+    #     target=pystac.STACObject.from_file(
+    #         os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
+    #     ),
+    # )
+    # item_parent_link = pystac.link.Link(
+    #     rel=pystac.RelType.PARENT,
+    #     target=pystac.STACObject.from_file(
+    #         os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
+    #     ),
+    # )
 
-    links = [CLMS_LICENSE, clms_catalog_link, item_parent_link, collection_link]
-    item.add_links(links)
+    # links = [CLMS_LICENSE, clms_catalog_link, item_parent_link, collection_link]
+    # item.add_links(links)
 
     return item
