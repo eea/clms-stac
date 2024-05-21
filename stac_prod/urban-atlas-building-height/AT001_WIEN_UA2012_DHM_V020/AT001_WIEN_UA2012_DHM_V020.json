@@ -1,0 +1,131 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "AT001_WIEN_UA2012_DHM_V020",
+  "properties": {
+    "created": "2017-02-09T00:00:00Z",
+    "description": "2012 Wien building height V020",
+    "start_datetime": "2011-04-25T00:00:00Z",
+    "end_datetime": "2014-03-05T00:00:00Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": [
+          "licensor",
+          "host"
+        ],
+        "url": "https://land.copernicus.eu"
+      }
+    ],
+    "proj:epsg": 3035,
+    "proj:bbox": [
+      4780170,
+      2793000,
+      4809960,
+      2821690
+    ],
+    "proj:shape": [
+      2869,
+      2979
+    ],
+    "datetime": null
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          16.59914886365638,
+          48.0548565975496
+        ],
+        [
+          16.59914886365638,
+          48.33503590228074
+        ],
+        [
+          16.167351523945268,
+          48.33503590228074
+        ],
+        [
+          16.167351523945268,
+          48.0548565975496
+        ],
+        [
+          16.59914886365638,
+          48.0548565975496
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "root",
+      "href": "C:/git/clms-stac/stacs/clms_catalog.json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "collection",
+      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "self",
+      "href": "C:/git/clms-stac/stac_prod/urban-atlas-building-height/AT001_WIEN_UA2012_DHM_V020/AT001_WIEN_UA2012_DHM_V020.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "AT001_WIEN_UA2012_DHM_V020_tif": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Dataset/AT001_WIEN_UA2012_DHM_V020.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Building Height Dataset",
+      "roles": [
+        "data"
+      ]
+    },
+    "AT001_WIEN_UA2012_DHM_QC_Report_v020_pdf": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Doc/AT001_WIEN_UA2012_DHM_QC_Report_v020.pdf",
+      "type": "application/pdf",
+      "title": "Quality Check Report",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT001_WIEN_UA2012_DHM_metadata_v020_xml": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Metadata/AT001_WIEN_UA2012_DHM_metadata_v020.xml",
+      "type": "application/xml",
+      "title": "Building Height Dataset Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT001_WIEN_UA2012_DHM_v020_zip": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/AT001_WIEN_UA2012_DHM_v020.zip",
+      "type": "application/zip",
+      "title": "Compressed Building Height Metadata",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "bbox": [
+    16.167351523945268,
+    48.0548565975496,
+    16.59914886365638,
+    48.33503590228074
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "collection": "urban-atlas-building-height"
+}

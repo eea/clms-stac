@@ -1,0 +1,290 @@
+{
+  "type": "Collection",
+  "id": "corine-land-cover-raster",
+  "stac_version": "1.0.0",
+  "description": "The European Commission launched the CORINE (Coordination of Information on the Environment) program in an effort to develop a standardized methodology for producing continent-scale land cover, biotope, and air quality maps. The CORINE Land Cover (CLC) product offers a pan-European land cover and land use inventory with 44 thematic classes, ranging from broad forested areas to individual vineyards.",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    },
+    {
+      "rel": "self",
+      "href": "C:/git/clms-stac/stac_prod/corine-land-cover-raster/corine-land-cover-raster.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "item",
+      "href": "./U2000_CLC1990_V2020_20u1/U2000_CLC1990_V2020_20u1.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2006_CLC2000_V2020_20u1/U2006_CLC2000_V2020_20u1.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2012_CLC2006_V2020_20u1/U2012_CLC2006_V2020_20u1.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2012_CLC2006_V2020_20u1/U2012_CLC2006_V2020_20u1_FR_GLP.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2012_CLC2006_V2020_20u1/U2012_CLC2006_V2020_20u1_FR_GUF.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2012_CLC2006_V2020_20u1/U2012_CLC2006_V2020_20u1_FR_MTQ.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2012_CLC2006_V2020_20u1/U2012_CLC2006_V2020_20u1_FR_MYT.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2012_CLC2006_V2020_20u1/U2012_CLC2006_V2020_20u1_FR_REU.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1_FR_GLP.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1_FR_GUF.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1_FR_MTQ.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1_FR_MYT.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2012_V2020_20u1/U2018_CLC2012_V2020_20u1_FR_REU.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2018_V2020_20u1/U2018_CLC2018_V2020_20u1.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2018_V2020_20u1/U2018_CLC2018_V2020_20u1_FR_GLP.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2018_V2020_20u1/U2018_CLC2018_V2020_20u1_FR_GUF.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2018_V2020_20u1/U2018_CLC2018_V2020_20u1_FR_MTQ.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2018_V2020_20u1/U2018_CLC2018_V2020_20u1_FR_MYT.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "item",
+      "href": "./U2018_CLC2018_V2020_20u1/U2018_CLC2018_V2020_20u1_FR_REU.json",
+      "type": "application/json"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "item_assets": {
+    "clc_map_tif": {
+      "title": "Single Band Land Classification",
+      "media_type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "data",
+        "visual"
+      ]
+    },
+    "clc_map_tif_xml": {
+      "title": "TIFF Metadata",
+      "media_type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_tif_aux_xml": {
+      "title": "TIFF Statistics",
+      "media_type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_tif_ovr": {
+      "title": "Pyramid",
+      "media_type": "image/tiff; application=geotiff; profile=pyramid",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_tif_vat_cpg": {
+      "title": "Encoding",
+      "media_type": "text/plain",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_tif_vat_dbf": {
+      "title": "Database",
+      "media_type": "application/dbf",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_legend_txt": {
+      "title": "Legends",
+      "media_type": "text/plain",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_tif_lyr": {
+      "title": "Legend Layer",
+      "media_type": "image/tiff; application=geotiff; profile=layer",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_tfw": {
+      "title": "World File",
+      "media_type": "text/plain",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_xml": {
+      "title": "Single Band Land Classification Metadata",
+      "media_type": "application/xml",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_readme_txt": {
+      "title": "Description",
+      "media_type": "text/plain",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc_map_preview": {
+      "title": "Single Band Land Classification Thumbnail",
+      "media_type": "image/png",
+      "roles": [
+        "thumbnail"
+      ]
+    }
+  },
+  "title": "CORINE Land Cover Raster",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -61.90648987371496,
+          -21.483070551222387,
+          55.93678987772944,
+          71.41326966834436
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "1990-01-01T00:00:00Z",
+          "2018-12-31T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "license": "proprietary",
+  "keywords": [
+    "clms",
+    "corine",
+    "derived data",
+    "land cover",
+    "machine learning",
+    "open data"
+  ],
+  "summaries": {
+    "proj:epsg": [
+      32738,
+      32740,
+      32620,
+      32622,
+      4559,
+      4471,
+      3035,
+      2972,
+      2975
+    ]
+  },
+  "assets": {
+    "clc-country-coverage-1990-2018-v20u1": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/clc-country-coverage-1990-2018-v20u1.pdf",
+      "type": "application/pdf",
+      "title": "Coverage",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "clc-file-naming-conventions-guide-v20u1": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/clc-file-naming-conventions-guide-v20u1.pdf",
+      "type": "text/plain",
+      "title": "Naming Convention Description",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "readme_V2020_20u1_raster": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/readme_V2020_20u1_raster.txt",
+      "type": "text/plain",
+      "title": "Description",
+      "roles": [
+        "metadata"
+      ]
+    }
+  }
+}

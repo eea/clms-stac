@@ -1,0 +1,1514 @@
+{
+  "type": "Collection",
+  "id": "eu-hydro",
+  "stac_version": "1.0.0",
+  "description": "EU-Hydro is a dataset for all EEA38 countries and the United Kingdom providing photo-interpreted river network, consistent of surface interpretation of water bodies (lakes and wide rivers), and a drainage model (also called Drainage Network), derived from EU-DEM, with catchments and drainage lines and nodes.",
+  "links": [
+    {
+      "rel": "root",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "self",
+      "href": "C:/git/clms-stac/stac_prod/eu-hydro/eu-hydro.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "title": "EU-Hydro River Network Database",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -61.906047,
+          -21.482245,
+          55.935919,
+          71.409109
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2006-01-01T00:00:00Z",
+          "2012-12-31T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "license": "proprietary",
+  "keywords": [
+    "Hydrography",
+    "Land cover",
+    "River",
+    "Environment",
+    "Ocean",
+    "Catchment area",
+    "Land",
+    "Hydrographic network",
+    "Drainage system",
+    "Hydrology",
+    "Landscape alteration",
+    "Inland water",
+    "Canal",
+    "Drainage",
+    "Catchment",
+    "Water body"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": [
+        "licensor",
+        "host"
+      ],
+      "url": "https://land.copernicus.eu"
+    }
+  ],
+  "summaries": {
+    "proj:epsg": [
+      3035
+    ]
+  },
+  "assets": {
+    "angerman_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/angerman_metadata.xml",
+      "type": "application/xml",
+      "title": "Angerman Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "danube_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/danube_metadata.xml",
+      "type": "application/xml",
+      "title": "Danube Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "duero_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/duero_metadata.xml",
+      "type": "application/xml",
+      "title": "Duero Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "ebro_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/ebro_metadata.xml",
+      "type": "application/xml",
+      "title": "Ebro Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "elbe_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/elbe_metadata.xml",
+      "type": "application/xml",
+      "title": "Elbe Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "fr_guiana_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/fr_guiana_metadata.xml",
+      "type": "application/xml",
+      "title": "Fr Guiana Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "fr_islands_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/fr_islands_metadata.xml",
+      "type": "application/xml",
+      "title": "Fr Islands Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "garonne_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/garonne_metadata.xml",
+      "type": "application/xml",
+      "title": "Garonne Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "gota_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/gota_metadata.xml",
+      "type": "application/xml",
+      "title": "Gota Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "guadalquivir_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/guadalquivir_metadata.xml",
+      "type": "application/xml",
+      "title": "Guadalquivir Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "hondo_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/hondo_metadata.xml",
+      "type": "application/xml",
+      "title": "Hondo Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "iceland_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/iceland_metadata.xml",
+      "type": "application/xml",
+      "title": "Iceland Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "jucar_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/jucar_metadata.xml",
+      "type": "application/xml",
+      "title": "Jucar Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "kemi_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/kemi_metadata.xml",
+      "type": "application/xml",
+      "title": "Kemi Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "loire_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/loire_metadata.xml",
+      "type": "application/xml",
+      "title": "Loire Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "mesima_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/mesima_metadata.xml",
+      "type": "application/xml",
+      "title": "Mesima Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "nemunas_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/nemunas_metadata.xml",
+      "type": "application/xml",
+      "title": "Nemunas Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "neva_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/neva_metadata.xml",
+      "type": "application/xml",
+      "title": "Neva Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "oder_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/oder_metadata.xml",
+      "type": "application/xml",
+      "title": "Oder Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "pinios_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/pinios_metadata.xml",
+      "type": "application/xml",
+      "title": "Pinios Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "po_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/po_metadata.xml",
+      "type": "application/xml",
+      "title": "Po Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "rhine_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/rhine_metadata.xml",
+      "type": "application/xml",
+      "title": "Rhine Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "rhone_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/rhone_metadata.xml",
+      "type": "application/xml",
+      "title": "Rhone Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "seine_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/seine_metadata.xml",
+      "type": "application/xml",
+      "title": "Seine Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "shannon_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/shannon_metadata.xml",
+      "type": "application/xml",
+      "title": "Shannon Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "skjern_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/skjern_metadata.xml",
+      "type": "application/xml",
+      "title": "Skjern Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "tajo_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/tajo_metadata.xml",
+      "type": "application/xml",
+      "title": "Tajo Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "tana_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/tana_metadata.xml",
+      "type": "application/xml",
+      "title": "Tana Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "tevere_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/tevere_metadata.xml",
+      "type": "application/xml",
+      "title": "Tevere Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "thames_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/thames_metadata.xml",
+      "type": "application/xml",
+      "title": "Thames Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "tirso_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/tirso_metadata.xml",
+      "type": "application/xml",
+      "title": "Tirso Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "turkey_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/turkey_metadata.xml",
+      "type": "application/xml",
+      "title": "Turkey Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "tweed_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/tweed_metadata.xml",
+      "type": "application/xml",
+      "title": "Tweed Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "vistula_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/vistula_metadata.xml",
+      "type": "application/xml",
+      "title": "Vistula Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "vorma_metadata_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Metadata/vorma_metadata.xml",
+      "type": "application/xml",
+      "title": "Vorma Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "EUHYDRO_Coastline_EEA39_v013_shp_xml": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Shapefile/EUHYDRO_Coastline_EEA39_v013.shp.xml",
+      "type": "application/xml",
+      "title": "Euhydro Coastline Eea39 V013 Shp",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "EU-HYDRO_V1p3_User_Guide_pdf": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/EUHYDRO_Coastline_EEA39_v013/Documents/EU-HYDRO_V1p3_User_Guide.pdf",
+      "type": "application/pdf",
+      "title": "Eu-hydro V1p3 User Guide",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "How_use_ESRI_FGDB_in_QGIS_pdf": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_angerman_v013_FGDB/Documentation/How_use_ESRI_FGDB_in_QGIS.pdf",
+      "type": "application/pdf",
+      "title": "How Use Esri Fgdb In Qgis",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "drainage_network_angerman_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_angerman_v013_GPKG/drainage_network_angerman_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Angerman Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_angerman_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_angerman_v013_GPKG/euhydro_angerman_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Angerman V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_danube_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_danube_v013_GPKG/drainage_network_danube_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Danube Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_danube_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_danube_v013_GPKG/euhydro_danube_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Danube V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_duero_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_duero_v013_GPKG/drainage_network_duero_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Duero Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_duero_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_duero_v013_GPKG/euhydro_duero_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Duero V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_ebro_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_ebro_v013_GPKG/drainage_network_ebro_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Ebro Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_ebro_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_ebro_v013_GPKG/euhydro_ebro_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Ebro V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_elbe_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_elbe_v013_GPKG/drainage_network_elbe_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Elbe Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_elbe_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_elbe_v013_GPKG/euhydro_elbe_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Elbe V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_fr_guiana_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_fr_guiana_v013_GPKG/drainage_network_fr_guiana_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Fr Guiana Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_fr_guiana_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_fr_guiana_v013_GPKG/euhydro_fr_guiana_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Fr Guiana V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_fr_islands_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_fr_islands_v013_GPKG/drainage_network_fr_islands_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Fr Islands Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_fr_islands_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_fr_islands_v013_GPKG/euhydro_fr_islands_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Fr Islands V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_garonne_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_garonne_v013_GPKG/drainage_network_garonne_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Garonne Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_garonne_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_garonne_v013_GPKG/euhydro_garonne_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Garonne V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_gota_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_gota_v013_GPKG/drainage_network_gota_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Gota Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_gota_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_gota_v013_GPKG/euhydro_gota_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Gota V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_guadalquivir_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_guadalquivir_v013_GPKG/drainage_network_guadalquivir_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Guadalquivir Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_guadalquivir_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_guadalquivir_v013_GPKG/euhydro_guadalquivir_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Guadalquivir V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_hondo_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_hondo_v013_GPKG/drainage_network_hondo_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Hondo Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_hondo_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_hondo_v013_GPKG/euhydro_hondo_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Hondo V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_iceland_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_iceland_v013_GPKG/drainage_network_iceland_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Iceland Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_iceland_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_iceland_v013_GPKG/euhydro_iceland_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Iceland V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_jucar_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_jucar_v013_GPKG/drainage_network_jucar_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Jucar Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_jucar_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_jucar_v013_GPKG/euhydro_jucar_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Jucar V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_kemi_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_kemi_v013_GPKG/drainage_network_kemi_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Kemi Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_kemi_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_kemi_v013_GPKG/euhydro_kemi_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Kemi V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_loire_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_loire_v013_GPKG/drainage_network_loire_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Loire Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_loire_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_loire_v013_GPKG/euhydro_loire_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Loire V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_mesima_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_mesima_v013_GPKG/drainage_network_mesima_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Mesima Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_mesima_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_mesima_v013_GPKG/euhydro_mesima_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Mesima V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_nemunas_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_nemunas_v013_GPKG/drainage_network_nemunas_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Nemunas Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_nemunas_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_nemunas_v013_GPKG/euhydro_nemunas_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Nemunas V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_neva_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_neva_v013_GPKG/drainage_network_neva_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Neva Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_neva_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_neva_v013_GPKG/euhydro_neva_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Neva V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_oder_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_oder_v013_GPKG/drainage_network_oder_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Oder Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_oder_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_oder_v013_GPKG/euhydro_oder_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Oder V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_pinios_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_pinios_v013_GPKG/drainage_network_pinios_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Pinios Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_pinios_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_pinios_v013_GPKG/euhydro_pinios_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Pinios V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_po_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_po_v013_GPKG/drainage_network_po_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Po Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_po_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_po_v013_GPKG/euhydro_po_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Po V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_rhine_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_rhine_v013_GPKG/drainage_network_rhine_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Rhine Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_rhine_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_rhine_v013_GPKG/euhydro_rhine_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Rhine V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_rhone_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_rhone_v013_GPKG/drainage_network_rhone_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Rhone Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_rhone_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_rhone_v013_GPKG/euhydro_rhone_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Rhone V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_seine_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_seine_v013_GPKG/drainage_network_seine_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Seine Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_seine_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_seine_v013_GPKG/euhydro_seine_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Seine V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_shannon_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_shannon_v013_GPKG/drainage_network_shannon_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Shannon Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_shannon_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_shannon_v013_GPKG/euhydro_shannon_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Shannon V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_skjern_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_skjern_v013_GPKG/drainage_network_skjern_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Skjern Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_skjern_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_skjern_v013_GPKG/euhydro_skjern_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Skjern V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tajo_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tajo_v013_GPKG/drainage_network_tajo_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Tajo Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tajo_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tajo_v013_GPKG/euhydro_tajo_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Tajo V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tana_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tana_v013_GPKG/drainage_network_tana_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Tana Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tana_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tana_v013_GPKG/euhydro_tana_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Tana V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tevere_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tevere_v013_GPKG/drainage_network_tevere_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Tevere Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tevere_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tevere_v013_GPKG/euhydro_tevere_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Tevere V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_thames_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_thames_v013_GPKG/drainage_network_thames_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Thames Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_thames_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_thames_v013_GPKG/euhydro_thames_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Thames V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tirso_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tirso_v013_GPKG/drainage_network_tirso_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Tirso Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tirso_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tirso_v013_GPKG/euhydro_tirso_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Tirso V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_turkey_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_turkey_v013_GPKG/drainage_network_turkey_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Turkey Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_turkey_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_turkey_v013_GPKG/euhydro_turkey_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Turkey V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tweed_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tweed_v013_GPKG/drainage_network_tweed_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Tweed Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tweed_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_tweed_v013_GPKG/euhydro_tweed_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Tweed V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_vistula_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_vistula_v013_GPKG/drainage_network_vistula_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Vistula Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_vistula_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_vistula_v013_GPKG/euhydro_vistula_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Vistula V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_vorma_public_beta_v009_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_vorma_v013_GPKG/drainage_network_vorma_public_beta_v009.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Drainage Network Vorma Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_vorma_v013_gpkg": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/geopackage/euhydro_vorma_v013_GPKG/euhydro_vorma_v013.gpkg",
+      "type": "application/geopackage+sqlite3",
+      "title": "Euhydro Vorma V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_angerman_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_angerman_v013_FGDB/drainage_network_angerman_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Angerman Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_angerman_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_angerman_v013_FGDB/euhydro_angerman_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Angerman V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_danube_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_danube_v013_FGDB/drainage_network_danube_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Danube Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_danube_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_danube_v013_FGDB/euhydro_danube_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Danube V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_duero_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_duero_v013_FGDB/drainage_network_duero_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Duero Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_duero_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_duero_v013_FGDB/euhydro_duero_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Duero V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_ebro_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_ebro_v013_FGDB/drainage_network_ebro_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Ebro Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_ebro_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_ebro_v013_FGDB/euhydro_ebro_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Ebro V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_elbe_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_elbe_v013_FGDB/drainage_network_elbe_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Elbe Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_elbe_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_elbe_v013_FGDB/euhydro_elbe_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Elbe V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_fr_guiana_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_fr_guiana_v013_FGDB/drainage_network_fr_guiana_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Fr Guiana Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_fr_guiana_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_fr_guiana_v013_FGDB/euhydro_fr_guiana_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Fr Guiana V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_fr_islands_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_fr_islands_v013_FGDB/drainage_network_fr_islands_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Fr Islands Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_fr_islands_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_fr_islands_v013_FGDB/euhydro_fr_islands_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Fr Islands V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_garonne_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_garonne_v013_FGDB/drainage_network_garonne_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Garonne Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_garonne_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_garonne_v013_FGDB/euhydro_garonne_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Garonne V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_gota_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_gota_v013_FGDB/drainage_network_gota_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Gota Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_gota_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_gota_v013_FGDB/euhydro_gota_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Gota V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_guadalquivir_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_guadalquivir_v013_FGDB/drainage_network_guadalquivir_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Guadalquivir Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_guadalquivir_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_guadalquivir_v013_FGDB/euhydro_guadalquivir_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Guadalquivir V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_hondo_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_hondo_v013_FGDB/drainage_network_hondo_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Hondo Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_hondo_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_hondo_v013_FGDB/euhydro_hondo_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Hondo V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_iceland_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_iceland_v013_FGDB/drainage_network_iceland_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Iceland Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_iceland_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_iceland_v013_FGDB/euhydro_iceland_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Iceland V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_jucar_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_jucar_v013_FGDB/drainage_network_jucar_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Jucar Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_jucar_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_jucar_v013_FGDB/euhydro_jucar_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Jucar V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_kemi_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_kemi_v013_FGDB/drainage_network_kemi_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Kemi Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_kemi_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_kemi_v013_FGDB/euhydro_kemi_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Kemi V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_loire_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_loire_v013_FGDB/drainage_network_loire_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Loire Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_loire_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_loire_v013_FGDB/euhydro_loire_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Loire V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_mesima_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_mesima_v013_FGDB/drainage_network_mesima_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Mesima Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_mesima_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_mesima_v013_FGDB/euhydro_mesima_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Mesima V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_nemunas_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_nemunas_v013_FGDB/drainage_network_nemunas_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Nemunas Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_nemunas_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_nemunas_v013_FGDB/euhydro_nemunas_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Nemunas V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_neva_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_neva_v013_FGDB/drainage_network_neva_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Neva Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_neva_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_neva_v013_FGDB/euhydro_neva_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Neva V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_oder_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_oder_v013_FGDB/drainage_network_oder_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Oder Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_oder_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_oder_v013_FGDB/euhydro_oder_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Oder V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_pinios_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_pinios_v013_FGDB/drainage_network_pinios_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Pinios Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_pinios_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_pinios_v013_FGDB/euhydro_pinios_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Pinios V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_po_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_po_v013_FGDB/drainage_network_po_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Po Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_po_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_po_v013_FGDB/euhydro_po_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Po V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_rhine_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_rhine_v013_FGDB/drainage_network_rhine_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Rhine Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_rhine_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_rhine_v013_FGDB/euhydro_rhine_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Rhine V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_rhone_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_rhone_v013_FGDB/drainage_network_rhone_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Rhone Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_rhone_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_rhone_v013_FGDB/euhydro_rhone_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Rhone V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_seine_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_seine_v013_FGDB/drainage_network_seine_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Seine Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_seine_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_seine_v013_FGDB/euhydro_seine_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Seine V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_shannon_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_shannon_v013_FGDB/drainage_network_shannon_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Shannon Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_shannon_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_shannon_v013_FGDB/euhydro_shannon_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Shannon V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_skjern_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_skjern_v013_FGDB/drainage_network_skjern_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Skjern Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_skjern_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_skjern_v013_FGDB/euhydro_skjern_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Skjern V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tajo_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tajo_v013_FGDB/drainage_network_tajo_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Tajo Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tajo_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tajo_v013_FGDB/euhydro_tajo_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Tajo V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tana_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tana_v013_FGDB/drainage_network_tana_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Tana Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tana_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tana_v013_FGDB/euhydro_tana_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Tana V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tevere_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tevere_v013_FGDB/drainage_network_tevere_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Tevere Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tevere_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tevere_v013_FGDB/euhydro_tevere_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Tevere V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_thames_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_thames_v013_FGDB/drainage_network_thames_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Thames Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_thames_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_thames_v013_FGDB/euhydro_thames_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Thames V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tirso_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tirso_v013_FGDB/drainage_network_tirso_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Tirso Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tirso_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tirso_v013_FGDB/euhydro_tirso_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Tirso V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_turkey_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_turkey_v013_FGDB/drainage_network_turkey_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Turkey Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_turkey_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_turkey_v013_FGDB/euhydro_turkey_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Turkey V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_tweed_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tweed_v013_FGDB/drainage_network_tweed_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Tweed Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_tweed_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_tweed_v013_FGDB/euhydro_tweed_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Tweed V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_vistula_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_vistula_v013_FGDB/drainage_network_vistula_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Vistula Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_vistula_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_vistula_v013_FGDB/euhydro_vistula_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Vistula V013",
+      "roles": [
+        "data"
+      ]
+    },
+    "drainage_network_vorma_public_beta_v009_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_vorma_v013_FGDB/drainage_network_vorma_public_beta_v009.gdb",
+      "type": "application/x-filegdb",
+      "title": "Drainage Network Vorma Public Beta V009",
+      "roles": [
+        "data"
+      ]
+    },
+    "euhydro_vorma_v013_gdb": {
+      "href": "A:/Copernicus/ReferenceData/EU_HYDRO/EU_HYDRO_v13/fgdb/euhydro_vorma_v013_FGDB/euhydro_vorma_v013.gdb",
+      "type": "application/x-filegdb",
+      "title": "Euhydro Vorma V013",
+      "roles": [
+        "data"
+      ]
+    }
+  }
+}

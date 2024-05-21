@@ -1,0 +1,171 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "AT006_KLAGENFURT_UA2012_DHM_V010",
+  "properties": {
+    "created": "2020-11-16T00:00:00Z",
+    "description": "2012 Klagenfurt building height V010",
+    "start_datetime": "2012-01-01T00:00:00Z",
+    "end_datetime": "2012-12-31T00:00:00Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": [
+          "licensor",
+          "host"
+        ],
+        "url": "https://land.copernicus.eu"
+      }
+    ],
+    "proj:epsg": 3035,
+    "proj:bbox": [
+      4643300,
+      2616340,
+      4659190,
+      2630460
+    ],
+    "proj:shape": [
+      1412,
+      1589
+    ],
+    "datetime": null
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          14.420345633272753,
+          46.569995937519614
+        ],
+        [
+          14.420345633272753,
+          46.70520134918318
+        ],
+        [
+          14.202990596381397,
+          46.70520134918318
+        ],
+        [
+          14.202990596381397,
+          46.569995937519614
+        ],
+        [
+          14.420345633272753,
+          46.569995937519614
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "root",
+      "href": "C:/git/clms-stac/stacs/clms_catalog.json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "collection",
+      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "self",
+      "href": "C:/git/clms-stac/stac_prod/urban-atlas-building-height/AT006_KLAGENFURT_UA2012_DHM_V010/AT006_KLAGENFURT_UA2012_DHM_V010.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "AT006_KLAGENFURT_UA2012_DHM_V010_tif": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Dataset/AT006_KLAGENFURT_UA2012_DHM_V010.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Building Height Dataset",
+      "roles": [
+        "data"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_xml": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Metadata/AT006_KLAGENFURT_UA2012_DHM_V010.xml",
+      "type": "application/xml",
+      "title": "Building Height Dataset Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_cpg": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT006_KLAGENFURT_UA2012_DHM_V010.cpg",
+      "type": "text/plain",
+      "title": "pixel_based_info_cpg",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_dbf": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT006_KLAGENFURT_UA2012_DHM_V010.dbf",
+      "type": "application/x-dbf",
+      "title": "pixel_based_info_dbf",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_prj": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT006_KLAGENFURT_UA2012_DHM_V010.prj",
+      "type": "text/plain",
+      "title": "pixel_based_info_prj",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_shp": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT006_KLAGENFURT_UA2012_DHM_V010.shp",
+      "type": "application/octet-stream",
+      "title": "pixel_based_info_shp",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_shx": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT006_KLAGENFURT_UA2012_DHM_V010.shx",
+      "type": "application/octet-stream",
+      "title": "pixel_based_info_shx",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_pdf": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/QC/AT006_KLAGENFURT_UA2012_DHM_V010.pdf",
+      "type": "application/pdf",
+      "title": "Quality Control Report",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT006_KLAGENFURT_UA2012_DHM_V010_zip": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/AT006_KLAGENFURT_UA2012_DHM_V010.zip",
+      "type": "application/zip",
+      "title": "Compressed Building Height Metadata",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "bbox": [
+    14.202990596381397,
+    46.569995937519614,
+    14.420345633272753,
+    46.70520134918318
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "collection": "urban-atlas-building-height"
+}

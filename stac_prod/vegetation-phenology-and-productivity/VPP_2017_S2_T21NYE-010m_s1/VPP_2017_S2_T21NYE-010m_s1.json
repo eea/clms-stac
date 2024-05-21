@@ -1,0 +1,220 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "VPP_2017_S2_T21NYE-010m_s1",
+  "properties": {
+    "created": "2022-08-12T15:36:23Z",
+    "description": "The 2017 season 1 VPP product of tile T21NYE at 10 m resolution.",
+    "start_datetime": "2017-01-01T00:00:00Z",
+    "end_datetime": "2017-12-31T00:00:00Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": [
+          "licensor",
+          "host"
+        ],
+        "url": "https://land.copernicus.eu"
+      },
+      {
+        "name": "VITO NV",
+        "description": "VITO is an independent Flemish research organisation in the area of cleantech and sustainable development.",
+        "roles": [
+          "processor",
+          "producer"
+        ],
+        "url": "https://vito.be"
+      }
+    ],
+    "proj:epsg": 32621,
+    "proj:bbox": [
+      699960,
+      390240,
+      809760,
+      500040
+    ],
+    "proj:shape": [
+      10980,
+      10980
+    ],
+    "datetime": null
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -54.20874233485502,
+          3.5263827837982533
+        ],
+        [
+          -54.20874233485502,
+          4.521680895104937
+        ],
+        [
+          -55.19991508514099,
+          4.521680895104937
+        ],
+        [
+          -55.19991508514099,
+          3.5263827837982533
+        ],
+        [
+          -54.20874233485502,
+          3.5263827837982533
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "root",
+      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stacs/clms_catalog.json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "title": "Vegetation Phenology and Productivity Parameters"
+    },
+    {
+      "rel": "collection",
+      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "title": "Vegetation Phenology and Productivity Parameters"
+    },
+    {
+      "rel": "self",
+      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stac_tests/vegetation-phenology-and-productivity/VPP_2017_S2_T21NYE-010m_s1/VPP_2017_S2_T21NYE-010m_s1.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "vpp_2017_s2_t21nye-010m_v101_s1_ampl": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_AMPL.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Season Amplitude V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_eosd": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_EOSD.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Day of End-of-Season V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_eosv": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_EOSV.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Vegetation Index Value at EOSD V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_length": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_LENGTH.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Length of Season V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_lslope": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_LSLOPE.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Slope of The Greening Up Period V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_maxd": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_MAXD.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Day of Maximum-of-Season V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_maxv": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_MAXV.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Vegetation Index Value at MAXD V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_minv": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_MINV.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Average Vegetation Index Value of Minima on Left and Right Sides of Each Season V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_qflag": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_QFLAG.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Quality Flag V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_rslope": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_RSLOPE.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Slope of The Senescent Period V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_sosd": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_SOSD.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Day of Start-of-Season V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_sosv": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_SOSV.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Vegetation Index Value at SOSD V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_sprod": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_SPROD.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Seasonal Productivity V101",
+      "roles": [
+        "data"
+      ]
+    },
+    "vpp_2017_s2_t21nye-010m_v101_s1_tprod": {
+      "href": "s3://HRVPP/CLMS/Pan-European/Biophysical/VPP/v01/2017/s1/VPP_2017_S2_T21NYE-010m_V101_s1_TPROD.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Total Productivity V101",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "bbox": [
+    -55.19991508514099,
+    3.5263827837982533,
+    -54.20874233485502,
+    4.521680895104937
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "collection": "vegetation-phenology-and-productivity"
+}

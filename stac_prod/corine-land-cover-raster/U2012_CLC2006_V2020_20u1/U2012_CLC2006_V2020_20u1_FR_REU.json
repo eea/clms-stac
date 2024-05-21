@@ -1,0 +1,188 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "U2012_CLC2006_V2020_20u1_FR_REU",
+  "properties": {
+    "description": "Corine Land Cover 2006 (CLC2006) is one of the Corine Land Cover (CLC) datasets produced within the frame the Copernicus Land Monitoring Service referring to land cover / land use status of year 2006. CLC service has a long-time heritage (formerly known as \"CORINE Land Cover Programme\"), coordinated by the European Environment Agency (EEA). It provides consistent and thematically detailed information on land cover and land cover changes across Europe. CLC datasets are based on the classification of satellite images produced by the national teams of the participating countries - the EEA members and cooperating countries (EEA39). National CLC inventories are then further integrated into a seamless land cover map of Europe. The resulting European database relies on standard methodology and nomenclature with following base parameters: 44 classes in the hierarchical 3-level CLC nomenclature; minimum mapping unit (MMU) for status layers is 25 hectares; minimum width of linear elements is 100 metres. Change layers have higher resolution, i.e. minimum mapping unit (MMU) is 5 hectares for Land Cover Changes (LCC), and the minimum width of linear elements is 100 metres. The CLC service delivers important data sets supporting the implementation of key priority areas of the Environment Action Programmes of the European Union as e.g. protecting ecosystems, halting the loss of biological diversity, tracking the impacts of climate change, monitoring urban land take, assessing developments in agriculture or dealing with water resources directives. CLC belongs to the Pan-European component of the Copernicus Land Monitoring Service (https://land.copernicus.eu/), part of the European Copernicus Programme coordinated by the European Environment Agency, providing environmental information from a combination of air- and space-based observation systems and in-situ monitoring. Additional information about CLC product description including mapping guides can be found at https://land.copernicus.eu/user-corner/technical-library/. CLC class descriptions can be found at https://land.copernicus.eu/user-corner/technical-library/corine-land-cover-nomenclature-guidelines/html/.",
+    "created": null,
+    "providers": {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": [
+        "licensor",
+        "host"
+      ],
+      "url": "https://land.copernicus.eu"
+    },
+    "start_datetime": "2006-01-01T00:00:00Z",
+    "end_datetime": "2006-12-31T00:00:00Z",
+    "datetime": null
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          55.93659549396438,
+          -21.483055681556575
+        ],
+        [
+          55.93659549396438,
+          -20.77776566311882
+        ],
+        [
+          55.114260161916384,
+          -20.77776566311882
+        ],
+        [
+          55.114260161916384,
+          -21.483055681556575
+        ],
+        [
+          55.93659549396438,
+          -21.483055681556575
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy",
+      "title": "Legal notice on the use of CLMS data"
+    },
+    {
+      "rel": "root",
+      "href": "../../clms_catalog.json",
+      "type": "application/json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "../corine-land-cover-raster.json",
+      "type": "application/json",
+      "title": "CORINE Land Cover Raster"
+    },
+    {
+      "rel": "collection",
+      "href": "../corine-land-cover-raster.json",
+      "type": "application/json",
+      "title": "CORINE Land Cover Raster"
+    },
+    {
+      "rel": "self",
+      "href": "C:/git/clms-stac/stac_prod/corine-land-cover-raster/U2012_CLC2006_V2020_20u1/U2012_CLC2006_V2020_20u1_FR_REU.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "U2012_CLC2006_V2020_20u1_FR_REU_tfw": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_REU.tfw",
+      "type": "text/plain",
+      "title": "World File R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "U2012_CLC2006_V2020_20u1_FR_REU_tif": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_REU.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Single Band Land Classification R\u00e9union",
+      "proj:epsg": 32740,
+      "proj:bbox": [
+        304619.1613853702,
+        7624011.788360771,
+        389319.1613853702,
+        7701311.788360771
+      ],
+      "proj:shape": [
+        773,
+        847
+      ],
+      "proj:transform": [
+        100.0,
+        0.0,
+        304619.1613853702,
+        0.0,
+        -100.0,
+        7701311.788360771,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "roles": [
+        "data",
+        "visual"
+      ]
+    },
+    "U2012_CLC2006_V2020_20u1_FR_REU_tif_aux_xml": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_REU.tif.aux.xml",
+      "type": "application/xml",
+      "title": "TIFF Statistics R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "U2012_CLC2006_V2020_20u1_FR_REU_tif_ovr": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_REU.tif.ovr",
+      "type": "image/tiff; application=geotiff; profile=pyramid",
+      "title": "Pyramid R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "U2012_CLC2006_V2020_20u1_FR_REU_tif_vat_cpg": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_REU.tif.vat.cpg",
+      "type": "text/plain",
+      "title": "Encoding R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "U2012_CLC2006_V2020_20u1_FR_REU_tif_vat_dbf": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_REU.tif.vat.dbf",
+      "type": "application/dbf",
+      "title": "Database R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "U2012_CLC2006_V2020_20u1_FR_REU_tif_xml": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_REU.tif.xml",
+      "type": "application/xml",
+      "title": "TIFF Metadata R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "readme_U2012_CLC2006_V2020_20u1_FR_REU_txt": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/Documents/readme_U2012_CLC2006_V2020_20u1_FR_REU.txt",
+      "type": "text/plain",
+      "title": "Description R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "U2012_CLC2006_V2020_20u1_FR_REU_xml": {
+      "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/Metadata/U2012_CLC2006_V2020_20u1_FR_REU.xml",
+      "type": "application/xml",
+      "title": "Single Band Land Classification Metadata R\u00e9union",
+      "roles": [
+        "metadata"
+      ]
+    }
+  },
+  "bbox": [
+    55.114260161916384,
+    -21.483055681556575,
+    55.93659549396438,
+    -20.77776566311882
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "collection": "corine-land-cover-raster"
+}

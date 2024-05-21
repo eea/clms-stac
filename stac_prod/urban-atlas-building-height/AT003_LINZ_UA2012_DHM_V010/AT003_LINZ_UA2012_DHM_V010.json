@@ -1,0 +1,171 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "AT003_LINZ_UA2012_DHM_V010",
+  "properties": {
+    "created": "2020-11-16T00:00:00Z",
+    "description": "2012 Linz building height V010",
+    "start_datetime": "2011-01-01T00:00:00Z",
+    "end_datetime": "2011-12-31T00:00:00Z",
+    "providers": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+        "roles": [
+          "licensor",
+          "host"
+        ],
+        "url": "https://land.copernicus.eu"
+      }
+    ],
+    "proj:epsg": 3035,
+    "proj:bbox": [
+      4635910,
+      2798060,
+      4647770,
+      2816460
+    ],
+    "proj:shape": [
+      1840,
+      1186
+    ],
+    "datetime": null
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          14.41186384998693,
+          48.20847894275917
+        ],
+        [
+          14.41186384998693,
+          48.379949647274366
+        ],
+        [
+          14.23815382016141,
+          48.379949647274366
+        ],
+        [
+          14.23815382016141,
+          48.20847894275917
+        ],
+        [
+          14.41186384998693,
+          48.20847894275917
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://land.copernicus.eu/en/data-policy"
+    },
+    {
+      "rel": "root",
+      "href": "C:/git/clms-stac/stacs/clms_catalog.json",
+      "title": "CLMS Catalog"
+    },
+    {
+      "rel": "parent",
+      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "collection",
+      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "title": "Urban Atlas Building Height 10m"
+    },
+    {
+      "rel": "self",
+      "href": "C:/git/clms-stac/stac_prod/urban-atlas-building-height/AT003_LINZ_UA2012_DHM_V010/AT003_LINZ_UA2012_DHM_V010.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "AT003_LINZ_UA2012_DHM_V010_tif": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Dataset/AT003_LINZ_UA2012_DHM_V010.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Building Height Dataset",
+      "roles": [
+        "data"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_xml": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Metadata/AT003_LINZ_UA2012_DHM_V010.xml",
+      "type": "application/xml",
+      "title": "Building Height Dataset Metadata",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_cpg": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT003_LINZ_UA2012_DHM_V010.cpg",
+      "type": "text/plain",
+      "title": "pixel_based_info_cpg",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_dbf": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT003_LINZ_UA2012_DHM_V010.dbf",
+      "type": "application/x-dbf",
+      "title": "pixel_based_info_dbf",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_prj": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT003_LINZ_UA2012_DHM_V010.prj",
+      "type": "text/plain",
+      "title": "pixel_based_info_prj",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_shp": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT003_LINZ_UA2012_DHM_V010.shp",
+      "type": "application/octet-stream",
+      "title": "pixel_based_info_shp",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_shx": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT003_LINZ_UA2012_DHM_V010.shx",
+      "type": "application/octet-stream",
+      "title": "pixel_based_info_shx",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_pdf": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/QC/AT003_LINZ_UA2012_DHM_V010.pdf",
+      "type": "application/pdf",
+      "title": "Quality Control Report",
+      "roles": [
+        "metadata"
+      ]
+    },
+    "AT003_LINZ_UA2012_DHM_V010_zip": {
+      "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/AT003_LINZ_UA2012_DHM_V010.zip",
+      "type": "application/zip",
+      "title": "Compressed Building Height Metadata",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "bbox": [
+    14.23815382016141,
+    48.20847894275917,
+    14.41186384998693,
+    48.379949647274366
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+  ],
+  "collection": "urban-atlas-building-height"
+}
