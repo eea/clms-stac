@@ -14,27 +14,27 @@ from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
 from referencing import Registry, Resource
 
-import sys
-sys.path.append(os.path.abspath('clms-stac/scripts/clc-plus/'))
-from constants import *
+# import sys
+# sys.path.append(os.path.abspath('clms-stac/scripts/clc-plus/'))
+# from constants import *
 
-# from .constants import (
-#     CLMS_LICENSE,
-#     COLLECTION_DESCRIPTION,
-#     COLLECTION_ID,
-#     COLLECTION_KEYWORDS,
-#     COLLECTION_LICENSE,
-#     COLLECTION_MEDIA_TYPE_MAP,
-#     COLLECTION_ROLES_MAP,
-#     COLLECTION_TITLE,
-#     COLLECTION_TITLE_MAP,
-#     ITEM_MEDIA_TYPE_MAP,
-#     ITEM_ROLES_MAP,
-#     ITEM_TITLE_MAP,
-#     STAC_DIR,
-#     WORKING_DIR,
-# )
-# from .item import create_item, deconstruct_clc_name, get_img_paths
+from .constants import (
+    CLMS_LICENSE,
+    COLLECTION_DESCRIPTION,
+    COLLECTION_ID,
+    COLLECTION_KEYWORDS,
+    COLLECTION_LICENSE,
+    COLLECTION_MEDIA_TYPE_MAP,
+    COLLECTION_ROLES_MAP,
+    COLLECTION_TITLE,
+    COLLECTION_TITLE_MAP,
+    ITEM_MEDIA_TYPE_MAP,
+    ITEM_ROLES_MAP,
+    ITEM_TITLE_MAP,
+    STAC_DIR,
+    WORKING_DIR,
+)
+from .item import create_item, deconstruct_clc_name, get_img_paths
 
 LOGGER = logging.getLogger(__name__)
 
@@ -135,7 +135,7 @@ def create_collection() -> pystac.Collection:
 
 def populate_collection(collection: pystac.Collection, data_root: str) -> pystac.Collection:
     img_paths = get_img_paths(data_root)
-
+    validator = get_stac_validator("schema/products/clcplus.json")
     proj_epsg = []
     for img_path in img_paths:
         item = create_item(img_path, data_root)
@@ -152,7 +152,7 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         )
         item.set_self_href(href)
 
-        validator = get_stac_validator("schema/products/clc.json")
+        
         error_msg = best_match(validator.iter_errors(item.to_dict()))
         try:
             assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."

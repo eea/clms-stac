@@ -3,7 +3,7 @@ import os
 import pystac
 from pystac.provider import ProviderRole
 
-# os.chdir('x:\\projects\\ETC-DI\\Task_18\\clms-stac')
+
 WORKING_DIR = os.getcwd()
 
 STAC_DIR = "stac_tests"

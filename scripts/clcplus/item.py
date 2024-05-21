@@ -11,22 +11,23 @@ import rasterio.warp
 from pystac.extensions.projection import ProjectionExtension
 from shapely.geometry import box, mapping
 
-# from .constants import (
-#     CLC_PROVIDER,
-#     CLMS_LICENSE,
-#     COLLECTION_ID,
-#     DOM_MAP,
-#     ITEM_DESCRIPTION,
-#     ITEM_MEDIA_TYPE_MAP,
-#     ITEM_ROLES_MAP,
-#     ITEM_TITLE_MAP,
-#     STAC_DIR,
-#     WORKING_DIR,
-# )
+from .constants import (
+    CLC_PROVIDER,
+    CLMS_LICENSE,
+    COLLECTION_ID,
+    EXTENT_MAP,
+    ITEM_KEY_MAP,
+    ITEM_DESCRIPTION,
+    ITEM_MEDIA_TYPE_MAP,
+    ITEM_ROLES_MAP,
+    ITEM_TITLE_MAP,
+    STAC_DIR,
+    WORKING_DIR,
+)
 
-import sys
-sys.path.append(os.path.abspath('clms-stac/scripts/clc-plus/'))
-from constants import *
+# import sys
+# sys.path.append(os.path.abspath('clms-stac/scripts/clc-plus/'))
+# from constants import *
 
 LOGGER = logging.getLogger(__name__)
 
@@ -208,24 +209,24 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         transform=[*list(img.transform), 0.0, 0.0, 1.0],
     )
 
-    # clms_catalog_link = pystac.link.Link(
-    #     rel=pystac.RelType.ROOT,
-    #     target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/clms_catalog.json")),
-    # )
-    # collection_link = pystac.link.Link(
-    #     rel=pystac.RelType.COLLECTION,
-    #     target=pystac.STACObject.from_file(
-    #         os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
-    #     ),
-    # )
-    # item_parent_link = pystac.link.Link(
-    #     rel=pystac.RelType.PARENT,
-    #     target=pystac.STACObject.from_file(
-    #         os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
-    #     ),
-    # )
+    clms_catalog_link = pystac.link.Link(
+        rel=pystac.RelType.ROOT,
+        target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"{STAC_DIR}/clms_catalog.json")),
+    )
+    collection_link = pystac.link.Link(
+        rel=pystac.RelType.COLLECTION,
+        target=pystac.STACObject.from_file(
+            os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
+        ),
+    )
+    item_parent_link = pystac.link.Link(
+        rel=pystac.RelType.PARENT,
+        target=pystac.STACObject.from_file(
+            os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{COLLECTION_ID}.json")
+        ),
+    )
 
-    # links = [CLMS_LICENSE, clms_catalog_link, item_parent_link, collection_link]
-    # item.add_links(links)
+    links = [CLMS_LICENSE, clms_catalog_link, item_parent_link, collection_link]
+    item.add_links(links)
 
     return item
