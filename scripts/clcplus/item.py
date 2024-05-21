@@ -16,18 +16,14 @@ from .constants import (
     CLMS_LICENSE,
     COLLECTION_ID,
     EXTENT_MAP,
-    ITEM_KEY_MAP,
     ITEM_DESCRIPTION,
+    ITEM_KEY_MAP,
     ITEM_MEDIA_TYPE_MAP,
     ITEM_ROLES_MAP,
     ITEM_TITLE_MAP,
     STAC_DIR,
     WORKING_DIR,
 )
-
-# import sys
-# sys.path.append(os.path.abspath('clms-stac/scripts/clc-plus/'))
-# from constants import *
 
 LOGGER = logging.getLogger(__name__)
 
@@ -56,19 +52,10 @@ def deconstruct_clc_name(filename: str) -> dict[str]:
     return filename_split
 
 
-
 def create_item_asset(asset_file: str, extent: str) -> tuple[str, pystac.Asset]:
     filename_elements = deconstruct_clc_name(asset_file)
 
     key = filename_elements["suffix"].replace(".", "_")
-
-    # if id.startswith("readme"):
-    #     key = "readme_" + suffix
-    # elif id.endswith("QGIS"):
-    #     key = "legend_" + suffix
-    # else:
-    #     key = suffix
-
     label = EXTENT_MAP[extent]
 
     asset = pystac.Asset(
@@ -100,15 +87,6 @@ def get_item_asset_files(data_root: str, img_path: str) -> list[str]:
     asset_files = []
 
     for root, _, files in os.walk(data_root):
-        # if not clc_extent and "French_DOMs" in root:
-        #     continue
-
-        # if clc_extent and "Legend" in root and "French_DOMs" not in root:
-        #     continue
-
-        # if "U{update_campaign}_{theme}{reference_year}_V{release_year}".format(**clc_name_elements).lower() not in root:
-        #     continue
-
         for file in files:
             if (
                 file.startswith(f"{clc_id}.")
@@ -159,9 +137,10 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
     }
 
     with rio.open(img_path) as img:
-        
+        # TODO: Projecting the raster to get the data extent bbox for Europe worked
+        # well with the CLC products, but fails with CLC+ due to much larger raster
+        # dimensions. For the moment, full raster bbox is projected to EPSG:4326
         bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
-        
         # if clc_name_elements["extent"] != 'eu':
         #     bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
         # else:
@@ -189,8 +168,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         except KeyError as error:
             LOGGER.error("An error occured:", error)
 
-    # TODO: "Thumbnail" was originally put at collection level in the template,
-    # while it should perhaps be at item level? Individual previews should be added to each item
+    # TODO: No "Thumbnail" preview defined for CLC+, below code serves as a placeholder (taken from CLC)
     # key = "preview"
     # asset = pystac.Asset(
     #     href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
@@ -200,8 +178,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
     # )
     # item.add_asset(key=key, asset=asset)
 
-    # proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace(".", "_")], add_if_missing=True)
-    proj_ext = ProjectionExtension.ext(item.assets['clcplus_map'], add_if_missing=True)
+    proj_ext = ProjectionExtension.ext(item.assets["clcplus_map"], add_if_missing=True)
     proj_ext.apply(
         epsg=rio.crs.CRS(img.crs).to_epsg(),
         bbox=img.bounds,

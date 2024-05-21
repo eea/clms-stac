@@ -3,9 +3,7 @@ import os
 import pystac
 from pystac.provider import ProviderRole
 
-
 WORKING_DIR = os.getcwd()
-
 STAC_DIR = "stac_tests"
 
 # Collection
@@ -26,21 +24,18 @@ COLLECTION_LICENSE = "proprietary"
 
 
 COLLECTION_TITLE_MAP = {
-    "clc_country_coverage": "Coverage",
-    "clc_file_naming": "Naming Convention Description",
-    "readme": "Description",
+    "clcplus_product_specification": "CLC+ Backbone Product Specification and User Manual",
+    "clcplus_product_specification_raster": "Product Specification and User Manual: Raster Product",
 }
 
 COLLECTION_MEDIA_TYPE_MAP = {
-    "clc_country_coverage": pystac.MediaType.PDF,
-    "clc_file_naming": pystac.MediaType.TEXT,
-    "readme": pystac.MediaType.TEXT,
+    "clcplus_product_specification": pystac.MediaType.PDF,
+    "clcplus_product_specification_raster": pystac.MediaType.PDF,
 }
 
 COLLECTION_ROLES_MAP = {
-    "clc_country_coverage": ["metadata"],
-    "clc_file_naming": ["metadata"],
-    "readme": ["metadata"],
+    "clcplus_product_specification": ["metadata"],
+    "clcplus_product_specification_raster": ["metadata"],
 }
 
 # Items
