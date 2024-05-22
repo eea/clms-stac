@@ -16,7 +16,7 @@
     },
     {
       "rel": "self",
-      "href": "C:/git/clms-stac/stac_prod/eu-hydro/eu-hydro.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/eu-hydro/eu-hydro.json",
       "type": "application/json"
     },
     {

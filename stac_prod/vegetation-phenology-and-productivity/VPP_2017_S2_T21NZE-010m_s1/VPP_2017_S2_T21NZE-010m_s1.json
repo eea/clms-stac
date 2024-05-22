@@ -74,22 +74,22 @@
     },
     {
       "rel": "root",
-      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stacs/clms_catalog.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stacs/clms_catalog.json",
       "title": "CLMS Catalog"
     },
     {
       "rel": "parent",
-      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
       "title": "Vegetation Phenology and Productivity Parameters"
     },
     {
       "rel": "collection",
-      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stacs/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
       "title": "Vegetation Phenology and Productivity Parameters"
     },
     {
       "rel": "self",
-      "href": "/Users/chung-xianghong/Documents/git/clms-stac/stac_tests/vegetation-phenology-and-productivity/VPP_2017_S2_T21NZE-010m_s1/VPP_2017_S2_T21NZE-010m_s1.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/vegetation-phenology-and-productivity/VPP_2017_S2_T21NZE-010m_s1/VPP_2017_S2_T21NZE-010m_s1.json",
       "type": "application/json"
     }
   ],

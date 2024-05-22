@@ -16,7 +16,7 @@
     },
     {
       "rel": "self",
-      "href": "C:/git/clms-stac/stac_prod/natura2000/natura2000.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/natura2000/natura2000.json",
       "type": "application/json"
     },
     {

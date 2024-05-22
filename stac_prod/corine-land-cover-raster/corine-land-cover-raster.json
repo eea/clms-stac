@@ -17,7 +17,7 @@
     },
     {
       "rel": "self",
-      "href": "C:/git/clms-stac/stac_prod/corine-land-cover-raster/corine-land-cover-raster.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/corine-land-cover-raster/corine-land-cover-raster.json",
       "type": "application/json"
     },
     {
@@ -247,6 +247,17 @@
     "land cover",
     "machine learning",
     "open data"
+  ],
+  "providers": [
+    {
+      "name": "Copernicus Land Monitoring Service",
+      "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
+      "roles": [
+        "licensor",
+        "host"
+      ],
+      "url": "https://land.copernicus.eu"
+    }
   ],
   "summaries": {
     "proj:epsg": [

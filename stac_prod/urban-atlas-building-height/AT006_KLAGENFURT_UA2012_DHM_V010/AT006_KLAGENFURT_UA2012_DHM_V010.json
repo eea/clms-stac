@@ -65,22 +65,22 @@
     },
     {
       "rel": "root",
-      "href": "C:/git/clms-stac/stacs/clms_catalog.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/clms_catalog.json",
       "title": "CLMS Catalog"
     },
     {
       "rel": "parent",
-      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/urban-atlas-building-height/urban-atlas-building-height.json",
       "title": "Urban Atlas Building Height 10m"
     },
     {
       "rel": "collection",
-      "href": "C:/git/clms-stac/stacs/urban-atlas-building-height/urban-atlas-building-height.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/urban-atlas-building-height/urban-atlas-building-height.json",
       "title": "Urban Atlas Building Height 10m"
     },
     {
       "rel": "self",
-      "href": "C:/git/clms-stac/stac_prod/urban-atlas-building-height/AT006_KLAGENFURT_UA2012_DHM_V010/AT006_KLAGENFURT_UA2012_DHM_V010.json",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stac_prod/urban-atlas-building-height/AT006_KLAGENFURT_UA2012_DHM_V010/AT006_KLAGENFURT_UA2012_DHM_V010.json",
       "type": "application/json"
     }
   ],
