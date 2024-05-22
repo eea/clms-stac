@@ -1,13 +1,19 @@
+import json
+import logging
 import os
+import re
 import xml.etree.ElementTree as eTree
 from datetime import datetime
 
 import pystac
 import rasterio as rio
-from pyproj import CRS
+from jsonschema import Draft7Validator
+from jsonschema.exceptions import best_match
 from pystac.extensions.projection import ProjectionExtension
 from rasterio.coords import BoundingBox
+from rasterio.crs import CRS
 from rasterio.warp import transform_bounds
+from referencing import Registry, Resource
 from shapely.geometry import Polygon, box, mapping
 
 from .constants import (
@@ -20,6 +26,12 @@ from .constants import (
     WORKING_DIR,
 )
 
+LOGGER = logging.getLogger(__name__)
+
+
+class ItemCreationError(Exception):
+    pass
+
 
 def read_metadata_from_tiff(tile: str) -> tuple[BoundingBox, CRS, int, int]:
     with rio.open(tile) as tif:
@@ -30,21 +42,31 @@ def read_metadata_from_tiff(tile: str) -> tuple[BoundingBox, CRS, int, int]:
     return (bounds, crs, height, width)
 
 
-def read_metadata_from_xml(metadata: str) -> str:
-    tree = eTree.parse(metadata)
+def get_namespace(tag: str, xml_string: str) -> str:
+    return re.search(r"xmlns:" + tag + '="([^"]+)"', xml_string).group(0).split("=")[1][1:-1]
+
+
+def read_metadata_from_xml(xml: str) -> str:
+    with open(xml, encoding="utf-8") as f:
+        xml_string = f.read()
+    gmd_namespace = get_namespace("gmd", xml_string)
+    tree = eTree.parse(xml)
     root = tree.getroot()
-    ci_dates = root.findall(".//{*}CI_Date")
-    filtered_ci_date = next(
-        [date for date in ci_dates if date.find('.//{*}CI_DateTypeCode[@codeListValue="creation"]') is not None]
-    )
-    creation_date = filtered_ci_date.find(".//{*}Date").text
-    return creation_date.text
+    return root.findall(
+        "".join(  # noqa: FLY002
+            (
+                ".//{",
+                gmd_namespace,
+                "}CI_DateTypeCode[@codeListValue='creation']....//{",
+                gmd_namespace,
+                "}date/*",
+            )
+        )
+    )[0].text
 
 
 def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
-    bbox = rio.coords.BoundingBox(
-        *transform_bounds(crs.to_epsg(), 4326, bounds.left, bounds.bottom, bounds.right, bounds.top)
-    )
+    bbox = rio.coords.BoundingBox(*transform_bounds(crs, 4326, bounds.left, bounds.bottom, bounds.right, bounds.top))
     return box(*(bbox.left, bbox.bottom, bbox.right, bbox.top))
 
 
@@ -109,40 +131,53 @@ def add_assets_to_item(item: pystac.Item, assets: list[str, pystac.Asset]) -> No
 
 
 def create_item(tile: str, worldfile: str, metadata: str) -> pystac.Item:
-    _, tail = os.path.split(tile)
-    product_id, asset = tail.split(".")[0].rsplit("_", 1)
-    bounds, _, height, width = read_metadata_from_tiff(tile)
-    crs = CRS("epsg:" + product_id.split("_")[4][1:5])
-    geom_wgs84 = get_geom_wgs84(bounds, crs)
-    description = get_description(product_id)
-    start_datetime, end_datetime = get_datetime(product_id)
-    created_datetime = read_metadata_from_xml(metadata)
+    try:
+        _, tail = os.path.split(tile)
+        product_id, asset = tail.split(".")[0].rsplit("_", 1)
+        bounds, crs, height, width = read_metadata_from_tiff(tile)
+        geom_wgs84 = get_geom_wgs84(bounds, crs)
+        description = get_description(product_id)
+        start_datetime, end_datetime = get_datetime(product_id)
+        created_datetime = read_metadata_from_xml(metadata)
 
-    # common metadata
-    item = create_core_item(
-        product_id, geom_wgs84, start_datetime, end_datetime, created_datetime, description, COLLECTION_ID
-    )
+        # common metadata
+        item = create_core_item(
+            product_id, geom_wgs84, start_datetime, end_datetime, created_datetime, description, COLLECTION_ID
+        )
 
-    # extensions
-    add_projection_extension_to_item(item, product_id, bounds, height, width)
+        # extensions
+        add_projection_extension_to_item(item, product_id, bounds, height, width)
 
-    # links
-    link_list = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
-    add_links_to_item(item, link_list)
+        # links
+        link_list = [CLMS_LICENSE, CLMS_CATALOG_LINK, ITEM_PARENT_LINK, COLLECTION_LINK]
+        add_links_to_item(item, link_list)
 
-    # assets
-    assets = create_assets(tile, worldfile)
-    add_assets_to_item(item, assets)
-
+        # assets
+        assets = create_assets(tile, worldfile)
+        add_assets_to_item(item, assets)
+    except Exception as error:
+        raise ItemCreationError(error)
     return item
 
 
-def create_ibu10m_item(tile: str, worldfile: str, metadata: str) -> None:
-    item = create_item(tile, worldfile, metadata)
+def create_ibu10m_item(tile: str, worldfile: str, metadata: str, validator: Draft7Validator) -> None:
+    try:
+        item = create_item(tile, worldfile, metadata)
+        items_dir = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}")
+        os.makedirs(items_dir, exist_ok=True)
+        file_path = os.path.join(items_dir, f"{item.id}.json")
+        item.set_self_href(file_path)
+        error_msg = best_match(validator.iter_errors(item.to_dict()))
+        assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."
+        item.save_object()
+    except (AssertionError, ItemCreationError) as error:
+        LOGGER.error(error)
 
-    items_dir = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}")
-    os.makedirs(items_dir, exist_ok=True)
 
-    file_path = os.path.join(items_dir, f"{item.id}.json")
-    item.set_self_href(file_path)
-    item.save_object()
+def get_stac_validator(product_schema: str) -> Draft7Validator:
+    with open(product_schema, encoding="utf-8") as f:
+        schema = json.load(f)
+    registry = Registry().with_resources(
+        [("http://example.com/schema.json", Resource.from_contents(schema))],
+    )
+    return Draft7Validator({"$ref": "http://example.com/schema.json"}, registry=registry)

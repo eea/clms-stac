@@ -36,7 +36,6 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
         pytest.param(
             "imperviousness-change-20m",
             "schema/products/imc.json",
-            marks=pytest.mark.skip(reason="Schema not available"),
         ),
         ("natura2000", "schema/products/n2k.json"),
         ("urban-atlas-building-height", "schema/products/uabh.json"),

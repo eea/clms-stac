@@ -40,128 +40,20 @@
           "oneOf": [
             {
               "items": [
-                {
-                  "type": "number",
-                  "minimum": 18.140136,
-                  "maximum": 19.329582
-                },
-                {
-                  "type": "number",
-                  "minimum": 41.672629,
-                  "maximum": 42.463926
-                },
-                {
-                  "type": "number",
-                  "minimum": 18.140136,
-                  "maximum": 19.329582
-                },
-                { "type": "number", "minimum": 41.672629, "maximum": 42.463926 }
+                { "type": "number", "minimum": 18, "maximum": 22 },
+                { "type": "number", "minimum": 38, "maximum": 44 },
+                { "type": "number", "minimum": 18, "maximum": 22 },
+                { "type": "number", "minimum": 38, "maximum": 44 }
+              ]
+            },
+            {
+              "items": [
+                { "type": "number", "minimum": 5, "maximum": 12 },
+                { "type": "number", "minimum": 45, "maximum": 49 },
+                { "type": "number", "minimum": 5, "maximum": 12 },
+                { "type": "number", "minimum": 45, "maximum": 49 }
               ]
             }
-          ]
-        },
-        "properties": {
-          "type": "object",
-          "required": [
-            "description",
-            "datetime",
-            "start_datetime",
-            "end_datetime",
-            "created",
-            "providers",
-            "proj:epsg",
-            "proj:bbox",
-            "proj:shape"
-          ],
-          "properties": {
-            "providers": {
-              "const": [
-                {
-                  "name": "Copernicus Land Monitoring Service",
-                  "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-                  "roles": ["licensor", "host"],
-                  "url": "https://land.copernicus.eu"
-                }
-              ]
-            }
-          }
-        },
-        "collection": {
-          "const": "imperviousness-built-up-10m"
-        },
-        "links": {
-          "type": "array",
-          "allOf": [
-            {
-              "contains": {
-                "const": {
-                  "rel": "license",
-                  "href": "https://land.copernicus.eu/en/data-policy"
-                }
-              }
-            },
-            {
-              "contains": {
-                "type": "object",
-                "properties": {
-                  "rel": {
-                    "const": "self"
-                  }
-                }
-              }
-            },
-            {
-              "contains": {
-                "type": "object",
-                "properties": {
-                  "rel": {
-                    "const": "root"
-                  }
-                }
-              }
-            },
-            {
-              "contains": {
-                "type": "object",
-                "properties": {
-                  "rel": {
-                    "const": "parent"
-                  }
-                }
-              }
-            },
-            {
-              "contains": {
-                "type": "object",
-                "properties": {
-                  "rel": {
-                    "const": "collection"
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "assets": {
-          "type": "object",
-          "minProperties": 3,
-          "maxProperties": 3,
-          "propertyNames": {
-            "pattern": "^builtup_map"
-          },
-          "additionalProperties": {
-            "type": "object",
-            "properties": {
-              "href": {
-                "type": "string",
-                "pattern": ".tif$|.dbf$|.tfw$"
-              }
-            }
-          },
-          "required": [
-            "builtup_map",
-            "builtup_map_database",
-            "builtup_map_worldfile"
           ]
         }
       }
