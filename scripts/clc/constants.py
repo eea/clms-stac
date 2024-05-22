@@ -6,7 +6,7 @@ from pystac.provider import ProviderRole
 # os.chdir('x:\\projects\\ETC-DI\\Task_18\\clms-stac')
 WORKING_DIR = os.getcwd()
 
-STAC_DIR = "stac_tests"
+STAC_DIR = "stac_prod"
 
 # Collection
 COLLECTION_ID = "corine-land-cover-raster"

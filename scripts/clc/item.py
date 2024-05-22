@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 import os
 import re
@@ -55,9 +57,9 @@ def create_item_asset(asset_file: str, dom_code: str) -> pystac.Asset:
 
     suffix = filename_elements["suffix"].replace(".", "_")
 
-    if id.startswith("readme"):
+    if filename_elements['id'].startswith("readme"):
         key = "readme_" + suffix
-    elif id.endswith("QGIS"):
+    elif filename_elements['id'].endswith("QGIS"):
         key = "legend_" + suffix
     else:
         key = suffix
@@ -147,7 +149,6 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
     props = {
         "description": ITEM_DESCRIPTION.format(year=year),
         "created": None,
-        "providers": CLC_PROVIDER.to_dict(),
     }
 
     with rio.open(img_path) as img:
@@ -158,7 +159,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
         params = {
             "id": clc_name_elements.get("id"),
-            "bbox": bbox,
+            "bbox": list(bbox),
             "geometry": mapping(box(*bbox)),
             "datetime": None,
             "start_datetime": datetime(int(year), 1, 1, microsecond=0, tzinfo=UTC),
@@ -167,10 +168,12 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         }
 
     item = pystac.Item(**params)
+    item.common_metadata.providers = [CLC_PROVIDER]
+
 
     for asset_file in asset_files:
         try:
-            key, asset = create_item_asset(asset_file, DOM_code=clc_name_elements.get("DOM_code"))
+            key, asset = create_item_asset(asset_file, dom_code=clc_name_elements.get("DOM_code"))
             item.add_asset(
                 key=key,
                 asset=asset,
@@ -180,15 +183,15 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     # TODO: "Thumbnail" was originally put at collection level in the template,
     # while it should perhaps be at item level? Individual previews should be added to each item
-    key = "preview"
-    asset = pystac.Asset(
-        href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
-        title=ITEM_TITLE_MAP["preview"].format(label=clc_name_elements["DOM_code"]),
-        media_type=ITEM_MEDIA_TYPE_MAP[key],
-        roles=ITEM_ROLES_MAP[key],
-    )
+    # key = "preview"
+    # asset = pystac.Asset(
+    #     href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
+    #     title=ITEM_TITLE_MAP["preview"].format(label=clc_name_elements["DOM_code"]),
+    #     media_type=ITEM_MEDIA_TYPE_MAP[key],
+    #     roles=ITEM_ROLES_MAP[key],
+    # )
 
-    item.add_asset(key=key, asset=asset)
+    # item.add_asset(key=key, asset=asset)
 
     proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace(".", "_")], add_if_missing=True)
     proj_ext.apply(

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 import logging
 import os
@@ -15,6 +17,7 @@ from pystac.extensions.projection import ProjectionExtension
 from referencing import Registry, Resource
 
 from .constants import (
+    CLC_PROVIDER,
     CLMS_LICENSE,
     COLLECTION_DESCRIPTION,
     COLLECTION_ID,
@@ -103,6 +106,7 @@ def create_collection() -> pystac.Collection:
         keywords=COLLECTION_KEYWORDS,
         license=COLLECTION_LICENSE,
         stac_extensions=[],
+        providers=[CLC_PROVIDER]
     )
 
     item_assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
@@ -131,7 +135,7 @@ def create_collection() -> pystac.Collection:
 
 def populate_collection(collection: pystac.Collection, data_root: str) -> pystac.Collection:
     img_paths = get_img_paths(data_root)
-
+    validator = get_stac_validator("schema/products/clc.json")
     proj_epsg = []
     for img_path in img_paths:
         item = create_item(img_path, data_root)
@@ -146,14 +150,12 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         )
         item.set_self_href(href)
 
-        validator = get_stac_validator("schema/products/clc.json")
         error_msg = best_match(validator.iter_errors(item.to_dict()))
         try:
             assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."
+            item.save_object()
         except AssertionError as error:
             LOGGER.error(error)
-
-        item.save_object()
 
     asset_files = get_collection_asset_files(data_root)
 
@@ -161,7 +163,8 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         key, asset = create_collection_asset(asset_file)
         collection.assets |= {key: asset}
 
-    collection.make_all_asset_hrefs_relative()
+    # keep asset href absolute
+    # collection.make_all_asset_hrefs_relative()
     collection.update_extent_from_items()
     ProjectionExtension.add_to(collection)
     collection.summaries = pystac.Summaries({"proj:epsg": list(set(proj_epsg))})
@@ -169,9 +172,7 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
     try:
         error_msg = best_match(validator.iter_errors(collection.to_dict()))
         assert error_msg is None, f"Failed to create {collection.id} collection. Reason: {error_msg}."
+        collection.save_object()
     except AssertionError as error:
         LOGGER.error(error)
-
-    collection.save_object()
-
     return collection

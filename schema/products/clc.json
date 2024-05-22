@@ -34,10 +34,10 @@
           "oneOf": [
             {
               "items": [
-                { "type": "number", "minimum": -23.85, "maximum": -23.8 },
-                { "type": "number", "minimum": 24.26, "maximum": 24.31 },
-                { "type": "number", "minimum": 40.62, "maximum": 40.7 },
-                { "type": "number", "minimum": 58.89, "maximum": 59.01 }
+                { "type": "number", "minimum": -32.0, "maximum": -31.5 },
+                { "type": "number", "minimum": 27.0, "maximum": 27.5 },
+                { "type": "number", "minimum": 44.5, "maximum": 45.0 },
+                { "type": "number", "minimum": 60.0, "maximum": 71.5 }
               ]
             },
             {
@@ -89,7 +89,6 @@
             "datetime",
             "start_datetime",
             "end_datetime",
-            "created",
             "providers"
           ],
           "properties": {
@@ -99,15 +98,11 @@
             "datetime": { "const": null },
             "start_datetime": {
               "type": "string",
-              "pattern": "^(1986|1999|2005|2011|2017|2023)-01-01T([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]{3})?Z"
+              "pattern": "^(1990|2000|2006|2012|2018|2023)-01-01T([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]{3})?Z"
             },
             "end_datetime": {
               "type": "string",
-              "pattern": "^(1998|2001|2007|2012|2018|2024)-12-31T([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]{3})?Z"
-            },
-            "created": {
-              "type": "string",
-              "pattern": "20(19|[2-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]{3})?Z"
+              "pattern": "^(1990|2000|2006|2012|2018|2023)-12-31T([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]{3})?Z"
             },
             "providers": {
               "const": [
@@ -129,7 +124,8 @@
               "contains": {
                 "const": {
                   "rel": "license",
-                  "href": "https://land.copernicus.eu/en/data-policy"
+                  "href": "https://land.copernicus.eu/en/data-policy",
+                  "title": "Legal notice on the use of CLMS data"
                 }
               }
             },
@@ -169,11 +165,6 @@
         },
         "assets": {
           "type": "object",
-          "minProperties": 9,
-          "maxProperties": 10,
-          "propertyNames": {
-            "pattern": "^clc"
-          },
           "additionalProperties": {
             "type": "object",
             "properties": {
@@ -236,36 +227,45 @@
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
               "roles": ["licensor", "host"],
-              "url": "https://land.copernicus.eu/en"
+              "url": "https://land.copernicus.eu"
             }
           ]
         },
         "extent": {
           "const": {
             "spatial": {
-              "bbox": [[-61.906047, -21.482245, 55.935919, 71.409109]]
+              "bbox": [[
+                -61.90648987371496,
+                -21.483070551222387,
+                55.93678987772944,
+                71.41326966834436
+              ]]
             },
             "temporal": {
-              "interval": [["1990-01-01T00:00:00.000Z", null]]
+              "interval": [["1990-01-01T00:00:00Z", "2018-12-31T00:00:00Z"]]
             }
           }
         },
         "assets": {
           "type": "object",
-          "minProperties": 7,
-          "maxProperties": 7
+          "minProperties": 3,
+          "maxProperties": 3
         },
         "item_assets": {
           "type": "object",
           "required": [
-            "clc_map",
-            "clc_map_statistics",
-            "clc_map_pyramid",
-            "clc_map_encoding",
-            "clc_map_database",
-            "clc_map_database_metadata",
-            "clc_map_tif_metadata",
-            "clc_map_metadata"
+            "clc_map_tif",
+            "clc_map_tif_xml",
+            "clc_map_tif_aux_xml",
+            "clc_map_tif_ovr",
+            "clc_map_tif_vat_cpg",
+            "clc_map_tif_vat_dbf",
+            "clc_map_legend_txt",
+            "clc_map_tif_lyr",
+            "clc_map_tfw",
+            "clc_map_xml",
+            "clc_map_readme_txt",
+            "clc_map_preview"
           ]
         },
         "summaries": {
