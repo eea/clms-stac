@@ -32,17 +32,16 @@ def test_extensions(stac_fixture, validator_fixture, extension_id, stac_version=
         ("vegetation-phenology-and-productivity", "schema/products/vpp.json"),
         ("river-and-lake-ice-extent-s2", "schema/products/rlie-s2.json"),
         ("corine-land-cover-plus-raster", "schema/products/clcplus.json"),
-        ("imperviousness-built-up-10m", "schema/products/ibu10m.json"),
-        pytest.param(
+        pytest.param("imperviousness-built-up-10m", "schema/products/ibu10m.json"),
+        (
             "imperviousness-change-20m",
             "schema/products/imc.json",
         ),
         ("natura2000", "schema/products/n2k.json"),
         ("urban-atlas-building-height", "schema/products/uabh.json"),
-        pytest.param(
+        (
             "urban-atlas-street-tree-layer",
             "schema/products/uastl.json",
-            marks=pytest.mark.skip(reason="Schema not available"),
         ),
         ("eu-hydro", "schema/products/eu-hydro.json"),
     ],
