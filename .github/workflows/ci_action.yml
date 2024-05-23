@@ -6,6 +6,7 @@ on:
     branches:
       - "main"
       - "develop"
+      - "feat/stac-prod-crunch"
   workflow_call:
 
 jobs:
