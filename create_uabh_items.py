@@ -2,12 +2,13 @@
 import os
 import sys
 
-os.environ['GDAL_DATA'] = os.path.join(f'{os.sep}'.join(sys.executable.split(os.sep)[:-1]), 'Library', 'share', 'gdal')
+os.environ["GDAL_DATA"] = os.path.join(f"{os.sep}".join(sys.executable.split(os.sep)[:-1]), "Library", "share", "gdal")
 
-import logging
-from glob import glob
+# common imports
+import logging  # noqa: E402
+from glob import glob  # noqa: E402
 
-from scripts.uabh.item import create_uabh_item, get_stac_validator
+from scripts.uabh.item import create_uabh_item, get_stac_validator  # noqa: E402
 
 LOGGER = logging.getLogger(__name__)
 

@@ -106,7 +106,7 @@ def create_collection() -> pystac.Collection:
         keywords=COLLECTION_KEYWORDS,
         license=COLLECTION_LICENSE,
         stac_extensions=[],
-        providers=[CLC_PROVIDER]
+        providers=[CLC_PROVIDER],
     )
 
     item_assets = ItemAssetsExtension.ext(collection, add_if_missing=True)

@@ -57,9 +57,9 @@ def create_item_asset(asset_file: str, dom_code: str) -> pystac.Asset:
 
     suffix = filename_elements["suffix"].replace(".", "_")
 
-    if filename_elements['id'].startswith("readme"):
+    if filename_elements["id"].startswith("readme"):
         key = "readme_" + suffix
-    elif filename_elements['id'].endswith("QGIS"):
+    elif filename_elements["id"].endswith("QGIS"):
         key = "legend_" + suffix
     else:
         key = suffix
@@ -169,7 +169,6 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     item = pystac.Item(**params)
     item.common_metadata.providers = [CLC_PROVIDER]
-
 
     for asset_file in asset_files:
         try:
