@@ -11,10 +11,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
@@ -24,26 +21,11 @@
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          -60.90553485802061,
-          15.735507075715322
-        ],
-        [
-          -60.90553485802061,
-          16.607731903357532
-        ],
-        [
-          -61.90648987371496,
-          16.607731903357532
-        ],
-        [
-          -61.90648987371496,
-          15.735507075715322
-        ],
-        [
-          -60.90553485802061,
-          15.735507075715322
-        ]
+        [-60.90553485802061, 15.735507075715322],
+        [-60.90553485802061, 16.607731903357532],
+        [-61.90648987371496, 16.607731903357532],
+        [-61.90648987371496, 15.735507075715322],
+        [-60.90553485802061, 15.735507075715322]
       ]
     ]
   },
@@ -82,9 +64,7 @@
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2012_V2020_20u1_FR_GLP.tfw",
       "type": "text/plain",
       "title": "World File Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_FR_GLP_tif": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2012_V2020_20u1_FR_GLP.tif",
@@ -92,111 +72,73 @@
       "title": "Single Band Land Classification Guadeloupe",
       "proj:epsg": 4559,
       "proj:bbox": [
-        617151.000324164,
-        1740782.1579604005,
-        723451.000324164,
+        617151.000324164, 1740782.1579604005, 723451.000324164,
         1836482.1579604005
       ],
-      "proj:shape": [
-        957,
-        1063
-      ],
+      "proj:shape": [957, 1063],
       "proj:transform": [
-        100.0,
-        0.0,
-        617151.000324164,
-        0.0,
-        -100.0,
-        1836482.1579604005,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        1.0
+        100.0, 0.0, 617151.000324164, 0.0, -100.0, 1836482.1579604005, 0.0, 0.0,
+        1.0, 0.0, 0.0, 1.0
       ],
-      "roles": [
-        "data",
-        "visual"
-      ]
+      "roles": ["data", "visual"]
     },
     "U2018_CLC2012_V2020_20u1_FR_GLP_tif_aux_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2012_V2020_20u1_FR_GLP.tif.aux.xml",
       "type": "application/xml",
       "title": "TIFF Statistics Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_FR_GLP_tif_ovr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2012_V2020_20u1_FR_GLP.tif.ovr",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "title": "Pyramid Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_FR_GLP_tif_vat_cpg": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2012_V2020_20u1_FR_GLP.tif.vat.cpg",
       "type": "text/plain",
       "title": "Encoding Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_FR_GLP_tif_vat_dbf": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2012_V2020_20u1_FR_GLP.tif.vat.dbf",
       "type": "application/dbf",
       "title": "Database Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_FR_GLP_tif_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2012_V2020_20u1_FR_GLP.tif.xml",
       "type": "application/xml",
       "title": "TIFF Metadata Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "readme_U2018_CLC2012_V2020_20u1_FR_GLP_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Documents/readme_U2018_CLC2012_V2020_20u1_FR_GLP.txt",
       "type": "text/plain",
       "title": "Description Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2012_V2018_20_FR_GLP_tif_lyr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/French_DOMs/Legend/CLC2018_CLC2012_V2018_20_FR_GLP.tif.lyr",
       "type": "image/tiff; application=geotiff; profile=layer",
       "title": "Legend Layer Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2012_V2018_20_QGIS_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/French_DOMs/Legend/CLC2018_CLC2012_V2018_20_QGIS.txt",
       "type": "text/plain",
       "title": "Legends Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_FR_GLP_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Metadata/U2018_CLC2012_V2020_20u1_FR_GLP.xml",
       "type": "application/xml",
       "title": "Single Band Land Classification Metadata Guadeloupe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     }
   },
   "bbox": [
-    -61.90648987371496,
-    15.735507075715322,
-    -60.90553485802061,
+    -61.90648987371496, 15.735507075715322, -60.90553485802061,
     16.607731903357532
   ],
   "stac_extensions": [

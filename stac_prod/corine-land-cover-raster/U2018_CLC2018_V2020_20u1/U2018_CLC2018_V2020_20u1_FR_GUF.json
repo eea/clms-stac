@@ -11,10 +11,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
@@ -24,26 +21,11 @@
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          -51.6207904596755,
-          3.772252688102383
-        ],
-        [
-          -51.6207904596755,
-          5.852440017908596
-        ],
-        [
-          -54.268608338572534,
-          5.852440017908596
-        ],
-        [
-          -54.268608338572534,
-          3.772252688102383
-        ],
-        [
-          -51.6207904596755,
-          3.772252688102383
-        ]
+        [-51.6207904596755, 3.772252688102383],
+        [-51.6207904596755, 5.852440017908596],
+        [-54.268608338572534, 5.852440017908596],
+        [-54.268608338572534, 3.772252688102383],
+        [-51.6207904596755, 3.772252688102383]
       ]
     ]
   },
@@ -82,9 +64,7 @@
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_GUF.tfw",
       "type": "text/plain",
       "title": "World File French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_GUF_tif": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_GUF.tif",
@@ -92,112 +72,73 @@
       "title": "Single Band Land Classification French Guyana",
       "proj:epsg": 2972,
       "proj:bbox": [
-        137969.34809699043,
-        417631.2034012885,
-        431069.34809699043,
+        137969.34809699043, 417631.2034012885, 431069.34809699043,
         646931.2034012885
       ],
-      "proj:shape": [
-        2293,
-        2931
-      ],
+      "proj:shape": [2293, 2931],
       "proj:transform": [
-        100.0,
-        0.0,
-        137969.34809699043,
-        0.0,
-        -100.0,
-        646931.2034012885,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        1.0
+        100.0, 0.0, 137969.34809699043, 0.0, -100.0, 646931.2034012885, 0.0,
+        0.0, 1.0, 0.0, 0.0, 1.0
       ],
-      "roles": [
-        "data",
-        "visual"
-      ]
+      "roles": ["data", "visual"]
     },
     "U2018_CLC2018_V2020_20u1_FR_GUF_tif_aux_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_GUF.tif.aux.xml",
       "type": "application/xml",
       "title": "TIFF Statistics French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_GUF_tif_ovr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_GUF.tif.ovr",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "title": "Pyramid French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_GUF_tif_vat_cpg": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_GUF.tif.vat.cpg",
       "type": "text/plain",
       "title": "Encoding French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_GUF_tif_vat_dbf": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_GUF.tif.vat.dbf",
       "type": "application/dbf",
       "title": "Database French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_GUF_tif_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_GUF.tif.xml",
       "type": "application/xml",
       "title": "TIFF Metadata French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "readme_U2018_CLC2018_V2020_20u1_FR_GUF_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/readme_U2018_CLC2018_V2020_20u1_FR_GUF.txt",
       "type": "text/plain",
       "title": "Description French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2018_V2018_20_FR_GUF_tif_lyr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/French_DOMs/Legend/CLC2018_CLC2018_V2018_20_FR_GUF.tif.lyr",
       "type": "image/tiff; application=geotiff; profile=layer",
       "title": "Legend Layer French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2018_V2018_20_QGIS_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/French_DOMs/Legend/CLC2018_CLC2018_V2018_20_QGIS.txt",
       "type": "text/plain",
       "title": "Legends French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_GUF_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Metadata/U2018_CLC2018_V2020_20u1_FR_GUF.xml",
       "type": "application/xml",
       "title": "Single Band Land Classification Metadata French Guyana",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     }
   },
   "bbox": [
-    -54.268608338572534,
-    3.772252688102383,
-    -51.6207904596755,
-    5.852440017908596
+    -54.268608338572534, 3.772252688102383, -51.6207904596755, 5.852440017908596
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"

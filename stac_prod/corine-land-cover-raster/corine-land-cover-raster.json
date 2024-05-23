@@ -135,87 +135,62 @@
     "clc_map_tif": {
       "title": "Single Band Land Classification",
       "media_type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "roles": [
-        "data",
-        "visual"
-      ]
+      "roles": ["data", "visual"]
     },
     "clc_map_tif_xml": {
       "title": "TIFF Metadata",
       "media_type": "application/xml",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_tif_aux_xml": {
       "title": "TIFF Statistics",
       "media_type": "application/xml",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_tif_ovr": {
       "title": "Pyramid",
       "media_type": "image/tiff; application=geotiff; profile=pyramid",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_tif_vat_cpg": {
       "title": "Encoding",
       "media_type": "text/plain",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_tif_vat_dbf": {
       "title": "Database",
       "media_type": "application/dbf",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_legend_txt": {
       "title": "Legends",
       "media_type": "text/plain",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_tif_lyr": {
       "title": "Legend Layer",
       "media_type": "image/tiff; application=geotiff; profile=layer",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_tfw": {
       "title": "World File",
       "media_type": "text/plain",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_xml": {
       "title": "Single Band Land Classification Metadata",
       "media_type": "application/xml",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_readme_txt": {
       "title": "Description",
       "media_type": "text/plain",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc_map_preview": {
       "title": "Single Band Land Classification Thumbnail",
       "media_type": "image/png",
-      "roles": [
-        "thumbnail"
-      ]
+      "roles": ["thumbnail"]
     }
   },
   "title": "CORINE Land Cover Raster",
@@ -223,20 +198,13 @@
     "spatial": {
       "bbox": [
         [
-          -61.90648987371496,
-          -21.483070551222387,
-          55.93678987772944,
+          -61.90648987371496, -21.483070551222387, 55.93678987772944,
           71.41326966834436
         ]
       ]
     },
     "temporal": {
-      "interval": [
-        [
-          "1990-01-01T00:00:00Z",
-          "2018-12-31T00:00:00Z"
-        ]
-      ]
+      "interval": [["1990-01-01T00:00:00Z", "2018-12-31T00:00:00Z"]]
     }
   },
   "license": "proprietary",
@@ -252,50 +220,31 @@
     {
       "name": "Copernicus Land Monitoring Service",
       "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-      "roles": [
-        "licensor",
-        "host"
-      ],
+      "roles": ["licensor", "host"],
       "url": "https://land.copernicus.eu"
     }
   ],
   "summaries": {
-    "proj:epsg": [
-      32738,
-      32740,
-      32620,
-      32622,
-      4559,
-      4471,
-      3035,
-      2972,
-      2975
-    ]
+    "proj:epsg": [32738, 32740, 32620, 32622, 4559, 4471, 3035, 2972, 2975]
   },
   "assets": {
     "clc-country-coverage-1990-2018-v20u1": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/clc-country-coverage-1990-2018-v20u1.pdf",
       "type": "application/pdf",
       "title": "Coverage",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "clc-file-naming-conventions-guide-v20u1": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/clc-file-naming-conventions-guide-v20u1.pdf",
       "type": "text/plain",
       "title": "Naming Convention Description",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "readme_V2020_20u1_raster": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/readme_V2020_20u1_raster.txt",
       "type": "text/plain",
       "title": "Description",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     }
   }
 }

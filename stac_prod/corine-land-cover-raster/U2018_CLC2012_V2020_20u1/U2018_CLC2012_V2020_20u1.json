@@ -11,10 +11,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
@@ -24,26 +21,11 @@
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          44.99485809829563,
-          27.163269668344356
-        ],
-        [
-          44.99485809829563,
-          71.41326966834436
-        ],
-        [
-          -31.75514190170437,
-          71.41326966834436
-        ],
-        [
-          -31.75514190170437,
-          27.163269668344356
-        ],
-        [
-          44.99485809829563,
-          27.163269668344356
-        ]
+        [44.99485809829563, 27.163269668344356],
+        [44.99485809829563, 71.41326966834436],
+        [-31.75514190170437, 71.41326966834436],
+        [-31.75514190170437, 27.163269668344356],
+        [44.99485809829563, 27.163269668344356]
       ]
     ]
   },
@@ -82,122 +64,78 @@
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tfw",
       "type": "text/plain",
       "title": "World File Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_tif": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Single Band Land Classification Europe",
       "proj:epsg": 3035,
-      "proj:bbox": [
-        900000.0,
-        900000.0,
-        7400000.0,
-        5500000.0
-      ],
-      "proj:shape": [
-        46000,
-        65000
-      ],
+      "proj:bbox": [900000.0, 900000.0, 7400000.0, 5500000.0],
+      "proj:shape": [46000, 65000],
       "proj:transform": [
-        100.0,
-        0.0,
-        900000.0,
-        0.0,
-        -100.0,
-        5500000.0,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
+        100.0, 0.0, 900000.0, 0.0, -100.0, 5500000.0, 0.0, 0.0, 1.0, 0.0, 0.0,
         1.0
       ],
-      "roles": [
-        "data",
-        "visual"
-      ]
+      "roles": ["data", "visual"]
     },
     "U2018_CLC2012_V2020_20u1_tif_aux_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.aux.xml",
       "type": "application/xml",
       "title": "TIFF Statistics Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_tif_ovr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.ovr",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "title": "Pyramid Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_tif_vat_cpg": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.vat.cpg",
       "type": "text/plain",
       "title": "Encoding Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_tif_vat_dbf": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.vat.dbf",
       "type": "application/dbf",
       "title": "Database Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_tif_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/DATA/U2018_CLC2012_V2020_20u1.tif.xml",
       "type": "application/xml",
       "title": "TIFF Metadata Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "readme_U2018_CLC2012_V2020_20u1_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Documents/readme_U2018_CLC2012_V2020_20u1.txt",
       "type": "text/plain",
       "title": "Description Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2012_V2018_20_tif_lyr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Legend/CLC2018_CLC2012_V2018_20.tif.lyr",
       "type": "image/tiff; application=geotiff; profile=layer",
       "title": "Legend Layer Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2012_V2018_20_QGIS_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Legend/CLC2018_CLC2012_V2018_20_QGIS.txt",
       "type": "text/plain",
       "title": "Legends Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2012_V2020_20u1_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2012_v2020_20u1_raster100m/Metadata/U2018_CLC2012_V2020_20u1.xml",
       "type": "application/xml",
       "title": "Single Band Land Classification Metadata Europe",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     }
   },
   "bbox": [
-    -31.75514190170437,
-    27.163269668344356,
-    44.99485809829563,
-    71.41326966834436
+    -31.75514190170437, 27.163269668344356, 44.99485809829563, 71.41326966834436
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"

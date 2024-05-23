@@ -11,10 +11,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
@@ -24,26 +21,11 @@
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          45.39062117177244,
-          -13.09036924398737
-        ],
-        [
-          45.39062117177244,
-          -12.546611717569892
-        ],
-        [
-          44.92661077743734,
-          -12.546611717569892
-        ],
-        [
-          44.92661077743734,
-          -13.09036924398737
-        ],
-        [
-          45.39062117177244,
-          -13.09036924398737
-        ]
+        [45.39062117177244, -13.09036924398737],
+        [45.39062117177244, -12.546611717569892],
+        [44.92661077743734, -12.546611717569892],
+        [44.92661077743734, -13.09036924398737],
+        [45.39062117177244, -13.09036924398737]
       ]
     ]
   },
@@ -82,9 +64,7 @@
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MYT.tfw",
       "type": "text/plain",
       "title": "World File Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MYT_tif": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MYT.tif",
@@ -92,95 +72,60 @@
       "title": "Single Band Land Classification Mayotte",
       "proj:epsg": 32738,
       "proj:bbox": [
-        492044.459814489,
-        8552870.626776723,
-        542344.459814489,
-        8612970.626776723
+        492044.459814489, 8552870.626776723, 542344.459814489, 8612970.626776723
       ],
-      "proj:shape": [
-        601,
-        503
-      ],
+      "proj:shape": [601, 503],
       "proj:transform": [
-        100.0,
-        0.0,
-        492044.459814489,
-        0.0,
-        -100.0,
-        8612970.626776723,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        1.0
+        100.0, 0.0, 492044.459814489, 0.0, -100.0, 8612970.626776723, 0.0, 0.0,
+        1.0, 0.0, 0.0, 1.0
       ],
-      "roles": [
-        "data",
-        "visual"
-      ]
+      "roles": ["data", "visual"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MYT_tif_aux_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MYT.tif.aux.xml",
       "type": "application/xml",
       "title": "TIFF Statistics Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MYT_tif_ovr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MYT.tif.ovr",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "title": "Pyramid Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MYT_tif_vat_cpg": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MYT.tif.vat.cpg",
       "type": "text/plain",
       "title": "Encoding Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MYT_tif_vat_dbf": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MYT.tif.vat.dbf",
       "type": "application/dbf",
       "title": "Database Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MYT_tif_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MYT.tif.xml",
       "type": "application/xml",
       "title": "TIFF Metadata Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "readme_U2012_CLC2006_V2020_20u1_FR_MYT_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/Documents/readme_U2012_CLC2006_V2020_20u1_FR_MYT.txt",
       "type": "text/plain",
       "title": "Description Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MYT_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/Metadata/U2012_CLC2006_V2020_20u1_FR_MYT.xml",
       "type": "application/xml",
       "title": "Single Band Land Classification Metadata Mayotte",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     }
   },
   "bbox": [
-    44.92661077743734,
-    -13.09036924398737,
-    45.39062117177244,
+    44.92661077743734, -13.09036924398737, 45.39062117177244,
     -12.546611717569892
   ],
   "stac_extensions": [

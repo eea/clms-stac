@@ -1,49 +1,49 @@
 {
-    "id": "clms_catalog",
-    "type": "Catalog",
-    "title": "CLMS Catalog",
-    "stac_version": "1.0.0",
-    "description": "This catalog is a simple demonstration of an example catalog that is used to organize a hierarchy of collections and their items.",
-    "links": [
-      {
-        "rel": "root",
-        "href": "./clms_catalog.json",
-        "type": "application/json"
-      },
-      {
-        "rel": "self",
-        "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stacs/clms_catalog.json",
-        "type": "application/json"
-      },
-      {
-        "rel": "child",
-        "href": "./corine-land-cover-raster/corine-land-cover-raster.json",
-        "type": "application/json",
-        "title": "Corine Land Cover Raster Collection"
-      },
-      {
-        "rel": "child",
-        "href": "./vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
-        "type": "application/json",
-        "title": "Vegetation Phenology and Productivity Collection"
-      },
-      {
-        "rel": "child",
-        "href": "./eu-hydro/eu-hydro.json",
-        "type": "application/json",
-        "title": "EU-Hydro River Network Collection"
-      },
-      {
-        "rel": "child",
-        "href": "./natura2000/natura2000.json",
-        "type": "application/json",
-        "title": "Natura 2000 Land Cover/Land Use Status Collection"
-      },
-      {
-        "rel": "child",
-        "href": "./urban-atlas-building-height/urban-atlas-building-height.json",
-        "type": "application/json",
-        "title": "Urban Atlas Building Height 10m Collection"
-      }
-    ]
-  }
+  "id": "clms_catalog",
+  "type": "Catalog",
+  "title": "CLMS Catalog",
+  "stac_version": "1.0.0",
+  "description": "This catalog is a simple demonstration of an example catalog that is used to organize a hierarchy of collections and their items.",
+  "links": [
+    {
+      "rel": "root",
+      "href": "./clms_catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "self",
+      "href": "https://raw.githubusercontent.com/eea/clms-stac/feat/stac-prod-crunch/stacs/clms_catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "child",
+      "href": "./corine-land-cover-raster/corine-land-cover-raster.json",
+      "type": "application/json",
+      "title": "Corine Land Cover Raster Collection"
+    },
+    {
+      "rel": "child",
+      "href": "./vegetation-phenology-and-productivity/vegetation-phenology-and-productivity.json",
+      "type": "application/json",
+      "title": "Vegetation Phenology and Productivity Collection"
+    },
+    {
+      "rel": "child",
+      "href": "./eu-hydro/eu-hydro.json",
+      "type": "application/json",
+      "title": "EU-Hydro River Network Collection"
+    },
+    {
+      "rel": "child",
+      "href": "./natura2000/natura2000.json",
+      "type": "application/json",
+      "title": "Natura 2000 Land Cover/Land Use Status Collection"
+    },
+    {
+      "rel": "child",
+      "href": "./urban-atlas-building-height/urban-atlas-building-height.json",
+      "type": "application/json",
+      "title": "Urban Atlas Building Height 10m Collection"
+    }
+  ]
+}

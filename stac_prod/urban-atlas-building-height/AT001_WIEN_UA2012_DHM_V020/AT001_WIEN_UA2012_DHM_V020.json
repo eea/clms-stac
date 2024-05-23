@@ -11,50 +11,24 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
     "proj:epsg": 3035,
-    "proj:bbox": [
-      4780170,
-      2793000,
-      4809960,
-      2821690
-    ],
-    "proj:shape": [
-      2869,
-      2979
-    ],
+    "proj:bbox": [4780170, 2793000, 4809960, 2821690],
+    "proj:shape": [2869, 2979],
     "datetime": null
   },
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          16.59914886365638,
-          48.0548565975496
-        ],
-        [
-          16.59914886365638,
-          48.33503590228074
-        ],
-        [
-          16.167351523945268,
-          48.33503590228074
-        ],
-        [
-          16.167351523945268,
-          48.0548565975496
-        ],
-        [
-          16.59914886365638,
-          48.0548565975496
-        ]
+        [16.59914886365638, 48.0548565975496],
+        [16.59914886365638, 48.33503590228074],
+        [16.167351523945268, 48.33503590228074],
+        [16.167351523945268, 48.0548565975496],
+        [16.59914886365638, 48.0548565975496]
       ]
     ]
   },
@@ -89,40 +63,29 @@
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Dataset/AT001_WIEN_UA2012_DHM_V020.tif",
       "type": "image/tiff; application=geotiff",
       "title": "Building Height Dataset",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "AT001_WIEN_UA2012_DHM_QC_Report_v020_pdf": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Doc/AT001_WIEN_UA2012_DHM_QC_Report_v020.pdf",
       "type": "application/pdf",
       "title": "Quality Check Report",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT001_WIEN_UA2012_DHM_metadata_v020_xml": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Metadata/AT001_WIEN_UA2012_DHM_metadata_v020.xml",
       "type": "application/xml",
       "title": "Building Height Dataset Metadata",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT001_WIEN_UA2012_DHM_v020_zip": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/AT001_WIEN_UA2012_DHM_v020.zip",
       "type": "application/zip",
       "title": "Compressed Building Height Metadata",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     }
   },
   "bbox": [
-    16.167351523945268,
-    48.0548565975496,
-    16.59914886365638,
-    48.33503590228074
+    16.167351523945268, 48.0548565975496, 16.59914886365638, 48.33503590228074
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"

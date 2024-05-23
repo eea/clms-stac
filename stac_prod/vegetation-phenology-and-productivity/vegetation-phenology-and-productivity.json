@@ -202,121 +202,81 @@
     "AMPL": {
       "title": "Season Amplitude",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "EOSD": {
       "title": "Day of End-of-Season",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "EOSV": {
       "title": "Vegetation Index Value at EOSD",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "LENGTH": {
       "title": "Length of Season",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "LSLOPE": {
       "title": "Slope of The Greening Up Period",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "MAXD": {
       "title": "Day of Maximum-of-Season",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "MAXV": {
       "title": "Vegetation Index Value at MAXD",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "MINV": {
       "title": "Average Vegetation Index Value of Minima on Left and Right Sides of Each Season",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "QFLAG": {
       "title": "Quality Flag",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "RSLOPE": {
       "title": "Slope of The Senescent Period",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "SOSD": {
       "title": "Day of Start-of-Season",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "SOSV": {
       "title": "Vegetation Index Value at SOSD",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "SPROD": {
       "title": "Seasonal Productivity",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "TPROD": {
       "title": "Total Productivity",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     }
   },
   "title": "Vegetation Phenology and Productivity Parameters",
   "extent": {
     "spatial": {
-      "bbox": [
-        [
-          -25,
-          26,
-          45,
-          72
-        ]
-      ]
+      "bbox": [[-25, 26, 45, 72]]
     },
     "temporal": {
-      "interval": [
-        [
-          "2017-01-01T00:00:00Z",
-          null
-        ]
-      ]
+      "interval": [["2017-01-01T00:00:00Z", null]]
     }
   },
   "license": "proprietary",
@@ -333,43 +293,20 @@
     {
       "name": "Copernicus Land Monitoring Service",
       "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-      "roles": [
-        "licensor",
-        "host"
-      ],
+      "roles": ["licensor", "host"],
       "url": "https://land.copernicus.eu"
     },
     {
       "name": "VITO NV",
       "description": "VITO is an independent Flemish research organisation in the area of cleantech and sustainable development.",
-      "roles": [
-        "processor",
-        "producer"
-      ],
+      "roles": ["processor", "producer"],
       "url": "https://vito.be"
     }
   ],
   "summaries": {
     "proj:epsg": [
-      32620,
-      32621,
-      32622,
-      32625,
-      32626,
-      32627,
-      32628,
-      32629,
-      32630,
-      32631,
-      32632,
-      32633,
-      32634,
-      32635,
-      32636,
-      32637,
-      32638,
-      32738,
-      32740
+      32620, 32621, 32622, 32625, 32626, 32627, 32628, 32629, 32630, 32631,
+      32632, 32633, 32634, 32635, 32636, 32637, 32638, 32738, 32740
     ]
   }
 }

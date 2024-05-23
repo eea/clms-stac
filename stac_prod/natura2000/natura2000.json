@@ -32,22 +32,10 @@
   "title": "Natura 2000 Land Cover/Land Use Status",
   "extent": {
     "spatial": {
-      "bbox": [
-        [
-          -16.82,
-          27.87,
-          33.17,
-          66.79
-        ]
-      ]
+      "bbox": [[-16.82, 27.87, 33.17, 66.79]]
     },
     "temporal": {
-      "interval": [
-        [
-          "2006-01-01T00:00:00Z",
-          null
-        ]
-      ]
+      "interval": [["2006-01-01T00:00:00Z", null]]
     }
   },
   "license": "proprietary",
@@ -65,186 +53,139 @@
     {
       "name": "Copernicus Land Monitoring Service",
       "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-      "roles": [
-        "licensor",
-        "host"
-      ],
+      "roles": ["licensor", "host"],
       "url": "https://land.copernicus.eu"
     }
   ],
   "summaries": {
-    "proj:epsg": [
-      3035
-    ]
+    "proj:epsg": [3035]
   },
   "assets": {
     "N2K_2006_3035_v010_xml": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_fgdb/Metadata/N2K_2006_3035_v010.xml",
       "type": "application/xml",
       "title": "Natura 2000 2006 Land Cover/Land Use Status Metadata",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_2012_3035_v010_xml": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_fgdb/Metadata/N2K_2012_3035_v010.xml",
       "type": "application/xml",
       "title": "Natura 2000 2012 Land Cover/Land Use Status Metadata",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_2018_3035_v010_xml": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2018/N2K_2018_3035_v010_fgdb/Metadata/N2K_2018_3035_v010.xml",
       "type": "application/xml",
       "title": "Natura 2000 2018 Land Cover/Land Use Status Metadata",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_LCLU_2018_lyr": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_fgdb/Symbology/N2K_LCLU_2018.lyr",
       "type": "application/octet-stream",
       "title": "Natura 2000 LCLU Land Cover/Land Use Status ArcGIS Layer File",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_LCLU_2018_v1-4-2_lyr": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_fgdb/Symbology/N2K_LCLU_2018_v1-4-2.lyr",
       "type": "application/octet-stream",
       "title": "Natura 2000 LCLU Land Cover/Land Use Status ArcGIS Layer File",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_LCLU_2018_qml": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_fgdb/Symbology/N2K_LCLU_2018.qml",
       "type": "application/octet-stream",
       "title": "Natura 2000 LCLU Land Cover/Land Use Status QGIS Layer File",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_LCLU_2018_v1-4-2_qml": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_fgdb/Symbology/N2K_LCLU_2018_v1-4-2.qml",
       "type": "application/octet-stream",
       "title": "Natura 2000 LCLU Land Cover/Land Use Status QGIS Layer File",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_LCLU_2018_sld": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_fgdb/Symbology/N2K_LCLU_2018.sld",
       "type": "application/octet-stream",
       "title": "Natura 2000 LCLU Land Cover/Land Use Status OGC Layer File",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_LCLU_2018_v1-4-2_sld": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_fgdb/Symbology/N2K_LCLU_2018_v1-4-2.sld",
       "type": "application/octet-stream",
       "title": "Natura 2000 LCLU Land Cover/Land Use Status OGC Layer File",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "N2K_2006_3035_v010_gpkg": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_geoPackage/Data/N2K_2006_3035_v010.gpkg",
       "type": "application/geopackage+sqlite3",
       "title": "Natura 2000 2006 Land Cover/Land Use Status V010",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2012_3035_v010_gpkg": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_geoPackage/Data/N2K_2012_3035_v010.gpkg",
       "type": "application/geopackage+sqlite3",
       "title": "Natura 2000 2012 Land Cover/Land Use Status V010",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2018_3035_v010_gpkg": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2018/N2K_2018_3035_v010_geoPackage/Data/N2K_2018_3035_v010.gpkg",
       "type": "application/geopackage+sqlite3",
       "title": "Natura 2000 2018 Land Cover/Land Use Status V010",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2006_3035_v010_gdb": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_fgdb/Data/N2K_2006_3035_v010.gdb",
       "type": "application/x-filegdb",
       "title": "Natura 2000 2006 Land Cover/Land Use Status V010",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2012_3035_v010_gdb": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_fgdb/Data/N2K_2012_3035_v010.gdb",
       "type": "application/x-filegdb",
       "title": "Natura 2000 2012 Land Cover/Land Use Status V010",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2018_3035_v010_gdb": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2018/N2K_2018_3035_v010_fgdb/Data/N2K_2018_3035_v010.gdb",
       "type": "application/x-filegdb",
       "title": "Natura 2000 2018 Land Cover/Land Use Status V010",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2006_3035_v010_fgdb_zip": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_fgdb.zip",
       "type": "application/zip",
       "title": "Compressed Natura 2000 2006 Land Cover/Land Use Status FGDB",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2006_3035_v010_geoPackage_zip": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2006/N2K_2006_3035_v010_geoPackage.zip",
       "type": "application/zip",
       "title": "Compressed Natura 2000 2006 Land Cover/Land Use Status GEOPACKAGE",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2012_3035_v010_fgdb_zip": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_fgdb.zip",
       "type": "application/zip",
       "title": "Compressed Natura 2000 2012 Land Cover/Land Use Status FGDB",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2012_3035_v010_geoPackage_zip": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2012/N2K_2012_3035_v010_geoPackage.zip",
       "type": "application/zip",
       "title": "Compressed Natura 2000 2012 Land Cover/Land Use Status GEOPACKAGE",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2018_3035_v010_fgdb_zip": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2018/N2K_2018_3035_v010_fgdb.zip",
       "type": "application/zip",
       "title": "Compressed Natura 2000 2018 Land Cover/Land Use Status FGDB",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "N2K_2018_3035_v010_geoPackage_zip": {
       "href": "A:/Copernicus/Natura2000/Natura2000/N2K2018/N2K_2018_3035_v010_geoPackage.zip",
       "type": "application/zip",
       "title": "Compressed Natura 2000 2018 Land Cover/Land Use Status GEOPACKAGE",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     }
   }
 }

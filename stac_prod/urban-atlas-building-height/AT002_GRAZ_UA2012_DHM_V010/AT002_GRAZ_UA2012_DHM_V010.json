@@ -11,50 +11,24 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
     "proj:epsg": 3035,
-    "proj:bbox": [
-      4727530,
-      2670750,
-      4740970,
-      2683970
-    ],
-    "proj:shape": [
-      1322,
-      1344
-    ],
+    "proj:bbox": [4727530, 2670750, 4740970, 2683970],
+    "proj:shape": [1322, 1344],
     "datetime": null
   },
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          15.536489839076822,
-          47.00940105852234
-        ],
-        [
-          15.536489839076822,
-          47.136922780753096
-        ],
-        [
-          15.347719926154394,
-          47.136922780753096
-        ],
-        [
-          15.347719926154394,
-          47.00940105852234
-        ],
-        [
-          15.536489839076822,
-          47.00940105852234
-        ]
+        [15.536489839076822, 47.00940105852234],
+        [15.536489839076822, 47.136922780753096],
+        [15.347719926154394, 47.136922780753096],
+        [15.347719926154394, 47.00940105852234],
+        [15.536489839076822, 47.00940105852234]
       ]
     ]
   },
@@ -89,79 +63,59 @@
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Dataset/AT002_GRAZ_UA2012_DHM_V010.tif",
       "type": "image/tiff; application=geotiff",
       "title": "Building Height Dataset",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_xml": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/Metadata/AT002_GRAZ_UA2012_DHM_V010.xml",
       "type": "application/xml",
       "title": "Building Height Dataset Metadata",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_cpg": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT002_GRAZ_UA2012_DHM_V010.cpg",
       "type": "text/plain",
       "title": "pixel_based_info_cpg",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_dbf": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT002_GRAZ_UA2012_DHM_V010.dbf",
       "type": "application/x-dbf",
       "title": "pixel_based_info_dbf",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_prj": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT002_GRAZ_UA2012_DHM_V010.prj",
       "type": "text/plain",
       "title": "pixel_based_info_prj",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_shp": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT002_GRAZ_UA2012_DHM_V010.shp",
       "type": "application/octet-stream",
       "title": "pixel_based_info_shp",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_shx": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/PixelBasedInfo/AT002_GRAZ_UA2012_DHM_V010.shx",
       "type": "application/octet-stream",
       "title": "pixel_based_info_shx",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_pdf": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/QC/AT002_GRAZ_UA2012_DHM_V010.pdf",
       "type": "application/pdf",
       "title": "Quality Control Report",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "AT002_GRAZ_UA2012_DHM_V010_zip": {
       "href": "A:/Copernicus/UrbanAtlas/BuildingHeight/USBBH2012/AT002_GRAZ_UA2012_DHM_V010.zip",
       "type": "application/zip",
       "title": "Compressed Building Height Metadata",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     }
   },
   "bbox": [
-    15.347719926154394,
-    47.00940105852234,
-    15.536489839076822,
+    15.347719926154394, 47.00940105852234, 15.536489839076822,
     47.136922780753096
   ],
   "stac_extensions": [

@@ -100,115 +100,74 @@
     "dataset": {
       "title": "Building height raster",
       "media_type": "image/tiff; application=geotiff",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     },
     "metadata": {
       "title": "Building height metadata",
       "media_type": "application/xml",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "quality_check_report": {
       "title": "Quality check report",
       "media_type": "application/pdf",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "quality_control_report": {
       "title": "Quality control report",
       "media_type": "application/pdf",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "pixel_based_info_shp": {
       "title": "Pixel based info shape format",
       "media_type": "application/octet-stream",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "pixel_based_info_shx": {
       "title": "Pixel based info shape index",
       "media_type": "application/octet-stream",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "pixel_based_info_dbf": {
       "title": "Pixel based info attribute",
       "media_type": "application/x-dbf",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "pixel_based_info_prj": {
       "title": "Pixel based info projection description",
       "media_type": "text/plain",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "pixel_based_info_cpg": {
       "title": "Pixel based info character encoding",
       "media_type": "text/plain",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "compressed_dataset": {
       "title": "Compressed building height raster",
       "media_type": "application/zip",
-      "roles": [
-        "data"
-      ]
+      "roles": ["data"]
     }
   },
   "title": "Urban Atlas Building Height 10m",
   "extent": {
     "spatial": {
-      "bbox": [
-        [
-          -22.13,
-          35.07,
-          33.48,
-          64.38
-        ]
-      ]
+      "bbox": [[-22.13, 35.07, 33.48, 64.38]]
     },
     "temporal": {
-      "interval": [
-        [
-          "2012-01-01T00:00:00Z",
-          null
-        ]
-      ]
+      "interval": [["2012-01-01T00:00:00Z", null]]
     }
   },
   "license": "proprietary",
-  "keywords": [
-    "Buildings",
-    "Building height",
-    "Elevation"
-  ],
+  "keywords": ["Buildings", "Building height", "Elevation"],
   "providers": [
     {
       "name": "Copernicus Land Monitoring Service",
       "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-      "roles": [
-        "licensor",
-        "host"
-      ],
+      "roles": ["licensor", "host"],
       "url": "https://land.copernicus.eu"
     }
   ],
   "summaries": {
-    "proj:epsg": [
-      3035
-    ]
+    "proj:epsg": [3035]
   }
 }

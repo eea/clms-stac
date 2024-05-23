@@ -11,10 +11,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
@@ -24,26 +21,11 @@
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          55.93678987772944,
-          -21.483070551222387
-        ],
-        [
-          55.93678987772944,
-          -20.777781405297567
-        ],
-        [
-          55.114455296633174,
-          -20.777781405297567
-        ],
-        [
-          55.114455296633174,
-          -21.483070551222387
-        ],
-        [
-          55.93678987772944,
-          -21.483070551222387
-        ]
+        [55.93678987772944, -21.483070551222387],
+        [55.93678987772944, -20.777781405297567],
+        [55.114455296633174, -20.777781405297567],
+        [55.114455296633174, -21.483070551222387],
+        [55.93678987772944, -21.483070551222387]
       ]
     ]
   },
@@ -82,9 +64,7 @@
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_REU.tfw",
       "type": "text/plain",
       "title": "World File R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_REU_tif": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_REU.tif",
@@ -92,111 +72,73 @@
       "title": "Single Band Land Classification R\u00e9union",
       "proj:epsg": 2975,
       "proj:bbox": [
-        304639.40571480244,
-        7624010.280638354,
-        389339.40571480244,
+        304639.40571480244, 7624010.280638354, 389339.40571480244,
         7701310.280638354
       ],
-      "proj:shape": [
-        773,
-        847
-      ],
+      "proj:shape": [773, 847],
       "proj:transform": [
-        100.0,
-        0.0,
-        304639.40571480244,
-        0.0,
-        -100.0,
-        7701310.280638354,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        1.0
+        100.0, 0.0, 304639.40571480244, 0.0, -100.0, 7701310.280638354, 0.0,
+        0.0, 1.0, 0.0, 0.0, 1.0
       ],
-      "roles": [
-        "data",
-        "visual"
-      ]
+      "roles": ["data", "visual"]
     },
     "U2018_CLC2018_V2020_20u1_FR_REU_tif_aux_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_REU.tif.aux.xml",
       "type": "application/xml",
       "title": "TIFF Statistics R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_REU_tif_ovr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_REU.tif.ovr",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "title": "Pyramid R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_REU_tif_vat_cpg": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_REU.tif.vat.cpg",
       "type": "text/plain",
       "title": "Encoding R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_REU_tif_vat_dbf": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_REU.tif.vat.dbf",
       "type": "application/dbf",
       "title": "Database R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_REU_tif_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/DATA/French_DOMs/U2018_CLC2018_V2020_20u1_FR_REU.tif.xml",
       "type": "application/xml",
       "title": "TIFF Metadata R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "readme_U2018_CLC2018_V2020_20u1_FR_REU_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Documents/readme_U2018_CLC2018_V2020_20u1_FR_REU.txt",
       "type": "text/plain",
       "title": "Description R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2018_V2018_20_FR_REU_tif_lyr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/French_DOMs/Legend/CLC2018_CLC2018_V2018_20_FR_REU.tif.lyr",
       "type": "image/tiff; application=geotiff; profile=layer",
       "title": "Legend Layer R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "CLC2018_CLC2018_V2018_20_QGIS_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/French_DOMs/Legend/CLC2018_CLC2018_V2018_20_QGIS.txt",
       "type": "text/plain",
       "title": "Legends R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2018_CLC2018_V2020_20u1_FR_REU_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2018_clc2018_v2020_20u1_raster100m/Metadata/U2018_CLC2018_V2020_20u1_FR_REU.xml",
       "type": "application/xml",
       "title": "Single Band Land Classification Metadata R\u00e9union",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     }
   },
   "bbox": [
-    55.114455296633174,
-    -21.483070551222387,
-    55.93678987772944,
+    55.114455296633174, -21.483070551222387, 55.93678987772944,
     -20.777781405297567
   ],
   "stac_extensions": [

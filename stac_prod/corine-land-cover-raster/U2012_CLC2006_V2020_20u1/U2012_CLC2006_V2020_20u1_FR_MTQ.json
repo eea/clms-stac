@@ -11,10 +11,7 @@
       {
         "name": "Copernicus Land Monitoring Service",
         "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
-        "roles": [
-          "licensor",
-          "host"
-        ],
+        "roles": ["licensor", "host"],
         "url": "https://land.copernicus.eu"
       }
     ],
@@ -24,26 +21,11 @@
     "type": "Polygon",
     "coordinates": [
       [
-        [
-          -60.7113055192404,
-          14.296181352008881
-        ],
-        [
-          -60.7113055192404,
-          14.970924892273402
-        ],
-        [
-          -61.3261220863714,
-          14.970924892273402
-        ],
-        [
-          -61.3261220863714,
-          14.296181352008881
-        ],
-        [
-          -60.7113055192404,
-          14.296181352008881
-        ]
+        [-60.7113055192404, 14.296181352008881],
+        [-60.7113055192404, 14.970924892273402],
+        [-61.3261220863714, 14.970924892273402],
+        [-61.3261220863714, 14.296181352008881],
+        [-60.7113055192404, 14.296181352008881]
       ]
     ]
   },
@@ -82,9 +64,7 @@
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MTQ.tfw",
       "type": "text/plain",
       "title": "World File Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MTQ_tif": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MTQ.tif",
@@ -92,96 +72,61 @@
       "title": "Single Band Land Classification Martinique",
       "proj:epsg": 32620,
       "proj:bbox": [
-        680548.1344947405,
-        1581693.672233479,
-        746148.1344947405,
+        680548.1344947405, 1581693.672233479, 746148.1344947405,
         1655793.672233479
       ],
-      "proj:shape": [
-        741,
-        656
-      ],
+      "proj:shape": [741, 656],
       "proj:transform": [
-        100.0,
-        0.0,
-        680548.1344947405,
-        0.0,
-        -100.0,
-        1655793.672233479,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        1.0
+        100.0, 0.0, 680548.1344947405, 0.0, -100.0, 1655793.672233479, 0.0, 0.0,
+        1.0, 0.0, 0.0, 1.0
       ],
-      "roles": [
-        "data",
-        "visual"
-      ]
+      "roles": ["data", "visual"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MTQ_tif_aux_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MTQ.tif.aux.xml",
       "type": "application/xml",
       "title": "TIFF Statistics Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MTQ_tif_ovr": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MTQ.tif.ovr",
       "type": "image/tiff; application=geotiff; profile=pyramid",
       "title": "Pyramid Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MTQ_tif_vat_cpg": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MTQ.tif.vat.cpg",
       "type": "text/plain",
       "title": "Encoding Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MTQ_tif_vat_dbf": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MTQ.tif.vat.dbf",
       "type": "application/dbf",
       "title": "Database Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MTQ_tif_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/DATA/French_DOMs/U2012_CLC2006_V2020_20u1_FR_MTQ.tif.xml",
       "type": "application/xml",
       "title": "TIFF Metadata Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "readme_U2012_CLC2006_V2020_20u1_FR_MTQ_txt": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/Documents/readme_U2012_CLC2006_V2020_20u1_FR_MTQ.txt",
       "type": "text/plain",
       "title": "Description Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     },
     "U2012_CLC2006_V2020_20u1_FR_MTQ_xml": {
       "href": "A:/Copernicus/CorineLandCover/CorineLandCoverLegacy/CorineLandCover/Raster/CLC_100m/u2012_clc2006_v2020_20u1_raster100m/Metadata/U2012_CLC2006_V2020_20u1_FR_MTQ.xml",
       "type": "application/xml",
       "title": "Single Band Land Classification Metadata Martinique",
-      "roles": [
-        "metadata"
-      ]
+      "roles": ["metadata"]
     }
   },
   "bbox": [
-    -61.3261220863714,
-    14.296181352008881,
-    -60.7113055192404,
-    14.970924892273402
+    -61.3261220863714, 14.296181352008881, -60.7113055192404, 14.970924892273402
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
