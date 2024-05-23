@@ -62,7 +62,7 @@
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
               "roles": ["licensor", "host"],
-              "url": "https://land.copernicus.eu/en"
+              "url": "https://land.copernicus.eu"
             }
           ]
         },
@@ -79,9 +79,7 @@
             },
             "temporal": {
               "const": {
-                "interval": [
-                  ["2006-01-01T00:00:00.000Z", "2012-12-31T00:00:00.000Z"]
-                ]
+                "interval": [["2006-01-01T00:00:00Z", "2012-12-31T00:00:00Z"]]
               }
             }
           }
@@ -151,7 +149,10 @@
         },
         "assets": {
           "type": "object",
-          "required": ["eu-hydro_v1p3_user_guide", "how_use_esri_fgdb_in_qgis"],
+          "required": [
+            "EU-HYDRO_V1p3_User_Guide_pdf",
+            "How_use_ESRI_FGDB_in_QGIS_pdf"
+          ],
           "additionalProperties": {
             "type": "object",
             "properties": {

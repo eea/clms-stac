@@ -1,3 +1,7 @@
 #Libraries that your project use
+boto3
+pyproj
 pystac
 pystac[validation]
+rasterio
+shapely

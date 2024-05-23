@@ -100,3 +100,6 @@ target/
 
 # Pycopy
 __pycache__/
+
+# macOS
+.DS_Store

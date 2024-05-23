@@ -142,17 +142,8 @@
         },
         "assets": {
           "type": "object",
-          "minProperties": 4,
-          "maxProperties": 6,
           "propertyNames": {
-            "anyOf": [
-              { "const": "dataset" },
-              { "const": "quality_check_report" },
-              { "const": "metadata" },
-              { "const": "quality_control_report" },
-              { "type": "string", "pattern": "^pixel_based_info" },
-              { "const": "compressed_dataset" }
-            ]
+            "pattern": "^(A[LT]|B[AEG]|C[HYZ]|D[EK]|E[ELS]|F[IR]|H[RU]|I[EST]|L[TUV]|M[EKT]|N[LO]|P[LT]|R[OS]|S[EIK]|TR|UK|XK)[0-9]{3}"
           }
         }
       }
@@ -179,8 +170,8 @@
         "stac_version": { "const": "1.0.0" },
         "stac_extensions": {
           "const": [
-            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
-            "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
+            "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+            "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json"
           ]
         },
         "type": { "const": "Collection" },
@@ -201,7 +192,7 @@
               "name": "Copernicus Land Monitoring Service",
               "description": "The Copernicus Land Monitoring Service provides geographical information on land cover and its changes, land use, ground motions, vegetation state, water cycle and Earth's surface energy variables to a broad range of users in Europe and across the World in the field of environmental terrestrial applications.",
               "roles": ["licensor", "host"],
-              "url": "https://land.copernicus.eu/en"
+              "url": "https://land.copernicus.eu"
             }
           ]
         },
@@ -211,7 +202,7 @@
               "bbox": [[-22.13, 35.07, 33.48, 64.38]]
             },
             "temporal": {
-              "interval": [["2012-01-01T00:00:00.000Z", null]]
+              "interval": [["2012-01-01T00:00:00Z", null]]
             }
           }
         },

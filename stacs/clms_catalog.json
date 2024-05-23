@@ -12,7 +12,7 @@
     },
     {
       "rel": "self",
-      "href": "https://git.sinergise.com/sh-vas/etc-di-stac/stac/clms_catalog.json",
+      "href": "./clms_catalog.json",
       "type": "application/json"
     },
     {
