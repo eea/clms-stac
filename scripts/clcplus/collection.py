@@ -14,6 +14,9 @@ from pystac.extensions.item_assets import AssetDefinition, ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
 from referencing import Registry, Resource
 
+# import sys
+# sys.path.append(os.path.abspath('clms-stac/scripts/clc-plus/'))
+# from constants import *
 from .constants import (
     CLMS_LICENSE,
     COLLECTION_DESCRIPTION,
@@ -59,26 +62,19 @@ def get_collection_asset_files(data_root: str) -> list[str]:
 
     for root, _, files in os.walk(data_root):
         for file in files:
-            if (
-                (file.startswith("clc-country-coverage") and file.endswith("pdf"))
-                or file.startswith("clc-file-naming-convention")
-                or (file.startswith("readme") and file.endswith("raster.txt"))
-            ):
+            if file.startswith("CLC+BB_User_Manual"):
                 asset_files.append(os.path.join(root, file))
 
     return asset_files
 
 
 def create_collection_asset(asset_file: str) -> tuple[str, pystac.Asset]:
-    filename_elements = deconstruct_clc_name(asset_file)
-    clc_id = filename_elements["id"]
+    clc_id = os.path.basename(asset_file)
 
-    if clc_id.startswith("clc-file-naming"):
-        key = "clc_file_naming"
-    elif clc_id.startswith("clc-country-coverage"):
-        key = "clc_country_coverage"
-    elif clc_id.startswith("readme"):
-        key = "readme"
+    if "raster" in clc_id:
+        key = "clcplus_product_specification_raster"
+    else:
+        key = "clcplus_product_specification"
 
     asset = pystac.Asset(
         href=asset_file,
@@ -87,12 +83,12 @@ def create_collection_asset(asset_file: str) -> tuple[str, pystac.Asset]:
         roles=COLLECTION_ROLES_MAP[key],
     )
 
-    return clc_id, asset
+    return key, asset
 
 
 def create_collection() -> pystac.Collection:
     sp_extent = pystac.SpatialExtent([None, None, None, None])
-    tmp_extent = pystac.TemporalExtent([datetime(1990, 1, 1, microsecond=0, tzinfo=UTC), None])
+    tmp_extent = pystac.TemporalExtent([datetime(1900, 1, 1, microsecond=0, tzinfo=UTC), None])
     extent = pystac.Extent(sp_extent, tmp_extent)
 
     collection = pystac.Collection(
@@ -131,7 +127,7 @@ def create_collection() -> pystac.Collection:
 
 def populate_collection(collection: pystac.Collection, data_root: str) -> pystac.Collection:
     img_paths = get_img_paths(data_root)
-
+    validator = get_stac_validator("schema/products/clcplus.json")
     proj_epsg = []
     for img_path in img_paths:
         item = create_item(img_path, data_root)
@@ -140,13 +136,14 @@ def populate_collection(collection: pystac.Collection, data_root: str) -> pystac
         item_epsg = proj_epsg_from_item_asset(item)
         proj_epsg.append(item_epsg)
 
-        dom_code = deconstruct_clc_name(img_path).get("DOM_code")
-        href = os.path.join(
-            WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{item.id.removesuffix(f'_FR_{dom_code}')}/{item.id}.json"
+        clc_name_elements = deconstruct_clc_name(img_path)
+        collection_name = "clms_clcplus_{product_acronym}_{reference_year}_{resolution}_{version}".format(
+            **clc_name_elements
         )
+
+        href = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}/{collection_name}/{item.id}.json")
         item.set_self_href(href)
 
-        validator = get_stac_validator("schema/products/clc.json")
         error_msg = best_match(validator.iter_errors(item.to_dict()))
         try:
             assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."

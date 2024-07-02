@@ -15,8 +15,9 @@ from .constants import (
     CLC_PROVIDER,
     CLMS_LICENSE,
     COLLECTION_ID,
-    DOM_MAP,
+    EXTENT_MAP,
     ITEM_DESCRIPTION,
+    ITEM_KEY_MAP,
     ITEM_MEDIA_TYPE_MAP,
     ITEM_ROLES_MAP,
     ITEM_TITLE_MAP,
@@ -36,33 +37,26 @@ def deconstruct_clc_name(filename: str) -> dict[str]:
         filename_split |= m.groupdict()
 
     p = re.compile(
-        "U(?P<update_campaign>[0-9]{4})_"
-        "(?P<theme>CLC|CHA)(?P<reference_year>[0-9]{4})_"
-        "V(?P<release_year>[0-9]{4})_(?P<release_number>[0-9a-z]*)"
-        "_?(?P<country_code>[A-Z]*)?"
-        "_?(?P<DOM_code>[A-Z]*)?"
+        "CLMS_CLCplus_"
+        "(?P<product_acronym>[A-Z]{6})_"
+        "(?P<reference_year>[0-9]{4})_"
+        "(?P<resolution>[0-9a-z]{4})_"
+        "(?P<extent>[0-9A-Za-z]{2,5})_"
+        "(?P<epsg>[0-9]*)_"
+        "(?P<version>V[0-9]_[0-9])"
     )
     m = p.search(filename_split["id"])
 
     if m:
         filename_split |= m.groupdict()
-
     return filename_split
 
 
-def create_item_asset(asset_file: str, dom_code: str) -> pystac.Asset:
+def create_item_asset(asset_file: str, extent: str) -> tuple[str, pystac.Asset]:
     filename_elements = deconstruct_clc_name(asset_file)
 
-    suffix = filename_elements["suffix"].replace(".", "_")
-
-    if id.startswith("readme"):
-        key = "readme_" + suffix
-    elif id.endswith("QGIS"):
-        key = "legend_" + suffix
-    else:
-        key = suffix
-
-    label = DOM_MAP[dom_code]
+    key = filename_elements["suffix"].replace(".", "_")
+    label = EXTENT_MAP[extent]
 
     asset = pystac.Asset(
         href=asset_file,
@@ -70,13 +64,14 @@ def create_item_asset(asset_file: str, dom_code: str) -> pystac.Asset:
         media_type=ITEM_MEDIA_TYPE_MAP[key],
         roles=ITEM_ROLES_MAP[key],
     )
-    return f"{filename_elements['id']}_{suffix}", asset
+
+    return ITEM_KEY_MAP[key], asset
 
 
 def get_img_paths(data_root: str) -> list[str]:
     img_paths = []
     for root, _, files in os.walk(data_root):
-        if root.endswith(("DATA", "French_DOMs")):
+        if "Data" in root:
             for file in files:
                 if file.endswith(".tif"):
                     img_paths.append(os.path.join(root, file))
@@ -87,26 +82,17 @@ def get_img_paths(data_root: str) -> list[str]:
 def get_item_asset_files(data_root: str, img_path: str) -> list[str]:
     clc_name_elements = deconstruct_clc_name(img_path)
     clc_id = clc_name_elements["id"]
-    dom_code = clc_name_elements["DOM_code"]
+    clc_extent = clc_name_elements["extent"]
 
     asset_files = []
 
     for root, _, files in os.walk(data_root):
-        if not dom_code and "French_DOMs" in root:
-            continue
-
-        if dom_code and "Legend" in root and "French_DOMs" not in root:
-            continue
-
-        if "U{update_campaign}_{theme}{reference_year}_V{release_year}".format(**clc_name_elements).lower() not in root:
-            continue
-
         for file in files:
             if (
                 file.startswith(f"{clc_id}.")
                 or file.endswith(
                     (
-                        f"{dom_code}.tif.lyr",
+                        f"{clc_extent}.tif.lyr",
                         "QGIS.txt",
                     )
                 )
@@ -151,10 +137,14 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
     }
 
     with rio.open(img_path) as img:
-        if clc_name_elements["DOM_code"]:
-            bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
-        else:
-            bbox = project_data_window_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
+        # TODO: Projecting the raster to get the data extent bbox for Europe worked
+        # well with the CLC products, but fails with CLC+ due to much larger raster
+        # dimensions. For the moment, full raster bbox is projected to EPSG:4326
+        bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
+        # if clc_name_elements["extent"] != 'eu':
+        #     bbox = project_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
+        # else:
+        #     bbox = project_data_window_bbox(img, dst_crs=rio.CRS.from_epsg(4326))
 
         params = {
             "id": clc_name_elements.get("id"),
@@ -170,7 +160,7 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
 
     for asset_file in asset_files:
         try:
-            key, asset = create_item_asset(asset_file, DOM_code=clc_name_elements.get("DOM_code"))
+            key, asset = create_item_asset(asset_file, extent=clc_name_elements.get("extent"))
             item.add_asset(
                 key=key,
                 asset=asset,
@@ -178,19 +168,17 @@ def create_item(img_path: str, data_root: str) -> pystac.Item:
         except KeyError as error:
             LOGGER.error("An error occured:", error)
 
-    # TODO: "Thumbnail" was originally put at collection level in the template,
-    # while it should perhaps be at item level? Individual previews should be added to each item
-    key = "preview"
-    asset = pystac.Asset(
-        href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
-        title=ITEM_TITLE_MAP["preview"].format(label=clc_name_elements["DOM_code"]),
-        media_type=ITEM_MEDIA_TYPE_MAP[key],
-        roles=ITEM_ROLES_MAP[key],
-    )
+    # TODO: No "Thumbnail" preview defined for CLC+, below code serves as a placeholder (taken from CLC)
+    # key = "preview"
+    # asset = pystac.Asset(
+    #     href="https://sdi.eea.europa.eu/public/catalogue-graphic-overview/960998c1-1870-4e82-8051-6485205ebbac.png",
+    #     title=ITEM_TITLE_MAP["preview"].format(label=clc_name_elements["DOM_code"]),
+    #     media_type=ITEM_MEDIA_TYPE_MAP[key],
+    #     roles=ITEM_ROLES_MAP[key],
+    # )
+    # item.add_asset(key=key, asset=asset)
 
-    item.add_asset(key=key, asset=asset)
-
-    proj_ext = ProjectionExtension.ext(item.assets[os.path.basename(img_path).replace(".", "_")], add_if_missing=True)
+    proj_ext = ProjectionExtension.ext(item.assets["clcplus_map"], add_if_missing=True)
     proj_ext.apply(
         epsg=rio.crs.CRS(img.crs).to_epsg(),
         bbox=img.bounds,

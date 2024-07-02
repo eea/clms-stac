@@ -3,41 +3,39 @@ import os
 import pystac
 from pystac.provider import ProviderRole
 
-# os.chdir('x:\\projects\\ETC-DI\\Task_18\\clms-stac')
 WORKING_DIR = os.getcwd()
-
 STAC_DIR = "stac_tests"
 
 # Collection
-COLLECTION_ID = "corine-land-cover-raster"
-COLLECTION_TITLE = "CORINE Land Cover Raster"
+COLLECTION_ID = "corine-land-cover-plus-raster"
+COLLECTION_TITLE = "CORINE Land Cover Plus Backbone"
 COLLECTION_DESCRIPTION = (
-    "The European Commission launched the CORINE (Coordination of Information on the Environment) "
-    "program in an effort to develop a standardized methodology for producing continent-scale land "
-    "cover, biotope, and air quality maps. The CORINE Land Cover (CLC) product offers a pan-European "
-    "land cover and land use inventory with 44 thematic classes, ranging from broad forested areas "
-    "to individual vineyards."
+    "The CLC+ Backbone constitutes the first component of the CLMS's new 'CLC+ Product Suite', "
+    "which represents a true paradigm change in European land cover/land use (LC/LU) monitoring, "
+    "building on the rich legacy of the European CORINE Land Cover (CLC) flagship product. "
+    "The CLC+ Backbone is an object-oriented, large scale, wall-to-wall (EEA-38 + UK), "
+    "high-resolution (HR) inventory of European LC in a vector format accompanied by a "
+    "raster product layer, providing a consistent pan-European geometric backbone of "
+    "Landscape Objects with limited, but robust thematic detail, on which many other "
+    "applications can be built."
 )
-COLLECTION_KEYWORDS = ["clms", "corine", "derived data", "land cover", "machine learning", "open data"]
+COLLECTION_KEYWORDS = ["Copernicus", "Land Monitoring", "Land Cover", "CLC+"]
 COLLECTION_LICENSE = "proprietary"
 
 
 COLLECTION_TITLE_MAP = {
-    "clc_country_coverage": "Coverage",
-    "clc_file_naming": "Naming Convention Description",
-    "readme": "Description",
+    "clcplus_product_specification": "CLC+ Backbone Product Specification and User Manual",
+    "clcplus_product_specification_raster": "Product Specification and User Manual: Raster Product",
 }
 
 COLLECTION_MEDIA_TYPE_MAP = {
-    "clc_country_coverage": pystac.MediaType.PDF,
-    "clc_file_naming": pystac.MediaType.TEXT,
-    "readme": pystac.MediaType.TEXT,
+    "clcplus_product_specification": pystac.MediaType.PDF,
+    "clcplus_product_specification_raster": pystac.MediaType.PDF,
 }
 
 COLLECTION_ROLES_MAP = {
-    "clc_country_coverage": ["metadata"],
-    "clc_file_naming": ["metadata"],
-    "readme": ["metadata"],
+    "clcplus_product_specification": ["metadata"],
+    "clcplus_product_specification_raster": ["metadata"],
 }
 
 # Items
@@ -48,58 +46,73 @@ CLMS_LICENSE = pystac.link.Link(
     title="Legal notice on the use of CLMS data",
 )
 
-DOM_MAP = {
-    "GLP": "Guadeloupe",
-    "GUF": "French Guyana",
-    "MTQ": "Martinique",
-    "MYT": "Mayotte",
-    "REU": "Réunion",
-    "": "Europe",
+EXTENT_MAP = {
+    "gp": "Guadeloupe",
+    "gf": "French Guyana",
+    "mq": "Martinique",
+    "yt": "Mayotte",
+    "re": "Réunion",
+    "eu": "Europe",
 }
 
 ITEM_MEDIA_TYPE_MAP = {
     "tif": pystac.MediaType.COG,
-    "tif_xml": pystac.MediaType.XML,
+    "xml": pystac.MediaType.XML,
     "tif_aux_xml": pystac.MediaType.XML,
+    "tif_clr": pystac.MediaType.TEXT,
+    "tif_clr_txt": pystac.MediaType.TEXT,
     "tif_ovr": "image/tiff; application=geotiff; profile=pyramid",
     "tif_vat_cpg": pystac.MediaType.TEXT,
     "tif_vat_dbf": "application/dbf",
-    "legend_txt": pystac.MediaType.TEXT,
-    "tif_lyr": "image/tiff; application=geotiff; profile=layer",
-    "tfw": pystac.MediaType.TEXT,
-    "xml": pystac.MediaType.XML,
-    "readme_txt": pystac.MediaType.TEXT,
-    "preview": pystac.MediaType.PNG,
+    "tif_vat_dbf_xml": pystac.MediaType.XML,
+    "lyrx": "image/tiff; application=geotiff; profile=layer",
+    "qml": "image/tiff; application=geotiff; profile=layer",
+    "sld": pystac.MediaType.XML,
 }
 
 ITEM_ROLES_MAP = {
     "tif": ["data", "visual"],
-    "tif_xml": ["metadata"],
+    "xml": ["metadata"],
     "tif_aux_xml": ["metadata"],
+    "tif_clr": ["metadata"],
+    "tif_clr_txt": ["metadata"],
     "tif_ovr": ["metadata"],
     "tif_vat_cpg": ["metadata"],
     "tif_vat_dbf": ["metadata"],
-    "legend_txt": ["metadata"],
-    "tif_lyr": ["metadata"],
-    "tfw": ["metadata"],
-    "xml": ["metadata"],
-    "readme_txt": ["metadata"],
-    "preview": ["thumbnail"],
+    "tif_vat_dbf_xml": ["metadata"],
+    "lyrx": ["metadata"],
+    "qml": ["metadata"],
+    "sld": ["metadata"],
 }
 
 ITEM_TITLE_MAP = {
-    "tif": "Single Band Land Classification {label}",
-    "tif_xml": "TIFF Metadata {label}",
-    "tif_aux_xml": "TIFF Statistics {label}",
-    "tif_ovr": "Pyramid {label}",
-    "tif_vat_cpg": "Encoding {label}",
-    "tif_vat_dbf": "Database {label}",
-    "legend_txt": "Legends {label}",
-    "tif_lyr": "Legend Layer {label}",
-    "tfw": "World File {label}",
-    "xml": "Single Band Land Classification Metadata {label}",
-    "readme_txt": "Description {label}",
-    "preview": "Single Band Land Classification Thumbnail {label}",
+    "tif": "Classification Map {label}",
+    "xml": "Classification Map Metadata {label}",
+    "tif_aux_xml": "Classification Map Auxiliary {label}",
+    "tif_clr": "Classification Map Color Palette CLR {label}",
+    "tif_clr_txt": "Classification Map Color Palette TXT CLR {label}",
+    "tif_ovr": "Classification Map Pyramid {label}",
+    "tif_vat_cpg": "Classification Map Encoding {label}",
+    "tif_vat_dbf": "Classification Map Database {label}",
+    "tif_vat_dbf_xml": "Classification Map Database XML {label}",
+    "lyrx": "Classification Map ArcGIS Legend Layer {label}",
+    "qml": "Classification Map QGIS Legend Layer {label}",
+    "sld": "Classification Map OGC Legend Layer {label}",
+}
+
+ITEM_KEY_MAP = {
+    "tif": "clcplus_map",
+    "xml": "clcplus_map_metadata",
+    "tif_aux_xml": "clcplus_map_auxiliary",
+    "tif_clr": "clcplus_map_color_palette_clr",
+    "tif_clr_txt": "clcplus_map_color_palette_txt",
+    "tif_ovr": "clcplus_map_pyramid",
+    "tif_vat_cpg": "clcplus_map_encoding",
+    "tif_vat_dbf": "clcplus_map_database_dbf",
+    "tif_vat_dbf_xml": "clcplus_map_database_xml",
+    "lyrx": "clcplus_map_arcgis_legend_layer",
+    "qml": "clcplus_map_qgis_legend_layer",
+    "sld": "clcplus_map_ogc_legend_layer",
 }
 
 CLC_PROVIDER = pystac.provider.Provider(
