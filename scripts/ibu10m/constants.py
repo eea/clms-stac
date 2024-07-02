@@ -16,7 +16,7 @@ COLLECTION_DESCRIPTION = (
 )
 COLLECTION_EXTENT = pystac.Extent(
     spatial=pystac.SpatialExtent([[-31.285, 27.642, 44.807, 71.165]]),
-    temporal=pystac.TemporalExtent([[datetime(year=2019, month=1, day=1), None]]),
+    temporal=pystac.TemporalExtent([[datetime(year=2018, month=1, day=1), None]]),
 )
 COLLECTION_KEYWORDS = [
     "Copernicus",
@@ -51,3 +51,4 @@ ITEM_PARENT_LINK: Final[Link] = Link(
     rel=pystac.RelType.PARENT,
     target=pystac.STACObject.from_file(os.path.join(WORKING_DIR, f"stacs/{COLLECTION_ID}/{COLLECTION_ID}.json")),
 )
+IBU10M_DATA_DIR = "/Users/chung-xianghong/Downloads/ibu10m_samples"

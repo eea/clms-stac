@@ -1,11 +1,12 @@
+from __future__ import annotations
+
 import logging
 import os
 
+from scripts.ibu10m.constants import IBU10M_DATA_DIR
 from scripts.ibu10m.item import create_ibu10m_item, get_stac_validator
 
 LOGGER = logging.getLogger(__name__)
-
-IBU10M_DATA_DIR = "/Users/joshua.chung/clms-stac/sample_data"
 
 
 def matching_files(directory: str) -> list[list[str]]:

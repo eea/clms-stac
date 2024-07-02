@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 import logging
 import os
@@ -71,7 +73,7 @@ def get_geom_wgs84(bounds: BoundingBox, crs: CRS) -> Polygon:
 
 
 def get_description(product_id: str) -> str:
-    product, year, tile_res, extent, epsg = product_id.split("_")
+    _, year, _, extent, _ = product_id.split("_")
     return f"{year} imperviousness built-up product {extent}"
 
 
@@ -165,7 +167,7 @@ def create_ibu10m_item(tile: str, worldfile: str, metadata: str, validator: Draf
         item = create_item(tile, worldfile, metadata)
         items_dir = os.path.join(WORKING_DIR, f"{STAC_DIR}/{COLLECTION_ID}")
         os.makedirs(items_dir, exist_ok=True)
-        file_path = os.path.join(items_dir, f"{item.id}.json")
+        file_path = os.path.join(items_dir, f"{item.id}/{item.id}.json")
         item.set_self_href(file_path)
         error_msg = best_match(validator.iter_errors(item.to_dict()))
         assert error_msg is None, f"Failed to create {item.id} item. Reason: {error_msg}."

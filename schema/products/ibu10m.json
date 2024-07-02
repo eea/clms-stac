@@ -129,7 +129,7 @@
               "bbox": [[-31.285, 27.642, 44.807, 71.165]]
             },
             "temporal": {
-              "interval": [["2018-01-01T00:00:00.000Z", null]]
+              "interval": [["2018-01-01T00:00:00Z", null]]
             }
           }
         },
@@ -138,8 +138,8 @@
           "minProperties": 2,
           "maxProperties": 2,
           "required": [
-            "imperviousness_builtup_metadata",
-            "imperviousness_builtup_color_palette"
+            "ibu_2018_010m_qgiscolour_txt",
+            "ibu_2018_010m_eu_03035_v010_xml"
           ]
         },
         "item_assets": {
